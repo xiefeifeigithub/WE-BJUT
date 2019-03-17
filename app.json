@@ -13,19 +13,17 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "color":"#fff",
-    "backgroundColor":"#000",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/lists/lists",
         "text": "首页",
         "iconPath": "images/1.png",
-        "selectedIconPath": "images/3.png"
+        "selectedIconPath": "images/2.png"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "日志",
-        "iconPath": "images/2.png",
+        "pagePath": "pages/aboutme/aboutme",
+        "text": "关于我们",
+        "iconPath": "images/3.png",
         "selectedIconPath": "images/4.png"
       }
     ]
