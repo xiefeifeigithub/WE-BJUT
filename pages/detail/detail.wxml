@@ -1,9 +1,13 @@
 <!--pages/detail/detail.wxml-->
-<view class="about">
-  <view>{{info.title}}</view>
-  <view>{{info.cTime}}</view>
-  <view>
-    <image src="{{info.img}}" class="in-img" mode="'scaleToFill'"></image>
-  </view>
-  <view>{{info.content}}</view>
+<view class="wrap">
+
+    <view class="title">{{info.title}}</view>
+    <view class="cTime">{{info.cTime}}</view>
+
+    <view class="img">
+      <image src="{{info.img}}" class="in-img" mode="'scaleToFill'"></image>
+    </view>
+
+    <view class="content">{{info.content}}</view>
+
 </view>
