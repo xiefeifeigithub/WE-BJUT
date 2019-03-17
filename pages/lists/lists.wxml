@@ -1,2 +1,26 @@
 <!--pages/lists/lists.wxml-->
-<text>pages/lists/lists.wxml</text>
+<view class="about">
+
+<!--文章列表模板 begin-->
+<template name="items">
+  <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
+    <view>
+      <image src="{{img}}" class="in-img" mode="'scaleToFill'"></image>
+    </view>
+    <view>
+      <view>{{title}}</view>
+      <view>{{cTime}}</view>
+    </view>
+  </navigator>
+</template> 
+<!--文章列表模板 end--> 
+
+<!--循环输出列表  begin-->
+ <block wx:for="{{newsList}}">
+  <template is="items" data="{{...item}}" />
+ </block>
+<!--循环输出列表  end-->
+
+</view>
+
+
