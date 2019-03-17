@@ -1,10 +1,10 @@
 <!--aboutme.wxml-->
 <view class="container">
-  <view><image bindtap="bindViewTap" src="../../images/1.png" mode="cover"></image></view>
-  <view>北京工业大学</view>
-  <view>北京工业大学（Beijing University of Technology），简称“北工大”，创建于1960年，是一所以工为主，工、理为主的市属重点大学，国家“双一流”建设高校，国家“211工程”大学</view>
-  <view>联系方式</view>
-  <view>地址：北京市朝阳区平乐园100号</view>
-  <view>联系电话：18911780647</view>
-  <view>商务合作：xiefei741000@outlook.com</view>
+  <view><image bindtap="bindViewTap" src="{{img}}" mode="cover"></image></view>
+  <view>{{title}}</view>
+  <view>{{intro}}</view>
+  <view>{{contab}}</view>
+  <view>地址：{{address}}</view>
+  <view>联系方式：{{mobile}}</view>
+  <view>商务合作：{{email}}</view>
 </view>
