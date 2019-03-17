@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    img: "../../images/1.png",
+    img: "../../images/BJUT.jpg",
     title: "北京工业大学",
     intro: "北京工业大学（Beijing University of Technology），简称“北工大”，创建于1960年，是一所以工为主，工、理为主的市属重点大学，国家“双一流”建设高校，国家“211工程”大学",
     contab:"联系方式",

@@ -1,10 +1,16 @@
 <!--aboutme.wxml-->
-<view class="container">
-  <view><image bindtap="bindViewTap" src="{{img}}" mode="cover"></image></view>
-  <view>{{title}}</view>
-  <view>{{intro}}</view>
-  <view>{{contab}}</view>
-  <view>地址：{{address}}</view>
-  <view>联系方式：{{mobile}}</view>
-  <view>商务合作：{{email}}</view>
+<view class="about">
+  <view class="about-wei">
+      <view class="about-img"><image src="{{img}}" class="in-img" mode="'scaleToFill'"></image></view>
+      <view class='about-title'>{{title}}</view>
+  </view>
+  
+  <view class="about-content">{{intro}}</view>
+
+  <view class="about-addr">
+      <view class="about-tab">{{contab}}</view>
+      <view>地址：{{address}}</view>
+      <view>联系方式：{{mobile}}</view>
+      <view>商务合作：{{email}}</view>
+  </view>
 </view>
