@@ -1,2 +1,9 @@
 <!--pages/detail/detail.wxml-->
-<text>55555555</text>
+<view class="about">
+  <view>{{info.title}}</view>
+  <view>{{info.cTime}}</view>
+  <view>
+    <image src="{{info.img}}" class="in-img" mode="'scaleToFill'"></image>
+  </view>
+  <view>{{info.content}}</view>
+</view>

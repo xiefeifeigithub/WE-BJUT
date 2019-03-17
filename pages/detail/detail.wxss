@@ -1,1 +1,9 @@
 /* pages/detail/detail.wxss */
+.about{ }
+.about-wei{ text-align: center;}
+.about-img{ display: block; width: 124px; height: 110px;  margin: 20px auto 0;}
+.in-img{ width: 124px; height: 110px;}
+.about-title{ display: inline-block; margin: 20px 0;}
+.about-content{ text-indent: 2em; font-size: 16px; margin: 0 24px; line-height: 1.5;}
+.about-tab{ margin-top: 20px;}
+.about-addr{ font-size: 16px; line-height: 2; text-indent: 2em;}
