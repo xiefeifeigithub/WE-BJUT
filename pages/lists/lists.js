@@ -17,7 +17,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  //http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getlist
 
+
+    console.log('onLoad')
+    var that = this
+
+    //发起网络请求
+    wx.request({
+      url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getlist', // 仅为示例，并非真实的接口地址
+      data: {},
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log(res.data)
+        //利用setData设定数据
+        that.setData({
+          newsList: res.data
+        })
+      }
+    })
   },
 
   /**
