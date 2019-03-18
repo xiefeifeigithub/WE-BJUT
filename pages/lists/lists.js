@@ -10,7 +10,12 @@ Page({
       { id:2, title:"bbbbbbbbbb", img:"../../images/2.png", cTime:"2019-3-17 10:11" },
       { id:3, title:"cccccccccc", img:"../../images/3.png", cTime:"2019-3-17 10:11" },
       { id:4, title:"dddddddddd", img:"../../images/4.png", cTime:"2019-3-17 10:11" }
-    ]
+    ],
+    is_open: false //条件渲染
+  },
+
+  chickme:function(){
+    console.log('hello')
   },
 
   /**
