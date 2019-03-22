@@ -15,17 +15,13 @@
 </template> 
 <!--文章列表模板 end--> 
 
-<view wx:if="{{is_open}}">xiefei</view>
-<view wx:else>gaojingyi</view>
-
-<view bindtap="chickme">ChickMe</view>
-
 <!--循环输出列表  begin-->
  <view wx:for="{{newsList}}" class="list">
   <template is="items" data="{{...item}}" />
  </view>
 <!--循环输出列表  end-->
 
+<view bindtap="loadMore" data-lastid="{{lastid}}" class="loadMore">加载更多</view>
 </view>
 
 

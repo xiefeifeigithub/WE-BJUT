@@ -15,3 +15,5 @@ navigator { overflow: hidden;}
 .title {font-size: 24px;}
 .date {font-size: 16px; color: #aaa; position: absolute;bottom: 0;}
 
+.loadMore {text-align: center; margin: 30px;color: #aaa;font-size: 16px;}
+
