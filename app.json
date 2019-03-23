@@ -3,6 +3,7 @@
     "pages/lists/lists",
     "pages/detail/detail",
     "pages/aboutme/aboutme",
+    "pages/form/form",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -22,6 +23,12 @@
       },
       {
         "pagePath": "pages/aboutme/aboutme",
+        "text": "关于我们",
+        "iconPath": "images/3.png",
+        "selectedIconPath": "images/4.png"
+      },
+      {
+        "pagePath": "pages/form/form",
         "text": "关于我们",
         "iconPath": "images/3.png",
         "selectedIconPath": "images/4.png"

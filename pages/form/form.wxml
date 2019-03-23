@@ -1,0 +1,56 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+
+  <view class="section">
+    <view class="section__title">姓名</view>
+    <input name="username" placeholder="请输入姓名" />
+  </view>
+
+  <view class="section section_gap">
+    <view class="section__title">关注的产品</view>
+    <checkbox-group name="checkbox">
+      <label>
+        <checkbox value="0" />微商城</label>
+      <label>
+        <checkbox value="1" />微社区</label>
+      <label>
+        <checkbox value="2" />微信</label>
+    </checkbox-group>
+  </view>
+
+  <view class="section section_gap">
+    <view class="section__title">渠道来源</view>
+    <radio-group name="from">
+      <label>
+        <radio value="0" />百度搜索</label>
+      <label>
+        <radio value="1" />朋友推荐</label>
+      <label>
+        <radio value="2" />公众号推送</label>
+    </radio-group>
+  </view>
+
+  <view class="section">
+    <view class="section__title">所在地区</view>
+    <picker value="{{index}}" range="{{array}}">
+      <view class="picker">
+        当前选择：{{ array[index] }}
+      </view>
+    </picker>
+  </view>
+
+  <view class="section section_gap">
+    <text class="section__title">请给我们打分</text>
+    <view class="body-view">
+      <slider bindchange="slider3change" min="0" max="100" show-value />分
+    </view>
+  </view>
+
+  <view class="section section_gap">
+    <view class="section__title">你是学生吗</view>
+    <switch name="switch" />
+  </view>
+
+  <view class="btn-area">
+    <button form-type="submit">提交反馈</button>
+  </view>
+</form>
