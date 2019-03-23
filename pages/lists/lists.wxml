@@ -21,7 +21,7 @@
  </view>
 <!--循环输出列表  end-->
 
-<loading hidden="{{loadHidden}}" bindchange="loadChange">数据加载中</loading>
+<loading hidden="{{loadHidden}}" bindchange="loadChange">数据加载中...</loading>
 
 <view bindtap="loadMore" data-lastid="{{lastid}}" data-isfirst="{{isfirst}}" class="loadMore" hidden="{{moreHidden}}" style="display:{{moreHidden}}">加载更多</view>
 <toast hidden="{{toastHidden}}" bindchange="totastChange" duration="3000">没有更多文章了</toast>
