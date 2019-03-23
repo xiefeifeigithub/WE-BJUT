@@ -10,4 +10,6 @@
 
     <view class="content">{{info.content}}</view>
 
+    <view class="close" bindtap="closepage"> 返回 </view>
+
 </view>

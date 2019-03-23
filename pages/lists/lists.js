@@ -75,12 +75,21 @@ Page({
     this.loadData(id);
   },
 
-  //监听页面加载
+  //监听页面加载 页面加载时触发
   onLoad: function (options) {
     console.log('onLoad')
     var that = this
     
+    //请求数据
     this.loadData(0);
+  },
+   
+  //页面初次渲染完成时触发
+  onReady: function(){
+    //动态设置当前页面的标题
+    wx.setNavigationBarTitle({
+      title: '文章列表'
+    })
   },
 
   //提示没有更多数据
@@ -90,5 +99,5 @@ Page({
 
   //提醒网络状况
   modalChange: function(){ this.setData({ confirmHidden: true }) }
-  
+
 })
