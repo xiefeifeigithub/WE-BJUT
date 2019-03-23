@@ -1,4 +1,4 @@
-<form bindsubmit="formSubmit" bindreset="formReset">
+<form bindsubmit="formSubmit">
 
   <view class="section">
     <view class="section__title">姓名</view>
@@ -21,9 +21,9 @@
     <view class="section__title">渠道来源</view>
     <radio-group name="from">
       <label>
-        <radio value="0" />百度搜索</label>
+        <radio value="0" />百度搜索来的</label>
       <label>
-        <radio value="1" />朋友推荐</label>
+        <radio value="1" />朋友介绍</label>
       <label>
         <radio value="2" />公众号推送</label>
     </radio-group>
@@ -31,9 +31,9 @@
 
   <view class="section">
     <view class="section__title">所在地区</view>
-    <picker value="{{index}}" range="{{array}}">
+    <picker value="{{area}}" range="{{array}}" bindchange="bindPickerChange">
       <view class="picker">
-        当前选择：{{ array[index] }}
+        当前选择：{{ array[area] }}
       </view>
     </picker>
   </view>
@@ -41,13 +41,13 @@
   <view class="section section_gap">
     <text class="section__title">请给我们打分</text>
     <view class="body-view">
-      <slider bindchange="slider3change" min="0" max="100" show-value />分
+      <slider min="0" max="100" show-value  bindchange="bindSliderChange" value="{{score}}"/>
     </view>
   </view>
 
   <view class="section section_gap">
-    <view class="section__title">你是学生吗</view>
-    <switch name="switch" />
+    <view class="section__title">你是前端开发人员吗？</view>
+    <switch name="id_dev" value="{{is_dev}}" />
   </view>
 
   <view class="btn-area">
