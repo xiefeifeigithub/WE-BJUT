@@ -5,12 +5,19 @@ Page({
     lastid: 0,
     toastHidden: true,
     confirmHidden: true,
-    isfirst: 1
+    isfirst: 1,
+    loadHidden: true,
+    moreHidden: 'none'
   },
 
   loadData:function (lastid){
-    //
+    
+    //显示出加载中的提示
+    this.setData({loadHidden:false})
+
     var limit = 5
+    //在javascript中，this代表着当前对象，会随着程序的执行过程中的上下文改变
+    ///把this对象复制到临时变量that
     var that = this
     //发起网络请求
     wx.request({
@@ -22,11 +29,10 @@ Page({
       success(res) {
           if(!res.data)
           {
-              that.setData({
-                toastHidden: false
-              })
-
-              return false
+            //提示没有更多数据了
+            that.setData({ toastHidden: false })
+            that.setData({ moreHidden: 'none' })
+            return false
           }
           console.log(res.data)
 
@@ -37,10 +43,11 @@ Page({
           var newData = dataArr.concat(res.data);
 
           //利用setData设定数据
-          that.setData({
-            newsList: newData
-          })
-      }
+          that.setData({ newsList: newData })
+          that.setData({ moreHidden: '' })
+      },
+      //显示加载中提示
+      complete:function() { that.setData({ loadHidden: true }) }
     })
   },
 

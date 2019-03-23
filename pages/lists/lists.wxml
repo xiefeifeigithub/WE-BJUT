@@ -21,7 +21,9 @@
  </view>
 <!--循环输出列表  end-->
 
-<view bindtap="loadMore" data-lastid="{{lastid}}" data-isfirst="{{isfirst}}" class="loadMore">加载更多</view>
+<loading hidden="{{loadHidden}}" bindchange="loadChange">数据加载中</loading>
+
+<view bindtap="loadMore" data-lastid="{{lastid}}" data-isfirst="{{isfirst}}" class="loadMore" hidden="{{moreHidden}}" style="display:{{moreHidden}}">加载更多</view>
 <toast hidden="{{toastHidden}}" bindchange="totastChange" duration="3000">没有更多文章了</toast>
 <modal title="温馨提示" no-cancel  confirm-text="明确" hidden="{{confirmHidden}}" bindconfirm="modalChange">当前不在WIFI网络,请注意流量使用情况</modal>
 </view>
