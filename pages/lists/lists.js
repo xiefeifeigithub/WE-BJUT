@@ -7,7 +7,8 @@ Page({
     confirmHidden: true,
     isfirst: 1,
     loadHidden: true,
-    moreHidden: 'none'
+    moreHidden: 'none',
+    msg: '没有更多文章了'
   },
 
   loadData:function (lastid){
@@ -32,21 +33,48 @@ Page({
           {
             //提示没有更多数据了
             that.setData({ toastHidden: false })
-            //隐藏加载更多标签
+            //隐藏加载更多按钮
             that.setData({ moreHidden: 'none' })
             return false
           }
-
+          //更新lastid
           var len = res.data.length
+          var oldLastid = lastid
           that.setData( {lastid: res.data[len-1].id})
           
           //新旧内容拼接
           var dataArr = that.data.newsList
           var newData = dataArr.concat(res.data);
 
+          //设置数据缓存
+          if(oldLastid==0){
+            wx.setStorageSync('CmsList',newData)
+          }
+
           //利用setData设定数据
           that.setData({ newsList: newData })
           that.setData({ moreHidden: '' })
+          console.log('data from url')
+      },
+
+      //获取服务器数据失败
+      fail: function(res){
+        if (lastid == 0) {
+          //获取缓存
+          var newData = wx.getStorageSync('CmsList')
+          if (newData) {
+            that.setData({ newsList: newData })
+            that.setData({ moreHidden: '' })
+
+            var len = newData.length
+            that.setData({ lastid: newData[len - 1].id })
+          }
+
+          console.log('data from cache')
+        }
+        else {
+          that.setData({ toastHidden: false, moreHidden: 'none', msg: '当前网络异常，请稍后再试' })
+        }
       },
       //显示加载中提示
       complete:function() { that.setData({ loadHidden: true }) }
