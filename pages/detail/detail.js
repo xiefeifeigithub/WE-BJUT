@@ -20,6 +20,11 @@ Page({
   },
 
   //返回上一页
+
+
+
+
+  
   closepage: function(){
     //关闭当前页面，返回上一页面
     wx.navigateBack()
