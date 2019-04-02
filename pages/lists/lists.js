@@ -8,11 +8,12 @@ Page({
     isfirst: 1,
     loadHidden: true,
     moreHidden: 'none',
-    msg: '没有更多文章了'
+    msg: '没有更多文章了',
+ 
   },
 
   loadData:function (lastid){
-    
+    console.log(lastid)
     //显示出加载中的提示
     this.setData({loadHidden:false})
 
@@ -24,12 +25,13 @@ Page({
     //发起网络请求
     wx.request({
      // url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getlist', // 仅为示例，并非真实的接口地址
-      url: 'http://bjut.bjutxiaomei.cn:8081/index.php?s=/addon/Cms/Cms/getlist', // 真实接口地址
+     url: 'http://bjut.bjutxiaomei.cn:8081/index.php?s=/addon/Cms/Cms/getlist', // 真实接口地址
       data: {lastid:lastid, limit:limit},
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
+        console.log(res.lastid)
           if(!res.data)
           {
             //提示没有更多数据了
@@ -39,9 +41,11 @@ Page({
             return false
           }
           //更新lastid
+        console.log(lastid)
           var len = res.data.length
           var oldLastid = lastid
           that.setData( {lastid: res.data[len-1].id})
+        console.log(lastid)
           
           //新旧内容拼接
           var dataArr = that.data.newsList
@@ -55,6 +59,7 @@ Page({
           //利用setData设定数据
           that.setData({ newsList: newData })
           that.setData({ moreHidden: '' })
+          
           console.log('data from url')
       },
 
