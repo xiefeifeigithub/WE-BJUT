@@ -1,4 +1,6 @@
 // pages/lists/lists.js
+var app = getApp()
+
 Page({
   data: {
     newsList: [],
@@ -17,7 +19,9 @@ Page({
     //显示出加载中的提示
     this.setData({loadHidden:false})
 
-    var limit = 5
+    var limit = 20 //文章数
+    var type = app.globalData.type
+    console.log(type)
     //在javascript中，this代表着当前对象，会随着程序的执行过程中的上下文改变
     ///把this对象复制到临时变量that
     var that = this
@@ -26,7 +30,7 @@ Page({
     wx.request({
  //     url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getlist', // 仅为示例，并非真实的接口地址
       url: 'https://bjut.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getlist', // 真实接口地址
-      data: {lastid:lastid, limit:limit},
+      data: {lastid:lastid, limit:limit,type:type},
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -112,6 +116,7 @@ Page({
   //监听页面加载 页面加载时触发
   onLoad: function (options) {
     console.log('onLoad')
+    console.log(options)
     var that = this
     
     //请求数据

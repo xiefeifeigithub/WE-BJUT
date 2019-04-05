@@ -1,79 +1,76 @@
 <!--aboutme.wxml-->
 <view class='tags'>
 
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>校医院</text>
-<view class='badge text-sm'>10</view>
+    <view class='btn btn-xs btn-default round-btn tags-btn'>
+      <text class='text-sm text-gray' data-name='校医院' bindtap="findArticle">校医院</text>
+      <view class='badge text-sm'>10</view>
+    </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>保研</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>考研</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>出国</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>图书馆</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>南/北操</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>游泳馆</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>教学楼</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>宿舍楼</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>校园网</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>食堂</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>教务处</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>学生社团</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>学生会</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
 </view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>保研</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>考研</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>出国</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>图书馆</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>南/北操</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>游泳馆</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>教学楼</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>宿舍楼</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>校园网</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>食堂</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>教务处</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>学生社团</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-<view class='btn btn-xs btn-default round-btn tags-btn'>
-<text class='text-sm text-gray'>学生会</text>
-<view class='badge text-sm'>10</view>
-</view>
-
-</view>
-
-
-

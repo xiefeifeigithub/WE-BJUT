@@ -56,8 +56,10 @@ App({
     }
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    type: null
   },
   //url: 'https://你的域名/index.php?s=/'
   url: 'https://bjut.bjutxiaomei.cn/index.php?s=/'
+  
 })

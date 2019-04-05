@@ -23,6 +23,18 @@ Page({
     })
   },
 
+  findArticle:function(options)
+  {
+    wx.switchTab({
+      url: '../lists/lists',
+    })
+
+    var type = app.globalData.type
+    app.globalData.type = "TSG"
+    console.log(app.globalData.type)
+  },
+
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
