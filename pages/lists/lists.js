@@ -25,7 +25,7 @@ Page({
     //发起网络请求
     wx.request({
  //     url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getlist', // 仅为示例，并非真实的接口地址
-    url: 'https://bjut.bjutxiaomei.cn:4433/index.php?s=/addon/Cms/Cms/getlist', // 真实接口地址
+      url: 'https://bjut.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getlist', // 真实接口地址
       data: {lastid:lastid, limit:limit},
       header: {
         'content-type': 'application/json' // 默认值

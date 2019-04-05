@@ -1,6 +1,6 @@
 // pages/aboutme/aboutme.js
+var app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -18,7 +18,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(app.url)
+    wx.request({
+      url: app.url + 'addon/Cms/Cms/testLogin',     
+      data: { PHPSESSID: wx.getStorageSync('PHPSESSID') },
+      success: function (res) {
+        console.log(res);
+      }
+    })
   },
 
   /**

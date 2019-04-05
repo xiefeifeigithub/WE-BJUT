@@ -14,6 +14,7 @@ App({
       //调用登录接口
       wx.login({
         success: function (res) {
+          console.log("app.js:" + res.code)
           if (res.code) {
             wx.request({
               url: that.url + 'addon/Cms/Cms/sendCode',
@@ -58,5 +59,5 @@ App({
     userInfo: null
   },
   //url: 'https://你的域名/index.php?s=/'
-  url: 'https://bjut.bjutxiaomei.cn:4433/index.php?s=/'
+  url: 'https://bjut.bjutxiaomei.cn/index.php?s=/'
 })
