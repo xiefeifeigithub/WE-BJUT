@@ -1,21 +1,106 @@
-/**index.wxss**/
-.userinfo {
+page{
+    background: #f6f6f6;
+}
+.nav {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  background: #fff;
+  border-bottom: 1rpx solid #e5e5e5;
+  padding: 15rpx 10rpx 10rpx;
+  margin-bottom: 20rpx;
+  min-height: 350rpx;
+  overflow: hidden;
+}
+.item {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 25%;
+  height: 185rpx;
+}
+.item image {
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  margin: 15rpx auto;
+}
+.item text{
+  display: block;
+  margin: 1rpx;
+}
+
+/*卡片列表*/
+.main-card {
+  padding-bottom: 300rpx;
+}
+.main-card-item{
   display: flex;
   flex-direction: column;
+  background: #fff;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+  margin-bottom: 20rpx;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: bottom center;
+  overflow: hidden;
+}
+.card-item-hd{
+  position: relative;
+  display: flex;
   align-items: center;
+  height: 75rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  margin-left: 30rpx;
+}
+.card-item-icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.card-item-name{
+  font-size: 11pt;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.card-item-bd{
+  padding: 20rpx 25rpx 30rpx 0;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.card-info-hd{
+  display: flex;
+  justify-content: space-between;
+}
+.card-info-left{
+  display: flex;
+  flex-direction: column;
+}
+.card-info-right{
+  display: flex;
+  color: #acacac;
+  flex-direction: column;
+}
+.card-item-open{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7f848a;
+  height: 150rpx;
+  border-top: 1rpx solid #e5e5e5;
+  margin-top: -1rpx;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+.room {
+  height: 75rpx;
+  padding-left: 30rpx;
+  border-bottom:1px solid #e5e5e5;
+  font-size: 15pt;
+  line-height: 75rpx;
+  letter-spacing: 1px;
+  color: #acacac;
 }

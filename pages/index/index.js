@@ -1,54 +1,78 @@
-//index.js
 //获取应用实例
-const app = getApp()
-
+var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    //电费查询
+    electric: {},
+    //导航数据
+    student: [{
+      icon: '/images/kjs.png',
+      src: '/pages/core/curriculum/curriculum',
+      title: '空教室'
+    }, {
+      icon: '/images/ck.png',
+      src: '/pages/core/grade/grade',
+      title: "蹭课"
+    }, {
+      icon: '/images/tsg.png',
+      src: '/pages/core/exam/exam',
+      title: "图书馆"
+    }, {
+      icon: '/images/kc.png',
+      src: '/pages/core/library/library',
+      title: "考场"
+    }, {
+      icon: '/images/cj.png',
+      src: '/pages/core/campusCard/campusCard',
+      title: '成绩'
+    }, {
+      icon: '/images/ykt.png',
+      src: '/pages/core/net/net',
+      title: '一卡通'
+    }, {
+      icon: '/images/xxfk.png',
+      src: '/pages/core/electric/electric',
+      bindtap: 'KFZ',
+      title: "信息反馈"
+    }, {
+      icon: '/images/info.png',
+      src: '/pages/core/finance/finance',
+      title: '校园信息'
+    }]
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  onShow: function () {
+    var that = this;
+    that.getNow();
+    var name = app.globalData.userData.username,
+      userid = app.globalData.userid,
+      academic_year = app.globalData.time.academic_year,
+      term = app.globalData.time.term;
+    that.setData({
+      name: name,
+      userid: userid,
+      academic_year: academic_year,
+      term: term
     })
+    that.getClass();
+    that.getLibrary();
+    that.getCardMessage();
+    that.getNet();
+    that.getElectric();
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+
+  //下拉刷新
+  onPullDownRefresh: function () {
+    var that = this;
+    that.getClass();
+    that.getLibrary();
+    that.getCardMessage();
+    that.getNet();
+    that.getElectric();
+    wx.showToast({
+      title: '正在刷新',
+      icon: 'loading',
+      duration: 1000
+    });
+    wx.stopPullDownRefresh();
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
 })

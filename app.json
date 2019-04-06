@@ -1,22 +1,22 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/lists/lists",
     "pages/detail/detail",
     "pages/aboutme/aboutme",
     "pages/form/form",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeiCMS",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#4090FE",
+    "navigationBarTitleText": "工小锤",
+    "navigationBarTextStyle":"white"
   },
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/lists/lists",
+        "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/1.png",
         "selectedIconPath": "images/2.png"
