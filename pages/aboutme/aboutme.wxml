@@ -1,5 +1,6 @@
 <!--aboutme.wxml-->
-<view class='tags'>
+
+<!--<view class='tags'>
 
     <view class='btn btn-xs btn-default round-btn tags-btn'>
       <text class='text-sm text-gray' data-name='校医院' bindtap="findArticle">校医院</text>
@@ -61,8 +62,6 @@
     <view class='badge text-sm'>10</view>
   </view>
 
-
-
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>学生社团</text>
     <view class='badge text-sm'>10</view>
@@ -73,4 +72,183 @@
     <view class='badge text-sm'>10</view>
   </view>
 
+</view>-->
+
+<view class='tags'>
+<text class='title'>校园网</text>
+<image src='/images/network.png' class='logo'></image>
+<view>\n</view>
+<view class='gaps2'></view>
+<view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>基本说明</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>IPV6</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+</view>
+
+<view class='gaps1'></view>
+
+<view class='tags'>
+<text class='title'>软件安装</text>
+<image src='/images/software.png' class='logo'></image>
+<view>\n</view>
+<view class='gaps2'></view>
+<view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>微软正版软件</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>AutoCAD</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>Adobe全家桶</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+</view>
+
+<view class='gaps1'></view>
+
+<view class='tags'>
+<text class='title'>学籍管理</text>
+<image src='/images/file.png' class='logo'></image>
+<view>\n</view>
+<view class='gaps2'></view>
+<view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>基本规定</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>培养计划</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>辅修和双学位</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>转专业</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>保研</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+</view>
+
+<view class='gaps1'></view>
+
+<view class='tags'>
+<text class='title'>资助政策</text>
+<image src='/images/help.png' class='logo'></image>
+<view>\n</view>
+<view class='gaps2'></view>
+<view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>绿色通道</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>助学贷款</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>贫困补助</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>励志奖</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>勤工俭学</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+</view>
+
+<view class='gaps1'></view>
+
+<view class='tags'>
+<text class='title'>未来之路</text>
+<image src='/images/future.png' class='logo'></image>
+<view>\n</view>
+<view class='gaps2'></view>
+<view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>考研</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>工作</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>出国</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>创业</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+</view>
+
+<view class='gaps1'></view>
+
+<view class='tags'>
+<text class='title'>场馆中心</text>
+<image src='/images/sports.png' class='logo'></image>
+<view>\n</view>
+<view class='gaps2'></view>
+<view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>健身房</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>游泳馆</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>羽毛球馆</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>乒乓球馆</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+</view>
+
+<view class='gaps1'></view>
+
+<view class='tags'>
+<text class='title'>社团</text>
+<image src='/images/club.png' class='logo'></image>
+<view>\n</view>
+<view class='gaps2'></view>
+<view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>社团名单</text>
+    <view class='badge text-sm'>10</view>
+  </view>
+
+  <view class='btn btn-xs btn-default round-btn tags-btn'>
+    <text class='text-sm text-gray'>创建社团</text>
+    <view class='badge text-sm'>10</view>
+  </view>
 </view>
