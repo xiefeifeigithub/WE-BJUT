@@ -1,4 +1,27 @@
-<!--index.wxml-->
-<view class="container">
+<!--功能导航-->
+<view class="nav">
+  <block wx:for="{{student}}">
+    <navigator url="{{item.src}}" class="item" hover-class="navHoverClass" hover-stay-time="200">
+      <image src="{{item.icon}}"></image>
+      <text>{{item.title}}</text>
+    </navigator>
+  </block>
+</view>
 
+<!--卡片列表-->
+<view class="main-card">
+  <!--水电费-->
+  <view class="main-card-item" id="sdf">
+    <view class="card-item-hd">
+      <image class="card-item-icon" src="/images/gg.png"></image>
+      <text class="card-item-name">公告</text>
+    </view>
+   
+    
+    <navigator url="/pages/core/electric/electric">
+      <view class="card-item-open">
+        <text>如果你觉得不错，欢迎推荐给身边的小伙伴，功能尚处在测试阶段。</text>
+      </view>
+    </navigator>
+  </view>
 </view>

@@ -9,9 +9,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeiCMS",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#4090FE",
+    "navigationBarTitleText": "工小锤",
+    "navigationBarTextStyle":"white"
   },
   "tabBar": {
     "list": [
