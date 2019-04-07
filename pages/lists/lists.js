@@ -20,7 +20,7 @@ Page({
     this.setData({loadHidden:false})
 
     var limit = 20 //文章数
-    var type = app.globalData.type
+    var type = app.globalData.type //获取用户所选文章属性
     console.log(type)
     //在javascript中，this代表着当前对象，会随着程序的执行过程中的上下文改变
     ///把this对象复制到临时变量that

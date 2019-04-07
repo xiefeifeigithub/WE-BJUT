@@ -24,6 +24,7 @@ Page({
     console.log(this.data.info);
     var that = this;
     var article = that.data.info.content;
+    console.log(article);
     WxParse.wxParse('article', 'html',article, that, 5);
     
   },

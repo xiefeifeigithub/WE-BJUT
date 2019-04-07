@@ -1,6 +1,6 @@
 {
   "pages":[
-     "pages/index/index",
+    "pages/index/index",
     "pages/lists/lists",
     "pages/detail/detail",
     "pages/aboutme/aboutme",
@@ -10,7 +10,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#4090FE",
-    "navigationBarTitleText": "工小锤",
+    "navigationBarTitleText": "工大小美",
     "navigationBarTextStyle":"white"
   },
   "tabBar": {
@@ -18,12 +18,6 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/1.png",
-        "selectedIconPath": "images/2.png"
-      },
-      {
-        "pagePath": "pages/lists/lists",
-        "text": "文章",
         "iconPath": "images/1.png",
         "selectedIconPath": "images/2.png"
       },

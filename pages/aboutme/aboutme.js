@@ -23,10 +23,9 @@ Page({
     })
   },
 
-  findArticle:function(options)
-  {
-    wx.switchTab({
-      url: '../lists/lists',
+  findArticle: function (options) {
+    wx.navigateTo({
+      url: '../lists/lists'
     })
 
     var type = app.globalData.type

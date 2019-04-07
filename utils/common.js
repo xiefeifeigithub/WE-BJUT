@@ -1,3 +1,4 @@
+
 //先从缓存中获取数据，若无，则从server获取
 function loadInfo(id,obj){
   var key = 'info_' + id
@@ -9,7 +10,7 @@ function loadInfo(id,obj){
     console.log(info.content)
     
     return true
-  }
+  }           
 
   //发起网络请求
   wx.request({
@@ -20,7 +21,7 @@ function loadInfo(id,obj){
       'content-type': 'application/json' // 默认值
     },
     success(res) {
-
+      console.log("success")
       console.log(res.data)
 
       //利用setData设定数据
