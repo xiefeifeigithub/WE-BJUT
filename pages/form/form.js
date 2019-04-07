@@ -1,46 +1,52 @@
+var app = getApp()
 Page({
-
   data: {
-    array: ["中国", "美国", "巴西", "日本"],
+    array: ['美国', '中国', '巴西', '日本'],
     area: 0,
-    score: 0
+    score: 0,
+    is_dev: 0,
+    username: ''
   },
-
-  //地区选择
-  bindPickerChange: function(e) {
+  bindPickerChange: function (e) {
     console.log('form发生了Picker事件，携带数据为：', e.detail.value)
-    this.setData({ area: e.detail.value} )
+    this.setData({ area: e.detail.value });
   },
-  //评分
-  bindSliderChange : function(e) {
+  bindSliderChange: function (e) {
     console.log('form发生了Slider事件，携带数据为：', e.detail.value)
-    this.setData({ score: e.detail.value })
+    this.setData({ score: e.detail.value });
   },
-
-  //表单提交
-  formSubmit(e) {
+  formSubmit: function (e) {
+    //console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var formData = e.detail.value
     formData.area = this.data.area
     formData.score = this.data.score
-    console.log('form发生了submit事件，携带数据为：', formData)
-
+    formData.username = this.data.username
+    console.log('form发生了事件，携带数据为：', formData)
 
     var that = this
 
-    //发起网络请求
     wx.request({
-      url: 'http://localhost:8080/weicms/index.php?s=/addon/Feedback/Feedback/addFeedback', // 仅为示例，并非真实的接口地址
+      url: app.url + 'addon/Feedback/Feedback/addFeedback',
       data: formData,
       header: {
-        'content-type': 'application/json' // 默认值
+        'Content-Type': 'application/json'
       },
-      success(res) {
-       
+      success: function (res) {
+        console.log(res)
       },
-      //显示加载中提示
-      complete: function () { 
-        
+      complete: function () {
+
       }
+    })
+  },
+  onLoad: function () {
+    var that = this
+    console.log('onLoad  getUserInfo')
+    app.getUserInfo(function (userInfo) {
+      console.log('in  getUserInfo')
+       console.log(userInfo)
+        var nickName = userInfo.nickName
+        that.setData({ username: nickName })
     })
   }
 })

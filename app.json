@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/index/index",
+     "pages/index/index",
     "pages/lists/lists",
     "pages/detail/detail",
     "pages/aboutme/aboutme",
@@ -22,8 +22,14 @@
         "selectedIconPath": "images/2.png"
       },
       {
+        "pagePath": "pages/lists/lists",
+        "text": "文章",
+        "iconPath": "images/1.png",
+        "selectedIconPath": "images/2.png"
+      },
+      {
         "pagePath": "pages/aboutme/aboutme",
-        "text": "关于我们",
+        "text": "攻略",
         "iconPath": "images/3.png",
         "selectedIconPath": "images/4.png"
       },

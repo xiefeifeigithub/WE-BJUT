@@ -1,47 +1,30 @@
-label {
-  display: inline-block;
-  min-width: 270rpx;
-  margin-right: 20rpx;
+wx-button {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
-form{
-  width: 100%;
+wx-label {
+  display: block;
+  margin-top: 10rpx;
 }
 .picker-text {
   margin-left: 20rpx;
   position: relative;
 }
-
-.page-section{
-  width: 100%;
-  margin-bottom: 60rpx;
+.section{
+    margin-bottom: 80rpx;
 }
-.page-section_center{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.section_gap{
+    padding: 0 30rpx;
 }
-.page-section:last-child{
-  margin-bottom: 0;
+.section__title{
+    margin-bottom: 16rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
 }
-.page-section-gap{
-  box-sizing: border-box;
-  padding: 0 30rpx;
+.section_gap .section__title{
+    padding-left: 0;
+    padding-right: 0;
 }
-.page-section-spacing{
-  box-sizing: border-box;
-  padding: 0 80rpx;
-}
-.page-section-title{
-  font-size: 28rpx;
-  color: #999999;
-  margin-bottom: 10rpx;
-  padding-left: 30rpx;
-  padding-right: 30rpx;
-}
-.page-section-gap .page-section-title{
-  padding-left: 0;
-  padding-right: 0;
-}
-.page-section-ctn{
+.section__ctn{
 
 }
