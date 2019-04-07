@@ -6,6 +6,8 @@ function loadInfo(id,obj){
   if(info){
     obj.setData({ info: info })
     console.log('data from localCache')
+    console.log(info.content)
+    
     return true
   }
 

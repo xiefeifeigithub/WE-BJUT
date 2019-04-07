@@ -1,4 +1,6 @@
 <!--pages/detail/detail.wxml-->
+
+<import src="../../wxParse/wxParse.wxml"/>
 <view class="wrap">
 
     <view class="title">{{info.title}}</view>
@@ -7,8 +9,13 @@
     <view class="img">
       <image src="{{info.img}}" class="in-img" mode="'scaleToFill'"></image>
     </view>
-
-    <view class="content">{{info.content}}</view>
+    <!-- <view class="content">
+      {{info.content}}
+    </view> -->
+    <view>
+     <!-- 这一块是富文本 显示的内容区  -->
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
 
     <view class="close" bindtap="closepage"> 返回 </view>
 
