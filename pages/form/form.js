@@ -1,11 +1,12 @@
 var app = getApp()
 Page({
   data: {
-    array: ['美国', '中国', '巴西', '日本'],
+    array: ['中国', '英国', '美国', '日本'],
     area: 0,
     score: 0,
     is_dev: 0,
-    username: ''
+    username: '',
+    toastHidden: true
   },
   bindPickerChange: function (e) {
     console.log('form发生了Picker事件，携带数据为：', e.detail.value)
@@ -20,6 +21,7 @@ Page({
     var formData = e.detail.value
     formData.area = this.data.area
     formData.score = this.data.score
+    
     formData.username = this.data.username
     console.log('form发生了事件，携带数据为：', formData)
 
@@ -33,6 +35,14 @@ Page({
       },
       success: function (res) {
         console.log(res)
+        // that.setData({
+
+        //   area: 0,
+        //   score: 0,
+        //   is_dev: 0,
+          
+
+        // })
       },
       complete: function () {
 
@@ -48,5 +58,11 @@ Page({
         var nickName = userInfo.nickName
         that.setData({ username: nickName })
     })
+  },
+  totastChange: function () {
+    this.setData({ toastHidden: true })
+  },
+  submitSuccess: function(event){
+    this.setData({ toastHidden: false })
   }
 })
