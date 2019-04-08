@@ -24,7 +24,7 @@ Page({
   },
 
   
-  NetDescription: function (options) {
+  netDescription: function (options) {
     wx.navigateTo({
       url: '../lists/lists'
     })
@@ -33,6 +33,18 @@ Page({
     app.globalData.type = "TSG"
     console.log(app.globalData.type)
   },
+
+  microsoft: function (options) {
+    wx.navigateTo({
+      url: '../lists/lists'
+    })
+
+    var type = app.globalData.type
+    app.globalData.type = "微软正版软件"
+    console.log(app.globalData.type)
+  },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
