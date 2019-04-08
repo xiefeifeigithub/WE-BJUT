@@ -19,17 +19,21 @@ Page({
     //调用接口
     
     var common = require('../../utils/common.js');
-    common.loadInfo(options.id,this);
-    console.log(this.data.info.content);
-    console.log(this.data.info);
-    var that = this;
-    var article = that.data.info.content;
-    console.log(article);
-    WxParse.wxParse('article', 'html',article, that, 5);
-    
+    common.loadInfo(options.id,this,this.callback,this.cache);
   },
-
+  
   //返回上一页
+  callback: function (res){
+    var article=res.data.content
+    var that=this
+    WxParse.wxParse('article', 'html', article, that, 5)
+  },//回调
+
+  cache: function (info) {
+    var article = info.content
+    var that = this
+    WxParse.wxParse('article', 'html', article, that, 5)
+  },//缓存回调
 
 
 
