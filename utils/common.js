@@ -1,13 +1,13 @@
 
 //先从缓存中获取数据，若无，则从server获取
-function loadInfo(id,obj){
+function loadInfo(id,obj,callback,cache){
   var key = 'info_' + id
   //获取缓存
   var info = wx.getStorageSync(key)
   if(info){
     obj.setData({ info: info })
     console.log('data from localCache')
-    console.log(info.content)
+    cache(info)
     
     return true
   }           
@@ -31,7 +31,7 @@ function loadInfo(id,obj){
       console.log(key)
       wx.setStorageSync(key, res.data)
       console.log('data from server')
-
+      callback(res)
     },
     //获取服务器数据失败
     fail: function (res) {
