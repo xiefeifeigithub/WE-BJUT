@@ -2,8 +2,6 @@
 var app = getApp()
 Page({
   data: {
-    //电费查询
-    electric: {},
     //导航数据
     student: [{
       icon: '/images/kjs.png',
@@ -39,40 +37,5 @@ Page({
       src: '/pages/core/finance/finance',
       title: '校园信息'
     }]
-  },
-  onShow: function () {
-    var that = this;
-    that.getNow();
-    var name = app.globalData.userData.username,
-      userid = app.globalData.userid,
-      academic_year = app.globalData.time.academic_year,
-      term = app.globalData.time.term;
-    that.setData({
-      name: name,
-      userid: userid,
-      academic_year: academic_year,
-      term: term
-    })
-    that.getClass();
-    that.getLibrary();
-    that.getCardMessage();
-    that.getNet();
-    that.getElectric();
-  },
-
-  //下拉刷新
-  onPullDownRefresh: function () {
-    var that = this;
-    that.getClass();
-    that.getLibrary();
-    that.getCardMessage();
-    that.getNet();
-    that.getElectric();
-    wx.showToast({
-      title: '正在刷新',
-      icon: 'loading',
-      duration: 1000
-    });
-    wx.stopPullDownRefresh();
   },
 })
