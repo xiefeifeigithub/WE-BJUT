@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/lists/lists",
     "pages/detail/detail",
-    "pages/aboutme/aboutme",
+    "pages/strategy/strategy",
     "pages/form/form",
     "pages/logs/logs"
   ],
@@ -22,7 +22,7 @@
         "selectedIconPath": "images/2.png"
       },
       {
-        "pagePath": "pages/aboutme/aboutme",
+        "pagePath": "pages/strategy/strategy",
         "text": "攻略",
         "iconPath": "images/3.png",
         "selectedIconPath": "images/4.png"
