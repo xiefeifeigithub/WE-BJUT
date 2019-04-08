@@ -1,4 +1,6 @@
 // pages/detail/detail.js
+var WxParse = require('../../wxParse/wxParse.js');
+
 Page({
 
   /**
@@ -7,7 +9,7 @@ Page({
   //默认数据
   data: {
     toastHidden: true,
-    info: {}
+   info: {},
   },
 
   /**
@@ -15,11 +17,23 @@ Page({
    */
   onLoad: function (options) {
     //调用接口
-    var common = require('../../utils/common.js')
-    common.loadInfo(options.id,this)
+    
+    var common = require('../../utils/common.js');
+    common.loadInfo(options.id,this,this.callback,this.cache);
   },
-
+  
   //返回上一页
+  callback: function (res){
+    var article=res.data.content
+    var that=this
+    WxParse.wxParse('article', 'html', article, that, 5)
+  },//回调
+
+  cache: function (info) {
+    var article = info.content
+    var that = this
+    WxParse.wxParse('article', 'html', article, that, 5)
+  },//缓存回调
 
 
 

@@ -1,13 +1,16 @@
+
 //先从缓存中获取数据，若无，则从server获取
-function loadInfo(id,obj){
+function loadInfo(id,obj,callback,cache){
   var key = 'info_' + id
   //获取缓存
   var info = wx.getStorageSync(key)
   if(info){
     obj.setData({ info: info })
     console.log('data from localCache')
+    cache(info)
+    
     return true
-  }
+  }           
 
   //发起网络请求
   wx.request({
@@ -18,7 +21,7 @@ function loadInfo(id,obj){
       'content-type': 'application/json' // 默认值
     },
     success(res) {
-
+      console.log("success")
       console.log(res.data)
 
       //利用setData设定数据
@@ -28,7 +31,7 @@ function loadInfo(id,obj){
       console.log(key)
       wx.setStorageSync(key, res.data)
       console.log('data from server')
-
+      callback(res)
     },
     //获取服务器数据失败
     fail: function (res) {
