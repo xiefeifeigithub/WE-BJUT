@@ -1,78 +1,13 @@
-<!--aboutme.wxml-->
 
-<!--<view class='tags'>
-
-    <view class='btn btn-xs btn-default round-btn tags-btn'>
-      <text class='text-sm text-gray' data-name='校医院' bindtap="findArticle">校医院</text>
-      <view class='badge text-sm'>10</view>
-    </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>保研</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>考研</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>出国</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>图书馆</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>南/北操</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>游泳馆</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>教学楼</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>宿舍楼</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>校园网</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>食堂</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>教务处</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>学生社团</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn'>
-    <text class='text-sm text-gray'>学生会</text>
-    <view class='badge text-sm'>10</view>
-  </view>
-
-</view>-->
+<!-- //  wxSearch作者提供的模板 -->
+<import src="../../wxSearch/wxSearch/wxSearch.wxml"/>
+<view class="wxSearch-section">
+      <view class="wxSearch-pancel">
+          <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}"  bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" />
+          <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
+      </view>
+</view>
+<template is="wxSearch" data="{{wxSearchData}}"/>
 
 
 <view class='tags'>
@@ -82,12 +17,12 @@
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='校园网基本说明' bindtap="querySpecifiedArticles">
     <text class='text-sm text-gray'>基本说明</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>IPV6</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 </view>
 
@@ -100,17 +35,17 @@
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='微软正版软件' bindtap="querySpecifiedArticles">
     <text class='text-sm text-gray'>微软正版软件</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>AutoCAD</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>Adobe全家桶</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 </view>
 
@@ -123,27 +58,27 @@
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>基本规定</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>培养计划</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>辅修和双学位</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>转专业</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>保研</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 </view>
 
@@ -156,27 +91,27 @@
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>绿色通道</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>助学贷款</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>贫困补助</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>励志奖</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>勤工俭学</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 </view>
 
@@ -189,22 +124,22 @@
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>考研</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>工作</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>出国</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>创业</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 </view>
 
@@ -217,22 +152,22 @@
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>健身房</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>游泳馆</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>羽毛球馆</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>乒乓球馆</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 </view>
 
@@ -245,11 +180,11 @@
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>社团名单</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn'>
     <text class='text-sm text-gray'>创建社团</text>
-    <view class='badge text-sm'>10</view>
+    <!-- <view class='badge text-sm'>10</view> -->
   </view>
 </view>

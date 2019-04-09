@@ -11,3 +11,4 @@
 } 
 
 @import "/wxParse/wxParse.wxss";
+@import "/wxSearch/wxSearch/wxSearch.wxss";
