@@ -10,7 +10,7 @@
 
 <!--卡片列表-->
 <view class="main-card">
-  <view class="main-card-item" id="sdf">
+  <view class="main-card-item" >
    
     <view class="card-item-hd">
       <image class="card-item-icon" src="/images/gg.png"></image>
@@ -18,7 +18,7 @@
     </view>
 
     <view class="card-item-open">
-      <text>如果你觉得不错，欢迎推荐给身边的小伙伴，功能尚处在测试阶段。</text>
+      <text class="card-item-bd">如果你觉得不错，欢迎推荐给身边的小伙伴，功能尚处在测试阶段。</text>
     </view>
    
   </view>
