@@ -2,11 +2,14 @@
   "pages": [
     "pages/index/index",
     "pages/strategy/strategy",
-    "pages/account/account",
-    
+    "pages/account/account",  
     "pages/lists/lists",
     "pages/detail/detail",
-    "pages/logs/logs"
+    "pages/strategy/strategy",
+    "pages/form/form",
+    "pages/logs/logs",
+    "pages/search/search",
+    "pages/bjut/bjut"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -33,6 +36,18 @@
         "text": "账号",
         "iconPath": "images/account0.png",
         "selectedIconPath": "images/account1.png"
+      },
+      {
+        "pagePath": "pages/form/form",
+        "text": "用户反馈",
+        "iconPath": "images/3.png",
+        "selectedIconPath": "images/4.png"
+      },
+      {
+        "pagePath": "pages/bjut/bjut",
+        "text": "新闻",
+        "iconPath": "images/1.png",
+        "selectedIconPath": "images/2.png"
       }
     ]
   }
