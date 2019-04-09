@@ -5,7 +5,6 @@
     "pages/account/account",  
     "pages/lists/lists",
     "pages/detail/detail",
-    "pages/strategy/strategy",
     "pages/form/form",
     "pages/logs/logs",
     "pages/search/search",

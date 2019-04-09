@@ -112,7 +112,6 @@ Page({
   //点击完成
   wxConfirm: function(e) {
     this.wxSearchFn(e)
-
   },
 
   //查找不同类型文章
