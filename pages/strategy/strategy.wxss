@@ -1,4 +1,6 @@
 /* pages/aboutme/aboutme.wxss */
+/* 引入搜索样式 */
+
 .tags{
   margin-top: 20px;
   margin-left: 20px;

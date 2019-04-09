@@ -24,23 +24,39 @@ Page({
   },
 
   
-  netDescription: function (options) {
+  // netDescription: function (options) {
+  //   wx.navigateTo({
+  //     url: '../lists/lists'
+  //   })
+
+  //   var type = app.globalData.type
+  //   app.globalData.type = "TSG"
+  //   console.log(app.globalData.type)
+  // },
+
+  // microsoft: function (e) {
+
+    
+  //   wx.navigateTo({
+  //     url: '../lists/lists'
+  //   })
+
+  //   var type = app.globalData.type
+  //   // app.globalData.type = "微软正版软件"
+  //   app.globalData.type = e.currentTarget.dataset.text
+  //   console.log(e.currentTarget.dataset.text+'1111111111111111111111')
+  //   console.log(app.globalData.type)
+  // },
+
+  //查找不同类型文章
+  querySpecifiedArticles: function (e) {
     wx.navigateTo({
       url: '../lists/lists'
     })
 
     var type = app.globalData.type
-    app.globalData.type = "TSG"
-    console.log(app.globalData.type)
-  },
-
-  microsoft: function (options) {
-    wx.navigateTo({
-      url: '../lists/lists'
-    })
-
-    var type = app.globalData.type
-    app.globalData.type = "微软正版软件"
+    console.log(e.currentTarget.dataset.text + '1111111111111111111111')
+    app.globalData.type = e.currentTarget.dataset.text
     console.log(app.globalData.type)
   },
 
