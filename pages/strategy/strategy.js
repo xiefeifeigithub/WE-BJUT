@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inputValue: '',
 
    
   },
@@ -44,8 +45,9 @@ Page({
   wxSearchFn: function (e) {
     var that = this
     console.log("wxSearchFn")
-
-  //  console.log(e)
+    //this.setData({ inputValue: e.detail.value })
+    console.log(this.data.inputValue )
+    //  console.log(e)
     wx.navigateTo({
       url: '../lists/lists'
     })
@@ -62,6 +64,9 @@ Page({
     var that = this
     console.log("wxSearchInput")
     WxSearch.wxSearchInput(e, that);
+    this.setData({ inputValue: e.detail.value})
+    console.log(this.data.inputValue)
+
   },
   //光标集中在输入框时
   wxSerchFocus: function (e) {
@@ -103,6 +108,11 @@ Page({
   wxSearchTap: function (e) {
     var that = this
     WxSearch.wxSearchHiddenPancel(that);
+  },
+  //点击完成
+  wxConfirm: function(e) {
+    this.wxSearchFn(e)
+
   },
 
   //查找不同类型文章
