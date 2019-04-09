@@ -1,36 +1,42 @@
-page{
-    background: #f6f6f6;
+/* pages/account/account.wxss */
+/* pages/suoda/sd.wxss */
+.nav{
+    background-color: #fff;
 }
-.nav {
+.top{
+  width: 250rpx;
+  height: 250rpx;
+  margin: 0 auto;
+}
+.nickname{
+  margin-bottom: 10rpx;
+  text-align: center;
+}
+.item{
+  height: 70rpx;
+  background-color: #fff;
+  margin: 20rpx;
   display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start;
-  background: #fff;
-  border-bottom: 1rpx solid #e5e5e5;
-  padding: 15rpx 10rpx 10rpx;
-  margin-bottom: 20rpx;
-  min-height: 350rpx;
-  overflow: hidden;
+  border-radius: 20rpx;
 }
-.item {
+.left{
   display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  width: 25%;
-  height: 185rpx;
+  justify-content: flex-start;
+  flex-grow: 1;
 }
-.item image {
-  display: block;
-  width: 100rpx;
-  height: 100rpx;
-  margin: 15rpx auto;
+.right{
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  color: #ccc;
+  margin-right: 20rpx;
 }
-.item text{
-  display: block;
-  margin: 1rpx;
-}
+
+.about-wei{ text-align: center;}
+.about-img{ display: block; width: 124px; height: 110px;  margin: 20px auto 0; top: 20px;}
+.in-img{ width: 200rpx; height: 200rpx;}
+.about-title{ display: inline-block; margin:20px 0; text-align: center;color:rgb(7, 7, 97)}
+
 
 /*卡片列表*/
 .main-card {
@@ -94,12 +100,25 @@ page{
   margin-top: -1rpx;
 }
 
-.room {
-  height: 75rpx;
-  padding-left: 30rpx;
-  border-bottom:1px solid #e5e5e5;
-  font-size: 15pt;
-  line-height: 75rpx;
-  letter-spacing: 1px;
-  color: #acacac;
+/*form  */
+
+.form-here{
+  margin-top:10px;
+  background-color:#ffffff;
+  padding:20px 30px;
+}
+
+.form-password{
+  margin-top:20px;
+}
+.submit{
+  margin-top: 30px;
+  display:flex;
+}
+.sub-button{
+  background-color:#0398e7;
+  color:#ffffff;
+  line-height:1.8;
+  border-radius:30px;
+  padding:5px 100px;
 }
