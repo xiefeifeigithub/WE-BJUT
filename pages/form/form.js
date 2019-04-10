@@ -8,20 +8,23 @@ Page({
     username: '',
     toastHidden: true
   },
-  bindPickerChange: function (e) {
+  bindPickerChange: function(e) {
     console.log('form发生了Picker事件，携带数据为：', e.detail.value)
-    this.setData({ area: e.detail.value });
+    this.setData({
+      area: e.detail.value
+    });
   },
-  bindSliderChange: function (e) {
+  bindSliderChange: function(e) {
     console.log('form发生了Slider事件，携带数据为：', e.detail.value)
-    this.setData({ score: e.detail.value });
+    this.setData({
+      score: e.detail.value
+    });
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     //console.log('form发生了submit事件，携带数据为：', e.detail.value)
     var formData = e.detail.value
     formData.area = this.data.area
     formData.score = this.data.score
-    
     formData.username = this.data.username
     console.log('form发生了事件，携带数据为：', formData)
 
@@ -33,43 +36,34 @@ Page({
       header: {
         'Content-Type': 'application/json'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
-        // that.setData({
-
-        //   area: 0,
-        //   score: 0,
-        //   is_dev: 0,
-          
-
-        // })
       },
-      complete: function () {
+      complete: function() {
 
       }
     })
   },
-  onLoad: function () {
+  onLoad: function() {
     var that = this
     console.log('onLoad  getUserInfo')
-    app.getUserInfo(function (userInfo) {
+    app.getUserInfo(function(userInfo) {
       console.log('in  getUserInfo')
-       console.log(userInfo)
-        var nickName = userInfo.nickName
-        that.setData({ username: nickName })
+      console.log(userInfo)
+      var nickName = userInfo.nickName
+      that.setData({
+        username: nickName
+      })
     })
   },
-  totastChange: function () {
-    this.setData({ toastHidden: true })
-  },
-  submitSuccess: function(event){
-    this.setData({ toastHidden: false })
-  },
-  //页面初次渲染完成时触发
-  onReady: function () {
-    //动态设置当前页面的标题
-    wx.setNavigationBarTitle({
-      title: '用户反馈'
+  totastChange: function() {
+    this.setData({
+      toastHidden: true
     })
   },
+  submitSuccess: function(event) {
+    this.setData({
+      toastHidden: false
+    })
+  }
 })

@@ -1,9 +1,30 @@
 //app.js
+
 App({
   onLaunch: function () {
 
-    //清理本地的所有缓存
-    wx.clearStorage();
+    // //清理本地的所有缓存
+    // wx.clearStorage();
+
+    //清除本地指定缓存
+    wx.removeStorage({
+      key: 'CmsList',
+      success(res) {
+        console.log(res.data)
+        console.log("aaaaaaaaaaaaaaaa")
+      }
+    })
+
+    //从缓存中获取用户信息
+    var username = wx.getStorageSync('username')
+    var userpassword = wx.getStorageSync('userpassword')
+    this.globalData.username = username
+    this.globalData.userpassword = userpassword
+    console.log(username,userpassword)
+    // if (username && userpassword) {
+    //   that.setData({ userName: username })
+    //   that.setData({ userPwd: userpassword })
+    // }
 
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -61,7 +82,10 @@ App({
   },
   globalData: {
     userInfo: null,
-    type: null
+    type: null, //文章类型
+    username: '', //学号
+    userpassword: '',  //教务密码
+    classification: ''  //文章分类
   },
   //url: 'https://你的域名/index.php?s=/'
   url: 'https://bjut.bjutxiaomei.cn/index.php?s=/'

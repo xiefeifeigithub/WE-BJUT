@@ -1,33 +1,34 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
+    "pages/strategy/strategy",
+    "pages/account/account",  
     "pages/lists/lists",
     "pages/detail/detail",
-    "pages/strategy/strategy",
     "pages/form/form",
     "pages/logs/logs",
     "pages/search/search",
-    "pages/bjut/bjut"
+    "pages/classificationlists/classificationlists"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#4090FE",
     "navigationBarTitleText": "工大小美",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/1.png",
-        "selectedIconPath": "images/2.png"
+        "iconPath": "images/shouye2.png",
+        "selectedIconPath": "images/shouye.png"
       },
       {
         "pagePath": "pages/strategy/strategy",
         "text": "攻略",
-        "iconPath": "images/3.png",
-        "selectedIconPath": "images/4.png"
+        "iconPath": "images/gonglve2.png",
+        "selectedIconPath": "images/gonglve.png"
       },
       {
         "pagePath": "pages/form/form",
@@ -36,10 +37,10 @@
         "selectedIconPath": "images/4.png"
       },
       {
-        "pagePath": "pages/bjut/bjut",
-        "text": "新闻",
-        "iconPath": "images/1.png",
-        "selectedIconPath": "images/2.png"
+        "pagePath": "pages/account/account",
+        "text": "个人中心",
+        "iconPath": "images/gerenzhongxin2.png",
+        "selectedIconPath": "images/gerenzhongxin.png"
       }
     ]
   }

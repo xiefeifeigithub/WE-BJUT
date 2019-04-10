@@ -1,7 +1,0 @@
-<!--pages/bjut/bjut.wxml-->
-<view>
-
-<button bindtap=''></button>
-<web-view src="http://www.bjut.edu.cn/"></web-view>
-
-</view>
