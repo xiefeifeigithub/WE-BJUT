@@ -46,7 +46,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    //动态设置当前页面的标题
+    wx.setNavigationBarTitle({
+      title: '个人中心'
+    })
   },
 
   /**

@@ -109,9 +109,11 @@ Page({
   //查找不同类型文章
   querySpecifiedArticles: function (e) {
 
-    //该标签是否含有多篇文章
+    //该标签是否含有多篇文章(利用data-*)~按照大类别查找
     var viewNumber = e.currentTarget.dataset.number
     console.log(viewNumber)
+
+    //该标签含有一篇文章~按照标签名查找
     
 
     wx.navigateTo({
