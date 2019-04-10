@@ -37,7 +37,7 @@ Page({
     console.log('wxSearch')
     var that = this
       //初始化的时候渲染wxSearchdata
-    WxSearch.init(that, 43, ['校园网基本说明', '微软正版软件'])
+    WxSearch.init(that, 43, ['校园网基本说明', '微软正版软件', '乒乓球馆', 'IPV6'])
     WxSearch.initMindKeys(['校园网基本说明', 'IPV6', '微软正版软件', 'AutoCAD','Adobe全家桶','基本规定','培养计划','辅修和双学位','转专业','保研','绿色通道','助学贷款','贫困补助','励志奖','勤工俭学','考研','工作','出国','创业','健身房','游泳馆','羽毛球馆','乒乓球馆','社团名单','创建社团'])
   },
   //点击搜索按钮
@@ -108,6 +108,12 @@ Page({
 
   //查找不同类型文章
   querySpecifiedArticles: function (e) {
+
+    //该标签是否含有多篇文章
+    var viewNumber = e.currentTarget.dataset.number
+    console.log(viewNumber)
+    
+
     wx.navigateTo({
       url: '../lists/lists'
     })

@@ -76,7 +76,7 @@
     <!-- <view class='badge text-sm'>10</view> -->
   </view>
 
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='保研' bindtap="querySpecifiedArticles">
+  <view class='btn btn-xs btn-default round-btn tags-btn' data-number="多篇文章" data-text='保研'  bindtap="querySpecifiedArticles">
     <text class='text-sm text-gray'>保研</text>
     <!-- <view class='badge text-sm'>10</view> -->
   </view>
