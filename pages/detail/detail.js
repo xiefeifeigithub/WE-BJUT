@@ -48,4 +48,15 @@ Page({
     this.setData({ toastHidden: true })
     wx.navigateBack()
   },
+
+  onShareAppMessage: function (res) {
+    let users = wx.getStorageSync('user');
+    if (res.from === 'button') { }
+    return {
+      title: this.data.info.title,
+      imageUrl: this.data.info.img,
+      success: function (res) { }
+    }
+  }
+
 })
