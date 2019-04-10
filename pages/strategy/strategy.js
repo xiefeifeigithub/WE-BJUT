@@ -8,6 +8,7 @@ Page({
    */
   data: {
     inputValue: '',
+
    
   },
 
@@ -45,6 +46,7 @@ Page({
     var that = this
     console.log("wxSearchFn")
 
+
     //按照文章分类查找（大类找）
     wx.navigateTo({
       url: '../classificationlists/classificationlists'
@@ -61,7 +63,7 @@ Page({
     var that = this
     console.log("wxSearchInput")
     WxSearch.wxSearchInput(e, that);
-    this.setData({ inputValue: e.detail.value })
+    this.setData({ inputValue: e.detail.value})
     console.log(this.data.inputValue)
   },
   //光标集中在输入框时
@@ -104,6 +106,10 @@ Page({
   wxSearchTap: function (e) {
     var that = this
     WxSearch.wxSearchHiddenPancel(that);
+  },
+  //点击完成
+  wxConfirm: function(e) {
+    this.wxSearchFn(e)
   },
 
   //查找不同类型文章

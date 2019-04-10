@@ -1,3 +1,4 @@
+
 wx-button {
   margin-top: 20rpx;
   margin-bottom: 20rpx;
@@ -28,3 +29,4 @@ wx-label {
 .section__ctn{
 
 }
+
