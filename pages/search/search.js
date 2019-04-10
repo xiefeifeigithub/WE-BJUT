@@ -1,24 +1,15 @@
-// pages/aboutme/aboutme.js
+// pages/search/search.js
 
 var WxSearch = require('../../wxSearch/wxSearch/wxSearch.js');
 var app = getApp()
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    inputValue: '',
-   
+
   },
-
-  valueInput: function (e) {
-    this.setData({
-      value: e.detail.value
-    })
-
-    console.log(value)
-  },
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -26,34 +17,26 @@ Page({
   onLoad: function (options) {
     console.log(app.url)
     wx.request({
-      url: app.url + 'addon/Cms/Cms/testLogin',     
+      url: app.url + 'addon/Cms/Cms/testLogin',
       data: { PHPSESSID: wx.getStorageSync('PHPSESSID') },
       success: function (res) {
         console.log(res);
       }
     })
 
-   //搜索功能
     console.log('wxSearch')
     var that = this
-      //初始化的时候渲染wxSearchdata
-    WxSearch.init(that, 43, ['校园网基本说明', '微软正版软件'])
-    WxSearch.initMindKeys(['校园网基本说明', 'IPV6', '微软正版软件', 'AutoCAD','Adobe全家桶','基本规定','培养计划','辅修和双学位','转专业','保研','绿色通道','助学贷款','贫困补助','励志奖','勤工俭学','考研','工作','出国','创业','健身房','游泳馆','羽毛球馆','乒乓球馆','社团名单','创建社团'])
+    //初始化的时候渲染wxSearchdata
+    WxSearch.init(that, 43, ['图书馆', '校医院', '三教', '10号楼', '游泳馆'])
+    //检索内容集合
+    var mindKeys = ['校医院', '校园网', '图书馆', '微软正版软件'];
+    WxSearch.initMindKeys(mindKeys);
+    // WxSearch.initMindKeys(['图书馆', '校医院', '三教', '10号楼', '游泳馆', '微软正版软件'])
   },
   //点击搜索按钮
   wxSearchFn: function (e) {
     var that = this
     console.log("wxSearchFn")
-
-    //按照文章分类查找（大类找）
-    wx.navigateTo({
-      url: '../classificationlists/classificationlists'
-    })
-
-    app.globalData.classification = this.data.inputValue
-    console.log(app.globalData.classification)
-    console.log('88888888888')
-
     WxSearch.wxSearchAddHisKey(that);
   },
   //在输入框输入的时候
@@ -61,13 +44,14 @@ Page({
     var that = this
     console.log("wxSearchInput")
     WxSearch.wxSearchInput(e, that);
-    this.setData({ inputValue: e.detail.value })
-    console.log(this.data.inputValue)
   },
   //光标集中在输入框时
   wxSerchFocus: function (e) {
     var that = this
     console.log("wxSerchFocus")
+    wx.redirectTo({
+      url: '../search/search'
+    })
     WxSearch.wxSearchFocus(e, that);
   },
   wxSearchBlur: function (e) {
@@ -78,17 +62,6 @@ Page({
   wxSearchKeyTap: function (e) {
     var that = this
     console.log("wxSearchKeyTap")
-
-    console.log(e)
-    wx.navigateTo({
-      url: '../lists/lists'
-    })
-
-    var type = app.globalData.type
-    console.log(e.currentTarget.dataset.key + '1111111111111111111111')
-    app.globalData.type = e.currentTarget.dataset.key
-    console.log(app.globalData.type)
-
     WxSearch.wxSearchKeyTap(e, that);
   },
   //删除搜索历史
@@ -117,22 +90,12 @@ Page({
     app.globalData.type = e.currentTarget.dataset.text
     console.log(app.globalData.type)
   },
-  //快捷键搜索
-  wxConfirm: function (e) {
-    this.wxSearchFn(e)
-  },
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  //页面初次渲染完成时触发
   onReady: function () {
-    //动态设置当前页面的标题
-    wx.setNavigationBarTitle({
-      title: 'BJUT-攻略'
-    })
+
   },
 
   /**
