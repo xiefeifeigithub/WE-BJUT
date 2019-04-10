@@ -35,10 +35,6 @@ Page({
     WxParse.wxParse('article', 'html', article, that, 5)
   },//缓存回调
 
-
-
-
-  
   closepage: function(){
     //关闭当前页面，返回上一页面
     wx.navigateBack()

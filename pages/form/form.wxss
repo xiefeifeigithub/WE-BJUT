@@ -1,0 +1,30 @@
+wx-button {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+wx-label {
+  display: block;
+  margin-top: 10rpx;
+}
+.picker-text {
+  margin-left: 20rpx;
+  position: relative;
+}
+.section{
+    margin-bottom: 80rpx;
+}
+.section_gap{
+    padding: 0 30rpx;
+}
+.section__title{
+    margin-bottom: 16rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+.section_gap .section__title{
+    padding-left: 0;
+    padding-right: 0;
+}
+.section__ctn{
+
+}

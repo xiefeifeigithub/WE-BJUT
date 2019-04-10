@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    inputValue: '',
    
   },
 
@@ -45,15 +45,14 @@ Page({
     var that = this
     console.log("wxSearchFn")
 
-  //  console.log(e)
+    //按照文章分类查找（大类找）
     wx.navigateTo({
-      url: '../lists/lists'
+      url: '../classificationlists/classificationlists'
     })
 
-    var type = app.globalData.type
-    console.log(e.currentTarget.dataset.key + '1111111111111111111111')
-    app.globalData.type = e.currentTarget.dataset.key
-    console.log(app.globalData.type)
+    app.globalData.classification = this.data.inputValue
+    console.log(app.globalData.classification)
+    console.log('88888888888')
 
     WxSearch.wxSearchAddHisKey(that);
   },
@@ -62,6 +61,8 @@ Page({
     var that = this
     console.log("wxSearchInput")
     WxSearch.wxSearchInput(e, that);
+    this.setData({ inputValue: e.detail.value })
+    console.log(this.data.inputValue)
   },
   //光标集中在输入框时
   wxSerchFocus: function (e) {
@@ -115,6 +116,10 @@ Page({
     console.log(e.currentTarget.dataset.text + '1111111111111111111111')
     app.globalData.type = e.currentTarget.dataset.text
     console.log(app.globalData.type)
+  },
+  //快捷键搜索
+  wxConfirm: function (e) {
+    this.wxSearchFn(e)
   },
 
 
