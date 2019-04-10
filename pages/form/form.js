@@ -1,66 +1,70 @@
-// pages/form/form.js
+
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    array: ['中国', '英国', '美国', '日本'],
+    area: 0,
+    score: 0,
+    is_dev: 0,
+    username: '',
+    toastHidden: true
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  bindPickerChange: function(e) {
+    console.log('form发生了Picker事件，携带数据为：', e.detail.value)
+    this.setData({
+      area: e.detail.value
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  bindSliderChange: function(e) {
+    console.log('form发生了Slider事件，携带数据为：', e.detail.value)
+    this.setData({
+      score: e.detail.value
+    });
   },
+  formSubmit: function(e) {
+    //console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    var formData = e.detail.value
+    formData.area = this.data.area
+    formData.score = this.data.score
+    formData.username = this.data.username
+    console.log('form发生了事件，携带数据为：', formData)
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    var that = this
 
+    wx.request({
+      url: app.url + 'addon/Feedback/Feedback/addFeedback',
+      data: formData,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function(res) {
+        console.log(res)
+      },
+      complete: function() {
+
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  onLoad: function() {
+    var that = this
+    console.log('onLoad  getUserInfo')
+    app.getUserInfo(function(userInfo) {
+      console.log('in  getUserInfo')
+      console.log(userInfo)
+      var nickName = userInfo.nickName
+      that.setData({
+        username: nickName
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  totastChange: function() {
+    this.setData({
+      toastHidden: true
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  submitSuccess: function(event) {
+    this.setData({
+      toastHidden: false
+    })
   }
 })

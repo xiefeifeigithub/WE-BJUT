@@ -2,24 +2,35 @@
 /* 引入搜索样式 */
 
 .tags{
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  box-sizing: border-box; 
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px #aaa;
+  border-radius: 10px;
 }
-
 .title{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 20px;
   font-size: 20px;
   font-weight: bold;
+  color: white;
 }
 
 .tags-btn{
   padding-top: 3px;
   padding-bottom: 3px;
-  padding-left: 10px;
-  margin-bottom: 8px;
-  margin-right: 5px; 
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  margin-right: 0px; 
+  margin-left: 15px;
 }
 .btn-default{
   border: 1px solid #ddd;
@@ -30,8 +41,6 @@
   border-radius: 150rpx;
 }
 .btn-xs{
-  padding-top: 1px;
-  padding-right: 5px;
   font-size: 10px;
   line-height: 2;
 }
@@ -41,12 +50,17 @@
   font-weight: 400;
   white-space: nowrap;
   vertical-align: middle;
-  background-color: #e5e5e5;
+  background-color: #ddd;
 }
 .text-gray{
+  
+  align-content: center;
   color:black;
 }
 .text-sm{
+  margin-left: 3px;
+  margin-right: 3px;
+  align-content: center;
   font-size: 15px;
   vertical-align: middle
 }
@@ -85,14 +99,10 @@
   background-color: #e5e5e5;
 }
 
-.gaps2{
-  width: 100%;
-  height: 10px;
-  background-color: white;
-}
 
 .logo{
   /*margin-left: 250px;*/
+  
   float: right; 
   width: 40px;
   height: 40px;

@@ -20,16 +20,16 @@
 
       <view class="card-item-hd">
         <image class="card-item-icon" src="/images/name.png"></image>
-        <input class="card-item-bd" placeholder="请输入教务账号："/> 
+        <input value='{{userName}}'  name="userName" bindinput ="userNameInput" class="card-item-bd" placeholder="请输入教务账号："/> 
       </view>
       <view class="card-item-hd">
         <image class="card-item-icon" src="/images/key.png"></image>
-        <input class="card-item-bd" placeholder="请输入教务密码："/> 
+        <input password='true' value='{{userPwd}}' bindinput="passWdInput" class="card-item-bd" placeholder="请输入教务密码："/> 
       </view>
     </view>
 
     <view class="submit">
-      <button class="sub-button">确认绑定</button>
+      <button class="sub-button" bindtap='setStorage'>确认绑定</button>
     </view>
   </view>
 </view>

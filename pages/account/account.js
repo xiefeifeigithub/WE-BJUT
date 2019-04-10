@@ -1,25 +1,52 @@
 // pages/account/account.js
+
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userName: '',
+    userPwd: ''
   },
 
+  //获取用户输入的用户名
+  userNameInput: function (e) {
+    this.setData({
+      userName: e.detail.value
+    })
+  },
+  passWdInput: function (e) {
+    this.setData({
+      userPwd: e.detail.value
+    })
+  },
+
+  //确认绑定
+  setStorage:function(){
+    wx.setStorageSync("username", this.data.userName)
+    wx.setStorageSync("userpassword", this.data.userPwd)
+    console.log("用户名：" + this.data.userName + " 密码：" + this.data.userPwd);
+    },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 从缓存中获取用户信息
+    var username = app.globalData.username 
+    var userpassword = app.globalData.userpassword
+    var that = this
+    that.setData({ userName: username })
+    that.setData({ userPwd: userpassword })
+    console.log(username);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

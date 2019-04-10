@@ -8,7 +8,7 @@
     "pages/form/form",
     "pages/logs/logs",
     "pages/search/search",
-    "pages/bjut/bjut"
+    "pages/classificationlists/classificationlists"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,24 +17,19 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
+    "selectedColor": "#4090FE",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/index0.png",
-        "selectedIconPath": "images/index1.png"
+        "iconPath": "images/shouye2.png",
+        "selectedIconPath": "images/shouye.png"
       },
       {
         "pagePath": "pages/strategy/strategy",
         "text": "攻略",
-        "iconPath": "images/strategy0.png",
-        "selectedIconPath": "images/strategy1.png"
-      },
-      {
-        "pagePath": "pages/account/account",
-        "text": "账号",
-        "iconPath": "images/account0.png",
-        "selectedIconPath": "images/account1.png"
+        "iconPath": "images/gonglve2.png",
+        "selectedIconPath": "images/gonglve.png"
       },
       {
         "pagePath": "pages/form/form",
@@ -43,10 +38,10 @@
         "selectedIconPath": "images/4.png"
       },
       {
-        "pagePath": "pages/bjut/bjut",
-        "text": "新闻",
-        "iconPath": "images/1.png",
-        "selectedIconPath": "images/2.png"
+        "pagePath": "pages/account/account",
+        "text": "个人中心",
+        "iconPath": "images/gerenzhongxin2.png",
+        "selectedIconPath": "images/gerenzhongxin.png"
       }
     ]
   }
