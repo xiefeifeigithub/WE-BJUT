@@ -10,7 +10,7 @@
 <template is="wxSearch" data="{{wxSearchData}}"/>
 
 
-<view class='tags tags-background'>
+<view class='tags' style='background:#595857' >
   <text class='title'>校园网</text>
   <image src='/images/network.png' class='logo'></image>
   <view>\n</view>
@@ -28,7 +28,7 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags tags-background'>
+<view class='tags' style='background:#32527B'>
   <text class='title'>软件安装</text>
   <image src='/images/software.png' class='logo'></image>
   <view>\n</view>
@@ -51,7 +51,7 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags tags-background'>
+<view class='tags' style='background:#595857'>
   <text class='title'>学籍管理</text>
   <image src='/images/file.png' class='logo'></image>
   <view>\n</view>
@@ -84,7 +84,7 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags tags-background'>
+<view class='tags' style='background:#32527B'>
   <text class='title'>资助政策</text>
   <image src='/images/help.png' class='logo'></image>
   <view>\n</view>
@@ -117,7 +117,7 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags tags-background'>
+<view class='tags' style='background:#595857'>
   <text class='title'>未来之路</text>
   <image src='/images/future.png' class='logo'></image>
   <view>\n</view>
@@ -145,7 +145,7 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags tags-background'>
+<view class='tags' style='background:#32527B'>
   <text class='title'>场馆中心</text>
   <image src='/images/sports.png' class='logo'></image>
   <view>\n</view>
@@ -173,7 +173,7 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags tags-background'>
+<view class='tags' style='background:#595857'>
   <text class='title'>社团</text>
   <image src='/images/club.png' class='logo'></image>
   <view>\n</view>
