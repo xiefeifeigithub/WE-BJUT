@@ -3,7 +3,11 @@
 App({
   onLaunch: function () {
 
+
     // //清理本地的所有缓存
+
+     //清理本地的所有缓存
+
      wx.clearStorage();
 
     //清除本地指定缓存

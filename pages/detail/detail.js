@@ -10,6 +10,7 @@ Page({
   data: {
     toastHidden: true,
    info: {},
+    condition: true
   },
 
   /**
@@ -20,18 +21,38 @@ Page({
     
     var common = require('../../utils/common.js');
     common.loadInfo(options.id,this,this.callback,this.cache);
+  //   console.log("AAAAAA")
+  // //  var source = this.data.info.source
+  //   console.log(this.data.info.source)
   },
   
   //返回上一页
   callback: function (res){
     var article=res.data.content
+    var source = res.data.source
+    var iscondition=this.data.condition
+    console.log("AAAAAAAAAA")
+    console.log(source)
+    if(source!="")
+    {
+      this.setData({condition: !iscondition})
+
+      console.log(this.data.condition)
+      console.log(this.data.condition)
+    }
     var that=this
     WxParse.wxParse('article', 'html', article, that, 5)
   },//回调
 
   cache: function (info) {
     var article = info.content
+    var source = info.source
     var that = this
+    var iscondition = this.data.condition
+    if (source != "") {
+      this.setData({ condition: !iscondition })
+    }
+
     WxParse.wxParse('article', 'html', article, that, 5)
   },//缓存回调
 

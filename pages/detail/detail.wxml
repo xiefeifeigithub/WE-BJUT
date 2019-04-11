@@ -1,17 +1,14 @@
 <!--pages/detail/detail.wxml-->
-
+<view wx:if="{{condition}}">
 <import src="../../wxParse/wxParse.wxml"/>
 <view class="wrap">
-
-    <view class="title">{{info.title}}</view>
+  <view class="title">{{info.title}}</view>
     <view class="cTime">{{info.cTime}}</view>
 
     <view class="img">
       <image src="{{info.img}}" class="in-img" mode="'scaleToFill'"></image>
     </view>
-    <!-- <view class="content">
-      {{info.content}}
-    </view> -->
+
     <view>
      <!-- 这一块是富文本 显示的内容区  -->
       <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
@@ -22,3 +19,15 @@
     <toast hidden="{{toastHidden}}" bindchange="totastChange" duration="2000">{{msg}}</toast>
 
 </view>
+
+    
+</view>
+  
+<view wx:if="{{!condition}}">
+<web-view src="{{info.source}}" ></web-view>
+</view>
+    
+    <!-- <view class="content">
+      {{info.content}}
+    </view> -->
+
