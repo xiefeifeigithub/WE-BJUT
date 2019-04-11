@@ -1,5 +1,6 @@
 
 <!-- //  wxSearch作者提供的模板 -->
+<view class='background'>
 <import src="../../wxSearch/wxSearch/wxSearch.wxml"/>
 <view class="wxSearch-section">
       <view class="wxSearch-pancel">
@@ -10,9 +11,10 @@
 <template is="wxSearch" data="{{wxSearchData}}"/>
 
 
-<view class='tags' style='background:#595857' >
+<view class='tags' >
+<view class='background1'>
   <text class='title'>校园网</text>
-  <image src='/images/network.png' class='logo'></image>
+</view>
   <view>\n</view>
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='校园网基本说明' bindtap="querySpecifiedArticles">
@@ -28,9 +30,10 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags' style='background:#32527B'>
+<view class='tags'>
+<view class='background1'>
   <text class='title'>软件安装</text>
-  <image src='/images/software.png' class='logo'></image>
+</view>
   <view>\n</view>
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='微软正版软件' bindtap="querySpecifiedArticles">
@@ -51,9 +54,10 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags' style='background:#595857'>
+<view class='tags'>
+<view class='background1'>
   <text class='title'>学籍管理</text>
-  <image src='/images/file.png' class='logo'></image>
+</view>  
   <view>\n</view>
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='基本规定' bindtap="querySpecifiedArticles">
@@ -84,9 +88,10 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags' style='background:#32527B'>
+<view class='tags'>
+<view class='background1'>
   <text class='title'>资助政策</text>
-  <image src='/images/help.png' class='logo'></image>
+</view> 
   <view>\n</view>
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='绿色通道' bindtap="querySpecifiedArticles">
@@ -117,9 +122,10 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags' style='background:#595857'>
+<view class='tags'>
+<view class='background1'>
   <text class='title'>未来之路</text>
-  <image src='/images/future.png' class='logo'></image>
+</view>  
   <view>\n</view>
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='考研' bindtap="querySpecifiedArticles">
@@ -145,9 +151,10 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags' style='background:#32527B'>
+<view class='tags'>
+<view class='background1'>
   <text class='title'>场馆中心</text>
-  <image src='/images/sports.png' class='logo'></image>
+</view>  
   <view>\n</view>
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='健身房' bindtap="querySpecifiedArticles">
@@ -173,9 +180,10 @@
 
 <!--<view class='gaps1'></view>-->
 
-<view class='tags' style='background:#595857'>
+<view class='tags'>
+<view class='background1'>
   <text class='title'>社团</text>
-  <image src='/images/club.png' class='logo'></image>
+</view>  
   <view>\n</view>
   <view class='gaps2'></view>
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='社团名单' bindtap="querySpecifiedArticles">
@@ -187,4 +195,6 @@
     <text class='text-sm text-gray'>创建社团</text>
     <!-- <view class='badge text-sm'>10</view> -->
   </view>
+</view>
+
 </view>
