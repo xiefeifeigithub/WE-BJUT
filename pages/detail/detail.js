@@ -10,7 +10,7 @@ Page({
   data: {
     toastHidden: true,
    info: {},
-    condition:true
+    condition: true
   },
 
   /**
@@ -30,11 +30,14 @@ Page({
   callback: function (res){
     var article=res.data.content
     var source = res.data.source
+    var iscondition=this.data.condition
     console.log("AAAAAAAAAA")
     console.log(source)
-    if(source!=null)
+    if(source!="")
     {
-      this.data.condition = false
+      this.setData({condition: !iscondition})
+
+      console.log(this.data.condition)
       console.log(this.data.condition)
     }
     var that=this
@@ -43,7 +46,13 @@ Page({
 
   cache: function (info) {
     var article = info.content
+    var source = info.source
     var that = this
+    var iscondition = this.data.condition
+    if (source != "") {
+      this.setData({ condition: !iscondition })
+    }
+
     WxParse.wxParse('article', 'html', article, that, 5)
   },//缓存回调
 
