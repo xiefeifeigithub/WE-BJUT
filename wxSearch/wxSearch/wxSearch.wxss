@@ -12,17 +12,25 @@
 }
 .wxSearch-section{
   background-color: #fff;
-  padding: 5px 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border: 1px #eee solid;
+  position: fixed;
+  width: 100%;
 }
 .wxSearch-pancel{
   display: flex;
   flex-direction: row;
+
 }
 .wxSearch-input{
   flex: 8; 
   background-color: #eee;
   padding: 5px 10px;
+  margin-right: 20px;
+  border-radius: 100rpx;
 }
 .wxSearch-button{
   flex: 1;
