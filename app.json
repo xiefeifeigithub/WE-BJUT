@@ -22,26 +22,26 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/shouye2.png",
-        "selectedIconPath": "images/shouye.png"
+        "iconPath": "images/home0.png",
+        "selectedIconPath": "images/home1.png"
       },
       {
         "pagePath": "pages/strategy/strategy",
         "text": "攻略",
-        "iconPath": "images/gonglve2.png",
-        "selectedIconPath": "images/gonglve.png"
+        "iconPath": "images/help0.png",
+        "selectedIconPath": "images/help1.png"
       },
       {
         "pagePath": "pages/form/form",
         "text": "用户反馈",
-        "iconPath": "images/3.png",
-        "selectedIconPath": "images/4.png"
+        "iconPath": "images/feedback0.png",
+        "selectedIconPath": "images/feedback1.png"
       },
       {
         "pagePath": "pages/account/account",
         "text": "个人中心",
-        "iconPath": "images/gerenzhongxin2.png",
-        "selectedIconPath": "images/gerenzhongxin.png"
+        "iconPath": "images/me0.png",
+        "selectedIconPath": "images/me1.png"
       }
     ]
   }
