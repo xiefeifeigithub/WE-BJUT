@@ -43,20 +43,22 @@ Page({
   },
   //点击搜索按钮
   wxSearchFn: function (e) {
-    var that = this
-    console.log("wxSearchFn")
+
+    this.wxSearchKeyTap(e)
+    // var that = this
+    // console.log("wxSearchFn")
 
 
-    //按照文章分类查找（大类找）
-    wx.navigateTo({
-      url: '../classificationlists/classificationlists'
-    })
+    // //按照文章分类查找（大类找）
+    // wx.navigateTo({
+    //   url: '../classificationlists/classificationlists'
+    // })
 
-    app.globalData.classification = this.data.inputValue
-    console.log(app.globalData.classification)
-    console.log('88888888888')
+    // app.globalData.classification = this.data.inputValue
+    // console.log(app.globalData.classification)
+    // console.log('88888888888')
 
-    WxSearch.wxSearchAddHisKey(that);
+     WxSearch.wxSearchAddHisKey(that);
   },
   //在输入框输入的时候
   wxSearchInput: function (e) {

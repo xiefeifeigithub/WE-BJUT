@@ -33,7 +33,7 @@ Page({
     var iscondition=this.data.condition
     console.log("AAAAAAAAAA")
     console.log(source)
-    if(source!="")
+    if (source != "" && source != null)
     {
       this.setData({condition: !iscondition})
 
@@ -49,7 +49,7 @@ Page({
     var source = info.source
     var that = this
     var iscondition = this.data.condition
-    if (source != "") {
+    if (source != "" && source != null) {
       this.setData({ condition: !iscondition })
     }
 
