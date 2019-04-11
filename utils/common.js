@@ -2,7 +2,7 @@
 //先从缓存中获取数据，若无，则从server获取
 function loadInfo(id,obj,callback,cache){
   var key = 'info_' + id
-  //获取缓存
+ // 获取缓存
   var info = wx.getStorageSync(key)
   if(info){
     obj.setData({ info: info })
