@@ -8,7 +8,8 @@ Page({
    */
   data: {
     inputValue: '',
-
+    msg: '查找内容不存在',
+    toastHidden: true
    
   },
 
@@ -41,22 +42,40 @@ Page({
     WxSearch.init(that, 43, ['校园网基本说明', '微软正版软件', '乒乓球馆', 'IPV6'])
     WxSearch.initMindKeys(['校园网基本说明', 'IPV6', '微软正版软件', 'AutoCAD','Adobe全家桶','基本规定','培养计划','辅修和双学位','转专业','保研','绿色通道','助学贷款','贫困补助','励志奖','勤工俭学','考研','工作','出国','创业','健身房','游泳馆','羽毛球馆','乒乓球馆','社团名单','创建社团'])
   },
+
   //点击搜索按钮
   wxSearchFn: function (e) {
 
-    this.wxSearchKeyTap(e)
-    // var that = this
-    // console.log("wxSearchFn")
+  //  this.wxSearchKeyTap(e)
+    var that = this
+    console.log("wxSearchFn")
 
+    //处理输入框中的字符串
+    var input = this.data.inputValue
+    console.log('input:'+input)
 
-    // //按照文章分类查找（大类找）
-    // wx.navigateTo({
-    //   url: '../classificationlists/classificationlists'
-    // })
+    var str = this.data.inputValue
+    var reg = RegExp(/校园网/);
+    if (reg.exec(str)) {
+      // 包含
+      console.log("字符串处理：" + reg.exec(str))        
+      // input = reg.exec(str)
+      // console.log('input:'+input)
+      app.globalData.classification = reg.exec(str)[0]
+      console.log(app.globalData.classification)
+      console.log('88888888888')
 
-    // app.globalData.classification = this.data.inputValue
-    // console.log(app.globalData.classification)
-    // console.log('88888888888')
+      //按照文章分类查找（大类找）
+      wx.navigateTo({
+        url: '../classificationlists/classificationlists'
+      })
+    }
+    else{
+      console.log('查找内容不存在')
+      that.setData({ toastHidden: false })
+    }
+
+    
 
      WxSearch.wxSearchAddHisKey(that);
   },
@@ -93,6 +112,7 @@ Page({
     app.globalData.type = e.currentTarget.dataset.key
     console.log(app.globalData.type)
 
+
     WxSearch.wxSearchKeyTap(e, that);
   },
   //删除搜索历史
@@ -109,11 +129,6 @@ Page({
     var that = this
     WxSearch.wxSearchHiddenPancel(that);
   },
-  //点击完成
-  wxConfirm: function(e) {
-    this.wxSearchFn(e)
-  },
-
   //查找不同类型文章
   querySpecifiedArticles: function (e) {
 
@@ -136,6 +151,10 @@ Page({
   //快捷键搜索
   wxConfirm: function (e) {
     this.wxSearchFn(e)
+  },
+  //提示没有更多数据
+  totastChange: function () {
+    this.setData({ toastHidden: true })
   },
 
 
