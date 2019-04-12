@@ -17,7 +17,7 @@
     </view>
     <view>\n</view>
     <view class='gaps2'></view>
-    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='校园网基本说明' bindtap="querySpecifiedArticles">
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='基本说明' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>基本说明</text>
       <!-- <view class='badge text-sm'>10</view> -->
     </view>
@@ -27,7 +27,7 @@
       <!-- <view class='badge text-sm'>10</view> -->
     </view>
   </view>
-
+ 
   <!--<view class='gaps1'></view>-->
 
   <view class='tags'>

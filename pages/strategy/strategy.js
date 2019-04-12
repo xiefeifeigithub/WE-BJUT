@@ -55,12 +55,11 @@ Page({
     console.log('input:'+input)
 
     var str = this.data.inputValue
-    var reg = RegExp(/校园网/);
+    var reg = RegExp(/校园网|软件安装|学籍管理|资助政策|未来之路|场馆中心|社团/);
     if (reg.exec(str)) {
       // 包含
       console.log("字符串处理：" + reg.exec(str))        
-      // input = reg.exec(str)
-      // console.log('input:'+input)
+      
       app.globalData.classification = reg.exec(str)[0]
       console.log(app.globalData.classification)
       console.log('88888888888')
