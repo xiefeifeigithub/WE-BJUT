@@ -58,7 +58,7 @@ page{
 .card-item-icon{
   width: 40rpx;
   height: 40rpx;
-  margin-right: 10rpx;
+  margin-right: 15rpx;
 }
 .card-item-name{
   font-size: 11pt;
@@ -66,10 +66,11 @@ page{
   letter-spacing: 2px;
 }
 .card-item-bd{
-  padding: 20rpx 25rpx 30rpx 0;
+  padding: 20rpx 30rpx 20rpx 0rpx;
   margin-left: 30rpx;
   display: flex;
   flex-direction: column;
+  font-size:10pt;
 }
 .card-info-hd{
   display: flex;
