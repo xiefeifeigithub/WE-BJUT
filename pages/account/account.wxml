@@ -1,5 +1,5 @@
 <!--pages/account/account.wxml-->
-<view class="class_first" bindtouchstart="touchStart" bindtouchend="touchEnd" style="height:100vh">
+
   <view class='content'>
     <view class='nav'>
       <view class="about-wei">
@@ -11,13 +11,13 @@
         </view>
       </view>
     </view>
-
+  <form bindsubmit="formSubmit" class="form">
     <view class="main-card-item">
       <view class="card-item-hd">
         <image class="card-item-icon" src="/images/account.png"></image>
         <text class="card-item-name">绑定教务账号：</text>
       </view>
-
+      
       <view class="card-item-hd">
         <image class="card-item-icon" src="/images/name.png"></image>
         <input value='{{userName}}'  name="userName" bindinput ="userNameInput" class="card-item-bd" placeholder="请输入教务账号"/> 
@@ -25,13 +25,25 @@
       </view>
       <view class="card-item-hd">
         <image class="card-item-icon" src="/images/key.png"></image>
-        <input password='true' value='{{userPwd}}' bindinput="passWdInput" class="card-item-bd" placeholder="请输入教务密码"/> 
+        <input password='true' name="password" value='{{userPwd}}' bindinput="passWdInput" class="card-item-bd" placeholder="请输入教务密码"/> 
         <image class="card-item-icon" src="/images/appear.png"></image>
       </view>
+      <view class="card-item-hd">
+        <image class="card-item-icon" src="/images/key.png"></image>
+        <input name="verifyCode"  class='card-item-bd' placeholder="请输入验证码"/> 
+        <image class="section_image" bindtap="refreshVerifyCode" style="width:30%" src='{{verifyCodeUrl}}'></image>
+        
+      </view>
+      
     </view>
 
     <view class="submit">
       <button class="sub-button" bindtap='setStorage'>确认绑定</button>
     </view>
+
+    <view class="submit">
+      <button class="sub-button" form-type='submit'>课表</button>
+    </view>
+    </form>
+
   </view>
-</view>

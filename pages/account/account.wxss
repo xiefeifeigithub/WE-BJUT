@@ -123,3 +123,18 @@
   border-radius:30px;
   padding:5px 100px;
 }
+
+.section_image{
+  width: 30%;
+  height: 80%;
+  margin-left: 80rpx;
+}
+
+.form{
+  width: 100%;
+}
+
+.section__input{
+  width: 75%;
+  font-size: 14pt;
+}
