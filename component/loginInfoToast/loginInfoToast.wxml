@@ -1,0 +1,7 @@
+<!--component/loginInfoToast.wxml-->
+<view class="container" hidden='{{!isShow}}'>
+  <view class='wx-mask' catchtap='hideDialog'></view>
+  <view class="content">
+    <text>{{loginInfo}}</text>
+  </view>
+</view>

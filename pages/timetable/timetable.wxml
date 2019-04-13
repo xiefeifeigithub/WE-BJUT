@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view class='container1'>
+  <image class="round-click" catchtap='showAllOrPart' src='{{icon_lessonUrl}}'>
+  </image>
+  <view class="top">
+    <view wx:for="{{['一','二','三','四','五','六','日']}}" class="top-text">周{{item}}</view>
+  </view>
+
+  <view style="height:1200rpx;width:730rpx;display:flex;">
+    <view style="background-color:#D2E6B3;color:#7cba23;">
+      <view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12]}}" class="left">
+        {{item}}
+      </view>
+    </view>
+
+    <view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12]}}">
+      <view style="width:750rpx;margin-top:{{(index+1)*100}}rpx;  position: absolute;border-bottom:1rpx solid {{'lightgray'}};">
+      </view>
+    </view>
+
+    <scroll-view scroll-y="true" class="scroll">
+      <!--课表-->
+      <view wx:for="{{currList}}">
+        <view class="flex-item kcb-item" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.week-1)*100}}rpx;margin-top:{{(item.start-1)*100+5}}rpx;height:{{item.lessonNum*100-5}}rpx;background-color:{{colorArrays[index%8]}}">
+          <view class="smalltext" id="{{index}}" catchtap="showDialog">{{item.kcmc}}</view>
+          <!--课程格子右下角的角标代表的含义是，当前时间段下，有多节课程 -->
+
+          <view wx:if="{{item.tag > 1}}" style='position:absolute;bottom:0rpx;right:0rpx;font-size:8pt'>{{item.tag}}</view>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+    <!-- 课程弹窗-->
+  <dialog id='dialog' lessonList="{{mutiLessons}}">
+  </dialog>
+</view>

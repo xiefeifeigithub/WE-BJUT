@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+      "dialog": "/component/lessonToast/dialog"
+    }
+}
