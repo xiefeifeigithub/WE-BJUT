@@ -10,10 +10,8 @@ Page({
     userName: '',
     userPwd: '',
     verifyCodeUrl: '',
-    sessionId: '',
-    numFocus: false,
-    pwdFocus: false,
-    vCodeFocus: false,
+    sessionId: ''
+    
   },
 
   //获取用户输入的用户名
@@ -57,21 +55,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '个人中心'
     })
-    console.log("onReady")
-    this.dialog = this.selectComponent("#dialog")
-  },
-  showDialog() {
 
-    this.dialog.showDialog();
-  },
-  setPwdFocus: function () {
-    this.setData({ pwdFocus: true, numFocus: false, vCodeFocus: false })
-  },
-  setNumFocus: function () {
-    this.setData({ pwdFocus: false, numFocus: true, vCodeFocus: false })
-  },
-  setVCodeFocus: function () {
-    this.setData({ pwdFocus: false, numFocus: false, vCodeFocus: true })
   },
   /**
    * 生命周期函数--监听页面显示
