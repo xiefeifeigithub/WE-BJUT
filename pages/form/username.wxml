@@ -1,3 +1,0 @@
-  <view class="section section_gap">
-    <view class="section__title">姓名: {{username}}</view>
-  </view>

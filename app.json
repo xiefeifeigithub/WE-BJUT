@@ -5,7 +5,6 @@
     "pages/account/account",  
     "pages/lists/lists",
     "pages/detail/detail",
-    "pages/form/form",
     "pages/logs/logs",
     "pages/search/search",
     "pages/classificationlists/classificationlists",
@@ -31,12 +30,6 @@
         "text": "攻略",
         "iconPath": "images/help0.png",
         "selectedIconPath": "images/help1.png"
-      },
-      {
-        "pagePath": "pages/form/form",
-        "text": "用户反馈",
-        "iconPath": "images/feedback0.png",
-        "selectedIconPath": "images/feedback1.png"
       },
       {
         "pagePath": "pages/account/account",
