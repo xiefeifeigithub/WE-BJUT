@@ -7,11 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userName: '',
-    userPwd: '',
-    verifyCodeUrl: '',
-    sessionId: ''
-    
+    userName: '', //用户名
+    userPwd: '',//密码
+    info:{} //学生基本信息
   },
 
   //获取用户输入的用户名
@@ -26,7 +24,7 @@ Page({
     })
   },
 
-  //确认绑定
+  //设置用户名和密码的缓存
   setStorage:function(){
     wx.setStorageSync("username", this.data.userName)
     wx.setStorageSync("userpassword", this.data.userPwd)
@@ -36,7 +34,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getSessionIdAndCodeUrl()
     console.log("onLoad")
     // 从缓存中获取用户信息
     var username = app.globalData.username 
@@ -99,73 +96,45 @@ Page({
 
   },
 
-  //获取验证码
-  getSessionIdAndCodeUrl: function () {
-    var that = this;
-    wx.request({
-      url: 'https://www.bjut1960.cn/get',
-      method: 'GET',
-      header: {
-        "Content-Type": "application/json" // 
-      },
-      success: function (res) {
-        console.log(res);
-        var codeUrl = 'https://www.bjut1960.cn/static/';
-        var fullUrl = codeUrl + res.data.sessionID + '.jpg';
-        that.setData({ sessionId: res.data.sessionID, verifyCodeUrl: fullUrl });
-      },
-      fail: function () {
-        console.log("获取sessionId失败");
-      }
-    });
-  },
-  //刷新验证码
-  refreshVerifyCode: function () {
-    this.getSessionIdAndCodeUrl();
-    console.log('执行改变验证码')
-  },
-
-  //提交
+  //确认绑定
   formSubmit: function (e) {
-    console.log("mmp")
+    console.log('设置用户名和密码的缓存')
+    this.setStorage()
+ 
     console.log(e);
     var account = e.detail.value.userName;
     var password = encodeURIComponent(e.detail.value.password); //对密码进行编码防止特殊符号存在
-    var verifyCode = e.detail.value.verifyCode;
     var flag = false;
-    var that = this;
+
     wx.showLoading({
-      title: '正在登录',
+      title: '身份验证中...',
     });
+
+    var that = this
     wx.request({
-      url: 'https://www.bjut1960.cn/?xh=' + account + '&mm=' + password + '&yzm=' + verifyCode + '&id=' + this.data.sessionId,
+      // https://www.bjut1960.cn/schedule?xh=学号&mm=密码
+      url: 'https://www.bjut1960.cn/schedule?xh=' + account + '&mm=' + password,
       method: 'GET',
       header: {
         "Content-Type": "application/json"
       },
       success: function (res) {
         if (res.statusCode == 200) {
+          console.log("教务管理系统")
+          console.log(res.data[0])
+          that.setData({ info: res.data[0] })
+          console.log("info")
+          console.log(that.data.info)
+          console.log(res)
           console.log('登录成功');
-          //登录成功 
-          //1解析数据
-          //2存储课表数据到本地
-          //3存储当前学号到本地
-          wx.setStorage({
-            key: app.data.keyStudentNum,
-            data: account,
-          })
-          console.log(res);
-          app.parseTimetableData(res);
-          wx.hideLoading();
-          wx.navigateTo({
-            url: '/pages/timetable/timetable',
-          })
+        
+          wx.hideLoading();  //隐藏身份验证对话框
+         
         } else {
           wx.showToast({
-            title: '请检查学号、密码及验证码是否正确！',
+            title: '请检查学号或密码是否正确',
             icon: 'none'
           })
-          that.refreshVerifyCode();
         }
       },
       fail: function (res) {
