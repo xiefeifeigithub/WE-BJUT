@@ -15,15 +15,53 @@ Page({
     allLessonsList: [],      //全部的课表信息(不包含教师姓名，上课周)
     wholeLessonList: [],      //完整的课程信息（含教师姓名，上课周）
     exerciseLesonList:[],     //实践课课程信息
-    icon_lessonUrl: '../../resources/images/icons/all_lesson.png',
+    icon_lessonUrl: '../../images/icons/all_lesson.png',
     isShowAll: true
   },
 
-  onLoad: function () {
-    console.log("数据从本地获取");
-    this.getTimetableFromLocal();
-    this.getExerciseLessonFromLocal();
+  // onLoad: function () {
+  //   console.log("数据从本地获取");
+  //   this.getTimetableFromLocal();
+  //   this.getExerciseLessonFromLocal();
+
+
+  // },
+
+  /**
+    * 生命周期函数--监听页面加载
+    */
+
+  // redirectTo  switchTab
+  onLoad: function (options) {
+    if (this.hasLocalData() == true) {
+       console.log("数据从本地获取");
+       this.getTimetableFromLocal();
+       this.getExerciseLessonFromLocal();
+    } else {
+      console.log("转到身份认证界面")
+      wx.switchTab({
+        url: '../account/account',
+      })
+    }
   },
+  //判断本地是否有数据
+  hasLocalData: function () {
+    var hasData = false;
+    try {
+      const value = wx.getStorageSync('timetableLcocal');
+      if (value) {
+        console.log("本地有数据");
+        hasData = true;
+      } else {
+        hasData = false;
+      }
+    } catch (e) {
+      console.log("获取本地数据出现异常")
+      hasData = false;
+    }
+    return hasData;
+  },
+
   /**
  * 生命周期函数--监听页面初次渲染完成
  */
@@ -347,10 +385,10 @@ Page({
    */
   showAllOrPart: function () {
     if (this.data.isShowAll == true) {
-      this.setData({ isShowAll: false, icon_lessonUrl: '../../resources/images/icons/part_lesson.png' });
+      this.setData({ isShowAll: false, icon_lessonUrl: '../../images/icons/part_lesson.png' });
       this.showTimetableByCurrentWeek();
     } else {
-      this.setData({ isShowAll: true, icon_lessonUrl: '../../resources/images/icons/all_lesson.png' });
+      this.setData({ isShowAll: true, icon_lessonUrl: '../../images/icons/all_lesson.png' });
       this.showTimetableByAll();
     }
   }

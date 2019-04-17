@@ -1,7 +1,7 @@
 <!--功能导航-->
 <view class="nav">
   <block wx:for="{{student}}">
-    <navigator url="{{item.src}}" class="item" hover-class="navHoverClass" hover-stay-time="200">
+    <navigator url="{{item.src}}" class="item" hover-class="navHoverClass" hover-stay-time="200" >
       <image src="{{item.icon}}"></image>
       <text>{{item.title}}</text>
     </navigator>

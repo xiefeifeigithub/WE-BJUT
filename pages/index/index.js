@@ -5,8 +5,9 @@ Page({
     //导航数据
     student: [{
       icon: '/images/kjs.png',
-      src: '/pages/core/curriculum/curriculum',
-      title: '空教室'
+      // src: '/pages/core/curriculum/curriculum',
+      src: '../timetable/timetable',
+      title: '课表'
     }, {
       icon: '/images/ck.png',
       src: '/pages/core/grade/grade',
@@ -38,4 +39,5 @@ Page({
       title: '校园信息'
     }]
   },
+
 })

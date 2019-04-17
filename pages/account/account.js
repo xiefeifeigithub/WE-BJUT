@@ -127,6 +127,37 @@ Page({
           console.log(that.data.info)
           console.log(res)
           console.log('登录成功');
+
+          //登录成功 
+          //1解析数据
+          //2存储课表数据到本地
+          //3存储当前学号到本地
+          wx.setStorage({
+            key: app.data.keyStudentNum,
+            data: account,
+          })
+          wx.setStorage({
+            key: app.data.keyStudentName,
+            data: res.data[0].studentName,
+          })
+          wx.setStorage({
+            key: app.data.keyClassNum,
+            data: res.data[0].class,
+          })
+          wx.setStorage({
+            key: app.data.keyCollege,
+            data: res.data[0].college,
+          })
+          wx.setStorage({
+            key: app.data.keyMajor,
+            data: res.data[0].major,
+          })
+          wx.setStorage({
+            key: app.data.keyExerciseLesson,
+            data: res.data[1].exercise,
+          })
+          console.log(res);
+          app.parseTimetableData(res.data[1].table);
         
           wx.hideLoading();  //隐藏身份验证对话框
          

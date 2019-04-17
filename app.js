@@ -3,32 +3,26 @@
 App({
   onLaunch: function () {
 
-
-    // //清理本地的所有缓存
-
      //清理本地的所有缓存
-
-    // wx.clearStorage();
+    console.log("小程序初始化")
+    wx.clearStorage();
 
     //清除本地指定缓存
     wx.removeStorage({
       key: 'CmsList',
       success(res) {
         console.log(res.data)
-        console.log("aaaaaaaaaaaaaaaa")
+        console.log("清除文章数据缓存")
       }
     })
 
     //从缓存中获取用户信息
+    console.log("从缓存中获取用户信息")
     var username = wx.getStorageSync('username')
     var userpassword = wx.getStorageSync('userpassword')
     this.globalData.username = username
     this.globalData.userpassword = userpassword
     console.log(username,userpassword)
-    // if (username && userpassword) {
-    //   that.setData({ userName: username })
-    //   that.setData({ userPwd: userpassword })
-    // }
 
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -93,12 +87,41 @@ App({
   },
   data: {
     keyTimetable: 'timetableLcocal',        //用于获取本地存储的课程信息的键
-    keyStudentName: 'studentNameLocal',    //用于获取本地存储的学生姓名的键
-    keyStudentNum: 'studentNumLocal'      //用于获取本地存储的学生学号的键
+    keyStudentName: 'studentNameLocal',     //用于获取本地存储的学生姓名的键
+    keyStudentNum: 'studentNumLocal',      //用于获取本地存储的学生学号的键
+    keyClassNum: 'classNum',                 //班号
+    keyCollege: 'college',                   //学院
+    keyMajor: 'major',                        //专业
+    keyExerciseLesson: 'exerciseLesson'       //实践课
   },
   //url: 'https://你的域名/index.php?s=/'
   url: 'https://bjut.bjutxiaomei.cn/index.php?s=/',
 
+  /**
+   * 检测本地是否存有课表数据
+   */
+  hasLocalData: function () {
+    var hasData = false;
+    try {
+      const value = wx.getStorageSync(this.data.keyTimetable);
+      if (value) {
+        console.log("本地有数据");
+        hasData = true;
+      } else {
+        hasData = false;
+      }
+    } catch (e) {
+      console.log("获取本地数据出现异常")
+      hasData = false;
+    }
+    return hasData;
+  },
+  /**解析课程表(不含实践课处理)
+   * 将从教务获取的课程表数据解析成能够在课程表展示的数据
+   * 每节课时长均按90分钟计算。如果某节课时长180分钟，拆成两节课。
+   * 同一个时间段如果存在多节课，则将课程数量以角标形式置于右下角。
+   * 例如：周三3、4节在一至八周是课程一，在九至十六周是课程二，则显示全部课表时，周三3、4节加角标'2'.
+   */
   parseTimetableData: function (res) {
     var that = this;
     var lessonWeekDay;
@@ -107,25 +130,17 @@ App({
     var lessonNameAndLocationAndTeacher;
     var lessonTime;
     var list = [];
-    wx.showLoading({
-      title: ''
-    })
-    //存储学生姓名
-    wx.setStorage({
-      key: this.data.keyStudentName,
-      data: res.data[0].stuName,
-    })
-    //解析课表信息
-    for (var i = 1; i < res.data.length; i++) {
-      lessonWeekDay = that.numberChange(res.data[i].Time.charAt(1))
 
-      lessonStart = parseInt(res.data[i].Time.charAt(3));
-      var tempArr = res.data[i].Time.split('第', 2);
-      lessonTime = res.data[i].Time.split('第')[2];
+    for (var i = 0; i < res.length; i++) {
+      lessonWeekDay = that.numberChange(res[i].Time.charAt(1))
+
+      lessonStart = parseInt(res[i].Time.charAt(3));
+      var tempArr = res[i].Time.split('第', 2);
+      lessonTime = res[i].Time.split('第')[2];
       var temTime = tempArr[1].split('节')[0];
 
       lessonNum = temTime.split(',').length;
-      lessonNameAndLocationAndTeacher = res.data[i].Name + '\n' + res.data[i].Teacher + '\n' + '@' + res.data[i].Location + '@' + lessonTime + '';
+      lessonNameAndLocationAndTeacher = res[i].Name + '\n' + res[i].Teacher + '\n' + '@' + res[i].Location + '@' + lessonTime + '';
       //对180分钟的大课进行分割，平分成两节课。
       if (lessonNum == 4) {
         list.push({

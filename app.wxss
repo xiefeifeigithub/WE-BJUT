@@ -1,6 +1,6 @@
 /**app.wxss**/
 
-.container {
+/* .container {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,33 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}  */
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1093097 */
+  src: url('//at.alicdn.com/t/font_1093097_nh4e36u4dds.eot');
+  src: url('//at.alicdn.com/t/font_1093097_nh4e36u4dds.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1093097_nh4e36u4dds.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1093097_nh4e36u4dds.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1093097_nh4e36u4dds.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1093097_nh4e36u4dds.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconshouqishangjiantou-:before {
+  content: "\e627";
+}
+
+.iconzhankaixiajiantou-:before {
+  content: "\e635";
+}
 
 @import "/wxParse/wxParse.wxss";
 @import "/wxSearch/wxSearch/wxSearch.wxss";
