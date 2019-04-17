@@ -32,3 +32,6 @@
   overflow: hidden;
   box-sizing: border-box;
 }
+.textarea{
+  padding: 20rpx;
+}

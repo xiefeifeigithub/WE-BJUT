@@ -14,13 +14,15 @@ Page({
     currentWeek: 0,
     allLessonsList: [],      //全部的课表信息(不包含教师姓名，上课周)
     wholeLessonList: [],      //完整的课程信息（含教师姓名，上课周）
-    icon_lessonUrl: '/images/all_lesson.png',
+    exerciseLesonList:[],     //实践课课程信息
+    icon_lessonUrl: '../../resources/images/icons/all_lesson.png',
     isShowAll: true
   },
 
   onLoad: function () {
     console.log("数据从本地获取");
     this.getTimetableFromLocal();
+    this.getExerciseLessonFromLocal();
   },
   /**
  * 生命周期函数--监听页面初次渲染完成
@@ -30,14 +32,13 @@ Page({
   },
 
   onShow: function () {
-
   },
   /**
   * 生命周期函数--监听页面卸载
   */
   onUnload: function () {
-
   },
+
   /**
    * 从本地获取课程表数据
    */
@@ -46,8 +47,8 @@ Page({
     var that = this;
 
     try {
-      console.log("从课表页读取本地数据");
-      const value = wx.getStorageSync('timetableLcocal');
+      console.log("从课表页读取课表数据");
+      const value = wx.getStorageSync(app.data.keyTimetable);
       if (value) {
         localData = value;
         //将本地读取的数据保存到wholeLessonList
@@ -55,10 +56,24 @@ Page({
         that.setLessonListSimple(that.data.wholeLessonList);
       }
     } catch (e) {
-      console.log("获取本地数据出现异常")
+      console.log("获取本地课表数据出现异常")
     }
+  },
 
+  getExerciseLessonFromLocal:function(){
+    var localData = [];
+    var that = this;
 
+    try {
+      console.log("从课表页读取实践课数据");
+      const value = wx.getStorageSync(app.data.keyExerciseLesson);
+      if (value) {
+        localData = value;
+        that.setData({ exerciseLesonList: localData });
+      }
+    } catch (e) {
+      console.log("获取本地实践课出现异常")
+    }
   },
   /**
    * 点击课程显示课表详情的对话框
@@ -332,10 +347,10 @@ Page({
    */
   showAllOrPart: function () {
     if (this.data.isShowAll == true) {
-      this.setData({ isShowAll: false, icon_lessonUrl: '/images/part_lesson.png' });
+      this.setData({ isShowAll: false, icon_lessonUrl: '../../resources/images/icons/part_lesson.png' });
       this.showTimetableByCurrentWeek();
     } else {
-      this.setData({ isShowAll: true, icon_lessonUrl: '/images/all_lesson.png' });
+      this.setData({ isShowAll: true, icon_lessonUrl: '../../resources/images/icons/all_lesson.png' });
       this.showTimetableByAll();
     }
   }

@@ -1,8 +1,9 @@
 /**index.wxss**/
-.container1{
-  /* width: 100%;
-  height: 100%; */
-  background-color: #dddddd;
+.container{
+  width: 100%;
+  height: 100%;
+  background-color: #E6E6E6;
+
 }
 
 .flex-item {
@@ -29,8 +30,8 @@
   display: flex;
   flex-direction: row;
   margin-left: 0rpx;
-  background-color: #d2e6b3;
-  color: #7cba23;
+  background-color: #70ACFF;
+  color: white;
 }
 
 .top-text {
@@ -46,6 +47,8 @@
 .scroll {
   z-index: 101;
   height: 100%;
+  display: flex;
+  direction: column;
   position: relative;
 }
 
@@ -58,10 +61,6 @@
   align-items: center;
 }
 
-.container1{
-  width: 100%;
-  height: 100%;
-}
 .round-click{
     height: 80rpx;
     width: 80rpx;
@@ -75,4 +74,21 @@
     align-items: center;
     justify-content: center;
     z-index: 130;
+}
+.exercise-lesson-container{
+  display: flex;
+  direction: column;
+  height: 20%;
+  width: 93%;
+  background-color: white;
+  padding: 15rpx;
+  margin: 5px;
+  border-radius:20rpx; 
+  z-index: 140;
+}
+.exercise-lesson-container-item{
+  font-size: 8pt;
+}
+.timetable-area{
+  z-index: 100;
 }
