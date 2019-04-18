@@ -5,12 +5,13 @@
 <template name="items">
   <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
     <view class='tags'>
-    <view class="imgs">
-      <image src="{{img}}" class="in-img" mode="'scaleToFill'"></image>
-    </view>
+   
     <view class="infos">
       <view class="title">{{title}}</view>
       <view class="date">{{cTime}}</view>
+    </view>
+     <view class="imgs">
+      <image src="{{img}}" class="in-img" mode="'scaleToFill'"></image>
     </view>
     </view>
   </navigator>
