@@ -104,6 +104,7 @@ Page({
     console.log(e);
     var account = e.detail.value.userName;
     var password = encodeURIComponent(e.detail.value.password); //对密码进行编码防止特殊符号存在
+    console.log('编码后的密码：' + password);
     var flag = false;
 
     wx.showLoading({

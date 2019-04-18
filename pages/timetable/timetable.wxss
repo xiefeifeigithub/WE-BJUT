@@ -7,7 +7,7 @@
 }
 
 .flex-item {
-  width: 95rpx;
+  width: 100rpx;
   height: 100px;
   box-shadow: 1rpx 1rpx 1rpx 1rpx rgba(143, 143, 143, 0.5);
 }
@@ -35,8 +35,7 @@
 }
 
 .top-text {
-  margin-left: 35rpx;
-  width: 100rpx;
+  width: 125rpx;
   height: 35rpx;
   font-size: 9pt;
   justify-content: center;
@@ -47,6 +46,7 @@
 .scroll {
   z-index: 101;
   height: 100%;
+  width: 100%;
   display: flex;
   direction: column;
   position: relative;
@@ -64,7 +64,7 @@
 .round-click{
     height: 80rpx;
     width: 80rpx;
-    box-shadow: 0rpx 0rpx 20rpx whitesmoke;
+    box-shadow: 0rpx 0rpx 20rpx grey;
     background-color: #7cba23;
     border-radius: 100%;
     position: fixed;

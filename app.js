@@ -134,7 +134,12 @@ App({
     for (var i = 0; i < res.length; i++) {
       lessonWeekDay = that.numberChange(res[i].Time.charAt(1))
 
-      lessonStart = parseInt(res[i].Time.charAt(3));
+      if (res[i].Time.charAt(4) == ',') {
+        lessonStart = parseInt(res[i].Time.charAt(3));
+      } else {
+        lessonStart = parseInt(res[i].Time.charAt(3) + res[i].Time.charAt(4));
+      }
+
       var tempArr = res[i].Time.split('第', 2);
       lessonTime = res[i].Time.split('第')[2];
       var temTime = tempArr[1].split('节')[0];
@@ -184,11 +189,7 @@ App({
       that.saveTimetableToLocal(list);
     }
 
-    for (var i = 0; i < list.length; i++) {
-      console.log(list[i]);
-    }
-
-    wx.hideLoading();
+    
   },
   numberChange: function (num) {
     var alb = 0
@@ -224,16 +225,7 @@ App({
  */
   saveTimetableToLocal: function (data) {
     if (data.length != 0) {
-      wx.setStorage({
-        key: this.data.keyTimetable,
-        data: data,
-        success: function () {
-          console.log("数据存储至本地执行成功");
-        },
-        fail: function () {
-          console.log("数据存储至本地执行失败");
-        }
-      })
+      wx.setStorageSync(this.data.keyTimetable, data);
     }
   },
 })
