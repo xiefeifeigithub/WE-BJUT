@@ -3,12 +3,51 @@
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 0px;
-  padding-top: 10px;
+  padding-top: 0px;
   padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  
   box-sizing: border-box;
+  border-color: black;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imgs{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  
+}
+
+.imgs image{
+  display: block;
+  width: 150rpx;
+  height: 150rpx;
+
+}
+
+.infos{
+  width: 480rpx;
+  height: 150rpx;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.title{
+  width: 450rpx;
+  height: 100rpx;
+  font-size: 15px;
+  color: black;
+}
+
+.date{
+  font-size: 12px;
+  color: gainsboro; 
 }
 
 navigator { 
@@ -20,37 +59,8 @@ navigator {
   height: 250rpx; 
   position: relative;
 }
-.imgs {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  float: right;
-}
-.imgs image {
-  display: block; 
-  width: 150rpx; 
-  height: 150rpx;
-}
 
-.infos {
-  float: left; 
-  width: 480rpx; 
-  height: 120rpx; 
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.title {
-  font-size: 16px;
-}
-.date {
-  font-size: 12px; 
-  color: #aaa; 
-  position: absolute;
-  bottom: 25px;
-}
+
 
 .loadMore {
   text-align: center;
