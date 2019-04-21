@@ -1,5 +1,4 @@
 /* pages/account/account.wxss */
-/* pages/suoda/sd.wxss */
 .nav{
     background-color: #fff;
 }
@@ -137,4 +136,11 @@
 .section__input{
   width: 75%;
   font-size: 14pt;
+}
+
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
