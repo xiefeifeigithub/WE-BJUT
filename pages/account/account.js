@@ -8,46 +8,76 @@ Page({
    */
   data: {
     userName: '', //用户名
-    userPwd: '',//密码
-    info:{} //学生基本信息
+    userPwd: '', //密码
+    info: {} ,//学生基本信息
+    passwordStatus: 'true'
+  },
+  
+  changeStatus:function(e)
+  {
+    //passwordStatus - 变可见
+    this.setData({
+      passwordStatus: !this.data.passwordStatus
+    })
+    console.log(this.data.passwordStatus)
+
+    //设置定时器 - 延时1秒
+    var timer = setTimeout(function () {
+      console.log("----延时1秒----");
+      this.setData({
+        passwordStatus: !this.data.passwordStatus
+      })
+      console.log(this.data.passwordStatus)
+    }.bind(this), 1000);
+  },
+
+  //清空用户名
+  clearusername: function(e) {
+    this.setData({
+      userName: ''
+    })
   },
 
   //获取用户输入的用户名
-  userNameInput: function (e) {
+  userNameInput: function(e) {
     this.setData({
       userName: e.detail.value
     })
   },
-  passWdInput: function (e) {
+  passWdInput: function(e) {
     this.setData({
       userPwd: e.detail.value
     })
   },
 
   //设置用户名和密码的缓存
-  setStorage:function(){
+  setStorage: function() {
     wx.setStorageSync("username", this.data.userName)
     wx.setStorageSync("userpassword", this.data.userPwd)
     console.log("用户名：" + this.data.userName + " 密码：" + this.data.userPwd);
-    },
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log("onLoad")
     // 从缓存中获取用户信息
-    var username = app.globalData.username 
+    var username = app.globalData.username
     var userpassword = app.globalData.userpassword
     var that = this
-    that.setData({ userName: username })
-    that.setData({ userPwd: userpassword })
+    that.setData({
+      userName: username
+    })
+    that.setData({
+      userPwd: userpassword
+    })
     console.log(username);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
       title: '个人中心'
@@ -57,50 +87,50 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
   //确认绑定
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     console.log('设置用户名和密码的缓存')
     this.setStorage()
- 
+
     console.log(e);
     var account = e.detail.value.userName;
     var password = encodeURIComponent(e.detail.value.password); //对密码进行编码防止特殊符号存在
@@ -119,11 +149,13 @@ Page({
       header: {
         "Content-Type": "application/json"
       },
-      success: function (res) {
+      success: function(res) {
         if (res.statusCode == 200) {
           console.log("教务管理系统")
           console.log(res.data[0])
-          that.setData({ info: res.data[0] })
+          that.setData({
+            info: res.data[0]
+          })
           console.log("info")
           console.log(that.data.info)
           console.log(res)
@@ -159,9 +191,9 @@ Page({
           })
           console.log(res);
           app.parseTimetableData(res.data[1].table);
-        
-          wx.hideLoading();  //隐藏身份验证对话框
-         
+
+          wx.hideLoading(); //隐藏身份验证对话框
+
         } else {
           wx.showToast({
             title: '请检查学号或密码是否正确',
@@ -169,7 +201,7 @@ Page({
           })
         }
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log('登录失败');
         console.log(res);
       }
