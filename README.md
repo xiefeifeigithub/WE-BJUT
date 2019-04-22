@@ -16,16 +16,5 @@
 ## 项目结构
 ![项目结构图](https://github.com/xiefeifeigithub/resources/blob/master/images/WE-BJUT/WE-BJUT~Projectdiagram.png?raw=true)
 
-## 团队成员
-**反向代理**：CQ，亓冠强
-
-**数据解析**：CQ，YahuiAn
-
-**机器人**：YahuiAn、xiefeifei、高婧怡
-
-**后台管理系统**：xiefeifei
-
-**微信小程序**：xiefeifei、李艺丰、高婧怡、索达、陈玉林、崔紫玉、秦艳、路致平
-
 ## 采用开源项目
 **weiphp3.0**
