@@ -10,7 +10,8 @@ Page({
     userName: '', //用户名
     userPwd: '', //密码
     info: {} ,//学生基本信息
-    passwordStatus: 'true'
+    passwordStatus: 'true',
+    unload:'true'
   },
   
   changeStatus:function(e)
@@ -150,11 +151,15 @@ Page({
         "Content-Type": "application/json"
       },
       success: function(res) {
+
         if (res.statusCode == 200) {
           console.log("教务管理系统")
           console.log(res.data[0])
           that.setData({
             info: res.data[0]
+          })
+          that.setData({
+            unload: false
           })
           console.log("info")
           console.log(that.data.info)
@@ -207,4 +212,10 @@ Page({
       }
     });
   },
+  logout: function(e) {
+    console.log('退出登录')
+    this.setData({
+      unload: true
+    })
+  }
 })

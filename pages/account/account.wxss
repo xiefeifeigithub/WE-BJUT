@@ -60,20 +60,20 @@
   height: 100rpx;
   margin-left: 30rpx;
 }
-.card-item-icon{
-  width: 40rpx;
-  height: 40rpx;
+.item-icon{
+  width: 46rpx;
+  height: 46rpx;
   margin-right: 10rpx;
 }
-.card-item-name{
-  font-size: 11pt;
+.item-name{
+  font-size: 16px;
   font-weight: bold;
   letter-spacing: 2px;
   margin-left:20rpx;
 }
-.card-item-bd{
-  padding: 20rpx 220rpx 20rpx 20rpx;
-  font-size: 10pt;
+.item-bd{
+  padding: 20rpx 200rpx 20rpx 20rpx;
+  font-size: 12pt;
   display: flex;
   flex-direction: column;
 }
@@ -99,6 +99,7 @@
   border-top: 1rpx solid #e5e5e5;
   margin-top: -1rpx;
 }
+
 
 /*form  */
 
@@ -138,6 +139,7 @@
   font-size: 14pt;
 }
 
+.info{ font-size: 18px; line-height: 2; text-indent: 50px ;}
 
 ::-webkit-scrollbar {
   width: 0;
