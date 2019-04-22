@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # WE-BJUT
 
 ## 项目背景
@@ -28,3 +29,7 @@
 
 ## 采用开源项目
 **weiphp3.0**
+=======
+BJUT攻略系统和智能辅导员计划
+gaojingyi924@outlook.com
+>>>>>>> 8332fe4fcb957dafd55438fc5322d8d385fc3e31

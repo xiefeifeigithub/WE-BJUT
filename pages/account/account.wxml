@@ -21,12 +21,12 @@
       <view class="card-item-hd">
         <image class="card-item-icon" src="/images/name.png"></image>
         <input value='{{userName}}' name="userName" bindinput="userNameInput" class="card-item-bd" placeholder="请输入教务账号" />
-        <image class="card-item-icon" src="/images/clear.png"></image>
+        <image  class="card-item-icon" src="/images/clear.png" bindtap='clearusername'></image>
       </view>
       <view class="card-item-hd">
         <image class="card-item-icon" src="/images/key.png"></image>
-        <input password='true' name="password" value='{{userPwd}}' bindinput="passWdInput" class="card-item-bd" placeholder="请输入教务密码" />
-        <image class="card-item-icon" src="/images/appear.png"></image>
+        <input password='{{passwordStatus}}'   name="password" value='{{userPwd}}' bindinput="passWdInput" class="card-item-bd" placeholder="请输入教务密码" />
+        <image class="card-item-icon" src="/images/appear.png"  bindtouchstart='changeStatus'></image>
       </view>
       <!-- <view class="card-item-hd">
         <image class="card-item-icon" src="/images/key.png"></image>
