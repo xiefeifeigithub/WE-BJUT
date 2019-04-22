@@ -41,8 +41,8 @@
       <!-- <view class='badge text-sm'>10</view> -->
     </view>
 
-    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='AutoCAD' bindtap="querySpecifiedArticles">
-      <text class='text-sm text-gray'>AutoCAD</text>
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='Autodesk' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>Autodesk</text>
       <!-- <view class='badge text-sm'>10</view> -->
     </view>
 
@@ -157,6 +157,12 @@
     </view>
     <view>\n</view>
     <view class='gaps2'></view>
+
+<view class='btn btn-xs btn-default round-btn tags-btn' data-text='使用指南-本部' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>使用指南-本部</text>
+      <!-- <view class='badge text-sm'>10</view> -->
+    </view>
+
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='健身房' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>健身房</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -196,6 +202,50 @@
       <!-- <view class='badge text-sm'>10</view> -->
     </view>
   </view>
+
+  <view class='tags'>
+    <view class='background1'>
+      <text class='title'>组织机构</text>
+    </view>
+    <view>\n</view>
+    <view class='gaps2'></view>
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='校医院' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>校医院</text>
+      <!-- <view class='badge text-sm'>10</view> -->
+    </view>
+
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='图书馆' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>图书馆</text>
+      <!-- <view class='badge text-sm'>10</view> -->
+    </view>
+  </view>
+
+  
+  <view class='tags'>
+    <view class='background1'>
+      <text class='title'>吃喝玩乐</text>
+    </view>
+    <view>\n</view>
+    <view class='gaps2'></view>
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='工大美食' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>工大美食</text>
+      <!-- <view class='badge text-sm'>10</view> -->
+    </view>
+  </view>
+
+  <view class='tags'>
+    <view class='background1'>
+      <text class='title'>其他</text>
+    </view>
+    <view>\n</view>
+    <view class='gaps2'></view>
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='专利发表' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>专利发表</text>
+      <!-- <view class='badge text-sm'>10</view> -->
+    </view>
+  </view>
+
+
 
   <toast hidden="{{toastHidden}}" bindchange="totastChange" duration="1000">{{msg}}</toast>
 
