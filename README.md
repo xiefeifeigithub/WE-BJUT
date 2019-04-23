@@ -9,7 +9,7 @@
 
 **基础服务**：查课表、查空教室、查成绩等。
 
-**攻略**：校园信息分流、精选优质文章、沉淀学长学姐经验。
+**攻略**：校园信息分流、精选优质文章、沉淀学长学姐经验等。
 
 **智能机器人**：回答固定消息，为辅导员分忧。
 
@@ -17,4 +17,4 @@
 ![项目结构图](https://github.com/xiefeifeigithub/resources/blob/master/images/WE-BJUT/WE-BJUT~Projectdiagram.png?raw=true)
 
 ## 采用开源项目
-**weiphp3.0**
+**weiphp**
