@@ -17,4 +17,4 @@
 ![项目结构图](https://github.com/xiefeifeigithub/resources/blob/master/images/WE-BJUT/WE-BJUT~Projectdiagram.png?raw=true)
 
 ## 采用开源项目
-**weiphp3.0**
+**weiphp**
