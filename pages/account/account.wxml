@@ -11,26 +11,26 @@
       </view>
     </view>
   </view>
-  <form bindsubmit="formSubmit" class="form">
+  <form wx:if="{{unload}}" bindsubmit="formSubmit" class="form">
     <view class="main-card-item">
       <view class="card-item-hd">
-        <image class="card-item-icon" src="/images/account.png"></image>
-        <text class="card-item-name">绑定教务账号：</text>
+        <image class="item-icon" src="/images/account.png"></image>
+        <text class="item-name">登录教务账号：</text>
       </view>
 
       <view class="card-item-hd">
-        <image class="card-item-icon" src="/images/name.png"></image>
-        <input value='{{userName}}' name="userName" bindinput="userNameInput" class="card-item-bd" placeholder="请输入教务账号" />
-        <image  class="card-item-icon" src="/images/clear.png" bindtap='clearusername'></image>
+        <image class="item-icon" src="/images/name.png"></image>
+        <input value='{{userName}}' name="userName" bindinput="userNameInput" class="item-bd" placeholder="请输入教务账号" />
+        <image class="item-icon" src="/images/clear.png" bindtap='clearusername'></image>
       </view>
       <view class="card-item-hd">
-        <image class="card-item-icon" src="/images/key.png"></image>
-        <input password='{{passwordStatus}}'   name="password" value='{{userPwd}}' bindinput="passWdInput" class="card-item-bd" placeholder="请输入教务密码" />
-        <image class="card-item-icon" src="/images/appear.png"  bindtouchstart='changeStatus'></image>
+        <image class="item-icon" src="/images/key.png"></image>
+        <input password='{{passwordStatus}}' name="password" value='{{userPwd}}' bindinput="passWdInput" class="item-bd" placeholder="请输入教务密码" />
+        <image class="item-icon" src="/images/appear.png" bindtouchstart='changeStatus'></image>
       </view>
       <!-- <view class="card-item-hd">
-        <image class="card-item-icon" src="/images/key.png"></image>
-        <input name="verifyCode" class='card-item-bd' placeholder="请输入验证码" />
+        <image class="item-icon" src="/images/key.png"></image>
+        <input name="verifyCode" class='item-bd' placeholder="请输入验证码" />
         <image class="section_image" bindtap="refreshVerifyCode" style="width:30%" src='{{verifyCodeUrl}}'></image>
 
       </view> -->
@@ -42,17 +42,23 @@
     </view> -->
 
     <view class="submit">
-      <button class="sub-button" form-type='submit'>确认绑定</button>
+      <button class="sub-button" form-type='submit'>确认登录</button>
     </view>
   </form>
 
-<!-- 学生信息展示 -->
-  <view class="wrap">
-   <view>{{info.class}}</view>
-   <view>{{info.college}}</view>
-   <view>{{info.major}}</view>
-   <view>{{info.studentName}}</view>
-   <view>{{info.studentNumber}}</view>
-  </view>
 
+
+  <!-- 学生信息展示 -->
+  <view class="wrap" wx:if="{{!unload}}">
+    <view class="info">
+      <view>学院：{{info.college}}</view>
+      <view>班级：{{info.class}}</view>
+      <view>专业：{{info.major}}</view>
+      <view>学号：{{info.studentNumber}}</view>
+      <view>姓名：{{info.studentName}}</view>
+    </view>
+    <view class="submit">
+      <button class="sub-button" bindtap='logout'>退出登录</button>
+    </view>
+  </view>
 </view>
