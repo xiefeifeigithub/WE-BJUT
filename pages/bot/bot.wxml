@@ -1,0 +1,19 @@
+<!--pages/bot/bot.wxml-->
+<!-- <web-view src="https://bjutxiaomei20190328110930.azurewebsites.net/"></web-view> -->
+<!-- <button 
+type="primary" 
+size="40" 
+session-from="bot | {{nickName}} | {{avatarUrl}}" 
+open-type="contact" 
+>客服机器人</button>  -->
+
+<button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image class='btnImg' src='../../images/jiqiren.png'></image>
+    <view>联系客服</view>
+ </button>
+
+  <button class='btn2' open-type='openSetting'>
+    <image class='btnImg' src='../../images/shezhi.png'></image>
+    <view>授权设置</view>
+ </button>

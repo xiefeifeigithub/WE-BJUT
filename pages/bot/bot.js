@@ -1,4 +1,4 @@
-// pages/search/search.js
+// pages/bot/bot.js
 Page({
 
   /**

@@ -1,8 +1,6 @@
 // pages/account/account.js
-
 var app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -10,17 +8,17 @@ Page({
     userName: '', //用户名
     userPwd: '', //密码
     info: {} ,//学生基本信息
-    passwordStatus: 'true',
-    unload:'true'
+    passwordStatus: 'true', //密码状态
+    unload:'true'  //是否加载学生个人信息
   },
-  
+  //密码短暂显示功能
   changeStatus:function(e)
   {
     //passwordStatus - 变可见
     this.setData({
       passwordStatus: !this.data.passwordStatus
     })
-    console.log(this.data.passwordStatus)
+    console.log('显示密码：' + this.data.passwordStatus)
 
     //设置定时器 - 延时1秒
     var timer = setTimeout(function () {
@@ -28,7 +26,7 @@ Page({
       this.setData({
         passwordStatus: !this.data.passwordStatus
       })
-      console.log(this.data.passwordStatus)
+      console.log('隐藏密码：' + this.data.passwordStatus)
     }.bind(this), 1000);
   },
 
@@ -45,6 +43,7 @@ Page({
       userName: e.detail.value
     })
   },
+  // 获取用户输入的密码
   passWdInput: function(e) {
     this.setData({
       userPwd: e.detail.value
@@ -61,10 +60,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("onLoad")
+    console.log("onLoad：加载account页面：从缓存中获取用户名和密码")
     // 从缓存中获取用户信息
     var username = app.globalData.username
+    console.log('用户名：' + username)
     var userpassword = app.globalData.userpassword
+    console.log('密码：' + userpassword)
     var that = this
     that.setData({
       userName: username
@@ -85,51 +86,12 @@ Page({
     })
 
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  },
 
   //确认绑定
   formSubmit: function(e) {
     console.log('设置用户名和密码的缓存')
+
+    // 设置用户名和密码的缓存（函数调用）
     this.setStorage()
 
     console.log(e);

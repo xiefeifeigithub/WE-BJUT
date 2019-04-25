@@ -29,7 +29,7 @@ Page({
     //发起网络请求
     wx.request({
       //     url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getlist', // 仅为示例，并非真实的接口地址
-      url: 'https://bjut.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getListByClassification', // 真实接口地址
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getListByClassification', // 真实接口地址
       data: { lastid: lastid, limit: limit, classification: classification },
       header: {
         'content-type': 'application/json' // 默认值

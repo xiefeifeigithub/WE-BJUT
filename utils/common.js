@@ -15,7 +15,7 @@ function loadInfo(id,obj,callback,cache){
   //发起网络请求
   wx.request({
   //  url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getDetail', // 仅为示例，并非真实的接口地址
-    url: 'https://bjut.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getDetail', // 真实的接口地址
+    url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getDetail', // 真实的接口地址
     data: { id: id },
     header: {
       'content-type': 'application/json' // 默认值

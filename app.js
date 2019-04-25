@@ -5,7 +5,7 @@ App({
 
      //清理本地的所有缓存
     console.log("小程序初始化")
-    wx.clearStorage();
+    //wx.clearStorage();
 
     //清除本地指定缓存
     wx.removeStorage({
@@ -86,16 +86,20 @@ App({
     classification: ''  //文章分类
   },
   data: {
+    //课表
     keyTimetable: 'timetableLcocal',        //用于获取本地存储的课程信息的键
     keyStudentName: 'studentNameLocal',     //用于获取本地存储的学生姓名的键
     keyStudentNum: 'studentNumLocal',      //用于获取本地存储的学生学号的键
     keyClassNum: 'classNum',                 //班号
     keyCollege: 'college',                   //学院
     keyMajor: 'major',                        //专业
-    keyExerciseLesson: 'exerciseLesson'       //实践课
+    keyExerciseLesson: 'exerciseLesson',       //实践课
+
+    //文章
+    // keyCmsList: 'CmsList' //用于获取文章数据的键
   },
   //url: 'https://你的域名/index.php?s=/'
-  url: 'https://bjut.bjutxiaomei.cn/index.php?s=/',
+  url: 'https://www.bjutxiaomei.cn/index.php?s=/',
 
   /**
    * 检测本地是否存有课表数据

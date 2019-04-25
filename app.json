@@ -6,9 +6,9 @@
     "pages/lists/lists",
     "pages/detail/detail",
     "pages/logs/logs",
-    "pages/search/search",
     "pages/classificationlists/classificationlists",
-    "pages/timetable/timetable"
+    "pages/timetable/timetable",
+    "pages/bot/bot"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -34,6 +34,12 @@
       {
         "pagePath": "pages/account/account",
         "text": "个人中心",
+        "iconPath": "images/me0.png",
+        "selectedIconPath": "images/me1.png"
+      },
+      {
+        "pagePath": "pages/bot/bot",
+        "text": "机器人",
         "iconPath": "images/me0.png",
         "selectedIconPath": "images/me1.png"
       }
