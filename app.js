@@ -83,7 +83,8 @@ App({
     type: null, //文章类型
     username: '', //学号
     userpassword: '',  //教务密码
-    classification: ''  //文章分类
+    classification: '',  //文章分类
+    freeRooms: [] //空教室
   },
   data: {
     //课表

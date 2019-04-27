@@ -8,13 +8,15 @@
     "pages/logs/logs",
     "pages/classificationlists/classificationlists",
     "pages/timetable/timetable",
-    "pages/bot/bot"
+    "pages/bot/bot",
+    "pages/rooms/rooms",
+    "pages/rooms/rooms-inquiry/rooms-inquiry"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#0096C3",
+    "navigationBarBackgroundColor": "#FFFFFF",  
     "navigationBarTitleText": "工大小美",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black" 
   },
   "tabBar": {
     "selectedColor": "#0096C3",

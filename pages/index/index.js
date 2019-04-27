@@ -10,8 +10,8 @@ Page({
       title: '课表'
     }, {
       icon: '/images/ck.png',
-      src: '/pages/core/grade/grade',
-      title: "蹭课"
+      src: '../rooms/rooms',
+      title: "空教室"
     }, {
       icon: '/images/tsg.png',
       src: '/pages/core/exam/exam',

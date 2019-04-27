@@ -1,0 +1,12 @@
+<view class='rooms_inquiry_container' wx:for="{{freeRooms}}">
+    <view class="result_container">
+        <view class='result_text_container'>
+            <text class='result_text'>教室：</text>
+            <text class='result_text'>{{item}}</text>
+        </view>
+        <view class='result_text_container'>
+            <text class='result_text'>状态：</text>
+            <text class='result_text'>空闲</text>
+        </view>
+    </view>
+</view>

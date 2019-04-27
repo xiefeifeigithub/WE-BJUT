@@ -1,0 +1,40 @@
+<!--pages/rooms/rooms.wxml-->
+<import src='rooms-result/rooms-result-templete.wxml' />
+<view class='rooms_container'>
+    <view class='background'>
+        <!-- 四个选择器 -->
+        <!-- 设置单独选择器背景 -->
+        <view class='picker_container'>
+            <picker bindchange="storeyPickerChange" value="{{storeyIndex}}" range="{{storeyArray}}">
+                <!-- 选择后隐藏初始提示 -->
+                <text wx:if="{{storeyPick}}" class='unpicker_text'>请选择教学楼</text>
+                <text wx:else class='picker_text'>{{storeyArray[storeyIndex]}}</text>
+            </picker>
+        </view>
+        <view class='picker_container'>
+            <picker bindchange="weekPickerChange" value="{{weekIndex}}" range="{{weekArray}}">
+                <text wx:if="{{weekPick}}" class='unpicker_text'>请选择周次</text>
+                <text wx:else class='picker_text'>{{weekArray[weekIndex]}}</text>
+            </picker>
+        </view>
+        <view class='picker_container'>
+            <picker bindchange="dayPickerChange" value="{{dayIndex}}" range="{{dayArray}}">
+                <text wx:if="{{dayPick}}" class='unpicker_text'>请选择星期</text>
+                <text wx:else class='picker_text'>{{dayArray[dayIndex]}}</text>
+            </picker>
+        </view>
+        <view class='picker_container'>
+            <picker bindchange="timePickerChange" value="{{timeIndex}}" range="{{timeArray}}">
+                <text wx:if="{{timePick}}" class='unpicker_text'>请选择节次</text>
+                <text wx:else class='picker_text'>{{timeArray[timeIndex]}}</text>
+            </picker>
+        </view>
+        <!-- 查询按钮 -->
+        <view class="nav">
+            <button class='sub-button' bindtap='onTap'>查询空教室</button>
+        </view>
+        <!-- 提示信息 -->
+        <text class='point_text'>*显示信息仅供参考，以实际教室情况为准</text>
+        <text class='point_text'>*周末三教教室正常查询，其他教学楼暂不支持</text>
+    </view>
+</view>
