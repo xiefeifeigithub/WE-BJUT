@@ -12,12 +12,12 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#4090FE",
+    "navigationBarBackgroundColor": "#0096C3",
     "navigationBarTitleText": "工大小美",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "selectedColor": "#4090FE",
+    "selectedColor": "#0096C3",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -40,8 +40,8 @@
       {
         "pagePath": "pages/bot/bot",
         "text": "机器人",
-        "iconPath": "images/me0.png",
-        "selectedIconPath": "images/me1.png"
+        "iconPath": "images/bot0.png",
+        "selectedIconPath": "images/bot1.png"
       }
 
     ]
