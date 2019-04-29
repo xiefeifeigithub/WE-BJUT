@@ -8,6 +8,15 @@
   </block>
 </view>
 
+
+<!-- 机器人 -->
+<button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image class='btnImg' src='../../images/jiqiren.png'></image>
+    <view>联系客服</view>
+ </button>
+ 
+
 <!--卡片列表-->
 <view class="main-card">
   <view class="main-card-item" >

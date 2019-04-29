@@ -8,7 +8,6 @@
     "pages/logs/logs",
     "pages/classificationlists/classificationlists",
     "pages/timetable/timetable",
-    "pages/bot/bot",
     "pages/rooms/rooms",
     "pages/rooms/rooms-inquiry/rooms-inquiry"
   ],
@@ -38,14 +37,7 @@
         "text": "个人中心",
         "iconPath": "images/me0.png",
         "selectedIconPath": "images/me1.png"
-      },
-      {
-        "pagePath": "pages/bot/bot",
-        "text": "机器人",
-        "iconPath": "images/bot0.png",
-        "selectedIconPath": "images/bot1.png"
       }
-
     ]
     
   }
