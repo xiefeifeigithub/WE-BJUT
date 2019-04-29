@@ -1,3 +1,4 @@
+
 <!-- //  wxSearch作者提供的模板 -->
 <view class='background'>
   <import src="../../wxSearch/wxSearch/wxSearch.wxml" />

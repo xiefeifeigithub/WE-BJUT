@@ -1,7 +1,7 @@
 <!--pages/account/account.wxml-->
 
 <view class='content'>
-  <view class='nav'>
+  
     <view class="about-wei">
       <view class="about-img">
         <open-data class="in-img" mode="scaleToFill" type="userAvatarUrl"></open-data>
@@ -71,4 +71,3 @@
       <button class="sub-button" bindtap='logout'>退出登录</button>
     </view>
   </view>
-</view>

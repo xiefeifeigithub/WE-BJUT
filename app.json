@@ -12,13 +12,13 @@
     "pages/rooms/rooms-inquiry/rooms-inquiry"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FFFFFF",  
+    "backgroundTextStyle": "light",   
+    "navigationBarBackgroundColor": "#4090FE",  
     "navigationBarTitleText": "工大小美",
     "navigationBarTextStyle": "black" 
   },
   "tabBar": {
-    "selectedColor": "#0096C3",
+    "selectedColor": "#4090FE",
     "list": [
       {
         "pagePath": "pages/index/index",

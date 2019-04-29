@@ -1,3 +1,6 @@
+
+
+
 <!--功能导航-->
 <view class="nav">
   <block wx:for="{{student}}">
@@ -32,3 +35,6 @@ session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
    
   </view>
 </view>
+
+
+
