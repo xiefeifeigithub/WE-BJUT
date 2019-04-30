@@ -1,0 +1,13 @@
+<!--pages/exam/exam.wxml-->
+
+
+<view class='card'>
+  <view>
+    <block wx:for="{{examInfo}}">
+      <view class="item">
+        <text>{{item.title}}</text>
+        <text>{{item.info}}</text>
+      </view>
+    </block>
+  </view>
+</view>

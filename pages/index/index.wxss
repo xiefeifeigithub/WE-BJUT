@@ -1,6 +1,6 @@
 /*轮播图*/
 .change{
-  height: 320rpx;
+  height: 350rpx;
   padding: 10px;
   box-sizing: border-box;
   background-color: white;
@@ -42,7 +42,7 @@ page{
   align-items: center;
   box-sizing: border-box;
   width: 25%;
-  height: 140rpx;
+  height: 180rpx;
   
 }
 .item image {
@@ -52,7 +52,7 @@ page{
   margin: 10rpx auto;
 }
 .item text{
-  font-size: 15px;
+  font-size: 16px;
   display: block;
   margin: 1rpx;
 }
