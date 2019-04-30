@@ -13,12 +13,12 @@
   ],
   "window": {
     "backgroundTextStyle": "light",   
-    "navigationBarBackgroundColor": "#4090FE",  
+    "navigationBarBackgroundColor": "#7878EC",  
     "navigationBarTitleText": "工大小美",
     "navigationBarTextStyle": "black" 
   },
   "tabBar": {
-    "selectedColor": "#4090FE",
+    "selectedColor": "#7878EC",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -34,7 +34,7 @@
       },
       {
         "pagePath": "pages/account/account",
-        "text": "个人中心",
+        "text": "个人",
         "iconPath": "images/me0.png",
         "selectedIconPath": "images/me1.png"
       }

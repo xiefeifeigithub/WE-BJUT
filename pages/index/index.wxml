@@ -1,11 +1,19 @@
-
-
+<view class='change'>
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
 
 <!--功能导航-->
 <view class="nav">
   <block wx:for="{{student}}">
     <navigator url="{{item.src}}" class="item" hover-class="navHoverClass" hover-stay-time="200" >
       <image src="{{item.icon}}"></image>
+      <view>\n</view>
       <text>{{item.title}}</text>
     </navigator>
   </block>
