@@ -111,6 +111,7 @@ Page({
       },
       success: function(res) {
         if (res.statusCode == 200) {
+          // console.log(res.data)
           app.globalData.freeRooms = res.data
           wx.navigateTo({
             url: "rooms-inquiry/rooms-inquiry"

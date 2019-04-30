@@ -12,6 +12,34 @@
 
   <view class='blank'></view>
 
+   <view class='tags'>
+    <view class='background1'>
+      <text class='title'>组织机构</text>
+    </view>
+    <view>\n</view>
+    <view class='gaps2'></view>
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='校医院' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>校医院</text>
+    </view>
+
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='图书馆' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>图书馆</text>
+    </view>
+
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='信息学部' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>信息学部</text>
+    </view>
+
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='创客空间' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>创客空间</text>
+    </view>
+
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='文法学部' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>文法学部</text>
+    </view>
+  </view>
+
+
   <view class='tags'>
     <view class='background1'>
       <text class='title'>校园网</text>
@@ -203,24 +231,6 @@
       <!-- <view class='badge text-sm'>10</view> -->
     </view>
   </view>
-
-  <view class='tags'>
-    <view class='background1'>
-      <text class='title'>组织机构</text>
-    </view>
-    <view>\n</view>
-    <view class='gaps2'></view>
-    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='校医院' bindtap="querySpecifiedArticles">
-      <text class='text-sm text-gray'>校医院</text>
-      <!-- <view class='badge text-sm'>10</view> -->
-    </view>
-
-    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='图书馆' bindtap="querySpecifiedArticles">
-      <text class='text-sm text-gray'>图书馆</text>
-      <!-- <view class='badge text-sm'>10</view> -->
-    </view>
-  </view>
-
   
   <view class='tags'>
     <view class='background1'>

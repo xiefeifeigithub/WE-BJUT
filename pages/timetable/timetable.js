@@ -36,6 +36,9 @@ Page({
       })
     }
   },
+  onReady: function () {
+    this.dialog = this.selectComponent("#dialog");
+  },
   //判断本地是否有数据
   hasLocalData: function () {
     var hasData = false;

@@ -1,4 +1,4 @@
-// pages/exam/exam.js
+// pages/cet/cet.js
 
 var app = getApp()
 Page({
@@ -9,22 +9,22 @@ Page({
   data: {
     account: '', //用户名
     password: '', //密码
-    examInfo: []  //考试信息
+    cetInfo: []  //四六级考试成绩
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("onload:加载考试信息页面")
-    
+    console.log("onload:加载四六级信息页面")
+
     var account = this.data.account
     var password = this.data.password
 
     try {
       const value = wx.getStorageSync('username')
       if (value) {
-         account = value
+        account = value
       }
     } catch (e) {
       wx.switchTab({
@@ -35,7 +35,7 @@ Page({
     try {
       const value = wx.getStorageSync('userpassword')
       if (value) {
-         password = value
+        password = value
       }
     } catch (e) {
       wx.switchTab({
@@ -44,12 +44,11 @@ Page({
     }
 
     var that = this
-    if (account != '' && password!='')
-    {
+    if (account != '' && password != '') {
       //查询考试信息
       wx.request({
-        // https://www.bjut1960.cn/examination?xh=学号&mm=密码
-        url: 'https://www.bjut1960.cn/examination?xh=' + account + '&mm=' + password,
+        // https://www.bjut1960.cn/grade?xh=学号&mm=密码
+        url: 'https://www.bjut1960.cn/grade?xh=' + account + '&mm=' + password,
         method: 'GET',
         header: {
           "Content-Type": "application/json"
@@ -60,11 +59,11 @@ Page({
             console.log("考试信息返回成功")
             console.log(res)
             console.log(res.data[0])
-            console.log(res.data[1])
+           
             console.log(res.data)
 
             that.setData({
-              examInfo: res.data
+              cetInfo: res.data
             })
 
           } else {
@@ -84,11 +83,11 @@ Page({
         }
       });
     }
-    else{
+    else {
       console.log("转到身份认证界面")
       wx.switchTab({
         url: '../account/account',
       })
-    } 
+    }
   }
 })

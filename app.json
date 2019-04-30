@@ -10,7 +10,8 @@
     "pages/timetable/timetable",
     "pages/rooms/rooms",
     "pages/rooms/rooms-inquiry/rooms-inquiry",
-    "pages/exam/exam"
+    "pages/exam/exam",
+    "pages/cet/cet"
   ],
   "window": {
     "backgroundTextStyle": "light",   

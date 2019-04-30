@@ -3,9 +3,6 @@
 App({
   onLaunch: function () {
   
-
-
-
      //清理本地的所有缓存
     console.log("小程序初始化")
     //wx.clearStorage();
@@ -18,8 +15,6 @@ App({
         console.log("清除文章数据缓存")
       }
     })
-
-    
 
     //从缓存中获取用户信息
     console.log("从缓存中获取用户信息")
