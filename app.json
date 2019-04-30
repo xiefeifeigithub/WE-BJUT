@@ -9,7 +9,8 @@
     "pages/classificationlists/classificationlists",
     "pages/timetable/timetable",
     "pages/rooms/rooms",
-    "pages/rooms/rooms-inquiry/rooms-inquiry"
+    "pages/rooms/rooms-inquiry/rooms-inquiry",
+    "pages/exam/exam"
   ],
   "window": {
     "backgroundTextStyle": "light",   

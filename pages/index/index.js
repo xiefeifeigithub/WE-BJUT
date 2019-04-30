@@ -31,7 +31,7 @@ Page({
       title: "成绩"
     }, {
       icon: '/images/kc.png',
-      src: '/pages/core/library/library',
+      src: '/pages/exam/exam',
       title: "考试信息"
     }]
   },
