@@ -39,18 +39,6 @@
 @import "/wxParse/wxParse.wxss";
 @import "/wxSearch/wxSearch/wxSearch.wxss";
 
-.navtab{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  background: linear-gradient(rgb(0, 150, 195),white);
-  position: fixed;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  vertical-align: middle;
-  margin-bottom: 100px;
-}
 
 
 

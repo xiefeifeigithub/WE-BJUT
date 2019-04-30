@@ -1,3 +1,18 @@
+/*轮播图*/
+.swiper {
+  height: 400rpx;
+  width: 100%;
+}
+.swiper-image {
+  height: 100%;
+  width: 100%;
+}
+.slide-image{
+   height: 100%;
+  width: 100%;
+}
+
+
 page{
     background: #f6f6f6;
 }
@@ -8,8 +23,8 @@ page{
   background: #fff;
   border-bottom: 1rpx solid #e5e5e5;
   padding: 15rpx 10rpx 10rpx;
-  margin-bottom: 20rpx;
-  min-height: 350rpx;
+  margin-bottom: 0rpx;
+  min-height: 180rpx;
   overflow: hidden;
 }
 .item {
@@ -19,15 +34,17 @@ page{
   align-items: center;
   box-sizing: border-box;
   width: 25%;
-  height: 185rpx;
+  height: 150rpx;
+  
 }
 .item image {
   display: block;
-  width: 100rpx;
-  height: 100rpx;
-  margin: 15rpx auto;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx auto;
 }
 .item text{
+  font-size: 15px;
   display: block;
   margin: 1rpx;
 }
