@@ -1,3 +1,4 @@
+<view class='change'>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
@@ -5,7 +6,7 @@
       </swiper-item>
     </block>
   </swiper>
-
+</view>
 
 <!--功能导航-->
 <view class="nav">

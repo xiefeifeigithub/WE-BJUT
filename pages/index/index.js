@@ -4,8 +4,7 @@ Page({
   data: {
     //轮播图
     imgUrls: [
-
-      'http://tu.027cgb.com/618251/1.png',
+      '',
       'http://tu.027cgb.com/618251/2.jpg',
       'http://tu.027cgb.com/618251/3.jpg',
       'http://tu.027cgb.com/618251/4.jpg',
