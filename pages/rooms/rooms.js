@@ -1,5 +1,5 @@
 // pages/rooms/rooms.js
-var app = getApp()
+const app = getApp()
 Page({
 
   /**
@@ -18,15 +18,18 @@ Page({
       '第十一周', '第十二周', '第十三周', '第十四周', '第十五周', '第十六周'
     ],
     weekIndex: 0,
-    dayArray: ['星期一', '星期二', '星期三', '星期四', '星期五','星期六','星期日'],
+    dayArray: [ '星期日','星期一', '星期二', '星期三', '星期四', '星期五','星期六'],
     dayIndex: 0,
-    timeArray: ['1-2节', '3-4节', '5-6节', '7-8节', '9-10节', '11-12节'],
+    timeArray: ['上午','下午','晚上'],
     timeIndex: 0,
-    techBuilding: 0,           //查询哪栋教学楼[1,3,4]：一教、三教、四教
+    techBuilding: 0,            //查询哪栋教学楼[1,3,4]：一教、三教、四教
     week: 0,                    //查询哪个周[1-16周]
-    weekday: '',              //查询周几[周一至周日]
-    classStart: 0,           //查询哪个时段（开始）
-    classEnd: 0               //查询哪个时段（结束）
+    weekday: '',                //查询周几[周一至周日]
+    classStart: 0,              //查询哪个时段（开始）
+    classEnd: 0,                //查询哪个时段（结束）
+    defaultWeek:null,           //当前是第几周
+    defaultWeekday:null,         //当前是周几
+    emptyRooms:[]
   },
 
   storeyPickerChange: function(e) {
@@ -80,9 +83,18 @@ Page({
   timePickerChange: function(e) {
     var that = this
     var tempClassTime = that.data.timeArray[e.detail.value]
-
-    var timeStart = parseInt(tempClassTime.charAt(0))
-    var timeEnd = parseInt(tempClassTime.charAt(2))
+    var timeStart = 0
+    var timeEnd = 0
+    if (e.detail.value == 0){
+      timeStart = 1;
+      timeEnd = 4;
+    } else if (e.detail.value == 1){
+      timeStart = 5;
+      timeEnd = 8;
+    } else if (e.detail.value == 2){
+      timeStart =9;
+      timeEnd = 12;
+    }
     that.setData({
       classStart: timeStart,
       classEnd: timeEnd
@@ -103,6 +115,7 @@ Page({
     var weekUrl = '&currentweek=' + that.data.week;
     var classTimeUrl = '&time1=' + that.data.classStart + '&time2=' + that.data.classEnd;
     var requestUrl = buildingUrl + weekdayUrl + weekUrl + classTimeUrl;
+    console.log('查询的URL:'+requestUrl)
     wx.request({
       url: 'https://www.bjut1960.cn/freeroom?' + requestUrl,
       method: 'GET',
@@ -111,11 +124,20 @@ Page({
       },
       success: function(res) {
         if (res.statusCode == 200) {
-          // console.log(res.data)
-          app.globalData.freeRooms = res.data
-          wx.navigateTo({
-            url: "rooms-inquiry/rooms-inquiry"
-          });
+          that.setData({emptyRooms:res.data})
+         
+          var tempStr = '';
+          if(that.data.emptyRooms.length == 0){
+            tempStr = '没有符合查询条件的空闲教室...'
+          }else{
+            for (var i = 0; i < that.data.emptyRooms.length; i++) {
+              tempStr += '[' + that.data.emptyRooms[i] + ']' + ' ';
+            }
+          }
+          wx.showModal({
+            title: '空闲教室情况',
+            content: tempStr,
+          })
         }else{
           wx.showToast({
             title: '请检查输入的有效性',
@@ -128,6 +150,8 @@ Page({
         console.log(res)
       }
     })
+    
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -137,13 +161,26 @@ Page({
     // wx.switchTab({
     //   url: '../account/account',
     // })
+
+    //获取周的初始值、周几的初始值
+    var currDate = new Date();
+    var currWeek = app.globalData.currentWeek;
+    var defaultWeek = this.data.weekArray[currWeek - 1];
+    var tempWeekdayStr = this.data.dayArray[currDate.getDay()];
+    var tempWeekday = tempWeekdayStr.charAt(2);
+
+    this.setData({ 
+      week: currWeek,
+      weekday:tempWeekday,
+      defaultWeek:defaultWeek,
+      defaultWeekday: tempWeekdayStr
+     })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
-
+  onReady: function () {
   },
 
   /**

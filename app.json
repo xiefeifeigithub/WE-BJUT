@@ -1,15 +1,17 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/score/score-result/score-result",
+    "pages/score/score-query",
+    "pages/rooms/rooms",
     "pages/strategy/strategy",
-    "pages/account/account",  
+    "pages/account/account",
     "pages/lists/lists",
     "pages/detail/detail",
     "pages/logs/logs",
     "pages/classificationlists/classificationlists",
     "pages/timetable/timetable",
     "pages/rooms/rooms",
-    "pages/rooms/rooms-inquiry/rooms-inquiry",
     "pages/exam/exam",
     "pages/cet/cet"
   ],
@@ -17,7 +19,7 @@
     "backgroundTextStyle": "light",   
     "navigationBarBackgroundColor": "#7878EC",  
     "navigationBarTitleText": "工大小美",
-    "navigationBarTextStyle": "black" 
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "selectedColor": "#7878EC",
@@ -41,7 +43,6 @@
         "selectedIconPath": "images/me1.png"
       }
     ]
-    
-  }
-  
+  },
+  "sitemapLocation": "sitemap.json"
 }

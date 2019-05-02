@@ -26,9 +26,13 @@ Page({
       title: "空教室"
     }, {
       icon: '/images/tsg.png',
-        src: '../cet/cet',
+      src: '/pages/score/score-query',
+      title: "成绩"
+    },{
+      icon: '/images/tsg.png',
+      src: '../cet/cet',
       title: "四六级"
-    }, {
+    },{
       icon: '/images/kc.png',
       src: '/pages/exam/exam',
       title: "考试信息"

@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-var app = getApp()
+const app = getApp()
 Page({
   data: {
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
@@ -14,28 +14,26 @@ Page({
     currentWeek: 0,
     allLessonsList: [],      //全部的课表信息(不包含教师姓名，上课周)
     wholeLessonList: [],      //完整的课程信息（含教师姓名，上课周）
-    exerciseLesonList:[],     //实践课课程信息
+    exerciseLesonList: [],     //实践课课程信息
     icon_lessonUrl: '../../images/icons/all_lesson.png',
     isShowAll: true
   },
 
-  /**
-    * 生命周期函数--监听页面加载
-    */
-
-  // redirectTo  switchTab
-  onLoad: function (options) {
-    if (this.hasLocalData() == true) {
-       console.log("数据从本地获取");
-       this.getTimetableFromLocal();
-       this.getExerciseLessonFromLocal();
-    } else {
-      console.log("转到身份认证界面")
-      wx.switchTab({
-        url: '../account/account',
-      })
-    }
+  onLoad: function () {
+    console.log("数据从本地获取");
+    this.getTimetableFromLocal();
+    this.getExerciseLessonFromLocal();
   },
+  /**
+ * 生命周期函数--监听页面初次渲染完成
+ */
+  onReady: function () {
+    this.dialog = this.selectComponent("#dialog");
+  },
+
+  onShow: function () {
+  },
+
   onReady: function () {
     this.dialog = this.selectComponent("#dialog");
   },
@@ -78,7 +76,7 @@ Page({
     }
   },
 
-  getExerciseLessonFromLocal:function(){
+  getExerciseLessonFromLocal: function () {
     var localData = [];
     var that = this;
 
@@ -136,7 +134,7 @@ Page({
         "week": week,
         "time": time
       });
-      this.setData({ mutiLessons:tempList2 });
+      this.setData({ mutiLessons: tempList2 });
     } else {
       var tempStrArr1 = thatWholeList[index].kcmc.split('\n');
       lessonName = tempStrArr1[0];
@@ -167,32 +165,32 @@ Page({
           });
         }
       }
-      for(var i = 0; i < tempList2.length;i++){
+      for (var i = 0; i < tempList2.length; i++) {
         var startWeek = 0;
-        var tempStartWeek = tempList2[i].week.substr(0,2);
-        if(tempStartWeek[1] == '-'){
+        var tempStartWeek = tempList2[i].week.substr(0, 2);
+        if (tempStartWeek[1] == '-') {
           startWeek = parseInt(tempStartWeek[0]);
-        }else{
+        } else {
           startWeek = parseInt(tempStartWeek);
         }
         sortList.push({
-          "lessonName":tempList2[i].lessonName,
+          "lessonName": tempList2[i].lessonName,
           "teacher": tempList2[i].teacher,
           "location": tempList2[i].location,
           "week": tempList2[i].week,
           "time": tempList2[i].time,
-          "startWeek":startWeek
+          "startWeek": startWeek
         });
       }
       sortList.sort(this.sortStartWeek)
       this.setData({ mutiLessons: sortList });
     }
 
-    
+
     this.dialog.showDialog();
   },
-  sortStartWeek:function(lesson1,lesson2){
-    return lesson1.startWeek-lesson2.startWeek;
+  sortStartWeek: function (lesson1, lesson2) {
+    return lesson1.startWeek - lesson2.startWeek;
   },
   /**
    * 获取某节课的起始时间和结束时间
@@ -274,21 +272,8 @@ Page({
   },
 
   showTimetableByCurrentWeek: function () {
-    var semesterStartDate = new Date('2019/02/18 00:00:00');
-    //semesterStartDate.setFullYear(2019,1,18,0);
-    var currentDate = new Date();
-    var interval = parseFloat(currentDate - semesterStartDate);
-    var weekNow = 0;
-    var days = interval / 1000 / 60 / 60 / 24;
-    if ((days % 7) != 0) {
-      weekNow = days / 7 + 1;
-    } else {
-      weekNow = days / 7;
-    }
 
-    this.setData({ currentWeek: parseInt(weekNow) })
-    //this.getTimetableFromLocal();
-
+    this.setData({ currentWeek: app.globalData.currentWeek})
     var currWeekLessons = [];
 
     for (var i = 0; i < this.data.wholeLessonList.length; i++) {
@@ -350,14 +335,13 @@ Page({
     if (this.data.allLessonsList.length == 0) {
       this.setData({ allLessonsList: list })
     }
-    console.log("简化数据：" + list.length);
+
   },
   /**
    * 显示所有课表，如果时间重叠，用角标标注
    */
   showTimetableByAll: function () {
     var tempList = this.data.allLessonsList;
-    console.log("showTimetableByAll--listSize:" + tempList.length);
     this.setData({ currList: tempList });
   },
   /**
