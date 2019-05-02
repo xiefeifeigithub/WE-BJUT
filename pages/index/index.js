@@ -14,7 +14,7 @@ Page({
       title: "空教室"
     }, {
       icon: '/images/tsg.png',
-      src: '/pages/core/exam/exam',
+      src: '/pages/score/score-query',
       title: "成绩"
     }, {
       icon: '/images/kc.png',

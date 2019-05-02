@@ -1,0 +1,21 @@
+<!--pages/score/score-query.wxml-->
+<!--学年选择器和学期选择器-->
+<view class="container">
+  <view class="gap"></view>
+  <picker class="picker_container" bindchange="yearPickerChange" value="{{index}}" range="{{yearArray}}">
+    <view class="picker">
+      <text wx:if="{{yearPick}}" class='picker_text'>{{yearArray[index]}}</text>
+      <text wx:else class='unpicker_text'>点击选择学年</text>
+
+    </view>
+  </picker>
+  <picker class="picker_container" bindchange="semesterPickerChange" value="{{index}}" range="{{semesterArray}}">
+    <view class="picker">
+      <text wx:if="{{semesterPick}}" class='picker_text'>{{semesterArray[index]}}</text>
+      <text wx:else class='unpicker_text'>点击选择学期</text>
+    </view>
+  </picker>
+  <view class="nav">
+            <button class='sub-button' catchtap='queryBtn'>点击查询</button>
+        </view>
+</view>

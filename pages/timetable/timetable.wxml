@@ -32,7 +32,7 @@
         </view>
       </view>
     </scroll-view>
-    
+
   </view>
   <!-- 实践课 -->
   <view wx:for="{{exerciseLesonList}}">

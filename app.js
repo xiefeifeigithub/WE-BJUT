@@ -2,10 +2,8 @@
 
 App({
   onLaunch: function () {
-  
-
-
-
+    //计算全局变量currentWeek
+    this.calculateCurrentWeek();
      //清理本地的所有缓存
     console.log("小程序初始化")
     //wx.clearStorage();
@@ -86,11 +84,12 @@ App({
   globalData: {
     userInfo: null,
     
-    type: null, //文章类型
-    username: '', //学号
-    userpassword: '',  //教务密码
-    classification: '',  //文章分类
-    freeRooms: [] //空教室
+    type: null,             //文章类型
+    username: '',           //学号
+    userpassword: '',       //教务密码
+    classification: '',     //文章分类
+    freeRooms: [],          //空教室
+    currentWeek:null        //当前是第几周
   },
   data: {
     //课表
@@ -101,6 +100,8 @@ App({
     keyCollege: 'college',                   //学院
     keyMajor: 'major',                        //专业
     keyExerciseLesson: 'exerciseLesson',       //实践课
+    keyUserName:'username',                   //用于获取学生学号的键
+    keyPwd:'userpassword'                     //用于获取学生密码的键
 
     //文章
     // keyCmsList: 'CmsList' //用于获取文章数据的键
@@ -239,4 +240,21 @@ App({
       wx.setStorageSync(this.data.keyTimetable, data);
     }
   },
+
+  /**
+   * 根据开学时间，计算当前时间属于第几周
+   */
+  calculateCurrentWeek:function(){
+    var semesterStartDate = new Date('2019/02/18 00:00:00');
+    var currentDate = new Date();
+    var interval = parseFloat(currentDate - semesterStartDate);
+    var weekNow = 0;
+    var days = interval / 1000 / 60 / 60 / 24;
+    if ((days % 7) != 0) {
+      weekNow = days / 7 + 1;
+    } else {
+      weekNow = days / 7;
+    }
+    this.globalData.currentWeek = parseInt(weekNow)
+  }
 })

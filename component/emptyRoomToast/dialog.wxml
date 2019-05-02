@@ -1,0 +1,7 @@
+ <!--components/Dialog/dialog.wxml-->
+    <view class='wx_dialog_container' hidden="{{!isShow}}">
+        <view class='wx-mask' catchtap='hideDialog'></view>
+        <view class='wx-dialog popup'>
+            <text wx:for="{{emptyRoomList}}" class='content'>{{item}}</text>
+        </view>
+    </view>
