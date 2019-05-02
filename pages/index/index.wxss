@@ -1,3 +1,23 @@
+/*轮播图*/
+.change{
+  height: 350rpx;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: white;
+
+}
+
+.swiper-image {
+  height: 100%;
+  width: 100%;
+}
+.slide-image{
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+}
+
+
 page{
     background: #f6f6f6;
 }
@@ -7,9 +27,12 @@ page{
   align-content: flex-start;
   background: #fff;
   border-bottom: 1rpx solid #e5e5e5;
-  padding: 15rpx 10rpx 10rpx;
-  margin-bottom: 20rpx;
-  min-height: 350rpx;
+  /*padding: 15rpx 10rpx 10rpx;*/
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0rpx;
+  min-height: 180rpx;
   overflow: hidden;
 }
 .item {
@@ -19,15 +42,17 @@ page{
   align-items: center;
   box-sizing: border-box;
   width: 25%;
-  height: 185rpx;
+  height: 180rpx;
+  
 }
 .item image {
   display: block;
-  width: 100rpx;
-  height: 100rpx;
-  margin: 15rpx auto;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx auto;
 }
 .item text{
+  font-size: 16px;
   display: block;
   margin: 1rpx;
 }

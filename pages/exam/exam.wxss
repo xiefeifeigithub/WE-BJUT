@@ -1,0 +1,16 @@
+/* pages/exam/exam.wxss */
+.card{
+  height: 200px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  border-radius: 15px;
+  background-color: rgba(223, 234, 248, 0.986);
+}
+.item{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  color: black;
+  font-size: 15px;
+}

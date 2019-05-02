@@ -33,10 +33,26 @@ Page({
 
   onShow: function () {
   },
-  /**
-  * 生命周期函数--监听页面卸载
-  */
-  onUnload: function () {
+
+  onReady: function () {
+    this.dialog = this.selectComponent("#dialog");
+  },
+  //判断本地是否有数据
+  hasLocalData: function () {
+    var hasData = false;
+    try {
+      const value = wx.getStorageSync('timetableLcocal');
+      if (value) {
+        console.log("本地有数据");
+        hasData = true;
+      } else {
+        hasData = false;
+      }
+    } catch (e) {
+      console.log("获取本地数据出现异常")
+      hasData = false;
+    }
+    return hasData;
   },
 
   /**

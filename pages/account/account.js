@@ -52,6 +52,7 @@ Page({
 
   //设置用户名和密码的缓存
   setStorage: function() {
+    // username: '', //学号
     wx.setStorageSync("username", this.data.userName)
     wx.setStorageSync("userpassword", this.data.userPwd)
     console.log("用户名：" + this.data.userName + " 密码：" + this.data.userPwd);
@@ -115,6 +116,20 @@ Page({
       success: function(res) {
 
         if (res.statusCode == 200) {
+
+          wx.setStorage({
+            key: 'username',
+            data: that.data.userName
+          })
+          wx.setStorage({
+            key: 'userpassword',
+            data: that.data.userPwd
+          })
+
+          
+          // app.globalData.username = this.data.username
+          // app.globalData.userPwd = this.data.userpwd
+
           console.log("教务管理系统")
           console.log(res.data[0])
           that.setData({

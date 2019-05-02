@@ -17,8 +17,6 @@ App({
       }
     })
 
-    
-
     //从缓存中获取用户信息
     console.log("从缓存中获取用户信息")
     var username = wx.getStorageSync('username')
