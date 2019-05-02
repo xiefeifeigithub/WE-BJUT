@@ -1,7 +1,4 @@
 {
 	"navigationBarTitleText": "空教室查询",
-	"navigationBarTextStyle": "black",
-    "usingComponents": {
-      "dialog": "/component/emptyRoomToast/dialog"
-    }
+	"navigationBarTextStyle": "black"
 }

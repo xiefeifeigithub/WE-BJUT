@@ -36,6 +36,4 @@
         <!-- 提示信息 -->
         <text class='point_text'>*显示信息仅供参考，以实际教室情况为准</text>
     </view>
-    <!-- <dialog id='dialog' emptyRoomList="{{emptyRooms}}">
-    </dialog> -->
 </view>
