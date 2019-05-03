@@ -7,6 +7,9 @@
   background: linear-gradient(rgb(0, 150, 195),white);
 }
 */
+page{
+  background: white;
+}
 .top{
   width: 250rpx;
   height: 250rpx;
@@ -37,21 +40,22 @@
 }
 
 .about-wei{ 
-  padding-top: 20px;
+  padding-top: 5px;
   text-align: center;
 }
 .about-img{ 
  display: block; 
- width: 124px; 
- height: 124px;  
- border-radius: 150px;
+ width: 220rpx; 
+ height: 220rpx;  
+ border-radius: 50%;
+ overflow: hidden;
  margin: 20px auto 0; 
- top: 30px;
+ top: 40rpx;
  }
-.in-img{ 
-  width: 300rpx; 
-  height: 300rpx;
-}
+/*.in-img{ 
+  width: 200px; 
+  height: 200px;
+}*/
 .about-title{ 
   display: inline-block; 
   margin:20px 0; 
@@ -145,7 +149,7 @@
   background-color: #7878EC;
   color:#ffffff;
   line-height:1.8;
-  border-radius:30px;
+  border-radius:50rpx;
   padding:5px 100px;
 }
 
@@ -164,9 +168,8 @@
 
 .section__input{
   width: 75%;
-  font-size: 14pt;
+  font-size: 20rpx;
 }
-
 
 .background{
   height: 250px;
@@ -177,24 +180,18 @@
 }
 
 .info{ 
-  font-size: 15px; 
+  font-size: 25rpx; 
   line-height: 2.5; 
-  text-indent: 30px ;
+  text-indent: 50rpx ;
 }
 
 .tags{
-  margin-top: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  margin: 0rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
   box-sizing: border-box;
-  
-  border-bottom-width: 200px;
   display: flex;
   flex-direction: row;
-  
   justify-content: space-between;
   align-items: center;
 }
@@ -207,13 +204,13 @@
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  margin-right: 30px;
+  margin-right: 50rpx;
 }
 .borderline{
-  width: 360px;
+  width: 650rpx;
   position: absolute;
   left: 50%;
-  margin-left: -180px;
+  margin-left: -325rpx;
   background-color: #e5e5e5;
   height: 1rpx;
 }
@@ -222,4 +219,46 @@
   width: 0;
   height: 0;
   color: transparent;
+}
+
+/* 机器人 */
+
+.btn1{
+  background-color: rgba(248, 246, 246, 0.5);
+ /*border: 1px solid #7878EC;*/
+ width: 140rpx;
+ height: 140rpx;
+ border-radius: 50%;
+  margin: 0px;
+  bottom: 60rpx;
+  right: 60rpx;
+  color: #999999;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /*flex-direction: column;
+  align-items: center;
+  justify-content: center;*/
+  position: fixed;
+}
+
+.btn1 image {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.btn1 text{
+  font-size: 20rpx;
+  display: block;
+  margin: 1rpx;
+}
+
+.btn1::after {
+  border: 0; 
 }

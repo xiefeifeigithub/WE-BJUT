@@ -1,20 +1,20 @@
 /* pages/aboutme/aboutme.wxss */
+page{
+    background: rgba(237, 243, 252, 0.986);
+}
 /* 引入搜索样式 */
-.background{
+/*.background{
   width: 100%;
   height: 100%;
   background-color: rgba(223, 234, 248, 0.986);
-}
+}*/
 .blank{
   width: 100%;
-  height: 50px;
+  height: 90rpx;
   background-color: rgba(223, 234, 248, 0.986);
 }
 .tags{
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin: 18rpx;
   padding-top: 0px;
   padding-bottom: 10px;
   box-sizing: border-box;
@@ -22,19 +22,16 @@
   background-color: rgba(253, 253, 253, 0.5);
 }
 .title{
-  margin-top: 15px;
-  margin-bottom: 20px;
-  margin-right: 10px;
-  margin-left: 15px;
-  font-size: 15px;
+  margin-top: 30rpx;
+  margin-bottom: 40rpx;
+  margin-right: 20rpx;
+  margin-left: 30rpx;
+  font-size: 25rpx;
   font-weight: bold;
   color: black;
 }
 .tags-btn{
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 6rpx;
   margin-bottom: 0px;
   margin-top: 10px;
   margin-right: 0px; 
@@ -49,7 +46,7 @@
   border-radius: 150rpx;
 }
 .btn-xs{
-  font-size: 7px;
+  font-size: 14rpx;
   line-height: 2;
 }
 .btn{
@@ -68,10 +65,10 @@
   margin-left: 3px;
   margin-right: 3px;
   align-content: center;
-  font-size: 12px;
+  font-size: 20rpx;
   vertical-align: middle
 }
-.badge{
+/*.badge{
   background: #17807d;
   opacity: 0.85;
   top: 0px;
@@ -94,16 +91,52 @@
   width: 100%;
   height: 6px;
   background-color: #e5e5e5;
-}
-.logo{
-  /*margin-left: 250px;*/
-  float: right; 
-  width: 40px;
-  height: 40px;
-  
-}
+}*/
+
 .background1{
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 机器人 */
+
+.btn1{
+  background-color: rgba(248, 246, 246, 0.5);
+ /*border: 1px solid #7878EC;*/
+ width: 140rpx;
+ height: 140rpx;
+ border-radius: 50%;
+  margin: 0px;
+  bottom: 60rpx;
+  right: 60rpx;
+  color: #999999;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /*flex-direction: column;
+  align-items: center;
+  justify-content: center;*/
+  position: fixed;
+}
+
+.btn1 image {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.btn1 text{
+  font-size: 20rpx;
+  display: block;
+  margin: 1rpx;
+}
+
+.btn1::after {
+  border: 0; 
 }

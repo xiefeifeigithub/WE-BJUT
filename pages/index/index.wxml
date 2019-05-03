@@ -1,3 +1,4 @@
+
 <view class='change'>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
     <block wx:for="{{imgUrls}}">
@@ -23,8 +24,8 @@
 <!-- 机器人 -->
 <button class='btn1'  
 session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image class='btnImg' src='../../images/jiqiren.png'></image>
-    <view>联系客服</view>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>联系客服</text>
  </button>
  
 
@@ -43,6 +44,4 @@ session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
    
   </view>
 </view>
-
-
 

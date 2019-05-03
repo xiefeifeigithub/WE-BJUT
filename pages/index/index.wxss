@@ -1,10 +1,13 @@
+
+page{
+    background: white;
+}
 /*轮播图*/
 .change{
-  height: 350rpx;
-  padding: 10px;
+  height: 320rpx;
+  padding: 20rpx;
   box-sizing: border-box;
   background-color: white;
-
 }
 
 .swiper-image {
@@ -14,23 +17,19 @@
 .slide-image{
   height: 100%;
   width: 100%;
-  border-radius: 15px;
-}
-
-
-page{
-    background: #f6f6f6;
+  border-radius: 30rpx;
 }
 .nav {
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
   background: #fff;
+  border-top: 1rpx solid #e5e5e5;
   border-bottom: 1rpx solid #e5e5e5;
   /*padding: 15rpx 10rpx 10rpx;*/
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-bottom: 20rpx;
   margin-bottom: 0rpx;
   min-height: 180rpx;
   overflow: hidden;
@@ -42,7 +41,7 @@ page{
   align-items: center;
   box-sizing: border-box;
   width: 25%;
-  height: 180rpx;
+  height: 160rpx;
   
 }
 .item image {
@@ -52,7 +51,7 @@ page{
   margin: 10rpx auto;
 }
 .item text{
-  font-size: 16px;
+  font-size: 28rpx;
   display: block;
   margin: 1rpx;
 }
@@ -65,8 +64,8 @@ page{
   display: flex;
   flex-direction: column;
   background: #fff;
-  border-top: 1rpx solid #e5e5e5;
-  border-bottom: 1rpx solid #e5e5e5;
+  /*border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;*/
   margin-bottom: 20rpx;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -101,7 +100,7 @@ page{
   display: flex;
   justify-content: space-between;
 }
-.card-info-left{
+/*.card-info-left{
   display: flex;
   flex-direction: column;
 }
@@ -109,7 +108,7 @@ page{
   display: flex;
   color: #acacac;
   flex-direction: column;
-}
+}*/
 .card-item-open{
   display: flex;
   align-items: center;
@@ -133,22 +132,39 @@ page{
 /* 机器人 */
 
 .btn1{
-  width: 300rpx;
-  height: 300rpx;
-  margin-top: 20rpx;
-  background-color: white;
+  background-color: rgba(248, 246, 246, 0.5);
+ /*border: 1px solid #7878EC;*/
+ width: 140rpx;
+ height: 140rpx;
+ border-radius: 50%;
+  margin: 0px;
+  bottom: 60rpx;
+  right: 60rpx;
   color: #999999;
-  border-radius: 0rpx;
   display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  /*flex-direction: column;
+  align-items: center;
+  justify-content: center;*/
+  position: fixed;
+}
+
+.btn1 image {
+  display: block;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 30rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 
-.btnImg {
-  width: 150rpx;
-  height: 150rpx;
+.btn1 text{
+  font-size: 20rpx;
+  display: block;
+  margin: 1rpx;
 }
 
 .btn1::after {
