@@ -3,8 +3,8 @@
 <view class='content'>
   
     <view class="about-wei">
-      <view class="about-img">
-        <open-data class="in-img" mode="scaleToFill" type="userAvatarUrl"></open-data>
+      <view>
+        <open-data class="about-img" mode="scaleToFill" type="userAvatarUrl"></open-data>
       </view>
       <view class='about-title'>
         <open-data type="userNickName" lang="zh_CN"></open-data>
@@ -47,13 +47,13 @@
     </view>
     <view class='borderline'></view>
     <view class='tags'>
-      <view class='title'>班级</view>
-      <view class='text'>{{info.class}}</view>
+      <view class='title'>专业</view>
+      <view class='text'>{{info.major}}</view>
     </view>
     <view class='borderline'></view>
     <view class='tags'>
-      <view class='title'>专业</view>
-      <view class='text'>{{info.major}}</view>
+      <view class='title'>班级</view>
+      <view class='text'>{{info.class}}</view>
     </view>
     <view class='borderline'></view>
     <view class='tags'>
@@ -71,3 +71,10 @@
       <button class="sub-button" bindtap='logout'>退出登录</button>
     </view>
   </view>
+
+  <!-- 机器人 -->
+<button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>联系客服</text>
+ </button>

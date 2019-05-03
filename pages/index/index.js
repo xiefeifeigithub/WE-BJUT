@@ -29,7 +29,7 @@ Page({
       src: '/pages/score/score-query',
       title: "成绩"
     },{
-      icon: '/images/tsg.png',
+      icon: '/images/eng.png',
       src: '../cet/cet',
       title: "四六级"
     },{
