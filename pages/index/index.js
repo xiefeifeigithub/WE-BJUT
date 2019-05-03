@@ -16,27 +16,39 @@ Page({
     inputShowed: false,
     inputVal: "",
     //导航数据
-    student: [{
-      icon: '/images/kjs.png',
-      src: '../timetable/timetable',   
-      title: '课表'
-    }, {
-      icon: '/images/ck.png',
-      src: '../rooms/rooms',   
-      title: "空教室"
-    }, {
-      icon: '/images/tsg.png',
-      src: '/pages/score/score-query',
-      title: "成绩"
-    },{
-      icon: '/images/eng.png',
-      src: '../cet/cet',
-      title: "四六级"
-    },{
-      icon: '/images/kc.png',
-      src: '/pages/exam/exam',
-      title: "考试信息"
-    }]
+    student:
+      [
+        {
+          icon: '/images/kjs.png',
+          src: '../timetable/timetable',
+          title: '课表'
+        },
+        {
+          icon: '/images/ck.png',
+          src: '../rooms/rooms',
+          title: "空教室"
+        },
+        {
+          icon: '/images/tsg.png',
+          src: '/pages/score/score-query',
+          title: "成绩"
+        },
+        {
+          icon: '/images/tsg.png',
+          src: '../cet/cet',
+          title: "四六级"
+        },
+        {
+          icon: '/images/kc.png',
+          src: '/pages/exam/exam',
+          title: "考试信息"
+        },
+        {
+          icon: '/images/ditu.png',
+          src: '/pages/map/map',
+          title: "地点查询"
+        }
+      ]
   },
 
 

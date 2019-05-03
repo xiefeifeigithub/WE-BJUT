@@ -89,5 +89,12 @@ Page({
         url: '../account/account',
       })
     }
+  },
+  //页面初次渲染完成时触发
+  onReady: function () {
+    //动态设置当前页面的标题
+    wx.setNavigationBarTitle({
+      title: '四六级成绩查询'
+    })
   }
 })

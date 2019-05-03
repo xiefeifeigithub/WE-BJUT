@@ -1,11 +1,11 @@
 <!--index.wxml-->
 <view class='container'>
 
-  <!--<image class="round-click" catchtap='showAllOrPart' src='{{icon_lessonUrl}}' >
-  </image>-->
   <view class='round-click'>
-  <text>全部</text>
+    <image class="round-click" catchtap='showAllOrPart' src='{{icon_lessonUrl}}'>
+    </image>
   </view>
+  
   <view class="top">
     <view style='width:35rpx;height:35rpx;'></view>
     <view wx:for="{{['一','二','三','四','五','六','日']}}" class="top-text">周{{item}}</view>
