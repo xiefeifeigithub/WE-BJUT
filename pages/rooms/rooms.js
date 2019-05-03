@@ -23,7 +23,7 @@ Page({
     weekIndex: 0,
     dayArray: [ '星期日','星期一', '星期二', '星期三', '星期四', '星期五','星期六'],
     dayIndex: 0,
-    timeArray: ['上午','下午','晚上'],
+    timeArray: ['上午', '下午', '晚上', '1-2节', '3-4节', '5-6节', '7-8节', '9-10节','11-12节'],
     timeIndex: 0,
     techBuilding: 0,            //查询哪栋教学楼[1,3,4]：一教、三教、四教
     week: 0,                    //查询哪个周[1-16周]
@@ -94,19 +94,40 @@ Page({
 
   timePickerChange: function(e) {
     var that = this
-    var tempClassTime = that.data.timeArray[e.detail.value]
     var timeStart = 0
     var timeEnd = 0
-    if (e.detail.value == 0){
-      timeStart = 1;
-      timeEnd = 4;
-    } else if (e.detail.value == 1){
-      timeStart = 5;
-      timeEnd = 8;
-    } else if (e.detail.value == 2){
-      timeStart =9;
-      timeEnd = 12;
+    var index = e.detail.value
+    //通过this.data.timeArray数组的下标获知用户的选择
+    switch(index){
+      case 0:
+        timeStart = 1;
+        timeEnd = 4;break;
+      case 1:
+        timeStart = 5;
+        timeEnd = 8;break;
+      case 2:
+        timeStart = 9;
+        timeEnd = 12;break;
+      case 3:
+        timeStart = 1;
+        timeEnd = 2; break;
+      case 4:
+        timeStart = 3;
+        timeEnd = 4; break;
+      case 5:
+        timeStart = 5;
+        timeEnd = 6; break;
+      case 6:
+        timeStart = 7;
+        timeEnd = 8; break;
+      case 7:
+        timeStart = 9;
+        timeEnd = 10; break;
+      case 7:
+        timeStart = 11;
+        timeEnd = 12; break;
     }
+
     that.setData({
       classStart: timeStart,
       classEnd: timeEnd
@@ -121,6 +142,9 @@ Page({
   onTap: function(event) {
     //url请求示例：www.bjut1960.cn/freeroom?building=4&week=一&currentweek=8&time1=3&time2=4
     //含义：查询四教周一第八周第3、4节空闲的教室
+    wx.showLoading({
+      title: '查询中',
+    })
     var that = this
     var buildingUrl = 'building=' + that.data.techBuilding;
     var weekdayUrl = '&week=' + that.data.weekday;
@@ -146,6 +170,7 @@ Page({
               tempStr += '[' + that.data.emptyRooms[i] + ']' + ' ';
             }
           }
+          wx.hideLoading()
           wx.showModal({
             title: that.data.buildingName + '空闲教室情况',
             content: tempStr,

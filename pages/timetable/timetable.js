@@ -23,20 +23,17 @@ Page({
     console.log("数据从本地获取");
     this.getTimetableFromLocal();
     this.getExerciseLessonFromLocal();
+    this.dialog = this.selectComponent("#dialog");
   },
   /**
  * 生命周期函数--监听页面初次渲染完成
  */
   onReady: function () {
-    this.dialog = this.selectComponent("#dialog");
   },
 
   onShow: function () {
   },
 
-  onReady: function () {
-    this.dialog = this.selectComponent("#dialog");
-  },
   //判断本地是否有数据
   hasLocalData: function () {
     var hasData = false;
@@ -185,8 +182,6 @@ Page({
       sortList.sort(this.sortStartWeek)
       this.setData({ mutiLessons: sortList });
     }
-
-
     this.dialog.showDialog();
   },
   sortStartWeek: function (lesson1, lesson2) {

@@ -105,6 +105,12 @@ page{
   display: flex;
   flex-direction: column;
 }
+.item-pwd{
+  padding: 20rpx 200rpx 20rpx 20rpx;
+  font-size: 10pt;
+  display: flex;
+  flex-direction: column;
+}
 .card-info-hd{
   display: flex;
   justify-content: space-between;
