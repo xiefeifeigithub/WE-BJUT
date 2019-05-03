@@ -11,6 +11,9 @@ Page({
     dayPick: true,
     timePick: true,
 
+    //查询字段 
+    buildingName:'', //查询教学楼的名称
+    
     storeyArray: ['第一教学楼', '第三教学楼', '第四教学楼'],
     storeyIndex: 0,
     weekArray: ['第一周', '第二周', '第三周', '第四周',
@@ -38,13 +41,22 @@ Page({
       that.setData({
         techBuilding: 1
       })
+      that.setData({
+        buildingName: '一教'
+      })
     } else if (e.detail.value == 1) {
       that.setData({
         techBuilding: 3
       })
+      that.setData({
+        buildingName: '三教'
+      })
     } else if (e.detail.value == 2) {
       that.setData({
         techBuilding: 4
+      })
+      that.setData({
+        buildingName: '四教'
       })
     }
     this.setData({
@@ -135,7 +147,7 @@ Page({
             }
           }
           wx.showModal({
-            title: '空闲教室情况',
+            title: that.data.buildingName + '空闲教室情况',
             content: tempStr,
           })
         }else{
