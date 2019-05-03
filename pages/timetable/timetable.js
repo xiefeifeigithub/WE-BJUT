@@ -186,7 +186,7 @@ Page({
   },
   sortStartWeek: function (lesson1, lesson2) {
     return lesson1.startWeek - lesson2.startWeek;
-  },
+  }, 
   /**
    * 获取某节课的起始时间和结束时间
    * start：开始的那节课，num:课程小节数

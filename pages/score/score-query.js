@@ -13,7 +13,8 @@ Page({
     semesterPick:false,
     pickedYear:'',
     pickedSemester:'',
-
+    yearIndex:0,
+    semesterIndex:0
   },
 
   /**
@@ -22,7 +23,7 @@ Page({
   yearPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', this.data.yearArray[e.detail.value])
     this.setData({
-      index: e.detail.value,
+      yearIndex: e.detail.value,
       yearPick: true,
       pickedYear: this.data.yearArray[e.detail.value]
     })
@@ -33,7 +34,7 @@ Page({
   semesterPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', this.data.semesterArray[e.detail.value])
     this.setData({
-      index: e.detail.value,
+      semesterIndex: e.detail.value,
       semesterPick:true,
       pickedSemester: this.data.semesterArray[e.detail.value]
     })
@@ -56,30 +57,31 @@ Page({
           password: pwd,
           current_year: year,
           current_term: semester,
+          yearIndex:0,
+          semesterIndex:0
         },
         header: {
           'content-type': 'application/json' // 默认值
         },
         success(res) {
-          console.log(res.data)
+          console.log(res)
           if (res.statusCode == 404){
             wx.showToast({
-              title: '访问教务出错...',
+              title: '教务出错，暂不开放成绩查询...',
               icon: 'none'
             })
+          }
+          if (res.statusCode == 200){
             wx.navigateTo({
               url: './score-result/score-result?result=' + JSON.stringify(res.data),
             });
-          }
-          if (res.statusCode == 200){
-
           }
           
 
         },
         fail() {
           wx.showToast({
-            title: '请检查网络...',
+            title: '请求超时...',
             icon: 'none'
           })
         }
