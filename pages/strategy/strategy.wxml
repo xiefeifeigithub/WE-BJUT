@@ -1,6 +1,6 @@
 
 <!-- //  wxSearch作者提供的模板 -->
-<view class='background'>
+
   <import src="../../wxSearch/wxSearch/wxSearch.wxml" />
   <view class="wxSearch-section">
     <view class="wxSearch-pancel">
@@ -17,7 +17,7 @@
       <text class='title'>组织机构</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
+    
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='校医院' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>校医院</text>
     </view>
@@ -45,7 +45,6 @@
       <text class='title'>校园网</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='基本说明' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>基本说明</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -64,7 +63,6 @@
       <text class='title'>软件安装</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='微软正版软件' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>微软正版软件</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -88,7 +86,6 @@
       <text class='title'>学籍管理</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='学籍管理基本规定' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>基本规定</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -122,7 +119,6 @@
       <text class='title'>资助政策</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='绿色通道' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>绿色通道</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -156,7 +152,6 @@
       <text class='title'>未来之路</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='考研' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>考研</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -185,7 +180,6 @@
       <text class='title'>场馆中心</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
 
 <view class='btn btn-xs btn-default round-btn tags-btn' data-text='使用指南-本部' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>使用指南-本部</text>
@@ -220,7 +214,6 @@
       <text class='title'>社团</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='社团名单' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>社团名单</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -237,7 +230,6 @@
       <text class='title'>吃喝玩乐</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='工大美食' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>工大美食</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -249,7 +241,6 @@
       <text class='title'>其他</text>
     </view>
     <view>\n</view>
-    <view class='gaps2'></view>
     <view class='btn btn-xs btn-default round-btn tags-btn' data-text='专利发表' bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>专利发表</text>
       <!-- <view class='badge text-sm'>10</view> -->
@@ -260,4 +251,10 @@
 
   <toast hidden="{{toastHidden}}" bindchange="totastChange" duration="1000">{{msg}}</toast>
 
-</view>
+<!-- 机器人 -->
+<button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>联系客服</text>
+ </button>
+

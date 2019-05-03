@@ -1,11 +1,11 @@
 /* pages/exam/exam.wxss */
 .card{
-  height: 200px;
+  height: 125px;
   margin-left: 15px;
   margin-right: 15px;
   margin-top: 15px;
   border-radius: 15px;
-  background-color: rgba(223, 234, 248, 0.986);
+  background-color: rgba(159, 119, 185, 0.5);
 }
 .item{
   padding-top: 10px;

@@ -24,8 +24,8 @@
 <!-- 机器人 -->
 <button class='btn1'  
 session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image class='btnImg' src='../../images/jiqiren.png'></image>
-    <view>联系客服</view>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>向我吐槽</text>
  </button>
  
 
@@ -44,6 +44,4 @@ session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
    
   </view>
 </view>
-
-
 
