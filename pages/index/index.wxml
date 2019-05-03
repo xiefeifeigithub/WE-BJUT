@@ -1,3 +1,4 @@
+<!-- 轮播图 -->
 <view class='change'>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
     <block wx:for="{{imgUrls}}">
@@ -8,7 +9,7 @@
   </swiper>
 </view>
 
-<!--功能导航-->
+<!--功能图标 + 导航-->
 <view class="nav">
   <block wx:for="{{student}}">
     <navigator url="{{item.src}}" class="item" hover-class="navHoverClass" hover-stay-time="200" >
@@ -23,13 +24,13 @@
 <!-- 机器人 -->
 <button class='btn1'  
 session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image class='btnImg' src='../../images/jiqiren.png'></image>
-    <view>联系客服</view>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>向我吐槽</text>
  </button>
  
 
 <!--卡片列表-->
-<view class="main-card">
+<!--<view class="main-card">
   <view class="main-card-item" >
    
     <view class="card-item-hd">
@@ -42,7 +43,5 @@ session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
     </view>
    
   </view>
-</view>
-
-
+</view>-->
 

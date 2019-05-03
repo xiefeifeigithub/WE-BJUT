@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 20rpx;
-    border: 1px solid #0398e7;
+    border: 1px solid #7878EC;
     background-color: white;
 }
 .unpicker_text {
@@ -44,7 +44,7 @@
 }
 
 .sub-button{
-  background-color:#0398e7;
+  background-color:#7878EC;
   color:#ffffff;
   line-height:1.8;
   border-radius:30px;

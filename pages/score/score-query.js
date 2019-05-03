@@ -90,6 +90,13 @@ Page({
         icon:'none'
       })
     }
+  },
+  //页面初次渲染完成时触发
+  onReady: function () {
+    //动态设置当前页面的标题
+    wx.setNavigationBarTitle({
+      title: '考试成绩查询'
+    })
   }
   
 })

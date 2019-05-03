@@ -2,14 +2,14 @@
 .container{
   width: 100%;
   height: 100%;
-  background-color: #E6E6E6;
+  background-color: white;
 
 }
 
 .flex-item {
   width: 100rpx;
   height: 100px;
-  box-shadow: 1rpx 1rpx 1rpx 1rpx rgba(143, 143, 143, 0.5);
+  /*box-shadow: 1rpx 1rpx 1rpx 1rpx rgba(143, 143, 143, 0.5);*/
 }
 
 .kcb-item {
@@ -30,7 +30,8 @@
   display: flex;
   flex-direction: row;
   margin-left: 0rpx;
-  background-color: #70ACFF;
+  background-color: #7878EC;
+ 
   color: white;
 }
 
@@ -64,8 +65,7 @@
 .round-click{
     height: 80rpx;
     width: 80rpx;
-    box-shadow: 0rpx 0rpx 20rpx grey;
-    background-color: #7cba23;
+    background-color: #7878EC;
     border-radius: 100%;
     position: fixed;
     bottom: 50rpx;
@@ -75,11 +75,18 @@
     justify-content: center;
     z-index: 130;
 }
+.round-click text{
+  font-size: 14px;
+  display: block;
+  color: white;
+  font-weight: 600;
+}
 .exercise-lesson-container{
   display: flex;
   direction: column;
   height: 20%;
   width: 93%;
+  border: 1px solid #7878EC;
   background-color: white;
   padding: 15rpx;
   margin: 5px;
