@@ -26,7 +26,7 @@ page{
   margin-bottom: 40rpx;
   margin-right: 20rpx;
   margin-left: 30rpx;
-  font-size: 25rpx;
+  font-size: 30rpx;
   font-weight: bold;
   color: black;
 }
@@ -65,7 +65,7 @@ page{
   margin-left: 3px;
   margin-right: 3px;
   align-content: center;
-  font-size: 20rpx;
+  font-size: 24rpx;
   vertical-align: middle
 }
 /*.badge{
