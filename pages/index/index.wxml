@@ -30,7 +30,7 @@ session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
  
 
 <!--卡片列表-->
-<view class="main-card">
+<!--<view class="main-card">
   <view class="main-card-item" >
    
     <view class="card-item-hd">
@@ -43,5 +43,5 @@ session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
     </view>
    
   </view>
-</view>
+</view>-->
 

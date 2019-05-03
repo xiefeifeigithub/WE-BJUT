@@ -19,6 +19,7 @@
   border: 1px #eee solid;
   position: fixed;
   width: 100%;
+  
 }
 .wxSearch-pancel{
   display: flex;

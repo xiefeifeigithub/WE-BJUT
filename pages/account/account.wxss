@@ -101,7 +101,7 @@ page{
 }
 .item-bd{
   padding: 20rpx 200rpx 20rpx 20rpx;
-  font-size: 15px;
+  font-size: 30rpx;
   display: flex;
   flex-direction: column;
 }
@@ -180,7 +180,7 @@ page{
 }
 
 .info{ 
-  font-size: 25rpx; 
+  font-size: 30rpx; 
   line-height: 2.5; 
   text-indent: 50rpx ;
 }
@@ -198,6 +198,7 @@ page{
 
 .title{
   color: #acacac;
+  font-size: 30rpx;
 }
 .text{
   display: flex;
@@ -205,6 +206,7 @@ page{
   justify-content: center;
   flex-wrap: wrap;
   margin-right: 50rpx;
+  font-size: 30rpx;
 }
 .borderline{
   width: 650rpx;

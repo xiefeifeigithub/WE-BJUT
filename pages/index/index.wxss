@@ -24,8 +24,6 @@ page{
   flex-flow: row wrap;
   align-content: flex-start;
   background: #fff;
-  border-top: 1rpx solid #e5e5e5;
-  border-bottom: 1rpx solid #e5e5e5;
   /*padding: 15rpx 10rpx 10rpx;*/
   padding-left: 20rpx;
   padding-right: 20rpx;
@@ -57,7 +55,7 @@ page{
 }
 
 /*卡片列表*/
-.main-card {
+/*.main-card {
   padding-bottom: 300rpx;
 }
 .main-card-item{
@@ -65,7 +63,7 @@ page{
   flex-direction: column;
   background: #fff;
   /*border-top: 1rpx solid #e5e5e5;
-  border-bottom: 1rpx solid #e5e5e5;*/
+  border-bottom: 1rpx solid #e5e5e5;
   margin-bottom: 20rpx;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -100,7 +98,7 @@ page{
   display: flex;
   justify-content: space-between;
 }
-/*.card-info-left{
+.card-info-left{
   display: flex;
   flex-direction: column;
 }
@@ -108,7 +106,7 @@ page{
   display: flex;
   color: #acacac;
   flex-direction: column;
-}*/
+}
 .card-item-open{
   display: flex;
   align-items: center;
@@ -127,7 +125,7 @@ page{
   line-height: 75rpx;
   letter-spacing: 1px;
   color: #acacac;
-}
+}*/
 
 /* 机器人 */
 
