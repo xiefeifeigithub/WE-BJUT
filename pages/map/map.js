@@ -23,8 +23,10 @@ Page({
         });
       }
     })
-    wx.clearStorageSync('latlngstart');
-    wx.clearStorageSync('latlngend');
+    // wx.clearStorageSync('latlngstart');
+    // wx.clearStorageSync('latlngend');
+    wx.removeStorageSync('latlngstart');
+    wx.removeStorageSync('latlngend');
   },
   
   //start

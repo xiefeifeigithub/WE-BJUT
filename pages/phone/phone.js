@@ -14,7 +14,7 @@ Page({
     //显示出加载中的提示
     this.setData({ loadHidden: false })
 
-    var limit = 5
+    var limit = 20
     var that = this
     console.log('app.data.url：' + app.data.url)
 
