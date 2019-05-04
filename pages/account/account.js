@@ -25,7 +25,7 @@ Page({
       var userpassword = app.globalData.userpassword
       var infoList = wx.getStorageSync(app.data.keyInfo)
       that.setData({
-        userName: username,
+        userName: username, 
         userPwd: userpassword,
         info:infoList
       })
