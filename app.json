@@ -9,7 +9,6 @@
     "pages/lists/lists",
     "pages/detail/detail",
     "pages/logs/logs",
-    "pages/classificationlists/classificationlists",
     "pages/timetable/timetable",
     "pages/exam/exam",
     "pages/cet/cet",

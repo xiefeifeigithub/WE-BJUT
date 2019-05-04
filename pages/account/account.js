@@ -1,9 +1,5 @@
-// pages/account/account.js
 const app = getApp()
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     userName: '', //用户名
     userPwd: '', //密码
@@ -12,9 +8,7 @@ Page({
     unload:true  //是否加载学生个人信息
   },
 
-  /**
- * 生命周期函数--监听页面加载
- */
+  // 生命周期函数--监听页面加载
   onLoad: function (options) {
     // 从缓存中获取用户信息
     var that = this
@@ -25,7 +19,7 @@ Page({
       var userpassword = app.globalData.userpassword
       var infoList = wx.getStorageSync(app.data.keyInfo)
       that.setData({
-        userName: username,
+        userName: username, 
         userPwd: userpassword,
         info:infoList
       })
@@ -34,9 +28,7 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
@@ -147,6 +139,10 @@ Page({
       wx.removeStorageSync(app.data.keyPwd);
       wx.removeStorageSync(app.data.keyInfo);
       wx.removeStorageSync(app.data.keyExerciseLesson);
+   
+      this.setData({ userName: '' })
+      this.setData({ userPwd: '' })
+
       this.setData({
         unload: true
       })

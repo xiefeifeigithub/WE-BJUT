@@ -1,11 +1,5 @@
-// pages/cet/cet.js
-
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     account: '', //用户名
     password: '', //密码
@@ -16,6 +10,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中...',
+    })
     console.log("onload:加载四六级信息页面")
     var that = this
     var account = wx.getStorageSync(app.data.keyUserName)
@@ -42,7 +39,7 @@ Page({
             that.setData({
               cetInfo: res.data
             })
-
+            wx.hideLoading()
           } else {
             console.log("404")
             wx.showToast({

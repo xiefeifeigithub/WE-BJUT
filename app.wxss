@@ -1,15 +1,4 @@
 /**app.wxss**/
-
-/* .container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}  */
-
 @font-face {
   font-family: 'iconfont';  /* project id 1093097 */
   src: url('//at.alicdn.com/t/font_1093097_nh4e36u4dds.eot');
@@ -37,7 +26,7 @@
 }
 
 @import "/wxParse/wxParse.wxss";
-@import "/wxSearch/wxSearch/wxSearch.wxss";
+
 
 
 

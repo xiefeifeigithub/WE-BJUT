@@ -1,18 +1,15 @@
 <!--lists.wxml-->
 <view class="warp">
 
-<!--文章列表模板 begin-->
+<!--文章列表模板-->
 <template name="itmes">
-  <!-- <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover"> -->
-    <!-- <view class="imgs"><image src="{{img}}" class="in-img" background-size="cover" model="scaleToFill"></image></view> -->
     <view class="infos">
       <view class="title">{{name}}</view>
       <view class="date">{{phonenumber}}</view>
     </view>
     <view class='borderline'></view>
-  <!-- </navigator> -->
 </template>
-<!--文章列表模板 end-->
+
 
 <!--循环输出列表 begin-->
 <view wx:for="{{phoneList}}" class="list">

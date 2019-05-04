@@ -1,13 +1,7 @@
-/* pages/aboutme/aboutme.wxss */
 page{
     background: rgba(237, 243, 252, 0.986);
 }
-/* 引入搜索样式 */
-/*.background{
-  width: 100%;
-  height: 100%;
-  background-color: rgba(223, 234, 248, 0.986);
-}*/
+
 .blank{
   width: 100%;
   height: 90rpx;
@@ -68,30 +62,6 @@ page{
   font-size: 24rpx;
   vertical-align: middle
 }
-/*.badge{
-  background: #17807d;
-  opacity: 0.85;
-  top: 0px;
-  padding-top: 1px;
-  padding-right: 5px;
-  padding-bottom: 1px;
-  padding-left: 5px;
-  position: relative;
-  color: #fff;
-  display: inline-block;
-  min-width: 10px;
-  font-weight: 700;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  border-radius: 150rpx;
-}
-.gaps1{
-  width: 100%;
-  height: 6px;
-  background-color: #e5e5e5;
-}*/
 
 .background1{
   width: 100%;
@@ -103,7 +73,6 @@ page{
 
 .btn1{
   background-color: rgba(248, 246, 246, 0.5);
- /*border: 1px solid #7878EC;*/
  width: 140rpx;
  height: 140rpx;
  border-radius: 50%;
@@ -116,9 +85,6 @@ page{
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  /*flex-direction: column;
-  align-items: center;
-  justify-content: center;*/
   position: fixed;
 }
 

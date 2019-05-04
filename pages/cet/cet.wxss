@@ -1,6 +1,3 @@
-/* pages/cet/cet.wxss */
-
-/* pages/exam/exam.wxss */
 .card{
   height: 200px;
   margin-left: 15px;

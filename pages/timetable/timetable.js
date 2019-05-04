@@ -11,14 +11,16 @@ Page({
     week: '', //起止周
     time: '', //上课时间
     mutiLessons: [], //用于记录同时段重叠的课程
-    currentWeek: 0,
     allLessonsList: [], //全部的课表信息(不包含教师姓名，上课周)
     wholeLessonList: [], //完整的课程信息（含教师姓名，上课周）
     exerciseLesonList: [], //实践课课程信息
     icon_lessonUrl: '../../images/icons/all_lesson.png',
-    isShowAll: true
+    
   },
-
+  globalData:{
+    isShowAll: true,
+    currentWeek: 0
+  },
   onLoad: function() {
     //判断用户是否登录过,如果没有登录则跳转登录页面。
     const user = wx.getStorageSync(app.data.keyUserName)
@@ -120,7 +122,7 @@ Page({
     var tempList2 = [];
     var thatCurrList = this.data.currList;
     var thatWholeList = this.data.wholeLessonList;
-    var thatIsShowAll = this.data.isShowAll;
+    var thatIsShowAll = this.globalData.isShowAll;
     var thatAllList = this.data.allLessonsList;
     var sortList = []; //用于存储根据开始周排序的课程，针对重叠的课。
     //判断当前课表页面是显示全部还是显示本周课表
@@ -287,9 +289,8 @@ Page({
 
   showTimetableByCurrentWeek: function() {
 
-    this.setData({
-      currentWeek: app.globalData.currentWeek
-    })
+    this.globalData.currentWeek = app.globalData.currentWeek
+    
     var currWeekLessons = [];
 
     for (var i = 0; i < this.data.wholeLessonList.length; i++) {
@@ -310,7 +311,7 @@ Page({
       } else {
         weekEnd = parseInt(strLesson[2].charAt(gap2 - 1));
       }
-      if (this.data.currentWeek >= weekStart && this.data.currentWeek <= weekEnd) {
+      if (this.globalData.currentWeek >= weekStart && this.globalData.currentWeek <= weekEnd) {
         currWeekLessons.push(this.data.wholeLessonList[i]);
       }
     }
@@ -370,15 +371,15 @@ Page({
    * 点击悬浮按钮显示全部或者本周课表
    */
   showAllOrPart: function() {
-    if (this.data.isShowAll == true) {
+    if (this.globalData.isShowAll == true) {
+      this.globalData.isShowAll = false
       this.setData({
-        isShowAll: false,
         icon_lessonUrl: '../../images/icons/part_lesson.png'
       });
       this.showTimetableByCurrentWeek();
     } else {
+      this.globalData.isShowAll = true
       this.setData({
-        isShowAll: true,
         icon_lessonUrl: '../../images/icons/all_lesson.png'
       });
       this.showTimetableByAll();

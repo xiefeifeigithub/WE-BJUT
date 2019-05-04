@@ -1,5 +1,3 @@
-//lists.js
-//获取应用实例
 const app = getApp()
 Page({
   data: {
@@ -10,7 +8,7 @@ Page({
     isfrist: 1,
     loadHidden: true,
     moreHidden: 'none',
-    msg: '没有更多电话了'
+    msg: '其余数据正在收集中...'
   },
   loadData: function (lastid) {
     //显示出加载中的提示
@@ -22,7 +20,6 @@ Page({
 
     wx.request({
       url: app.data.url + 'addon/Telephone/Telephone/getPhone',
-      // url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Telephone/Telephone/getPhone',
       data: { lastid: lastid, limit: limit },
       header: {
         'Content-Type': 'application/json'
@@ -87,8 +84,6 @@ Page({
     this.loadData(id);
   },
   onLoad: function () {
-    var that = this
-
     this.loadData(0);
   },
 
@@ -96,7 +91,6 @@ Page({
     this.setData({ toastHidden: true })
   },
   modalChange: function () {
-    console.log('abc');
     this.setData({ confirmHidden: true })
   }
 })

@@ -1,20 +1,17 @@
-// pages/score/score-query.js
-
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     yearArray:['2018-2019','2017-2018','2016-2017','2015-2016','2014-2015'],
     semesterArray:['1','2','3'],
     yearPick:false,
     semesterPick:false,
-    pickedYear:'',
-    pickedSemester:'',
     yearIndex:0,
     semesterIndex:0
+  },
+
+  globalData:{
+    pickedYear: '',
+    pickedSemester: '',
   },
 
   /**
@@ -22,10 +19,10 @@ Page({
    */
   yearPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', this.data.yearArray[e.detail.value])
+    this.globalData.pickedYear = this.data.yearArray[e.detail.value]
     this.setData({
       yearIndex: e.detail.value,
       yearPick: true,
-      pickedYear: this.data.yearArray[e.detail.value]
     })
   },
   /**
@@ -33,10 +30,10 @@ Page({
    */
   semesterPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', this.data.semesterArray[e.detail.value])
+    this.globalData.pickedSemester = this.data.semesterArray[e.detail.value]
     this.setData({
       semesterIndex: e.detail.value,
       semesterPick:true,
-      pickedSemester: this.data.semesterArray[e.detail.value]
     })
   },
 
@@ -46,8 +43,8 @@ Page({
   queryBtn: function () {
     var account = wx.getStorageSync(app.data.keyUserName)
     var pwd = wx.getStorageSync(app.data.keyPwd)
-    var year = this.data.pickedYear
-    var semester = this.data.pickedSemester
+    var year = this.globalData.pickedYear
+    var semester = this.globalData.pickedSemester
     //检测学号，密码，学年，学期是否正确
     if(year != '' && semester !=''){
       wx.request({

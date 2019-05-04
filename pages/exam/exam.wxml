@@ -1,5 +1,3 @@
-<!--pages/exam/exam.wxml-->
-
  <view wx:for="{{examInfo}}" class='card'>
       <view class='item'>
         <text>科目：{{item.className}}</text>       <text>\n</text>
@@ -15,3 +13,4 @@ session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
     <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
     <text>向我吐槽</text>
  </button>
+
