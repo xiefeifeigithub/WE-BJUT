@@ -4,11 +4,13 @@ Page({
     account: '', //用户名
     password: '', //密码
     examInfo: []  //考试信息
-
   },
 
   onLoad: function (options) {
     console.log("onload:加载考试信息页面")
+    wx.showLoading({
+      title: '加载中...',
+    })
     var account = ''
     var password = ''
     var that = this
@@ -33,15 +35,10 @@ Page({
 
           if (res.statusCode == 200) {
             console.log("考试信息返回成功")
-            console.log(res)
-            console.log(res.data[0])
-            console.log(res.data[1])
-            console.log(res.data)
-
             that.setData({
               examInfo: res.data
             })
-
+            wx.hideLoading()
           } else {
             console.log("404")
             wx.showToast({

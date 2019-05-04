@@ -5,10 +5,6 @@ Page({
     weekPick: true,
     dayPick: true,
     timePick: true,
-
-    //查询字段 
-    buildingName:'', //查询教学楼的名称
-    
     storeyArray: ['第一教学楼', '第三教学楼', '第四教学楼'],
     storeyIndex: 0,
     weekArray: ['第一周', '第二周', '第三周', '第四周',
@@ -20,39 +16,31 @@ Page({
     dayIndex: 0,
     timeArray: ['上午', '下午', '晚上', '1-2节', '3-4节', '5-6节', '7-8节', '9-10节','11-12节'],
     timeIndex: 0,
-    techBuilding: 0,            //查询哪栋教学楼[1,3,4]：一教、三教、四教
     week: 0,                    //查询哪个周[1-16周]
+    defaultWeek:null,           //当前是第几周
+    defaultWeekday:null,         //当前是周几
+  },
+
+  globalData:{
+    techBuilding: 0,            //查询哪栋教学楼[1,3,4]：一教、三教、四教
+    buildingName: '',           //查询教学楼的名称
     weekday: '',                //查询周几[周一至周日]
     classStart: 0,              //查询哪个时段（开始）
     classEnd: 0,                //查询哪个时段（结束）
-    defaultWeek:null,           //当前是第几周
-    defaultWeekday:null,         //当前是周几
-    emptyRooms:[]
+    emptyRooms: []
   },
 
   storeyPickerChange: function(e) {
     var that = this
     if (e.detail.value == 0) {
-      that.setData({
-        techBuilding: 1
-      })
-      that.setData({
-        buildingName: '一教'
-      })
+      that.globalData.techBuilding = 1
+      that.globalData.buildingName = '一教'
     } else if (e.detail.value == 1) {
-      that.setData({
-        techBuilding: 3
-      })
-      that.setData({
-        buildingName: '三教'
-      })
+      that.globalData.techBuilding = 3
+      that.globalData.buildingName = '三教'
     } else if (e.detail.value == 2) {
-      that.setData({
-        techBuilding: 4
-      })
-      that.setData({
-        buildingName: '四教'
-      })
+      that.globalData.techBuilding = 4
+      that.globalData.buildingName = '四教'
     }
     this.setData({
       storeyIndex: e.detail.value,
@@ -78,9 +66,8 @@ Page({
     var that = this
     var tempWeekdayStr = that.data.dayArray[e.detail.value];
     var tempWeekday = tempWeekdayStr.charAt(2);
-    that.setData({
-      weekday: tempWeekday
-    })
+    that.globalData.weekday = tempWeekday
+
     this.setData({
       dayIndex: e.detail.value,
       dayPick: false
@@ -123,10 +110,9 @@ Page({
         timeEnd = 12; break;
     }
 
-    that.setData({
-      classStart: timeStart,
-      classEnd: timeEnd
-    })
+    that.globalData.classStart = timeStart
+    that.globalData.classEnd = timeEnd
+
 
     this.setData({
       timeIndex: e.detail.value,
@@ -141,10 +127,10 @@ Page({
       title: '查询中',
     })
     var that = this
-    var buildingUrl = 'building=' + that.data.techBuilding;
-    var weekdayUrl = '&week=' + that.data.weekday;
+    var buildingUrl = 'building=' + that.globalData.techBuilding;
+    var weekdayUrl = '&week=' + that.globalData.weekday;
     var weekUrl = '&currentweek=' + that.data.week;
-    var classTimeUrl = '&time1=' + that.data.classStart + '&time2=' + that.data.classEnd;
+    var classTimeUrl = '&time1=' + that.globalData.classStart + '&time2=' + that.globalData.classEnd;
     var requestUrl = buildingUrl + weekdayUrl + weekUrl + classTimeUrl;
     console.log('查询的URL:'+requestUrl)
     wx.request({
@@ -155,19 +141,18 @@ Page({
       },
       success: function(res) {
         if (res.statusCode == 200) {
-          that.setData({emptyRooms:res.data})
-         
+          that.globalData.emptyRooms = res.data
           var tempStr = '';
-          if(that.data.emptyRooms.length == 0){
+          if(that.globalData.emptyRooms.length == 0){
             tempStr = '没有符合查询条件的空闲教室...'
           }else{
-            for (var i = 0; i < that.data.emptyRooms.length; i++) {
-              tempStr += '[' + that.data.emptyRooms[i] + ']' + ' ';
+            for (var i = 0; i < that.globalData.emptyRooms.length; i++) {
+              tempStr += '[' + that.globalData.emptyRooms[i] + ']' + ' ';
             }
           }
           wx.hideLoading()
           wx.showModal({
-            title: that.data.buildingName + '空闲教室情况',
+            title: that.globalData.buildingName + '空闲教室情况',
             content: tempStr,
           })
         }else{
@@ -201,9 +186,9 @@ Page({
     var tempWeekdayStr = this.data.dayArray[currDate.getDay()];
     var tempWeekday = tempWeekdayStr.charAt(2);
 
+    this.globalData.weekday = tempWeekday
     this.setData({ 
       week: currWeek,
-      weekday:tempWeekday,
       defaultWeek:defaultWeek,
       defaultWeekday: tempWeekdayStr
      })
