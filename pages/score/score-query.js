@@ -99,6 +99,14 @@ Page({
     wx.setNavigationBarTitle({
       title: '考试成绩查询'
     })
+  },
+  onLoad:function(){
+    //判断用户是否登录过,如果没有登录则跳转登录页面。
+    const user = wx.getStorageSync(app.data.keyUserName)
+    if (user == '') {
+      wx.switchTab({
+        url: '../account/account',
+      })
+    }
   }
-  
 })

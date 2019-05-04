@@ -17,33 +17,16 @@ Page({
    */
   onLoad: function (options) {
     console.log("onload:加载考试信息页面")
-    
-    var account = this.data.account
-    var password = this.data.password
-
-    try {
-      const value = wx.getStorageSync('username')
-      if (value) {
-         account = value
-      }
-    } catch (e) {
-      wx.switchTab({
-        url: '../account/account',
-      })
-    }
-
-    try {
-      const value = wx.getStorageSync('userpassword')
-      if (value) {
-         password = value
-      }
-    } catch (e) {
-      wx.switchTab({
-        url: '../account/account',
-      })
-    }
-
+    var account = ''
+    var password = ''
     var that = this
+    account = wx.getStorageSync(app.data.keyUserName)
+    password = wx.getStorageSync(app.data.keyPwd)
+    if (account == '') {
+      wx.switchTab({
+        url: '../account/account',
+      })
+    }
     if (account != '' && password!='')
     {
       //查询考试信息
