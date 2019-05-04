@@ -1,26 +1,34 @@
 //app.js
 
 App({
+
+  data: {
+    //课表
+    keyTimetable: 'timetableLcocal',            //用于存取本地存储的课程信息的键
+    keyExerciseLesson: 'exerciseLessonLocal',        //用于存取实践课的键
+    keyUserName: 'studentNumLocal',              //用于存取学生学号的键
+    keyPwd: 'stuPwdLocal',                      //用于存取学生密码的键
+    keyInfo: 'stuInfoLocal',                           //用于存取学生基本信息
+    url: 'https://www.bjutxiaomei.cn/index.php?s=/',
+  },
+  globalData: {
+    userInfo: null,
+    type: null,             //文章类型
+    username: null,           //学号
+    userpassword: null,       //教务密码
+    classification: '',     //文章分类
+    freeRooms: [],          //空教室
+    currentWeek: null        //当前是第几周
+  },
+
   onLaunch: function () {
     //计算全局变量currentWeek
     this.calculateCurrentWeek();
-     //清理本地的所有缓存
-    console.log("小程序初始化")
-    //wx.clearStorage();
-
-    //清除本地指定缓存
-    wx.removeStorage({
-      key: 'CmsList',
-      success(res) {
-        console.log(res.data)
-        console.log("清除文章数据缓存")
-      }
-    })
-
     //从缓存中获取用户信息
     console.log("从缓存中获取用户信息")
-    var username = wx.getStorageSync('username')
-    var userpassword = wx.getStorageSync('userpassword')
+    var username = wx.getStorageSync(this.data.keyUserName)
+    var userpassword = wx.getStorageSync(this.data.keyPwd)
+
     this.globalData.username = username
     this.globalData.userpassword = userpassword
     console.log(username,userpassword)
@@ -41,7 +49,7 @@ App({
           console.log("app.js:" + res.code)
           if (res.code) {
             wx.request({
-              url: that.url + 'addon/Cms/Cms/sendCode',
+              url: that.data.url + 'addon/Cms/Cms/sendCode',
               data: {
                 code: res.code,
                 PHPSESSID: wx.getStorageSync('PHPSESSID')
@@ -59,7 +67,7 @@ App({
 
                     //console.log(res);
                     wx.request({
-                      url: that.url + 'addon/Cms/Cms/saveUserInfo',
+                      url: that.data.url + 'addon/Cms/Cms/saveUserInfo',
                       data: {
                         encryptedData: res.encryptedData,
                         PHPSESSID: wx.getStorageSync('PHPSESSID'),
@@ -79,33 +87,6 @@ App({
       })
     }
   },
-  globalData: {
-    userInfo: null,
-    
-    type: null,             //文章类型
-    username: '',           //学号
-    userpassword: '',       //教务密码
-    classification: '',     //文章分类
-    freeRooms: [],          //空教室
-    currentWeek:null        //当前是第几周
-  },
-  data: {
-    //课表
-    keyTimetable: 'timetableLcocal',        //用于获取本地存储的课程信息的键
-    keyStudentName: 'studentNameLocal',     //用于获取本地存储的学生姓名的键
-    keyStudentNum: 'studentNumLocal',      //用于获取本地存储的学生学号的键
-    keyClassNum: 'classNum',                 //班号
-    keyCollege: 'college',                   //学院
-    keyMajor: 'major',                        //专业
-    keyExerciseLesson: 'exerciseLesson',       //实践课
-    keyUserName:'username',                   //用于获取学生学号的键
-    keyPwd:'userpassword'                     //用于获取学生密码的键
-
-    //文章
-    // keyCmsList: 'CmsList' //用于获取文章数据的键
-  },
-  //url: 'https://你的域名/index.php?s=/'
-  url: 'https://www.bjutxiaomei.cn/index.php?s=/',
 
   /**
    * 检测本地是否存有课表数据
