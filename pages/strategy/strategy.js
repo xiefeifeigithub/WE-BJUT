@@ -24,6 +24,7 @@ Page({
   onLoad: function (options) {
     console.log('onLoad: 加载strategy页面')
 
+
    //搜索功能
     console.log('初始化搜索组件')
     var that = this

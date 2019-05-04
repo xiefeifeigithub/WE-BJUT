@@ -29,6 +29,7 @@ App({
     var username = wx.getStorageSync(this.data.keyUserName)
     var userpassword = wx.getStorageSync(this.data.keyPwd)
 
+
     this.globalData.username = username
     this.globalData.userpassword = userpassword
     console.log(username,userpassword)
@@ -85,6 +86,7 @@ App({
           }
         }
       })
+
     }
   },
 

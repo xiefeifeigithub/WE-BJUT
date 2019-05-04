@@ -28,6 +28,7 @@ Page({
       })
     }
     console.log("数据从本地获取");
+
     this.getTimetableFromLocal();
     this.getExerciseLessonFromLocal();
     this.dialog = this.selectComponent("#dialog");

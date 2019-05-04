@@ -9,6 +9,7 @@
       <view class="title">{{name}}</view>
       <view class="date">{{phonenumber}}</view>
     </view>
+    <view class='borderline'></view>
   <!-- </navigator> -->
 </template>
 <!--文章列表模板 end-->
@@ -26,3 +27,9 @@
 <toast hidden="{{toastHidden}}" bindchange="toastChange" duration="3000">{{msg}}</toast>
 <modal title="温馨提示" no-cancel hidden="{{confirmHidden}}" confirm-text="明确" bindconfirm="modalChange">你当前不在在WIFI网格下下，会产生流量费用</modal>
 </view>
+
+  <button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>向我吐槽</text>
+ </button>

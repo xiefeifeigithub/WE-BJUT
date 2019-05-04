@@ -1,7 +1,7 @@
 
 <!-- //  wxSearch作者提供的模板 -->
 
-  <import src="../../wxSearch/wxSearch/wxSearch.wxml" />
+  <!--<import src="../../wxSearch/wxSearch/wxSearch.wxml" />
   <view class="wxSearch-section">
     <view class="wxSearch-pancel">
       <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" bindconfirm="wxConfirm" confirm-type="search" />
@@ -10,7 +10,7 @@
   </view>
   <template is="wxSearch" data="{{wxSearchData}}" />
 
-  <view class='blank'></view>
+  <view class='blank'></view>-->
 
    <view class='tags'>
     <view class='background1'>
@@ -66,8 +66,12 @@
       <text class='text-sm text-gray'>保研</text>
     </view>
 
-    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='出国科研' bindtap="querySpecifiedArticles">
-      <text class='text-sm text-gray'>出国科研</text>
+    <view class='btn btn-xs btn-default round-btn tags-btn' data-text='出国' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>出国</text>
+    </view>
+
+       <view class='btn btn-xs btn-default round-btn tags-btn' data-text='科研' bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>科研</text>
     </view>
 
   </view>

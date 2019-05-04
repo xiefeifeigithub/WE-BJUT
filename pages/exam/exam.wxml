@@ -9,3 +9,9 @@
         <text>校区：{{item.school}}</text>          <text>\n</text>
       </view>
   </view>
+
+    <button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>向我吐槽</text>
+ </button>
