@@ -1,5 +1,4 @@
 // 引入SDK核心类
-// var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 let QQMapWX = require('./qqmap-wx-jssdk.min.js');
 
 // 实例化API核心类
@@ -7,17 +6,10 @@ let qqmapsdk = new QQMapWX({
   key: 'XJQBZ-4SYR3-VO733-376GN-EEYLE-QQFP2'
 });
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    openNav: true
+    openNav: true  //是否开启导航
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     let _page = this;
 
@@ -34,17 +26,8 @@ Page({
     wx.clearStorageSync('latlngstart');
     wx.clearStorageSync('latlngend');
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 起点
-   */
+  
+  //start
   getStart(e) {
     let _page = this;
     // 关键字补全以及获取经纬度
@@ -80,9 +63,7 @@ Page({
     }
   },
 
-  /**
-   * 终点
-   */
+  //end
   getEnd(e) {
     let _page = this;
     // 输入地点获取经纬度,我取得是数据的第一条数据.

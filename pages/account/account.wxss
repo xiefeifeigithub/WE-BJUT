@@ -1,12 +1,3 @@
-/* pages/account/account.wxss */
-/*.nav{
-  height: 220px;
-  margin: 10px;
-  box-sizing: border-box;
-  border-radius: 15px;
-  background: linear-gradient(rgb(0, 150, 195),white);
-}
-*/
 page{
   background: white;
 }

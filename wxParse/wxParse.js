@@ -1,22 +1,8 @@
-/**
- * author: Di (微信小程序开发工程师)
- * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
- *               垂直微信小程序开发交流社区
- * 
- * github地址: https://github.com/icindy/wxParse
- * 
- * for: 微信小程序富文本解析
- * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
- */
-
-/**
- * utils函数引入
- **/
+// utils函数引入
 import showdown from './showdown.js';
 import HtmlToJson from './html2json.js';
-/**
- * 配置及公有属性
- **/
+
+// 配置及公有属性
 var realWindowWidth = 0;
 var realWindowHeight = 0;
 wx.getSystemInfo({
@@ -25,9 +11,8 @@ wx.getSystemInfo({
     realWindowHeight = res.windowHeight
   }
 })
-/**
- * 主函数入口区
- **/
+
+// 主函数入口区
 function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:red;">数据不能为空</div>', target,imagePadding) {
   var that = target;
   var transData = {};//存放转化后的数据
@@ -64,9 +49,7 @@ function wxParseImgTap(e) {
   }
 }
 
-/**
- * 图片视觉宽高计算函数区 
- **/
+// 图片视觉宽高计算函数区
 function wxParseImgLoad(e) {
   var that = this;
   var tagFrom = e.target.dataset.from;
@@ -84,12 +67,6 @@ function calMoreImageInfo(e, idx, that, bindName) {
   var temImages = temData.images;
   //因为无法获取view宽度 需要自定义padding进行计算，稍后处理
   var recal = wxAutoImageCal(e.detail.width, e.detail.height,that,bindName); 
-  // temImages[idx].width = recal.imageWidth;
-  // temImages[idx].height = recal.imageheight; 
-  // temData.images = temImages;
-  // var bindData = {};
-  // bindData[bindName] = temData;
-  // that.setData(bindData);
   var index = temImages[idx].index
   var key = `${bindName}`
   for (var i of index.split('.')) key+=`.nodes[${i}]`
@@ -111,12 +88,9 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
   windowWidth = realWindowWidth-2*padding;
   windowHeight = realWindowHeight;
   //判断按照那种方式进行缩放
-  // console.log("windowWidth" + windowWidth);
   if (originalWidth > windowWidth) {//在图片width大于手机屏幕width时候
     autoWidth = windowWidth;
-    // console.log("autoWidth" + autoWidth);
     autoHeight = (autoWidth * originalHeight) / originalWidth;
-    // console.log("autoHeight" + autoHeight);
     results.imageWidth = autoWidth;
     results.imageheight = autoHeight;
   } else {//否则展示原来的数据
@@ -141,11 +115,7 @@ function wxParseTemArray(temArrayName,bindNameReg,total,that){
   that.setData(obj);
 }
 
-/**
- * 配置emojis
- * 
- */
-
+// 配置emojis
 function emojisInit(reg='',baseSrc="/wxParse/emojis/",emojis){
    HtmlToJson.emojisInit(reg,baseSrc,emojis);
 }

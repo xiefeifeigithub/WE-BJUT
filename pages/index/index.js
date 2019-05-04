@@ -56,5 +56,8 @@ Page({
       ]
   },
 
+  btnclick: function (e) {
+    console.log(e);
+  }
 
 })

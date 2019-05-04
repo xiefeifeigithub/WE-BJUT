@@ -1,5 +1,3 @@
-/* pages/bot/bot.wxss */
-
 .btn1{
   width: 300rpx;
   height: 300rpx;
@@ -20,23 +18,5 @@
 }
 
 .btn1::after {
-  border: 0; 
-}
-
-.btn2 {
-       width: 300rpx;
-  height: 300rpx;
-  margin-top: 20rpx;
-  background-color: white;
-  color: #999999;
-  border-radius: 0rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 30rpx;
- }
-
- .btn2::after {
   border: 0; 
 }

@@ -1,10 +1,9 @@
-// pages/lists/lists.js
 var app = getApp()
 
 Page({
   data: {
     newsList: [],
-    lastid: 0, // 文章id
+    lastid: 0, // 数据id
     toastHidden: true,
     confirmHidden: true,
     isfirst: 1,
@@ -22,13 +21,11 @@ Page({
     var limit = 20 //设置一次性文章加载数量
     var type = app.globalData.type //获取用户所选标签名
     console.log('获取用户所选标签名：' + type)
-    //在javascript中，this代表着当前对象，会随着程序的执行过程中的上下文改变
     ///把this对象复制到临时变量that
     var that = this
 
     //发起网络请求
     wx.request({
- //     url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getlist', // 仅为示例，并非真实的接口地址
       url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getlist', // 真实接口地址
       data: {lastid:lastid, limit:limit,type:type},
       header: {
@@ -58,11 +55,6 @@ Page({
           //设置文章数据缓存
           if(oldLastid==0){
              wx.setStorageSync('CmsList',newData)
-            //newing...
-            // wx.setStorage({
-            //   key: app.data.keyCmsList,
-            //   data: newdata,
-            // })
           }
 
           //利用setData设定数据
@@ -125,7 +117,7 @@ Page({
     var that = this
     
     //请求数据
-    console.log("开始向向服务器请求文章列表数据，从第0篇文章开始请求")
+    console.log("开始向向服务器请求文章列表数据，从id=0开始请求")
     this.loadData(0);
   },
    
