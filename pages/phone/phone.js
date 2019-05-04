@@ -1,6 +1,6 @@
 //lists.js
 //获取应用实例
-var app = getApp()
+const app = getApp()
 Page({
   data: {
     phoneList: [],
@@ -18,9 +18,11 @@ Page({
 
     var limit = 5
     var that = this
+    console.log('app.data.url：' + app.data.url)
 
     wx.request({
-      url: app.url + 'addon/Telephone/Telephone/getPhone',
+      url: app.data.url + 'addon/Telephone/Telephone/getPhone',
+      // url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Telephone/Telephone/getPhone',
       data: { lastid: lastid, limit: limit },
       header: {
         'Content-Type': 'application/json'
