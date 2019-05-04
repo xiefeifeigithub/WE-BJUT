@@ -36,7 +36,7 @@ Page({
         {
           icon: '/images/eng.png',
           src: '../cet/cet',
-          title: "四六级"
+          title: "等级考试"
         },
         {
           icon: '/images/kc.png',

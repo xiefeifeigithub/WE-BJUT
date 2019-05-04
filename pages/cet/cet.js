@@ -65,7 +65,7 @@ Page({
   onReady: function () {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
-      title: '四六级成绩查询'
+      title: '等级考试信息查询'
     })
   }
 })
