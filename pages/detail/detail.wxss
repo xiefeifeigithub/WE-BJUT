@@ -1,4 +1,3 @@
-/* pages/detail/detail.wxss */
 .wrap {
     height: 100%;
     display: flex;

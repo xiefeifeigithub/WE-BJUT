@@ -1,11 +1,5 @@
-// pages/cet/cet.js
-
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     account: '', //用户名
     password: '', //密码

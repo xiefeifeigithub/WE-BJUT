@@ -1,10 +1,5 @@
-// pages/rooms/rooms.js
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     storeyPick: true,
     weekPick: true,
@@ -175,9 +170,6 @@ Page({
     
 
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
     //判断用户是否登录过,如果没有登录则跳转登录页面。
     const user = wx.getStorageSync(app.data.keyUserName)
@@ -201,16 +193,6 @@ Page({
       defaultWeekday: tempWeekdayStr
      })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function() {
     this.setData({
       storeyPick: true,
