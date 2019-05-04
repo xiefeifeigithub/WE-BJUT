@@ -98,7 +98,7 @@ page{
 }
 .item-pwd{
   padding: 20rpx 200rpx 20rpx 20rpx;
-  font-size: 10pt;
+  font-size: 30rpx;
   display: flex;
   flex-direction: column;
 }
@@ -229,7 +229,7 @@ page{
  height: 140rpx;
  border-radius: 50%;
   margin: 0px;
-  bottom: 60rpx;
+  bottom: 30px;
   right: 60rpx;
   color: #999999;
   display: flex;

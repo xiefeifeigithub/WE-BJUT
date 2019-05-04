@@ -1,14 +1,16 @@
-<view wx:for="{{examInfo}}" class='card'>
-  <view class='item'>
-    <text>科目：{{item.className}}</text>
-    <text>\n</text>
-    <text>座位：{{item.deskNum}}</text>
-    <text>\n</text>
-    <text>地点：{{item.examRoom}}</text>
-    <text>\n</text>
-    <text>时间：{{item.examTime}}</text>
-    <text>\n</text>
-    <text>校区：{{item.school}}</text>
-    <text>\n</text>
+ <view wx:for="{{examInfo}}" class='card'>
+      <view class='item'>
+        <text>科目：{{item.className}}</text>       <text>\n</text>
+        <text>座位：{{item.deskNum}}</text>         <text>\n</text>
+        <text>地点：{{item.examRoom}}</text>        <text>\n</text>
+        <text>时间：{{item.examTime}}</text>        <text>\n</text>
+        <text>校区：{{item.school}}</text>          <text>\n</text>
+      </view>
   </view>
-</view>
+
+    <button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>向我吐槽</text>
+ </button>
+
