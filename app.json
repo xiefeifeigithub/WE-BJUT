@@ -13,7 +13,8 @@
     "pages/timetable/timetable",
     "pages/exam/exam",
     "pages/cet/cet",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/phone/phone"
   ],
   "window": {
     "backgroundTextStyle": "light",   

@@ -47,6 +47,11 @@ Page({
           icon: '/images/ditu.png',
           src: '/pages/map/map',
           title: "地点查询"
+        },
+        {
+          icon: '/images/dianhua.png',
+          src: '/pages/phone/phone',
+          title: '电话黄页'
         }
       ]
   },
