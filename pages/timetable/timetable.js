@@ -4,38 +4,48 @@ const app = getApp()
 Page({
   data: {
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
-    currList: [],            //显示的课表信息(不包含教师姓名，上课周)
-    lessonName: '',           //课程名称
-    teacher: '',              //授课教师
-    location: '',             //上课地点
-    week: '',                 //起止周
-    time: '',                 //上课时间
-    mutiLessons: [],           //用于记录同时段重叠的课程
+    currList: [], //当前显示的课表信息(不包含教师姓名，上课周)
+    lessonName: '', //课程名称
+    teacher: '', //授课教师
+    location: '', //上课地点
+    week: '', //起止周
+    time: '', //上课时间
+    mutiLessons: [], //用于记录同时段重叠的课程
     currentWeek: 0,
-    allLessonsList: [],      //全部的课表信息(不包含教师姓名，上课周)
-    wholeLessonList: [],      //完整的课程信息（含教师姓名，上课周）
-    exerciseLesonList: [],     //实践课课程信息
+    allLessonsList: [], //全部的课表信息(不包含教师姓名，上课周)
+    wholeLessonList: [], //完整的课程信息（含教师姓名，上课周）
+    exerciseLesonList: [], //实践课课程信息
     icon_lessonUrl: '../../images/icons/all_lesson.png',
     isShowAll: true
   },
 
-  onLoad: function () {
+  onLoad: function() {
+    //判断用户是否登录过,如果没有登录则跳转登录页面。
+    const user = wx.getStorageSync(app.data.keyUserName)
+    if (user == '') {
+      wx.switchTab({
+        url: '../account/account',
+      })
+    }
     console.log("数据从本地获取");
     this.getTimetableFromLocal();
     this.getExerciseLessonFromLocal();
     this.dialog = this.selectComponent("#dialog");
+    console.log("timetable onload invoked")
   },
   /**
- * 生命周期函数--监听页面初次渲染完成
- */
-  onReady: function () {
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+    console.log("timetable onready invoked")
   },
 
-  onShow: function () {
+  onShow: function() {
+    console.log("timetable onshow invoked")
   },
 
   //判断本地是否有数据
-  hasLocalData: function () {
+  hasLocalData: function() {
     var hasData = false;
     try {
       const value = wx.getStorageSync('timetableLcocal');
@@ -55,7 +65,7 @@ Page({
   /**
    * 从本地获取课程表数据
    */
-  getTimetableFromLocal: function () {
+  getTimetableFromLocal: function() {
     var localData = [];
     var that = this;
 
@@ -65,7 +75,9 @@ Page({
       if (value) {
         localData = value;
         //将本地读取的数据保存到wholeLessonList
-        that.setData({ wholeLessonList: localData });
+        that.setData({
+          wholeLessonList: localData
+        });
         that.setLessonListSimple(that.data.wholeLessonList);
       }
     } catch (e) {
@@ -73,7 +85,7 @@ Page({
     }
   },
 
-  getExerciseLessonFromLocal: function () {
+  getExerciseLessonFromLocal: function() {
     var localData = [];
     var that = this;
 
@@ -82,7 +94,9 @@ Page({
       const value = wx.getStorageSync(app.data.keyExerciseLesson);
       if (value) {
         localData = value;
-        that.setData({ exerciseLesonList: localData });
+        that.setData({
+          exerciseLesonList: localData
+        });
       }
     } catch (e) {
       console.log("获取本地实践课出现异常")
@@ -107,7 +121,7 @@ Page({
     var thatWholeList = this.data.wholeLessonList;
     var thatIsShowAll = this.data.isShowAll;
     var thatAllList = this.data.allLessonsList;
-    var sortList = [];    //用于存储根据开始周排序的课程，针对重叠的课。
+    var sortList = []; //用于存储根据开始周排序的课程，针对重叠的课。
     //判断当前课表页面是显示全部还是显示本周课表
     if (!thatIsShowAll) {
       for (var i = 0; i < thatAllList.length; i++) {
@@ -131,7 +145,9 @@ Page({
         "week": week,
         "time": time
       });
-      this.setData({ mutiLessons: tempList2 });
+      this.setData({
+        mutiLessons: tempList2
+      });
     } else {
       var tempStrArr1 = thatWholeList[index].kcmc.split('\n');
       lessonName = tempStrArr1[0];
@@ -180,18 +196,20 @@ Page({
         });
       }
       sortList.sort(this.sortStartWeek)
-      this.setData({ mutiLessons: sortList });
+      this.setData({
+        mutiLessons: sortList
+      });
     }
     this.dialog.showDialog();
   },
-  sortStartWeek: function (lesson1, lesson2) {
+  sortStartWeek: function(lesson1, lesson2) {
     return lesson1.startWeek - lesson2.startWeek;
-  }, 
+  },
   /**
    * 获取某节课的起始时间和结束时间
    * start：开始的那节课，num:课程小节数
    */
-  getLessonTime: function (start, num) {
+  getLessonTime: function(start, num) {
     var startTime = new Date()
     var interval = 0
     switch (start) {
@@ -266,9 +284,11 @@ Page({
     return tempTimeStr;
   },
 
-  showTimetableByCurrentWeek: function () {
+  showTimetableByCurrentWeek: function() {
 
-    this.setData({ currentWeek: app.globalData.currentWeek})
+    this.setData({
+      currentWeek: app.globalData.currentWeek
+    })
     var currWeekLessons = [];
 
     for (var i = 0; i < this.data.wholeLessonList.length; i++) {
@@ -297,7 +317,7 @@ Page({
   },
 
   //处理点击显示本周课表按键
-  currWeekLesson: function () {
+  currWeekLesson: function() {
     console.log("激发currWeekLesson");
     this.showTimetableByCurrentWeek();
   },
@@ -306,7 +326,7 @@ Page({
    * 简化课表数据，将展示的数据省略老师和上课周
    * tempList:详细的课表信息
    */
-  setLessonListSimple: function (tempList) {
+  setLessonListSimple: function(tempList) {
     var lessonName = '';
     var teacher = '';
     var location = '';
@@ -326,33 +346,45 @@ Page({
         "tag": tempList[i].tag
       })
     }
-    this.setData({ currList: list })
+    this.setData({
+      currList: list
+    })
     if (this.data.allLessonsList.length == 0) {
-      this.setData({ allLessonsList: list })
+      this.setData({
+        allLessonsList: list
+      })
     }
 
   },
   /**
    * 显示所有课表，如果时间重叠，用角标标注
    */
-  showTimetableByAll: function () {
+  showTimetableByAll: function() {
     var tempList = this.data.allLessonsList;
-    this.setData({ currList: tempList });
+    this.setData({
+      currList: tempList
+    });
   },
   /**
    * 点击悬浮按钮显示全部或者本周课表
    */
-  showAllOrPart: function () {
+  showAllOrPart: function() {
     if (this.data.isShowAll == true) {
-      this.setData({ isShowAll: false, icon_lessonUrl: '../../images/icons/part_lesson.png' });
+      this.setData({
+        isShowAll: false,
+        icon_lessonUrl: '../../images/icons/part_lesson.png'
+      });
       this.showTimetableByCurrentWeek();
     } else {
-      this.setData({ isShowAll: true, icon_lessonUrl: '../../images/icons/all_lesson.png' });
+      this.setData({
+        isShowAll: true,
+        icon_lessonUrl: '../../images/icons/all_lesson.png'
+      });
       this.showTimetableByAll();
     }
   },
   //页面初次渲染完成时触发
-  onReady: function () {
+  onReady: function() {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
       title: '我的课表'
