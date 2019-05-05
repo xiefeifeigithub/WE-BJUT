@@ -13,7 +13,8 @@
     "pages/exam/exam",
     "pages/cet/cet",
     "pages/map/map",
-    "pages/phone/phone"
+    "pages/phone/phone",
+    "pages/extension/extension"
   ],
   "window": {
     "backgroundTextStyle": "light",   
