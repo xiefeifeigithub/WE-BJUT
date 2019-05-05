@@ -4,19 +4,33 @@ page{
 }
 /*轮播图*/
 .change{
-  height: 320rpx;
+  height: 330rpx;
   padding: 20rpx;
   box-sizing: border-box;
   background-color: white;
+  position: relative;
+  border-radius: 30rpx;
 }
 
-.swiper-image {
-  height: 100%;
-  width: 100%;
-}
 .slide-image{
   height: 100%;
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15rpx;
+  
+}
+.slide-text{
+  font-size: 30rpx;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  color: white;
+  font-weight: 500;
+  position: absolute;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 10rpx;
   border-radius: 30rpx;
 }
 .nav {
