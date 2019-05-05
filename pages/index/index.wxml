@@ -3,8 +3,8 @@
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
-      <text>{{item.title}}</text>
-        <image src="{{item.img}}" class="slide-image" catchtap='clickImage' data-id='{{index}}'/>
+   <image src="{{item.img}}" class="slide-image" catchtap='clickImage' data-id='{{index}}'></image>
+  <text class='slide-text'>{{item.title}}</text>
       </swiper-item>
     </block>
   </swiper>
