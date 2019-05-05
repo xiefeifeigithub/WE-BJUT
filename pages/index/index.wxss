@@ -4,8 +4,8 @@ page{
 }
 /*轮播图*/
 .change{
-  height: 330rpx;
-  padding: 20rpx;
+  height: 300rpx;
+  margin: 20rpx;
   box-sizing: border-box;
   background-color: white;
   position: relative;
@@ -17,21 +17,23 @@ page{
   width: 100%;
   overflow: hidden;
   position: relative;
-  border-radius: 15rpx;
-  
+  border-radius: 30rpx;
 }
 .slide-text{
-  font-size: 30rpx;
+  font-size: 28rpx;
   left: 0;
   right: 0;
-  bottom: 20rpx;
+  bottom: 0;
+  margin-bottom: 20rpx;
   color: white;
-  font-weight: 500;
+  font-weight: 580;
   position: absolute;
   margin-left: 20rpx;
   margin-right: 20rpx;
-  margin-bottom: 10rpx;
-  border-radius: 30rpx;
+  background: rgba(172, 170, 170, 0.5);
+  border-radius: 15rpx;
+  /*margin-bottom: 20rpx;*/
+
 }
 .nav {
   display: flex;
