@@ -14,7 +14,7 @@ Page({
     //显示出加载中的提示
     this.setData({ loadHidden: false })
 
-    var limit = 5
+    var limit = 50
     var that = this
     console.log('app.data.url：' + app.data.url)
 
@@ -63,6 +63,7 @@ Page({
         //显示出加载中的提示
         that.setData({ loadHidden: true })
       }
+
     })
   },
   loadMore: function (event) {
@@ -83,6 +84,14 @@ Page({
     this.setData({ isfrist: 0 })
     this.loadData(id);
   },
+ 
+  //拨打电话
+  callmeTap: function(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone
+    })
+  },
+
   onLoad: function () {
     this.loadData(0);
   },

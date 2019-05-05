@@ -2,7 +2,7 @@ var app = getApp()
 Page({
   onLoad: function (options) {
     console.log('onLoad: 加载strategy页面')
-  },
+ },
 
   //查找不同类型文章
   querySpecifiedArticles: function (e) {

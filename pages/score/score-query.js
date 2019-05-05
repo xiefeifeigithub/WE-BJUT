@@ -98,6 +98,11 @@ Page({
     })
   },
   onLoad:function(){
+    wx.showToast({
+      title: '教务系统目前不能查询学生考试成绩',
+      icon: 'none'
+    })
+
     //判断用户是否登录过,如果没有登录则跳转登录页面。
     const user = wx.getStorageSync(app.data.keyUserName)
     if (user == '') {

@@ -1,7 +1,6 @@
 //app.js
 
 App({
-
   data: {
     //课表
     keyTimetable: 'timetableLcocal',            //用于存取本地存储的课程信息的键
@@ -36,6 +35,7 @@ App({
     var userpassword = wx.getStorageSync(this.data.keyPwd)
     //计算全局变量currentWeek
     this.calculateCurrentWeek();
+
 
     this.globalData.username = username
     this.globalData.userpassword = userpassword
@@ -93,6 +93,7 @@ App({
           }
         }
       })
+
     }
   },
 

@@ -25,6 +25,7 @@ Page({
     //判断用户是否登录过,如果没有登录则跳转登录页面。
     //const user = wx.getStorageSync(app.data.keyUserName)
     console.log("数据从本地获取");
+
     this.getTimetableFromLocal();
     this.getExerciseLessonFromLocal();
     this.dialog = this.selectComponent("#dialog");

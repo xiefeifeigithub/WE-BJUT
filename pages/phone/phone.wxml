@@ -1,20 +1,14 @@
-<!--lists.wxml-->
 <view class="warp">
 
-<!--文章列表模板-->
-<template name="itmes">
-    <view class="infos">
-      <view class="title">{{name}}</view>
-      <view class="date">{{phonenumber}}</view>
-    </view>
-</template>
-
-
 <!--循环输出列表 begin-->
-<view wx:for="{{phoneList}}" class="list">
-  <template is="itmes" data="{{...item}}" />
+<view wx:for="{{phoneList}}" class="list" wx:for-index='id'>
+  <view class="infos">
+      <view class="title">{{item.name}}</view>
+      <view catchtap="callmeTap" class="date"  data-phone="{{item.phonenumber}}">{{item.phonenumber}}</view>
+    </view>
+    <view class='borderline'></view>
 </view>
-<!--循环输出列表 end-->
+
 <loading hidden="{{loadHidden}}" bindchange="loadChange">
     数据加载中...
 </loading>
@@ -23,3 +17,9 @@
 <toast hidden="{{toastHidden}}" bindchange="toastChange" duration="3000">{{msg}}</toast>
 <modal title="温馨提示" no-cancel hidden="{{confirmHidden}}" confirm-text="明确" bindconfirm="modalChange">你当前不在在WIFI网格下下，会产生流量费用</modal>
 </view>
+
+  <button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>向我吐槽</text>
+ </button>

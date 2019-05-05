@@ -23,6 +23,7 @@ Page({
         });
       }
     })
+
     wx.removeStorageSync('latlngstart');
     wx.removeStorageSync('latlngend');
   },
