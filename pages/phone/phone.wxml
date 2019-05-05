@@ -1,21 +1,14 @@
-<!--lists.wxml-->
 <view class="warp">
 
-<!--文章列表模板-->
-<template name="itmes">
-    <view class="infos">
-      <view class="title">{{name}}</view>
-      <view bindtap="callmeTap" class="date">{{phonenumber}}</view>
+<!--循环输出列表 begin-->
+<view wx:for="{{phoneList}}" class="list" wx:for-index='id'>
+  <view class="infos">
+      <view class="title">{{item.name}}</view>
+      <view catchtap="callmeTap" class="date"  data-phone="{{item.phonenumber}}">{{item.phonenumber}}</view>
     </view>
     <view class='borderline'></view>
-</template>
-
-
-<!--循环输出列表 begin-->
-<view wx:for="{{phoneList}}" class="list">
-  <template is="itmes" data="{{...item}}" />
 </view>
-<!--循环输出列表 end-->
+
 <loading hidden="{{loadHidden}}" bindchange="loadChange">
     数据加载中...
 </loading>
