@@ -8,7 +8,10 @@ App({
     keyExerciseLesson: 'exerciseLessonLocal',        //用于存取实践课的键
     keyUserName: 'studentNumLocal',              //用于存取学生学号的键
     keyPwd: 'stuPwdLocal',                      //用于存取学生密码的键
-    keyInfo: 'stuInfoLocal',                           //用于存取学生基本信息
+    keyInfo: 'stuInfoLocal',                           //用于存取学生基本信息的键
+    keyCet:'cetLocal',                          //用于存取四六级考试成绩的键
+    keyPhoneList:'phoneLocal',                 //用于存取电话号码的键
+    keyExamInfo:'examInfoLocal',                //用于存取考试信息的键
     url: 'https://www.bjutxiaomei.cn/index.php?s=/',
   },
   globalData: {
@@ -18,16 +21,21 @@ App({
     userpassword: null,       //教务密码
     classification: '',     //文章分类
     freeRooms: [],          //空教室
-    currentWeek: null        //当前是第几周
+    currentWeek: null,        //当前是第几周
+    hasLocalData:false
   },
 
   onLaunch: function () {
-    //计算全局变量currentWeek
-    this.calculateCurrentWeek();
     //从缓存中获取用户信息
     console.log("从缓存中获取用户信息")
     var username = wx.getStorageSync(this.data.keyUserName)
+    //如果读到username，证明有本地数据，将hasLocalData置为true
+    if(username){
+      this.globalData.hasLocalData = true
+    }
     var userpassword = wx.getStorageSync(this.data.keyPwd)
+    //计算全局变量currentWeek
+    this.calculateCurrentWeek();
 
     this.globalData.username = username
     this.globalData.userpassword = userpassword
@@ -91,21 +99,12 @@ App({
   /**
    * 检测本地是否存有课表数据
    */
-  hasLocalData: function () {
-    var hasData = false;
-    try {
-      const value = wx.getStorageSync(this.data.keyTimetable);
-      if (value) {
-        console.log("本地有数据");
-        hasData = true;
-      } else {
-        hasData = false;
-      }
-    } catch (e) {
-      console.log("获取本地数据出现异常")
-      hasData = false;
+  ensureHasData: function () {
+    var username = wx.getStorageSync(this.data.keyUserName)
+    //如果读到username，证明有本地数据，将hasLocalData置为true
+    if (username) {
+      this.globalData.hasLocalData = true
     }
-    return hasData;
   },
   /**解析课程表(不含实践课处理)
    * 将从教务获取的课程表数据解析成能够在课程表展示的数据

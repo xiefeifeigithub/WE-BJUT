@@ -12,6 +12,10 @@ Page({
     unload:true  //是否加载学生个人信息
   },
 
+  globalData:{
+    timer:null
+  },
+
   /**
  * 生命周期函数--监听页面加载
  */
@@ -55,7 +59,7 @@ Page({
     console.log('显示密码：' + this.data.passwordStatus)
 
     //设置定时器 - 延时1秒
-    var timer = setTimeout(function () {
+    this.globalData.timer = setTimeout(function () {
       console.log("----延时1秒----");
       this.setData({
         passwordStatus: !this.data.passwordStatus
@@ -123,7 +127,7 @@ Page({
           })
           app.parseTimetableData(res.data[1].table);
           wx.hideLoading(); //隐藏身份验证对话框
-
+          app.ensureHasData()
         } else {
           wx.showToast({
             title: '请检查学号或密码是否正确',
@@ -134,6 +138,71 @@ Page({
       fail: function(res) {
         console.log('登录失败');
         console.log(res);
+      }
+    });
+
+    //四六级考试信息
+    wx.request({
+      // https://www.bjut1960.cn/grade?xh=学号&mm=密码
+      url: 'https://www.bjut1960.cn/grade?xh=' + account + '&mm=' + password,
+      method: 'GET',
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: function (res) {
+
+        if (res.statusCode == 200) {
+          console.log("考试信息返回成功")
+          that.setData({
+            cetInfo: res.data
+          })
+          wx.setStorage({
+            key: app.data.keyCet,
+            data: res.data,
+          })
+          wx.hideLoading()
+        } else {
+          console.log("404")
+          // wx.showToast({
+          //   title: '请检查学号或密码是否正确',
+          //   icon: 'none'
+          // })
+        }
+      },
+      fail: function (res) {
+        console.log('登录失败');
+      }
+    });
+
+    //考试信息
+    wx.request({
+      // https://www.bjut1960.cn/examination?xh=学号&mm=密码
+      url: 'https://www.bjut1960.cn/examination?xh=' + account + '&mm=' + password,
+      method: 'GET',
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          console.log("考试信息返回成功")
+          that.setData({
+            examInfo: res.data
+          })
+          wx.setStorage({
+            key: app.data.keyExamInfo,
+            data: examInfo,
+          })
+          wx.hideLoading()
+        } else {
+          console.log("404")
+          // wx.showToast({
+          //   title: '请检查学号或密码是否正确',
+          //   icon: 'none'
+          // })
+        }
+      },
+      fail: function (res) {
+        console.log("请求考试信息出错:" + res)
       }
     });
   },
@@ -147,6 +216,7 @@ Page({
       wx.removeStorageSync(app.data.keyPwd);
       wx.removeStorageSync(app.data.keyInfo);
       wx.removeStorageSync(app.data.keyExerciseLesson);
+      wx.removeStorageSync(app.data.keyCet)
       this.setData({
         unload: true
       })
@@ -160,5 +230,11 @@ Page({
       })
     }
 
+  },
+  //隐藏时，关掉定时器
+  onHide:function(){
+    clearTimeout(this.globalData.timer)
   }
+
+
 })

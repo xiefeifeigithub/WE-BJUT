@@ -9,6 +9,7 @@ Page({
       'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556624764155&di=1856c3e9fcc01b96f72ec83c94be69b1&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic3%2Fcover%2F03%2F33%2F36%2F5b87325daad77_610.jpg',
       'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556624835119&di=8f9c6b17a36292ff21d2c2bfd6fe0330&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F29%2F20170329232408_KemfL.jpeg',
     ],
+
     indicatorDots: true, //是否显示面板指示点
     autoplay: true, //是否自动切换
     interval: 3000, //自动切换时间间隔
@@ -56,5 +57,70 @@ Page({
       ]
   },
 
-
+  //处理主页点击图标跳事件
+  touchIcon:function(options){
+    switch(options.target.id){
+      case "0":
+        if(app.globalData.hasLocalData){
+          wx.navigateTo({
+            url: this.data.student[0].src,
+          })
+        } else {
+          wx.switchTab({
+            url: '../account/account',
+          })
+        }
+        break;
+      case "1":
+        wx.navigateTo({
+          url: this.data.student[1].src,
+        }); 
+        break;
+      case "2":
+        //此处代码不可删除
+        // if (app.globalData.hasLocalData){
+        //   wx.navigateTo({
+        //     url: this.data.student[2].src,
+        //   }); break;
+        // }
+        wx.showToast({
+          title: '教务当前没有数据',
+          icon: 'none'
+        }); break;
+      case "3":
+        if (app.globalData.hasLocalData){
+          wx.navigateTo({
+            url: this.data.student[3].src,
+          }); 
+        } else {
+          wx.switchTab({
+            url: '../account/account',
+          })
+        }
+        break;
+      case "4":
+        //此处代码不可删除
+        // if (app.globalData.hasLocalData){
+        //   wx.navigateTo({
+        //     url: this.data.student[4].src,
+        //   }); break;
+        // }else {
+        // wx.switchTab({
+        //   url: '../account/account',
+        // })
+        // }
+        wx.showToast({
+          title: '教务当前没有数据',
+          icon: 'none'
+        });break;
+      case "5":
+        wx.navigateTo({
+          url: this.data.student[5].src,
+        }); break;
+      case "6":
+        wx.navigateTo({
+          url: this.data.student[6].src,
+        }); break;
+    }
+  }
 })

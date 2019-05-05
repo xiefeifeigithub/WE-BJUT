@@ -179,14 +179,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    //判断用户是否登录过,如果没有登录则跳转登录页面。
-    const user = wx.getStorageSync(app.data.keyUserName)
-    if (user == '') {
-      wx.switchTab({
-        url: '../account/account',
-      })
-    }
-    
     //获取周的初始值、周几的初始值
     var currDate = new Date();
     var currWeek = app.globalData.currentWeek;
