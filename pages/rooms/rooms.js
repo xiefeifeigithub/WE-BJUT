@@ -1,10 +1,5 @@
-// pages/rooms/rooms.js
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     storeyPick: true,
     weekPick: true,
@@ -175,9 +170,6 @@ Page({
     
 
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
     //获取周的初始值、周几的初始值
     var currDate = new Date();
@@ -193,16 +185,6 @@ Page({
       defaultWeekday: tempWeekdayStr
      })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function() {
     this.setData({
       storeyPick: true,

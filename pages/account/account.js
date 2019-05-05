@@ -1,9 +1,5 @@
-// pages/account/account.js
 const app = getApp()
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     userName: '', //用户名
     userPwd: '', //密码
@@ -38,9 +34,7 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
@@ -217,6 +211,7 @@ Page({
       wx.removeStorageSync(app.data.keyInfo);
       wx.removeStorageSync(app.data.keyExerciseLesson);
       wx.removeStorageSync(app.data.keyCet)
+      app.ensureHasData()
       this.setData({
         unload: true
       })

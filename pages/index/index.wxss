@@ -24,7 +24,6 @@ page{
   flex-flow: row wrap;
   align-content: flex-start;
   background: #fff;
-  /*padding: 15rpx 10rpx 10rpx;*/
   padding-left: 20rpx;
   padding-right: 20rpx;
   padding-bottom: 20rpx;
@@ -55,11 +54,12 @@ page{
 }
 
 
+
+
 /* 机器人 */
 
 .btn1{
   background-color: rgba(248, 246, 246, 0.5);
- /*border: 1px solid #7878EC;*/
  width: 140rpx;
  height: 140rpx;
  border-radius: 50%;
@@ -72,9 +72,6 @@ page{
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  /*flex-direction: column;
-  align-items: center;
-  justify-content: center;*/
   position: fixed;
 }
 

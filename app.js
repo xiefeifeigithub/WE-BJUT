@@ -104,6 +104,8 @@ App({
     //如果读到username，证明有本地数据，将hasLocalData置为true
     if (username) {
       this.globalData.hasLocalData = true
+    }else{
+      this.globalData.hasLocalData = false
     }
   },
   /**解析课程表(不含实践课处理)
