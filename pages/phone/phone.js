@@ -63,6 +63,7 @@ Page({
         //显示出加载中的提示
         that.setData({ loadHidden: true })
       }
+
     })
   },
   loadMore: function (event) {
@@ -83,6 +84,13 @@ Page({
     this.setData({ isfrist: 0 })
     this.loadData(id);
   },
+ 
+  callmeTap: function() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.phoneList[0].telephoneNumber
+    })
+  },
+
   onLoad: function () {
     this.loadData(0);
   },

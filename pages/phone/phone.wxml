@@ -5,7 +5,7 @@
 <template name="itmes">
     <view class="infos">
       <view class="title">{{name}}</view>
-      <view class="date">{{phonenumber}}</view>
+      <view bindtap="callmeTap" class="date">{{phonenumber}}</view>
     </view>
     <view class='borderline'></view>
 </template>
