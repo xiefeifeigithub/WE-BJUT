@@ -27,7 +27,7 @@ Page({
       success: function (res) {
         if (!res.data) {
           that.setData({ toastHidden: false })
-          that.setData({ moreHidden: 'none' })
+          that.setData({ moreHidden: 'none'})
           return false
         }
         var len = res.data.length
@@ -38,7 +38,7 @@ Page({
         var newData = dataArr.concat(res.data);
 
         if (oldLastid == 0) {
-          wx.setStorageSync('phoneList', newData)
+          wx.setStorageSync(app.data.keyPhoneList, newData)
         }
         that.setData({ phoneList: newData })
         that.setData({ moreHidden: '' })
@@ -46,7 +46,7 @@ Page({
       },
       fail: function (res) {
         if (lastid == 0) {
-          var newData = wx.getStorageSync('phoneList')
+          var newData = wx.getStorageSync(app.data.keyPhoneList)
           if (!newData) {
             that.setData({ phoneList: newData })
             that.setData({ moreHidden: '' })

@@ -4,31 +4,26 @@ const app = getApp()
 Page({
   data: {
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
-    currList: [], //当前显示的课表信息(不包含教师姓名，上课周)
-    lessonName: '', //课程名称
-    teacher: '', //授课教师
-    location: '', //上课地点
-    week: '', //起止周
-    time: '', //上课时间
-    mutiLessons: [], //用于记录同时段重叠的课程
-    allLessonsList: [], //全部的课表信息(不包含教师姓名，上课周)
-    wholeLessonList: [], //完整的课程信息（含教师姓名，上课周）
-    exerciseLesonList: [], //实践课课程信息
-    icon_lessonUrl: '../../images/icons/all_lesson.png',
+    currList: [],               //当前显示的课表信息(不包含教师姓名，上课周)
+    lessonName: '',             //课程名称
+    teacher: '',                //授课教师
+    location: '',               //上课地点
+    week: '',                   //起止周
+    time: '',                   //上课时间
+    mutiLessons: [],            //用于记录同时段重叠的课程
+    allLessonsList: [],         //全部的课表信息(不包含教师姓名，上课周)
+    wholeLessonList: [],        //完整的课程信息（含教师姓名，上课周）
+    exerciseLesonList: [],      //实践课课程信息
+    icon_lessonUrl: '../../images/icons/part_lesson.png',
     
   },
   globalData:{
-    isShowAll: true,
+    isShowAll: false,
     currentWeek: 0
   },
   onLoad: function() {
     //判断用户是否登录过,如果没有登录则跳转登录页面。
-    const user = wx.getStorageSync(app.data.keyUserName)
-    if (user == '') {
-      wx.switchTab({
-        url: '../account/account',
-      })
-    }
+    //const user = wx.getStorageSync(app.data.keyUserName)
     console.log("数据从本地获取");
 
     this.getTimetableFromLocal();
@@ -36,6 +31,7 @@ Page({
     this.dialog = this.selectComponent("#dialog");
     console.log("timetable onload invoked")
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -46,25 +42,7 @@ Page({
   onShow: function() {
     console.log("timetable onshow invoked")
   },
-
-  //判断本地是否有数据
-  hasLocalData: function() {
-    var hasData = false;
-    try {
-      const value = wx.getStorageSync('timetableLcocal');
-      if (value) {
-        console.log("本地有数据");
-        hasData = true;
-      } else {
-        hasData = false;
-      }
-    } catch (e) {
-      console.log("获取本地数据出现异常")
-      hasData = false;
-    }
-    return hasData;
-  },
-
+  
   /**
    * 从本地获取课程表数据
    */
@@ -348,12 +326,15 @@ Page({
         "tag": tempList[i].tag
       })
     }
-    this.setData({
-      currList: list
-    })
+    //此处加入逻辑
     if (this.data.allLessonsList.length == 0) {
       this.setData({
         allLessonsList: list
+      })
+      this.showTimetableByCurrentWeek()
+    }else{
+      this.setData({
+        currList: list
       })
     }
 
@@ -371,18 +352,18 @@ Page({
    * 点击悬浮按钮显示全部或者本周课表
    */
   showAllOrPart: function() {
-    if (this.globalData.isShowAll == true) {
-      this.globalData.isShowAll = false
-      this.setData({
-        icon_lessonUrl: '../../images/icons/part_lesson.png'
-      });
-      this.showTimetableByCurrentWeek();
-    } else {
+    if (this.globalData.isShowAll == false) {
       this.globalData.isShowAll = true
       this.setData({
         icon_lessonUrl: '../../images/icons/all_lesson.png'
       });
       this.showTimetableByAll();
+    } else {
+      this.globalData.isShowAll = false
+      this.setData({
+        icon_lessonUrl: '../../images/icons/part_lesson.png'
+      });
+      this.showTimetableByCurrentWeek();
     }
   },
   //页面初次渲染完成时触发

@@ -5,6 +5,7 @@ Page({
     //轮播图
     imgUrls: [],  //轮播图内容
     indicatorDots: false, //是否显示面板指示点
+
     autoplay: true, //是否自动切换
     interval: 3000, //自动切换时间间隔
     duration: 1000, //滑动动画时长
@@ -51,6 +52,73 @@ Page({
       ]
   },
 
+
+  //处理主页点击图标跳事件
+  touchIcon:function(options){
+    switch(options.target.id){
+      case "0":
+        if(app.globalData.hasLocalData){
+          wx.navigateTo({
+            url: this.data.student[0].src,
+          })
+        } else {
+          wx.switchTab({
+            url: '../account/account',
+          })
+        }
+        break;
+      case "1":
+        wx.navigateTo({
+          url: this.data.student[1].src,
+        }); 
+        break;
+      case "2":
+        //此处代码不可删除
+        // if (app.globalData.hasLocalData){
+        //   wx.navigateTo({
+        //     url: this.data.student[2].src,
+        //   }); break;
+        // }
+        wx.showToast({
+          title: '教务当前没有数据',
+          icon: 'none'
+        }); break;
+      case "3":
+        if (app.globalData.hasLocalData){
+          wx.navigateTo({
+            url: this.data.student[3].src,
+          }); 
+        } else {
+          wx.switchTab({
+            url: '../account/account',
+          })
+        }
+        break;
+      case "4":
+        //此处代码不可删除
+        // if (app.globalData.hasLocalData){
+        //   wx.navigateTo({
+        //     url: this.data.student[4].src,
+        //   }); break;
+        // }else {
+        // wx.switchTab({
+        //   url: '../account/account',
+        // })
+        // }
+        wx.showToast({
+          title: '教务当前没有数据',
+          icon: 'none'
+        });break;
+      case "5":
+        wx.navigateTo({
+          url: this.data.student[5].src,
+        }); break;
+      case "6":
+        wx.navigateTo({
+          url: this.data.student[6].src,
+        }); break;
+    }
+
   onLoad: function () {
     var limit = 4 //加载4篇轮播图文章
     var lastid = 0
@@ -84,6 +152,6 @@ Page({
     wx.navigateTo({
       url: '../../pages/extension/extension?id=' + id　　
     })
-  }
 
+  }
 })

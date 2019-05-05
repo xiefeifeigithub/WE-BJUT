@@ -23,8 +23,7 @@ Page({
         });
       }
     })
-    // wx.clearStorageSync('latlngstart');
-    // wx.clearStorageSync('latlngend');
+
     wx.removeStorageSync('latlngstart');
     wx.removeStorageSync('latlngend');
   },
@@ -112,7 +111,6 @@ Page({
     let latEnd = wx.getStorageSync('latlngend').lat;
     let lngEnd = wx.getStorageSync('latlngend').lng;
 
-
     _page.setData({
       latitude: latStart,
       longitude: lngStart,
@@ -133,7 +131,6 @@ Page({
       },
       ]
     });
-    ``
 
     /**
      * 获取两点的距离
