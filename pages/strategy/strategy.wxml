@@ -85,9 +85,3 @@
   </view>
 
 </view>
-
-<!-- 机器人 -->
-<button class='btn1' session-from="bot | {{nickName}} | {{avatarUrl}}" open-type='contact'>
-  <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
-  <text>向我吐槽</text>
-</button>

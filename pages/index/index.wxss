@@ -75,14 +75,15 @@ page{
 /* 机器人 */
 
 .btn1{
-  background-color: rgba(248, 246, 246, 0.5);
- width: 140rpx;
- height: 140rpx;
- border-radius: 50%;
+  background-color: #fff;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
   margin: 0px;
-  bottom: 30px;
-  right: 60rpx;
+  bottom: 30rpx;
+  right: 20rpx;
   color: #999999;
+  box-shadow:2px 2px 2px grey;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;

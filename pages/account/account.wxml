@@ -23,7 +23,7 @@
       <view class="card-item-hd">
         <image class="item-icon" src="/images/name.png"></image>
         <input value='{{userName}}' name="userName" bindinput="userNameInput" class="item-bd" placeholder="请输入教务账号" />
-        <image class="item-icon" src="/images/clear.png" bindtap='clearusername'></image>
+        <image class="item-icon" src="/images/clear.png" bindtap='clearUsername'></image>
       </view>
       <view class="card-item-hd">
         <image class="item-icon" src="/images/key.png"></image>
@@ -71,10 +71,3 @@
       <button class="sub-button" bindtap='logout'>退出登录</button>
     </view>
   </view>
-
-  <!-- 机器人 -->
-<button class='btn1'  
-session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
-    <text>向我吐槽</text>
- </button>
