@@ -82,7 +82,8 @@ Page({
         wx.showToast({
           title: '教务当前没有数据',
           icon: 'none'
-        }); break;
+        }); 
+        break;
       case "3":
         if (app.globalData.hasLocalData){
           wx.navigateTo({
@@ -96,19 +97,23 @@ Page({
         break;
       case "4":
         //此处代码不可删除
-        // if (app.globalData.hasLocalData){
-        //   wx.navigateTo({
-        //     url: this.data.student[4].src,
-        //   }); break;
-        // }else {
-        // wx.switchTab({
-        //   url: '../account/account',
-        // })
-        // }
-        wx.showToast({
-          title: '教务当前没有数据',
-          icon: 'none'
-        });break;
+        if (app.globalData.hasLocalData){
+          if(app.globalData.hasExamInfo){
+            wx.navigateTo({
+              url: this.data.student[4].src,
+            });
+          }else{
+            wx.showToast({
+              title: '教务当前没有数据',
+              icon: 'none'
+            });
+          }
+        }else {
+          wx.switchTab({
+            url: '../account/account',
+          })
+        }
+        break;
       case "5":
         wx.navigateTo({
           url: this.data.student[5].src,
@@ -118,6 +123,7 @@ Page({
           url: this.data.student[6].src,
         }); break;
     }
+  },
 
   onLoad: function () {
     var limit = 4 //加载4篇轮播图文章
@@ -132,11 +138,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data)
-
         that.setData({ imgUrls: res.data })
-
-        console.log("imgUrls: " + that.data.imgUrls)
       },
       fail: function (res) {
         console.log("服务器开小差了...")

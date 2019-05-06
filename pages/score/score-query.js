@@ -48,7 +48,7 @@ Page({
     //检测学号，密码，学年，学期是否正确
     if(year != '' && semester !=''){
       wx.request({
-        url: 'https://chafen.bjut123.com/API.php',
+        url: 'https://bjut.bjutxiaomei.cn/API.php',
         data: {
           account: account,
           password: pwd,
@@ -64,7 +64,7 @@ Page({
           console.log(res)
           if (res.statusCode == 404){
             wx.showToast({
-              title: '教务出错，暂不开放成绩查询...',
+              title: '访问教务教务出错,请稍后重试',
               icon: 'none'
             })
           }

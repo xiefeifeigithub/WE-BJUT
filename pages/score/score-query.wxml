@@ -19,9 +19,3 @@
             <button class='sub-button' catchtap='queryBtn'>点击查询</button>
         </view>
 </view>
-
-<button class='btn1'  
-session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
-    <text>向我吐槽</text>
- </button>
