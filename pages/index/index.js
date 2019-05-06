@@ -48,16 +48,22 @@ Page({
           icon: '/images/dianhua.png',
           src: '/pages/phone/phone',
           title: '电话黄页'
+        },
+        {
+          icon: '/images/qa.png',
+          src: '/pages/qa/qa',
+          title: '一问一答'
         }
       ]
   },
 
 
+
   //处理主页点击图标跳事件
-  touchIcon:function(options){
-    switch(options.target.id){
+  touchIcon: function (options) {
+    switch (options.target.id) {
       case "0":
-        if(app.globalData.hasLocalData){
+        if (app.globalData.hasLocalData) {
           wx.navigateTo({
             url: this.data.student[0].src,
           })
@@ -70,7 +76,7 @@ Page({
       case "1":
         wx.navigateTo({
           url: this.data.student[1].src,
-        }); 
+        });
         break;
       case "2":
         //此处代码不可删除
@@ -85,10 +91,10 @@ Page({
         }); 
         break;
       case "3":
-        if (app.globalData.hasLocalData){
+        if (app.globalData.hasLocalData) {
           wx.navigateTo({
             url: this.data.student[3].src,
-          }); 
+          });
         } else {
           wx.switchTab({
             url: '../account/account',
@@ -122,9 +128,12 @@ Page({
         wx.navigateTo({
           url: this.data.student[6].src,
         }); break;
+      case "7":
+        wx.navigateTo({
+          url: this.data.student[7].src,
+        }); break;
     }
   },
-
   onLoad: function () {
     var limit = 4 //加载4篇轮播图文章
     var lastid = 0
@@ -133,7 +142,7 @@ Page({
 
     wx.request({
       url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Imagetitle/Imagetitle/getImagetitle',
-      data: { lastid: lastid, limit: limit},
+      data: { lastid: lastid, limit: limit },
       header: {
         'content-type': 'application/json' // 默认值
       },
@@ -152,8 +161,8 @@ Page({
     var id = e.currentTarget.dataset.id;
     console.log("所选文章id：" + id)
     wx.navigateTo({
-      url: '../../pages/extension/extension?id=' + id　　
+      url: '../../pages/extension/extension?id=' + id
     })
-
   }
+
 })
