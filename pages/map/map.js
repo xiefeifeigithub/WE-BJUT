@@ -7,15 +7,34 @@ let qqmapsdk = new QQMapWX({
 });
 Page({
   data: {
-    openNav: true  //是否开启导航
+    openNav: true,  //是否开启导航
+
+     latitude: 0,
+     longitude: 0
   },
 
   onLoad: function (options) {
+
+    //清楚经纬度缓存
+    wx.removeStorageSync('latlngstart');
+    wx.removeStorageSync('latlngend');
+
     let _page = this;
 
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success: function (res) {
+
+        _page.data.latitude = res.latitude
+        _page.data.longitude = res.longitude
+
+      //设置起点经纬度缓存
+        wx.setStorageSync('latlngstart', {
+          lat: _page.data.latitude,
+          lng: _page.data.longitude
+        });
+
+        console.log(res)
         _page.setData({
           latitude: res.latitude,
           longitude: res.longitude,
@@ -23,54 +42,18 @@ Page({
         });
       }
     })
-
-    wx.removeStorageSync('latlngstart');
-    wx.removeStorageSync('latlngend');
-  },
-  
-  //start
-  getStart(e) {
-    let _page = this;
-    // 关键字补全以及获取经纬度
-    qqmapsdk.getSuggestion({
-      keyword: '北京工业大学' + e.detail.value,
-      success: function (res) {
-        let lat = res.data[0].location.lat;
-        let lng = res.data[0].location.lng;
-
-        wx.setStorageSync('latlngstart', {
-          lat: res.data[0].location.lat,
-          lng: res.data[0].location.lng
-        });
-      },
-      fail: function (res) {
-        console.log(res);
-      },
-      complete: function (res) {
-        console.log(res);
-      }
-    });
-
-    // 如果输入地点为空：则不规划路线
-    if (e.detail.value == '') {
-      _page.setData({
-        openNav: true,
-        resultDistance: ''
-      });
-    } else {
-      _page.setData({
-        openNav: false
-      });
-    }
   },
 
   //end
   getEnd(e) {
     let _page = this;
-    // 输入地点获取经纬度,我取得是数据的第一条数据.
+    // 终点经纬度：输入地点获取经纬度,我取得是数据的第一条数据.
     qqmapsdk.getSuggestion({
       keyword: '北京工业大学' + e.detail.value,
+      region:'北京', 
+      filter: '大学',
       success: function (res) {
+        console.log(res.data)
         let lat = res.data[0].location.lat;
         let lng = res.data[0].location.lng;
 
@@ -120,14 +103,14 @@ Page({
         latitude: latStart,
         longitude: lngStart,
         // 起点图标
-        iconPath: '../../images/location.png'
+        iconPath: '../../images/qidian.png'
       },
       {
         id: 1,
         latitude: latEnd,
         longitude: lngEnd,
         // 终点图标
-        iconPath: '../../images/location.png'
+        iconPath: '../../images/zhongdian.png'
       },
       ]
     });
