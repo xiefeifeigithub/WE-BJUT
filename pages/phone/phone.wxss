@@ -80,9 +80,6 @@ navigator {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  /*flex-direction: column;
-  align-items: center;
-  justify-content: center;*/
   position: fixed;
 }
 
