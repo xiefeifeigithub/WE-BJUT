@@ -5,6 +5,7 @@
   <view class="infos">
       <view class="title">{{item.question}}</view>
       <view class="date">{{item.answer}}</view>
+      <view class="date">{{item.isshow}}</view>
     </view>
     <view class='borderline'></view>
 </view>

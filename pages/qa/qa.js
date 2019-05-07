@@ -6,20 +6,18 @@ Page({
     toastHidden: true,
     confirmHidden: true,
     isfrist: 1,
-//    loadHidden: true,
     moreHidden: 'none',
     msg: '其余数据正在收集中...'
   },
   loadData: function (lastid) {
-    //显示出加载中的提示
- //   this.setData({ loadHidden: false })
+
 
     var limit = 50
     var that = this
     console.log('app.data.url：' + app.data.url)
 
     wx.request({
-      url: app.data.url + 'addon/Qa/Qa/getQa',
+      url: app.data.url + 'addon/Questionandanswer/Questionandanswer/getQa',
       data: { lastid: lastid, limit: limit },
       header: {
         'Content-Type': 'application/json'
@@ -41,6 +39,7 @@ Page({
           wx.setStorageSync(app.data.keyQaList, newData)
         }
         that.setData({ qaList: newData })
+        console.log(that.data.qaList)
         that.setData({ moreHidden: '' })
         console.log('data from url');
       },
@@ -79,14 +78,6 @@ Page({
     this.setData({ isfrist: 0 })
     this.loadData(id);
   },
-
-  // //拨打电话
-  // callmeTap: function (e) {
-  //   wx.makePhoneCall({
-  //     phoneNumber: e.currentTarget.dataset.phone
-  //   })
-  // },
-
   onLoad: function () {
     this.loadData(0);
   },
