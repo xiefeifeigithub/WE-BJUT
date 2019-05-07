@@ -8,7 +8,10 @@ Page({
     isfrist: 1,
     loadHidden: true,
     moreHidden: 'none',
-    msg: '其余数据正在收集中...'
+    msg: '其余数据正在收集中...',
+  
+
+
   },
   loadData: function (lastid) {
     //显示出加载中的提示
@@ -78,7 +81,8 @@ Page({
         if (networkType != 'wifi' && isfrist == '1') {
           that.setData({ confirmHidden: false })
         }
-      }
+      },
+      
     })
 
     this.setData({ isfrist: 0 })
@@ -94,6 +98,7 @@ Page({
 
   onLoad: function () {
     this.loadData(0);
+
   },
 
   toastChange: function () {
@@ -101,5 +106,6 @@ Page({
   },
   modalChange: function () {
     this.setData({ confirmHidden: true })
-  }
+  },
+  
 })
