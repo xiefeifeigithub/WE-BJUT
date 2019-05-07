@@ -7,18 +7,14 @@ Page({
     toastHidden: true,
     confirmHidden: true,
     isfirst: 1,
-    loadHidden: true,
     moreHidden: 'none',
     msg: '没有更多文章了',
- 
   },
 
   loadData:function (lastid){
     console.log('向服务器请求的初始元组id: ' + lastid)
-    //显示出加载中的提示
-    this.setData({loadHidden:false})
 
-    var limit = 20 //设置一次性文章加载数量
+    var limit = 10 //设置一次性文章加载数量
     var type = app.globalData.type //获取用户所选标签名
     console.log('获取用户所选标签名：' + type)
     ///把this对象复制到临时变量that
@@ -82,9 +78,7 @@ Page({
         else {
           that.setData({ toastHidden: false, moreHidden: 'none', msg: '当前网络异常，请稍后再试' })
         }
-      },
-      //显示加载中提示
-      complete:function() { that.setData({ loadHidden: true }) }
+      }
     })
   },
   

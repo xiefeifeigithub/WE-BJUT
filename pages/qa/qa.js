@@ -6,13 +6,13 @@ Page({
     toastHidden: true,
     confirmHidden: true,
     isfrist: 1,
-    loadHidden: true,
+//    loadHidden: true,
     moreHidden: 'none',
     msg: '其余数据正在收集中...'
   },
   loadData: function (lastid) {
     //显示出加载中的提示
-    this.setData({ loadHidden: false })
+ //   this.setData({ loadHidden: false })
 
     var limit = 50
     var that = this
@@ -58,12 +58,7 @@ Page({
         } else {
           that.setData({ toastHidden: false, moreHidden: 'none', msg: '当前网格异常，请稍后再试' })
         }
-      },
-      complete: function () {
-        //显示出加载中的提示
-        that.setData({ loadHidden: true })
       }
-
     })
   },
   loadMore: function (event) {

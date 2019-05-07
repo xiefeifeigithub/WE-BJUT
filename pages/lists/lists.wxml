@@ -1,34 +1,27 @@
-<!--pages/lists/lists.wxml-->
 <view class="wrap">
 
-<!--文章列表模板 begin-->
-<template name="items">
-  <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
-    <view class='tags'>
-   
-    <view class="infos">
-      <view class="title">{{title}}</view>
-      <view class="date">{{cTime}}</view>
-    </view>
-     <view class="imgs">
-      <image src="{{img}}" class="in-img" mode="'scaleToFill'"></image>
-    </view>
-    </view>
-  </navigator>
-</template> 
-<!--文章列表模板 end--> 
+  <!--文章列表模板-->
+  <template name="items">
+    <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
+      <view class='tags'>
 
-<!--循环输出列表  begin-->
- <view wx:for="{{newsList}}" class="list">
-  <template is="items" data="{{...item}}" />
- </view>
-<!--循环输出列表  end-->
+        <view class="infos">
+          <view class="title">{{title}}</view>
+          <view class="date">{{cTime}}</view>
+        </view>
+        <view class="imgs">
+          <image src="{{img}}" class="in-img" mode="'scaleToFill'"></image>
+        </view>
+      </view>
+    </navigator>
+  </template>
 
-<loading hidden="{{loadHidden}}" bindchange="loadChange">数据加载中...</loading>
+  <!--循环输出列表-->
+  <view wx:for="{{newsList}}" class="list">
+    <template is="items" data="{{...item}}" />
+  </view>
 
-<view bindtap="loadMore" data-lastid="{{lastid}}" data-isfirst="{{isfirst}}" class="loadMore" hidden="{{moreHidden}}" style="display:{{moreHidden}}">加载更多</view>
-<toast hidden="{{toastHidden}}" bindchange="totastChange" duration="3000">{{msg}}</toast>
-<modal title="温馨提示" no-cancel  confirm-text="明确" hidden="{{confirmHidden}}" bindconfirm="modalChange">当前不在WIFI网络,请注意流量使用情况</modal>
+  <view bindtap="loadMore" data-lastid="{{lastid}}" data-isfirst="{{isfirst}}" class="loadMore" hidden="{{moreHidden}}" style="display:{{moreHidden}}">加载更多</view>
+  <toast hidden="{{toastHidden}}" bindchange="totastChange" duration="3000">{{msg}}</toast>
+  <modal title="温馨提示" no-cancel confirm-text="明确" hidden="{{confirmHidden}}" bindconfirm="modalChange">当前不在WiFi网络下，将使用数据流量</modal>
 </view>
-
-
