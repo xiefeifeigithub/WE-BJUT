@@ -7,7 +7,10 @@ Page({
     confirmHidden: true,
     isfrist: 1,
     moreHidden: 'none',
-    msg: '其余数据正在收集中...'
+    msg: '其余数据正在收集中...',
+  
+
+
   },
   loadData: function (lastid) {
 
@@ -72,7 +75,8 @@ Page({
         if (networkType != 'wifi' && isfrist == '1') {
           that.setData({ confirmHidden: false })
         }
-      }
+      },
+      
     })
 
     this.setData({ isfrist: 0 })
@@ -80,6 +84,7 @@ Page({
   },
   onLoad: function () {
     this.loadData(0);
+
   },
 
   toastChange: function () {
@@ -87,5 +92,6 @@ Page({
   },
   modalChange: function () {
     this.setData({ confirmHidden: true })
-  }
+  },
+  
 })

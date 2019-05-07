@@ -1,5 +1,5 @@
 <!-- 轮播图 -->
-<view class='change'>
+<view>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
