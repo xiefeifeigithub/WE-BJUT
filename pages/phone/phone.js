@@ -6,15 +6,11 @@ Page({
     toastHidden: true,
     confirmHidden: true,
     isfrist: 1,
-    loadHidden: true,
     moreHidden: 'none',
     msg: '其余数据正在收集中...'
   },
   loadData: function (lastid) {
-    //显示出加载中的提示
-    this.setData({ loadHidden: false })
-
-    var limit = 50
+    var limit = 20
     var that = this
     console.log('app.data.url：' + app.data.url)
 
@@ -27,7 +23,7 @@ Page({
       success: function (res) {
         if (!res.data) {
           that.setData({ toastHidden: false })
-          that.setData({ moreHidden: 'none'})
+          that.setData({ moreHidden: 'none' })
           return false
         }
         var len = res.data.length
@@ -58,12 +54,7 @@ Page({
         } else {
           that.setData({ toastHidden: false, moreHidden: 'none', msg: '当前网格异常，请稍后再试' })
         }
-      },
-      complete: function () {
-        //显示出加载中的提示
-        that.setData({ loadHidden: true })
       }
-
     })
   },
   loadMore: function (event) {
@@ -84,9 +75,9 @@ Page({
     this.setData({ isfrist: 0 })
     this.loadData(id);
   },
- 
+
   //拨打电话
-  callmeTap: function(e) {
+  callmeTap: function (e) {
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.phone
     })

@@ -91,13 +91,17 @@ page{
   margin-left:20rpx;
 }
 .item-bd{
-  padding: 20rpx 200rpx 20rpx 20rpx;
+  padding-left: 20rpx;
+  height: 40rpx;
+  width: 500rpx;
   font-size: 30rpx;
   display: flex;
   flex-direction: column;
 }
 .item-pwd{
-  padding: 20rpx 200rpx 20rpx 20rpx;
+  padding-left: 20rpx;
+  height: 40rpx;
+  width: 500rpx;
   font-size: 30rpx;
   display: flex;
   flex-direction: column;
@@ -220,44 +224,3 @@ page{
   color: transparent;
 }
 
-/* 机器人 */
-
-.btn1{
-  background-color: rgba(248, 246, 246, 0.5);
- /*border: 1px solid #7878EC;*/
- width: 140rpx;
- height: 140rpx;
- border-radius: 50%;
-  margin: 0px;
-  bottom: 30px;
-  right: 60rpx;
-  color: #999999;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  /*flex-direction: column;
-  align-items: center;
-  justify-content: center;*/
-  position: fixed;
-}
-
-.btn1 image {
-  display: block;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 60rpx;
-  height: 60rpx;
-}
-
-.btn1 text{
-  font-size: 20rpx;
-  display: block;
-  margin: 1rpx;
-}
-
-.btn1::after {
-  border: 0; 
-}

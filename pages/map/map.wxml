@@ -3,11 +3,8 @@
 <map id="myMap" style="width: 100%; height: 300px;" longitude="{{longitude}}" latitude="{{latitude}}" scale='{{scale}}' polyline="{{polyline}}" markers="{{markers}}" covers="{{covers}}" show-location></map>
 
 <view class='search'>
-<view class='text'>起点：</view>
 
-<input placeholder='请输入起点' bindinput='getStart'></input>
-
-<view class='text'>终点：</view>
+<view class='text'>目的地：</view>
 
 <input placeholder='请输入终点' bindinput='getEnd'></input>
 

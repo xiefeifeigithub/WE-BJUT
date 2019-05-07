@@ -229,7 +229,10 @@ Page({
   //隐藏时，关掉定时器
   onHide:function(){
     clearTimeout(this.globalData.timer)
+  },
+
+  //点击‘清除图标’清除输入的学号
+  clearUsername:function(){
+    this.setData({userName:''})
   }
-
-
 })

@@ -22,7 +22,8 @@ App({
     classification: '',     //文章分类
     freeRooms: [],          //空教室
     currentWeek: null,        //当前是第几周
-    hasLocalData:false
+    hasLocalData:false,       //用于判断本地有没有缓存的课表、等级考试信息
+    hasExamInfo:false         //用于判断本地有没有缓存的考试信息
   },
 
   onLaunch: function () {
@@ -99,7 +100,7 @@ App({
   },
 
   /**
-   * 检测本地是否存有课表数据
+   * 检测本地是否存有课表数据、等级考试数据、考试信息数据(默认：登录成功就可以获取到课表和等级考试信息)
    */
   ensureHasData: function () {
     var username = wx.getStorageSync(this.data.keyUserName)
@@ -108,6 +109,12 @@ App({
       this.globalData.hasLocalData = true
     }else{
       this.globalData.hasLocalData = false
+    }
+    var exam = wx.getStorageSync(this.data.keyExamInfo);
+    if(exam){
+      this.globalData.hasExamInfo = true;
+    }else{
+      this.globalData.hasExamInfo = false;
     }
   },
   /**解析课程表(不含实践课处理)

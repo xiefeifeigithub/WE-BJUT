@@ -98,6 +98,7 @@
 }
 .timetable-area{
   z-index: 100;
+
 }
 
 
@@ -142,3 +143,4 @@
 .btn1::after {
   border: 0; 
 }
+

@@ -20,5 +20,48 @@ Page({
     wx.setNavigationBarTitle({
       title: '考试信息查询'
     })
-  }
+  },
+  //每次查看考试信息除了从缓存中读取第一次保存的信息之外，每次在退出页面之后进行最新的数据获取，并保存
+  onShow: function () {
+    this.globalData.account = wx.getStorageSync(app.data.keyUserName)
+    this.globalData.pwd = wx.getStorageSync(app.data.keyPwd)
+  },
+  onUnload: function () {
+    var account = this.globalData.account
+    var password = this.globalData.pwd
+    var that = this
+    console.log("cet调用onUnload()");
+    //考试信息
+    wx.request({
+      // https://www.bjut1960.cn/examination?xh=学号&mm=密码
+      url: 'https://www.bjut1960.cn/examination?xh=' + account + '&mm=' + password,
+      method: 'GET',
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          console.log("考试信息返回成功")
+          that.setData({
+            examInfo: res.data
+          })
+          wx.setStorage({
+            key: app.data.keyExamInfo,
+            data: examInfo,
+          })
+          wx.hideLoading()
+        } else {
+          console.log("404")
+          // wx.showToast({
+          //   title: '请检查学号或密码是否正确',
+          //   icon: 'none'
+          // })
+        }
+      },
+      fail: function (res) {
+        console.log("请求考试信息出错:" + res)
+      }
+    });
+    console.log('触发更新考试信息数据')
+  },
 })
