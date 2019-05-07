@@ -1,8 +1,8 @@
 var app = getApp()
 Page({
 
-  data:{
-    organizationArray: [],  //组织机构
+  data:{  
+    organizationArray:[],  //组织机构
     ilovelearnArray:[]   //我爱学习
   },
 
@@ -24,6 +24,20 @@ Page({
         that.setData({ organizationArray: res.data })
       }
     })
+
+    //动态渲染标签列表
+    wx.request({
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Learn/Learn/getLearn', // 真实接口地址
+      data: { lastid: lastid },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({ ilovelearnArray: res.data })
+      }
+    })
+    
  },
 
   //查找不同类型文章

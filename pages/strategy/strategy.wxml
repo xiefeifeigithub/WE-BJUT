@@ -1,94 +1,25 @@
 <view class='tags'>
   <view class='background1'>
-    <text class='title'>组织机构</text>
+    <text class='title'>校内组织</text>
   </view>
   <view>\n</view>
 
-  <!-- <view class='btn btn-xs btn-default round-btn tags-btn' data-text='教务处' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>教务处</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='校医院' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>校医院</text>
-  </view> -->
-
-  <!--循环输出列表 new-->
-  <view wx:for="{{organizationArray}}" wx:for-index='id'>
-    <view class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
+  <!--组织机构-->
+    <view  wx:for="{{organizationArray}}" class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
       <text class='text-sm text-gray'>{{item.label}}</text>
     </view>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='图书馆' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>图书馆</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='场馆中心' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>场馆中心</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='信息中心' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>信息中心</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='资助中心' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>资助中心</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='学生社团' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>学生社团</text>
-  </view>
 
 </view>
 
 <view class='tags'>
   <view class='background1'>
-    <text class='title'>我爱学习</text>
+    <text class='title'>学生社区</text>
   </view>
   <view>\n</view>
 
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='学长学姐说' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>学长学姐说</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='辅修/双学位' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>辅修/双学位</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='转专业' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>转专业</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='保研' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>保研</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='考研' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>考研</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='出国' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>出国</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='科研' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>科研</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='比赛/竞赛' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>比赛/竞赛</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='选修课' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>选修课</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='专业课' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>专业课</text>
-  </view>
-
-  <view class='btn btn-xs btn-default round-btn tags-btn' data-text='创业' bindtap="querySpecifiedArticles">
-    <text class='text-sm text-gray'>创业</text>
-  </view>
+  <!--我爱学习-->
+    <view  wx:for="{{ilovelearnArray}}" class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
+      <text class='text-sm text-gray'>{{item.label}}</text>
+    </view>
 
 </view>
