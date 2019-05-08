@@ -1,5 +1,18 @@
 <!--pages/account/account.wxml-->
 
+<scroll-view class="container">
+  <view class="scrolltxt">
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text>{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;"></text>
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>        
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+
 <view class='content'>
   
     <view class="about-wei">

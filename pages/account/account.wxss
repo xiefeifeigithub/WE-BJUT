@@ -1,7 +1,39 @@
 page{
   background: white;
 }
-.top{
+/*自动滚动公告*/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.scrolltxt{
+  padding:0 20rpx;
+  background:#f8f8f8;
+}
+
+.marquee_box {
+  position:relative;
+  color:#333;
+  height:90rpx;
+  display:block;
+  overflow:hidden;
+} 
+
+.marquee_text {
+  white-space: nowrap;
+  position:absolute;
+  top:0;
+  font-size:14px;
+  height:90rpx;
+  line-height:90rpx;
+}
+
+
+/*.top{
   width: 250rpx;
   height: 250rpx;
   margin: 0 auto;
@@ -28,7 +60,7 @@ page{
   flex-grow: 1;
   color: #ccc;
   margin-right: 20rpx;
-}
+}*/
 
 .about-wei{ 
   padding-top: 5px;
