@@ -44,10 +44,14 @@ Page({
     //四六级考试信息
     wx.request({
       // https://www.bjut1960.cn/grade?xh=学号&mm=密码
-      url: 'https://www.bjut1960.cn/grade?xh=' + account + '&mm=' + password,
-      method: 'GET',
+      url: 'https://www.bjut1960.cn/grade',
+      method: 'POST',
+      data: {
+        xh: account,
+        mm: password
+      },
       header: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
 

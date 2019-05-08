@@ -78,7 +78,7 @@ Page({
     var that = this
     var timeStart = 0
     var timeEnd = 0
-    var index = e.detail.value
+    var index = parseInt(e.detail.value)
     //通过this.data.timeArray数组的下标获知用户的选择
     switch(index){
       case 0:
@@ -112,8 +112,6 @@ Page({
 
     that.globalData.classStart = timeStart
     that.globalData.classEnd = timeEnd
-
-
     this.setData({
       timeIndex: e.detail.value,
       timePick: false
@@ -126,6 +124,7 @@ Page({
     wx.showLoading({
       title: '查询中',
     })
+
     var that = this
     var buildingUrl = 'building=' + that.globalData.techBuilding;
     var weekdayUrl = '&week=' + that.globalData.weekday;
@@ -146,10 +145,20 @@ Page({
           if(that.globalData.emptyRooms.length == 0){
             tempStr = '没有符合查询条件的空闲教室...'
           }else{
+            var firstPrefix = that.globalData.emptyRooms[0].charAt(0);
+            var nextPrefix = ''
             for (var i = 0; i < that.globalData.emptyRooms.length; i++) {
               tempStr += '[' + that.globalData.emptyRooms[i] + ']' + ' ';
+              if (i + 1 < that.globalData.emptyRooms.length){
+                nextPrefix = that.globalData.emptyRooms[i + 1].charAt(0)
+              }
+              if (nextPrefix != firstPrefix){
+                tempStr += '\n\n'
+                firstPrefix = nextPrefix;
+              }
             }
           }
+          console.log(tempStr)
           wx.hideLoading()
           wx.showModal({
             title: that.globalData.buildingName + '空闲教室情况',

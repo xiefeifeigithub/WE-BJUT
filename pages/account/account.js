@@ -93,10 +93,14 @@ Page({
     var that = this
     wx.request({
       // https://www.bjut1960.cn/schedule?xh=学号&mm=密码
-      url: 'https://www.bjut1960.cn/schedule?xh=' + account + '&mm=' + password,
-      method: 'GET',
+      url: 'https://www.bjut1960.cn/schedule',
+      method: 'POST',
+      data:{
+        xh:account,
+        mm:password
+      },
       header: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
 
@@ -138,10 +142,14 @@ Page({
     //四六级考试信息
     wx.request({
       // https://www.bjut1960.cn/grade?xh=学号&mm=密码
-      url: 'https://www.bjut1960.cn/grade?xh=' + account + '&mm=' + password,
-      method: 'GET',
+      url: 'https://www.bjut1960.cn/grade',
+      method: 'POST',
+      data: {
+        xh: account,
+        mm: password
+      },
       header: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
 
@@ -171,10 +179,14 @@ Page({
     //考试信息
     wx.request({
       // https://www.bjut1960.cn/examination?xh=学号&mm=密码
-      url: 'https://www.bjut1960.cn/examination?xh=' + account + '&mm=' + password,
-      method: 'GET',
+      url: 'https://www.bjut1960.cn/examination',
+      method: 'POST',
+      data: {
+        xh: account,
+        mm: password
+      },
       header: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
         if (res.statusCode == 200) {
