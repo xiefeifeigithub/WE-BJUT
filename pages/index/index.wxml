@@ -1,5 +1,5 @@
 <!-- 轮播图 -->
-<view class='change'>
+<view>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
@@ -36,6 +36,6 @@
 <button class='btn1'  
 session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
     <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
-    <text>吐槽</text>
+    <text>向我吐槽</text>
  </button>
  

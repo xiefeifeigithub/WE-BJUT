@@ -2,8 +2,9 @@
 <view class='container'>
 
   <view class='round-click'>
-    <image class="round-click" catchtap='showAllOrPart' src='{{icon_lessonUrl}}'>
-    </image>
+    <view class="round-click" catchtap="showAllOrPart" >
+    <text>{{text}}</text>
+    </view>
   </view>
   
   <view class="top">
@@ -12,7 +13,7 @@
   </view>
 
   <view style="height:1200rpx;width:730rpx;display:flex;">
-    <view style="background-color:#7878EC;color:white; ">
+    <view style="background-color:#0096C3;color:white; ">
       <view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12]}}" class="left">
         {{item}}
       </view>
@@ -51,3 +52,11 @@
   <dialog id='dialog' lessonList="{{mutiLessons}}">
   </dialog>
 </view>
+
+
+<!-- 机器人 -->
+<button class='btn1'  
+session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+    <text>向我吐槽</text>
+ </button>

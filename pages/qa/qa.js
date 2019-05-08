@@ -6,20 +6,17 @@ Page({
     toastHidden: true,
     confirmHidden: true,
     isfrist: 1,
-//    loadHidden: true,
     moreHidden: 'none',
-    msg: '其余数据正在收集中...'
+    msg: '其余数据正在收集中...',
+
   },
   loadData: function (lastid) {
-    //显示出加载中的提示
- //   this.setData({ loadHidden: false })
-
     var limit = 50
     var that = this
     console.log('app.data.url：' + app.data.url)
 
     wx.request({
-      url: app.data.url + 'addon/Qa/Qa/getQa',
+      url: app.data.url + 'addon/Questionandanswer/Questionandanswer/getQa',
       data: { lastid: lastid, limit: limit },
       header: {
         'Content-Type': 'application/json'
@@ -41,6 +38,7 @@ Page({
           wx.setStorageSync(app.data.keyQaList, newData)
         }
         that.setData({ qaList: newData })
+        console.log(that.data.qaList)
         that.setData({ moreHidden: '' })
         console.log('data from url');
       },
@@ -61,6 +59,26 @@ Page({
       }
     })
   },
+
+
+
+  widgetsToggle: function (e) {
+    var id = e.currentTarget.id, qaList = this.data.qaList;
+    for (var i = 0, len = qaList.length; i < len; ++i) {
+      if (qaList[i].id == id) {
+        qaList[i].open = !qaList[i].open;
+      } else {
+        qaList[i].open = qaList[i].open;
+      }
+    }
+    this.setData({
+      qaList: qaList
+    });
+  },
+
+
+
+
   loadMore: function (event) {
     var id = event.currentTarget.dataset.lastid
     var isfrist = event.currentTarget.dataset.isfrist
@@ -73,28 +91,24 @@ Page({
         if (networkType != 'wifi' && isfrist == '1') {
           that.setData({ confirmHidden: false })
         }
-      }
+      },
+      
     })
 
     this.setData({ isfrist: 0 })
     this.loadData(id);
   },
-
-  // //拨打电话
-  // callmeTap: function (e) {
-  //   wx.makePhoneCall({
-  //     phoneNumber: e.currentTarget.dataset.phone
-  //   })
-  // },
-
   onLoad: function () {
     this.loadData(0);
+
   },
+
 
   toastChange: function () {
     this.setData({ toastHidden: true })
   },
   modalChange: function () {
     this.setData({ confirmHidden: true })
-  }
+  },
+  
 })
