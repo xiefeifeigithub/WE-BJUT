@@ -19,12 +19,12 @@
   ],
   "window": {
     "backgroundTextStyle": "light",   
-    "navigationBarBackgroundColor": "#7878EC",  
+    "navigationBarBackgroundColor": "#0096C3",  
     "navigationBarTitleText": "工大小美",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor": "#7878EC",
+    "selectedColor": "#0096C3",
     "list": [
       {
         "pagePath": "pages/index/index",
