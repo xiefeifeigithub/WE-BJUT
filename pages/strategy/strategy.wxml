@@ -13,10 +13,9 @@
   </view> -->
 
   <!--循环输出列表 new-->
-  <view wx:for="{{organizationArray}}" wx:for-index='id'>
-    <view class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
-      <text class='text-sm text-gray'>{{item.label}}</text>
-    </view>
+
+  <view wx:for="{{organizationArray}}" wx:for-index='id' class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
+    <text class='text-sm text-gray'>{{item.label}}</text>
   </view>
 
   <view class='btn btn-xs btn-default round-btn tags-btn' data-text='图书馆' bindtap="querySpecifiedArticles">
