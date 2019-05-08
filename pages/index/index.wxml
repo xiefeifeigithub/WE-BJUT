@@ -1,3 +1,14 @@
+<scroll-view class="container">
+  <view class="scrolltxt">
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text>{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;"></text>
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>        
+      </view>
+    </view>
+  </view>
+</scroll-view>
 <!-- 轮播图 -->
 <view>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
@@ -10,16 +21,6 @@
   </swiper>
 </view>
 
-<!--功能图标 + 导航-->
-<!-- <view class="nav">
-  <block wx:for="{{student}}">
-    <navigator url="{{item.src}}" class="item" hover-class="navHoverClass" hover-stay-time="200" >
-      <image src="{{item.icon}}"></image>
-      <view>\n</view>
-      <text>{{item.title}}</text>
-    </navigator>
-  </block>
-</view> -->
 
 <view class="nav">
   <block wx:for="{{student}}">
@@ -31,6 +32,16 @@
   </block>
 </view>
 
+<!--<view class='notice'>
+  <view class='head'>
+    <image src='../../images/gg.png'></image>
+    <text>公告</text>
+  </view>
+
+  <view class='body'>
+    <text>修复bug：查空教室之前数据有误，目前已经修复</text>
+  </view>
+</view>-->
 
 <!-- 机器人 -->
 <button class='btn1'  
