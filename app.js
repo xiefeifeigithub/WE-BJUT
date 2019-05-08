@@ -8,10 +8,10 @@ App({
     keyUserName: 'studentNumLocal',              //用于存取学生学号的键
     keyPwd: 'stuPwdLocal',                      //用于存取学生密码的键
     keyInfo: 'stuInfoLocal',                           //用于存取学生基本信息的键
-    keyCet:'cetLocal',                          //用于存取四六级考试成绩的键
-    keyPhoneList:'phoneLocal',                 //用于存取电话号码的键
-    keyQaList:'qaLocal',                        //用于存取
-    keyExamInfo:'examInfoLocal',                //用于存取考试信息的键
+    keyCet: 'cetLocal',                          //用于存取四六级考试成绩的键
+    keyPhoneList: 'phoneLocal',                 //用于存取电话号码的键
+    keyQaList: 'qaLocal',                        //用于存取
+    keyExamInfo: 'examInfoLocal',                //用于存取考试信息的键
     url: 'https://www.bjutxiaomei.cn/index.php?s=/'
   },
   globalData: {
@@ -22,8 +22,8 @@ App({
     classification: '',     //文章分类
     freeRooms: [],          //空教室
     currentWeek: null,        //当前是第几周
-    hasLocalData:false,       //用于判断本地有没有缓存的课表、等级考试信息
-    hasExamInfo:false         //用于判断本地有没有缓存的考试信息
+    hasLocalData: false,       //用于判断本地有没有缓存的课表、等级考试信息
+    hasExamInfo: false         //用于判断本地有没有缓存的考试信息
   },
 
   onLaunch: function () {
@@ -31,7 +31,7 @@ App({
     console.log("从缓存中获取用户信息")
     var username = wx.getStorageSync(this.data.keyUserName)
     //如果读到username，证明有本地数据，将hasLocalData置为true
-    if(username){
+    if (username) {
       this.globalData.hasLocalData = true
     }
     var userpassword = wx.getStorageSync(this.data.keyPwd)
@@ -41,11 +41,11 @@ App({
 
     this.globalData.username = username
     this.globalData.userpassword = userpassword
-    console.log(username,userpassword)
+    console.log(username, userpassword)
 
     wx.getSystemInfo({
       success(res) {
-        
+
         console.log(res.windowHeight)
       }
     })
@@ -115,13 +115,13 @@ App({
     //如果读到username，证明有本地数据，将hasLocalData置为true
     if (username) {
       this.globalData.hasLocalData = true
-    }else{
+    } else {
       this.globalData.hasLocalData = false
     }
     var exam = wx.getStorageSync(this.data.keyExamInfo);
-    if(exam){
+    if (exam) {
       this.globalData.hasExamInfo = true;
-    }else{
+    } else {
       this.globalData.hasExamInfo = false;
     }
   },
@@ -198,7 +198,7 @@ App({
       that.saveTimetableToLocal(list);
     }
 
-    
+
   },
   numberChange: function (num) {
     var alb = 0
@@ -241,7 +241,7 @@ App({
   /**
    * 根据开学时间，计算当前时间属于第几周
    */
-  calculateCurrentWeek:function(){
+  calculateCurrentWeek: function () {
     var semesterStartDate = new Date('2019/02/18 00:00:00');
     var currentDate = new Date();
     var interval = parseFloat(currentDate - semesterStartDate);
