@@ -8,7 +8,6 @@ Page({
     isfrist: 1,
     moreHidden: 'none',
     msg: '其余数据正在收集中...',
-
   },
   loadData: function (lastid) {
     var limit = 50

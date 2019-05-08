@@ -4,7 +4,7 @@
 <view wx:for="{{phoneList}}" class="list" wx:for-index='id'>
   <view class="infos">
       <view class="title">{{item.name}}</view>
-      <view catchtap="callmeTap" class="date"  data-phone="{{item.phonenumber}}">{         {item.phonenumber}}</view>
+      <view catchtap="callmeTap" class="date"  data-phone="{{item.phonenumber}}">{{item.phonenumber}}</view>
     </view>
     <view class='borderline'></view>
 </view>
