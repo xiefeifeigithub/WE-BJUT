@@ -8,13 +8,9 @@ Page({
     isfrist: 1,
     moreHidden: 'none',
     msg: '其余数据正在收集中...',
-  
-
 
   },
   loadData: function (lastid) {
-
-
     var limit = 50
     var that = this
     console.log('app.data.url：' + app.data.url)
@@ -63,6 +59,26 @@ Page({
       }
     })
   },
+
+
+
+  widgetsToggle: function (e) {
+    var id = e.currentTarget.id, qaList = this.data.qaList;
+    for (var i = 0, len = qaList.length; i < len; ++i) {
+      if (qaList[i].id == id) {
+        qaList[i].open = !qaList[i].open;
+      } else {
+        qaList[i].open = qaList[i].open;
+      }
+    }
+    this.setData({
+      qaList: qaList
+    });
+  },
+
+
+
+
   loadMore: function (event) {
     var id = event.currentTarget.dataset.lastid
     var isfrist = event.currentTarget.dataset.isfrist
@@ -86,6 +102,7 @@ Page({
     this.loadData(0);
 
   },
+
 
   toastChange: function () {
     this.setData({ toastHidden: true })

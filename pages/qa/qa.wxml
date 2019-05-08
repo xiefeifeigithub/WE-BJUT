@@ -1,29 +1,23 @@
-<view class="warp">
+<button class='btn1' session-from="bot | {{nickName}} | {{avatarUrl}}" open-type='contact'>
+  <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+  <text>向我吐槽</text>
+</button>
 
-<!--循环输出列表 begin-->
-<view wx:for="{{qaList}}" class="list" wx:for-index='id'>
-
-  <view class="infos">
-      <view class="title">{{item.question}}</view>
-      <view class="date">{{item.answer}}</view>
-      <view class="date">{{item.isshow}}</view>
+<view class="index">
+  <view class="body">
+    <view class="widgets">
+      <block wx:for-items="{{qaList}}">
+        <view class="widgets__item">
+          <view id="{{item.id}}" class="widgets__info {{item.open ? 'widgets__info_show' : ''}}" bindtap="widgetsToggle">
+            <text class="widgets__info-name">{{item.question}}</text>
+            <image class="widgets__info-img" src="../../images/arrowright.png" mode="aspectFill" />
+          </view>
+          <view class="widgets__list {{item.open ? 'widget__name' : 'widgets__list_show'}}">
+            <view  style="float:left;margin-left:10px;">{{item.answer}}
+            </view>
+          </view>
+        </view>
+      </block>
     </view>
-    <view class='borderline'></view>
-
-      <view class="title" >{{item.question}}</view>
-      <view class='date'>{{item.answer}}</view>
-      <view class='date'>{{item.isshow}}</view>
+  </view>
 </view>
-
-
-<view bindtap="loadMore" data-lastid="{{lastid}}" data-isfrist="{{isfrist}}" class="loadMore" style="display:{{moreHidden}}">加载更多</view>
-<toast hidden="{{toastHidden}}" bindchange="toastChange" duration="3000">{{msg}}</toast>
-<modal title="温馨提示" no-cancel hidden="{{confirmHidden}}" confirm-text="明确" bindconfirm="modalChange">当前不在WiFi网络下，将使用数据流量</modal>
-</view>
-
-  <button class='btn1'  
-session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
-    <text>向我吐槽</text>
- </button>
-

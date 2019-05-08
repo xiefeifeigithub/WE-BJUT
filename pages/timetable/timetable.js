@@ -14,7 +14,7 @@ Page({
     allLessonsList: [],         //全部的课表信息(不包含教师姓名，上课周)
     wholeLessonList: [],        //完整的课程信息（含教师姓名，上课周）
     exerciseLesonList: [],      //实践课课程信息
-    icon_lessonUrl: '../../images/icons/part_lesson.png',
+    text: '本周',
     
   },
   globalData:{
@@ -25,6 +25,13 @@ Page({
     //判断用户是否登录过,如果没有登录则跳转登录页面。
     //const user = wx.getStorageSync(app.data.keyUserName)
     console.log("数据从本地获取");
+
+    wx.getSystemInfo({
+      success(res) {
+
+        console.log(res.windowHeight)
+      }
+    })
 
     this.getTimetableFromLocal();
     this.getExerciseLessonFromLocal();
@@ -355,13 +362,13 @@ Page({
     if (this.globalData.isShowAll == false) {
       this.globalData.isShowAll = true
       this.setData({
-        icon_lessonUrl: '../../images/icons/all_lesson.png'
+        text: '全部'
       });
       this.showTimetableByAll();
     } else {
       this.globalData.isShowAll = false
       this.setData({
-        icon_lessonUrl: '../../images/icons/part_lesson.png'
+        text: '本周'
       });
       this.showTimetableByCurrentWeek();
     }

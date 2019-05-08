@@ -1,3 +1,18 @@
+<view class='passage'>精选文章</view>
+
+<scroll-view scroll-x = 'true' style="height: 270rpx;margin-top:30rpx;">
+<view class="nav">
+  <block wx:for="{{student}}">
+    <view class="item">
+      <image src="{{item.icon}}" id="{{index}}" ></image>
+      <text>{{item.title}}</text>
+    </view>
+  </block>
+</view>
+</scroll-view>
+
+
+
 <view class='tags'>
   <view class='background1'>
     <text class='title'>校内组织</text>

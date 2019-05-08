@@ -30,7 +30,7 @@ Page({
           title: "成绩"
         },
         {
-          icon: '/images/eng.png',
+          icon: '/images/cet.png',
           src: '../cet/cet',
           title: "等级考试"
         },

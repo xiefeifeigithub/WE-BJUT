@@ -1,4 +1,3 @@
-
 page{
     background: white;
 }
@@ -55,10 +54,9 @@ swiper{
   box-sizing: border-box;
   width: 25%;
   height: 160rpx;
-  
 }
 .item image {
-  display: block;
+  display: inline-block;
   width: 80rpx;
   height: 80rpx;
   margin: 10rpx auto;
@@ -67,28 +65,31 @@ swiper{
   font-size: 28rpx;
   display: block;
   margin: 1rpx;
+  text-align: center;
 }
-
 
 
 
 /* 机器人 */
 
 .btn1{
-  background-color: #fff;
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 50%;
+  background-color: rgba(248, 246, 246, 0.5);
+ /*border: 1px solid #7878EC;*/
+ width: 140rpx;
+ height: 140rpx;
+ border-radius: 50%;
   margin: 0px;
-  bottom: 30rpx;
-  right: 20rpx;
+  bottom: 30px;
+  right: 60rpx;
   color: #999999;
-  box-shadow:2px 2px 2px grey;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  /*flex-direction: column;
+  align-items: center;
+  justify-content: center;*/
   position: fixed;
 }
 

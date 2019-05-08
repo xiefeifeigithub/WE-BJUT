@@ -2,6 +2,52 @@ page{
     background: rgba(237, 243, 252, 0.986);
 }
 
+.passage{
+  margin: 20rpx;
+  font-size: 35rpx;
+  font-weight: 600;
+}
+
+.nav{
+  height:260rpx; 
+  width:100%; 
+  display: -webkit-box; 
+  flex-direction: column;
+  white-space: nowrap;
+} 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.item{ 
+  width: 40%; 
+  height: auto;  
+  flex: 1;
+  display: inline-block;
+  padding: 20rpx; 
+}  
+
+.item image{ 
+  width: 100%; 
+  height: 120rpx;
+  border-radius: 20rpx;
+  
+  display: inline-block;
+
+} 
+
+.item text{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  display: block;
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+
+}
+
+
 .blank{
   width: 100%;
   height: 90rpx;
