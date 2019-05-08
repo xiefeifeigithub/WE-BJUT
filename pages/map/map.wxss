@@ -31,7 +31,7 @@ input{
   display:flex;
 }
 .sub-button{
-  background-color: #7878EC;
+  background-color: #0096C3;
   color:#ffffff;
   line-height:1.8;
   border-radius:50rpx;
