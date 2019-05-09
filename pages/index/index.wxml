@@ -1,4 +1,4 @@
-<scroll-view class="container">
+<!-- <scroll-view class="container">
   <view class="scrolltxt">
     <view class="marquee_box">
       <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
@@ -8,7 +8,9 @@
       </view>
     </view>
   </view>
-</scroll-view>
+</scroll-view> -->
+
+
 <!-- 轮播图 -->
 <view>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
@@ -32,7 +34,7 @@
   </block>
 </view>
 
-<!--<view class='notice'>
+<!-- <view class='notice'>
   <view class='head'>
     <image src='../../images/gg.png'></image>
     <text>公告</text>
@@ -41,7 +43,7 @@
   <view class='body'>
     <text>修复bug：查空教室之前数据有误，目前已经修复</text>
   </view>
-</view>-->
+</view> -->
 
 <!-- 机器人 -->
 <button class='btn1'  

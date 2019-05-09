@@ -1,7 +1,7 @@
 page{
     background: white;
 }
-/*自动滚动公告*/
+/* 自动滚动公告
 .container {
   height: 100%;
   display: flex;
@@ -30,7 +30,7 @@ page{
   font-size:14px;
   height:90rpx;
   line-height:90rpx;
-}
+} */
 
 
 swiper{
@@ -98,53 +98,6 @@ swiper{
   margin: 1rpx;
   text-align: center;
 }
-
-/*.notice{
-  width: auto;
-  height: 300rpx;
-  border: 2rpx solid #999999;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 5rpx;
-  display: flex;
-  flex-flow: row wrap;
-  box-sizing: border-box;
-  border-radius: 10rpx;
-}
-.head{
-  width: 20%;
-  height: 80rpx;
-  margin-left: 50rpx;
-  margin-top: 30rpx;
-  display: flex;
-  vertical-align: middle;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-    border-bottom: 1rpx groove rgb(207, 206, 206);
-}
-.head image{
-  width: 72rpx;
-  height: 100%;
-  margin: 5rpx auto;
-  display: inline-block;
-}
-.head text{
-  font-size: 35rpx;
-  font-weight: 600;
-  display: block;
-}
-.body{
-  width: 100%;
-  height: 200rpx;
-  padding: 50rpx;
-}
-.body text{
-  
-  font-size: 30rpx;
-}*/
-
 
 
 /* 机器人 */

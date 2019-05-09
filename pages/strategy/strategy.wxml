@@ -1,4 +1,4 @@
-<!-- <view class='passage'>精选文章</view> -->
+<view class='passage'>精选文章</view>
 
 <!-- <scroll-view scroll-x='true' style="height: 270rpx;margin-top:30rpx;">
   <view class="nav">
@@ -12,7 +12,7 @@
 </scroll-view> -->
 
 
-  <!-- <template name="items">
+  <template name="items">
     <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
       <view class="item">
         <image src="{{img}}" id="{{index}}"  class="in-img" mode="'scaleToFill'"></image>
@@ -28,7 +28,7 @@
       <template is="items" data="{{...item}}" />
     </block>
   </view>
-</scroll-view>  -->
+</scroll-view> 
 
 
 <view class='tags'>

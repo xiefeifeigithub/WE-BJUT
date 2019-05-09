@@ -1,6 +1,6 @@
 <!--pages/account/account.wxml-->
 
-<scroll-view class="container">
+<!-- <scroll-view class="container">
   <view class="scrolltxt">
     <view class="marquee_box">
       <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
@@ -10,7 +10,7 @@
       </view>
     </view>
   </view>
-</scroll-view>
+</scroll-view> -->
 
 
 <view class='content'>
