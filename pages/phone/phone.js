@@ -1,16 +1,11 @@
 const app = getApp()
 Page({
   data: {
-    phoneList: [],
-    lastid: 0,
-    toastHidden: true,
-    confirmHidden: true,
-    isfrist: 1,
-    moreHidden: 'none',
-    msg: '其余数据正在收集中...'
+    phoneList: [], 
+    lastid: 0  //数据id
   },
   loadData: function (lastid) {
-    var limit = 20
+    var limit = 100
     var that = this
     console.log('app.data.url：' + app.data.url)
 
@@ -21,59 +16,13 @@ Page({
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        if (!res.data) {
-          that.setData({ toastHidden: false })
-          that.setData({ moreHidden: 'none' })
-          return false
-        }
-        var len = res.data.length
-        var oldLastid = lastid
-        that.setData({ lastid: res.data[len - 1].id })
-
-        var dataArr = that.data.phoneList
-        var newData = dataArr.concat(res.data);
-
-        if (oldLastid == 0) {
-          wx.setStorageSync(app.data.keyPhoneList, newData)
-        }
-        that.setData({ phoneList: newData })
-        that.setData({ moreHidden: '' })
+        that.setData({ phoneList: res.data })
         console.log('data from url');
       },
       fail: function (res) {
-        if (lastid == 0) {
-          var newData = wx.getStorageSync(app.data.keyPhoneList)
-          if (!newData) {
-            that.setData({ phoneList: newData })
-            that.setData({ moreHidden: '' })
-
-            var len = newData.length
-            that.setData({ lastid: newData[len - 1].id })
-          }
-          console.log('data from cache');
-        } else {
-          that.setData({ toastHidden: false, moreHidden: 'none', msg: '当前网格异常，请稍后再试' })
-        }
+        console.log("获取CET数据失败")
       }
     })
-  },
-  loadMore: function (event) {
-    var id = event.currentTarget.dataset.lastid
-    var isfrist = event.currentTarget.dataset.isfrist
-    var that = this
-
-    wx.getNetworkType({
-      success: function (res) {
-        var networkType = res.networkType // 返回网络类型2g，3g，4g，wifi
-
-        if (networkType != 'wifi' && isfrist == '1') {
-          that.setData({ confirmHidden: false })
-        }
-      }
-    })
-
-    this.setData({ isfrist: 0 })
-    this.loadData(id);
   },
 
   //拨打电话
@@ -84,13 +33,40 @@ Page({
   },
 
   onLoad: function () {
-    this.loadData(0);
+    //如果本地有数据直接用
+    var localData = wx.getStorageSync(app.data.keyPhoneList)
+    if(localData)
+    {
+      console.log("从本地获取phone数据")
+      this.setData({ phoneList: localData })
+    }
+    else{
+      this.loadData(0);
+    }
   },
+  
+  onUnload: function () {
+    var limit = 100
+    var that = this
+    var lastid = 0
 
-  toastChange: function () {
-    this.setData({ toastHidden: true })
-  },
-  modalChange: function () {
-    this.setData({ confirmHidden: true })
+    wx.request({
+      url: app.data.url + 'addon/Telephone/Telephone/getPhone',
+      data: { lastid: lastid, limit: limit },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        wx.setStorage({
+          key: app.data.keyPhoneList,
+          data: res.data,
+        })
+
+        console.log('触发更新CET数据')
+      },
+      fail: function (res) {
+        console.log("CET数据更新失败")
+      }
+    })
   }
 })

@@ -14,7 +14,7 @@ Page({
   loadData:function (lastid){
     console.log('向服务器请求的初始元组id: ' + lastid)
 
-    var limit = 10 //设置一次性文章加载数量
+    var limit = 4 //设置一次性文章加载数量
     var type = app.globalData.type //获取用户所选标签名
     console.log('获取用户所选标签名：' + type)
     ///把this对象复制到临时变量that

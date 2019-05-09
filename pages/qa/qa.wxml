@@ -13,7 +13,7 @@
             <image class="widgets__info-img" src="../../images/arrowright.png" mode="aspectFill" />
           </view>
           <view class="widgets__list {{item.open ? 'widget__name' : 'widgets__list_show'}}">
-            <view  style="float:left;margin-left:10px;">{{item.answer}}
+            <view style="float:left;margin-left:10px;">{{item.answer}}
             </view>
           </view>
         </view>
@@ -21,4 +21,3 @@
     </view>
   </view>
 </view>
-
