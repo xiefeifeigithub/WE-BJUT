@@ -1,10 +1,5 @@
 <wxs module="filters" src="../../../utils/filters.wxs"></wxs>
 <view class="container">
-  <view class='tip'>课程情况统计</view>
-  <view class='info-row'>
-    <view>本学期已出分课程数</view>
-    <view class='item'>{{result.term_lesson_count}}</view>
-  </view>
   <view class='tip'> 总平均分</view>
   <view class='info-row'>
     <view>大学期间总加权平均分</view>
