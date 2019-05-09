@@ -15,14 +15,14 @@
   <template name="items">
     <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
       <view class="item">
-        <image src="{{img}}" id="{{index}}"  class="in-img" mode="'scaleToFill'"></image>
+        <image src="{{img}}" id="{{index}}" class='in-img' mode="'scaleToFill'"></image>
         <text>{{title}}</text>
       </view>
     </navigator>
   </template>
  
 
-<scroll-view scroll-x='true' style="height: 270rpx;margin-top:30rpx;">
+<scroll-view scroll-x='true' style="height: 270rpx;">
     <view class="nav">
     <block wx:for="{{newsList}}">
       <template is="items" data="{{...item}}" />
@@ -30,6 +30,7 @@
   </view>
 </scroll-view> 
 
+<view class='blank'></view>
 
 <view class='tags'>
   <view class='background1'>
