@@ -2,7 +2,7 @@ page{
   background: white;
 }
 /*自动滚动公告*/
-.container {
+/*.container {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ page{
   font-size:14px;
   height:90rpx;
   line-height:90rpx;
-}
+}*/
 
 
 /*.top{
@@ -61,6 +61,20 @@ page{
   color: #ccc;
   margin-right: 20rpx;
 }*/
+
+/*公告*/
+.notice{
+  height: 50rpx;
+  width: 100%;
+  background-color: rgb(252, 230, 204);
+  font-size: 28rpx;
+  font-weight: 580;
+  display: flex;
+  align-content: center;
+  line-height: 50rpx;
+  justify-content: center;
+
+}
 
 .about-wei{ 
   padding-top: 5px;

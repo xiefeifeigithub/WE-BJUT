@@ -3,55 +3,68 @@ page{
 }
 
 .passage{
-  margin: 20rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  margin-bottom: 0rpx;
   font-size: 35rpx;
   font-weight: 600;
 }
 
 .nav{
-  height:260rpx; 
+  height:300rpx; 
   width:100%; 
   display: -webkit-box; 
   flex-direction: column;
-  white-space: nowrap;
+  
+  background-color: rgba(237, 243, 252, 0.986);
+  margin-bottom: 50rpx;
 } 
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
+::-webkit-scrollbar
+{
+width: 0px;
+height: 0px;
+color: transparent;
+}
+
+navigator{
+  height: auto;
+  width: 40%;
+  margin: 20rpx;
+  
 }
 .item{ 
-  width: 40%; 
+  width: 100%; 
   height: auto;  
   flex: 1;
   display: inline-block;
-  padding: 20rpx; 
+  margin: 20rpx;
+  
 }  
 
 .item image{ 
   width: 100%; 
   height: 120rpx;
   border-radius: 20rpx;
-  
   display: inline-block;
 
 } 
 
 .item text{
-  margin-top: 20rpx;
+  margin-top: 15rpx;
   font-size: 28rpx;
   display: block;
   width: 100%;
-  height: 40rpx;
+  height: auto;
   line-height: 40rpx;
+  word-break: break-all;
+  white-space: pre-wrap;
 
 }
 
-
 .blank{
   width: 100%;
-  height: 90rpx;
-  background-color: rgba(223, 234, 248, 0.986);
+  height: 60rpx;
+  
 }
 .tags{
   margin: 18rpx;
