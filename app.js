@@ -230,8 +230,8 @@ App({
     return alb
   },
   /**
- * 将课程表数据存储到本地
- */
+  * 将课程表数据存储到本地
+  */
   saveTimetableToLocal: function (data) {
     if (data.length != 0) {
       wx.setStorageSync(this.data.keyTimetable, data);
