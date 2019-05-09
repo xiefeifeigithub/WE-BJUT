@@ -76,8 +76,14 @@ Page({
 
   //设置用户名和密码的缓存
   setStorage: function() {
-    wx.setStorageSync(app.data.keyUserName, this.data.userName)
-    wx.setStorageSync(app.data.keyPwd, this.data.userPwd)
+    wx.setStorage({
+      key: app.data.keyUserName,
+      data: this.data.userName,
+    })
+    wx.setStorage({
+      key: app.data.keyPwd,
+      data: this.data.userPwd,
+    })
   },
 
   //确认绑定
@@ -110,9 +116,6 @@ Page({
           that.setData({
             info: res.data[0]
           })
-          that.setData({
-            unload: false
-          })
           //1解析课表数据
           //2存储课表、实践课、学生基本信息数据到本地
           wx.setStorage({
@@ -124,6 +127,9 @@ Page({
             data: res.data[1].exercise,
           })
           app.parseTimetableData(res.data[1].table);
+          that.setData({
+            unload: false
+          })
           wx.hideLoading(); //隐藏身份验证对话框
           app.ensureHasData()
         } else {
@@ -165,10 +171,6 @@ Page({
           wx.hideLoading()
         } else {
           console.log("404")
-          // wx.showToast({
-          //   title: '请检查学号或密码是否正确',
-          //   icon: 'none'
-          // })
         }
       },
       fail: function (res) {
@@ -236,7 +238,6 @@ Page({
         duration: 2000
       })
     }
-
   },
   //隐藏时，关掉定时器
   onHide:function(){
