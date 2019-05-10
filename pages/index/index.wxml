@@ -1,30 +1,69 @@
-<!-- <scroll-view class="container">
-  <view class="scrolltxt">
-    <view class="marquee_box">
-      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
-        <text>{{text}}</text>
-        <text style="margin-right:{{marquee_margin}}px;"></text>
-        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>        
-      </view>
-    </view>
-  </view>
-</scroll-view> -->
-
-
 <!-- 轮播图 -->
 <view>
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
    <image src="{{item.img}}" class="slide-image" catchtap='clickImage' data-id='{{index}}'></image>
-  <text class='slide-text'>{{item.title}}</text>
+  <view class='slide-text'>
+    <text>{{item.title}}</text>
+  </view>
       </swiper-item>
     </block>
   </swiper>
 </view>
 
 
-<view class="nav">
+<view class='nav-list'>
+  <navigator class='nav-li' catchtap='touchIcon'>
+    <view class='nav-title'>课表</view>
+    <view class='nav-name'>Schedule</view>
+  </navigator>
+
+
+  <view class='nav-li'>
+    <view class='nav-title'>空教室</view>
+    <view class='nav-name'>Room</view>
+  </view>
+
+  <view class='nav-li'>
+    <view class='nav-title'>成绩</view>
+    <view class='nav-name'>Score</view>
+  </view>
+
+
+  <view class='nav-li'>
+    <view class='nav-title'>考试</view>
+    <view class='nav-name'>Exam</view>
+  </view>
+
+</view>
+
+<view class='border-line'></view>
+
+<view class='nav'>
+  <view class='item'>
+    <image src='../../images/cet.png'></image>
+    <text>等级考试</text>
+  </view>
+
+    <view class='item'>
+    <image src='../../images/ditu.png'></image>
+    <text>地点查询</text>
+  </view>
+
+    <view class='item'>
+    <image src='../../images/dianhua.png'></image>
+    <text>电话黄页</text>
+  </view>
+
+    <view class='item'>
+    <image src='../../images/qa.png'></image>
+    <text>一问一答</text>
+  </view>
+</view>
+
+
+<!--gjy:不许删！！！<view class="nav">
   <block wx:for="{{student}}">
     <view class="item">
       <image src="{{item.icon}}" id="{{index}}" catchtap='touchIcon'></image>
@@ -32,7 +71,11 @@
       <text>{{item.title}}</text>
     </view>
   </block>
-</view>
+</view>-->
+
+
+
+
 
  <view class='notice'>
   <view class='head'>
