@@ -1,3 +1,9 @@
+/* pages/lists/lists.wxss */
+.container{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
 .tags{
   margin-top: 0px;
   margin-left: 0px;
@@ -54,18 +60,4 @@ navigator {
   overflow: hidden;
 }
 
-.list {
-  
-  height: 250rpx; 
-  position: relative;
-}
-
-
-
-.loadMore {
-  text-align: center;
-   margin: 30px;
-   color: #aaa;
-   font-size: 16px;
-}
 
