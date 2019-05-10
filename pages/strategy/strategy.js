@@ -2,100 +2,50 @@ var app = getApp()
 Page({
 
   data:{  
-    organizationArray:[],  //校内组织
-    ilovelearnArray:[],   //学生社区
-    newsList: [],
+    organizationArray:[],  //校内组织标签
+    ilovelearnArray:[],   //学生社区标签
+    newsList: [],  //精选文章
     lastid: 0, // 数据id
-    // student:
-    //   [
-    //     {
-    //       icon: '/images/kjs.png',
-    //       src: '../timetable/timetable',
-    //       title: '课表'
-    //     },
-    //     {
-    //       icon: '/images/ck.png',
-    //       src: '../rooms/rooms',
-    //       title: "空教室"
-    //     },
-    //     {
-    //       icon: '/images/tsg.png',
-    //       src: '/pages/score/score-query',
-    //       title: "成绩"
-    //     },
-    //     {
-    //       icon: '/images/cet.png',
-    //       src: '../cet/cet',
-    //       title: "等级考试"
-    //     },
-    //     {
-    //       icon: '/images/kc.png',
-    //       src: '/pages/exam/exam',
-    //       title: "考试信息"
-    //     },
-    //     {
-    //       icon: '/images/ditu.png',
-    //       src: '/pages/map/map',
-    //       title: "地点查询"
-    //     },
-    //     {
-    //       icon: '/images/dianhua.png',
-    //       src: '/pages/phone/phone',
-    //       title: '电话黄页'
-    //     },
-    //     {
-    //       icon: '/images/qa.png',
-    //       src: '/pages/qa/qa',
-    //       title: '一问一答'
-    //     }
-    //   ]
+    first:0,
+    begin:0
   },
 
   onLoad: function (options) {
-    console.log('onLoad: 加载strategy页面')
+    console.log('onLoad: strategy页面')
 
     var that = this
     var lastid = 0
 
-    //动态渲染标签列表
+    console.log('1.动态加载校内组织标签')
     wx.request({
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Organization/Organization/getOrganization', // 真实接口地址
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Organization/Organization/getOrganization', 
       data: { lastid: lastid },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' 
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({ organizationArray: res.data })
       }
     })
 
-    //动态渲染标签列表
+    console.log('2.动态加载学生社区标签')
     wx.request({
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Learn/Learn/getLearn', // 真实接口地址
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Learn/Learn/getLearn', 
       data: { lastid: lastid },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' 
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({ ilovelearnArray: res.data })
       }
     })
 
-    console.log('onLoad: 加载lists页面')
-    console.log(options)
-    var that = this
-
-    //请求数据
-    console.log("开始向向服务器请求文章列表数据，从id=0开始请求")
-    this.loadData(0);
-    
+    console.log('3.加载优质文章')
+    this.loadData(this.data.lastid)  //函数调用  
  },
 
   //查找不同类型文章
   querySpecifiedArticles: function (e) {
-    //导航到文章lists界面
     wx.navigateTo({
       url: '../lists/lists'
     })
@@ -109,14 +59,15 @@ Page({
       title: 'BJUT-攻略'
     })
   },
+
   loadData: function (lastid) {
     console.log('向服务器请求的初始元组id: ' + lastid)
 
-    var limit = 10 //设置一次性文章加载数量
-    // var type = app.globalData.type //获取用户所选标签名
- //   console.log('获取用户所选标签名：' + type)
-    ///把this对象复制到临时变量that
+    var limit = 8 //设置一次性文章加载数量
     var that = this
+
+    var first = this.data.first
+    var begin = this.data.begin
 
     //发起网络请求
     wx.request({
@@ -126,56 +77,53 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data)
-        if (!res.data) {
-          //提示没有更多数据了
-          that.setData({ toastHidden: false })
-          //隐藏加载更多按钮
-          that.setData({ moreHidden: 'none' })
-          return false
+        console.log("success:文章列表数据")
+
+        //记录文章的最大id
+        if (first==0)
+        {
+          that.setData({ first: 1})
+          that.setData({ begin: res.data[res.data.length-1].id})
         }
+
         //更新lastid
         console.log(lastid)
-        var len = res.data.length
-        var oldLastid = lastid
-        that.setData({ lastid: res.data[len - 1].id })
+        if(lastid <= 14)
+        {
+          that.setData({ lastid: that.data.begin})
+        }
+        else
+        {
+          var len = res.data.length
+          that.setData({ lastid: res.data[len - 1].id })
+        }        
         console.log(lastid)
 
-        //新旧内容拼接
-        var dataArr = that.data.newsList
-        var newData = dataArr.concat(res.data);
+        that.setData({ newsList: res.data })
 
-        //设置文章数据缓存
-        if (oldLastid == 0) {
-          wx.setStorageSync('GoodCmsList', newData)
-        }
-
-        //利用setData设定数据
-        that.setData({ newsList: newData })
-        that.setData({ moreHidden: '' })
-
-        console.log('data from url')
+        wx.setStorage({
+          key: 'GoodCmsList',
+          data: res.data,
+        })
       },
-
       //获取服务器数据失败
       fail: function (res) {
-        if (lastid == 0) {
-          //获取缓存
-          var newData = wx.getStorageSync('GoodCmsList')
-          if (newData) {
-            that.setData({ newsList: newData })
-            that.setData({ moreHidden: '' })
+        //获取缓存
+        var newData = wx.getStorageSync('GoodCmsList')
+        if (newData) {
+          that.setData({ newsList: newData })
 
-            var len = newData.length
-            that.setData({ lastid: newData[len - 1].id })
-          }
-
-          console.log('data from cache')
+          var len = newData.length
+          that.setData({ lastid: newData[len - 1].id })
         }
-        else {
-          that.setData({ toastHidden: false, moreHidden: 'none', msg: '当前网络异常，请稍后再试' })
-        }
+        console.log('获取服务器数据失败，从缓存中拿数据')
       }
     })
+  },
+  
+  onHide:function(){
+    console.log("更新精选文章")
+    //加载新的文章
+    this.loadData(this.data.lastid)
   }
 })

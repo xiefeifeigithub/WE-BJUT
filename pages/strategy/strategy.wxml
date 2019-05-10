@@ -1,34 +1,22 @@
 <view class='passage'>精选文章</view>
 
-<!-- <scroll-view scroll-x='true' style="height: 270rpx;margin-top:30rpx;">
-  <view class="nav">
-    <block wx:for="{{student}}">
-      <view class="item">
-        <image src="{{item.icon}}" id="{{index}}"></image>
-        <text>{{item.title}}</text>
-      </view>
-    </block>
-  </view>
-</scroll-view> -->
+<template name="items">
+  <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
+    <view class="item">
+      <image src="{{img}}" id="{{index}}" class='in-img' mode="'scaleToFill'"></image>
+      <text>{{title}}</text>
+    </view>
+  </navigator>
+</template>
 
-
-  <template name="items">
-    <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
-      <view class="item">
-        <image src="{{img}}" id="{{index}}" class='in-img' mode="'scaleToFill'"></image>
-        <text>{{title}}</text>
-      </view>
-    </navigator>
-  </template>
- 
 
 <scroll-view scroll-x='true' style="height: 270rpx;">
-    <view class="nav">
+  <view class="nav">
     <block wx:for="{{newsList}}">
       <template is="items" data="{{...item}}" />
     </block>
   </view>
-</scroll-view> 
+</scroll-view>
 
 <view class='blank'></view>
 
@@ -38,7 +26,7 @@
   </view>
   <view>\n</view>
 
-  <!--组织机构-->
+  <!--校内组织-->
   <view wx:for="{{organizationArray}}" class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
     <text class='text-sm text-gray'>{{item.label}}</text>
   </view>
@@ -51,7 +39,7 @@
   </view>
   <view>\n</view>
 
-  <!--我爱学习-->
+  <!--学生社区-->
   <view wx:for="{{ilovelearnArray}}" class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
     <text class='text-sm text-gray'>{{item.label}}</text>
   </view>

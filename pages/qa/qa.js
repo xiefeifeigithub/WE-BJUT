@@ -15,7 +15,6 @@ Page({
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        console.log(res)
         that.setData({ qaList: res.data })
         console.log('data from url');
       },
@@ -38,6 +37,7 @@ Page({
       qaList: qaList
     });
   },
+  
   onLoad: function () {
     //如果本地有数据直接用
     var localData = wx.getStorageSync(app.data.keyQaList)
@@ -49,6 +49,7 @@ Page({
       this.loadData(0);
     }
   },
+
   onUnload: function () {
     var limit = 100
     var that = this

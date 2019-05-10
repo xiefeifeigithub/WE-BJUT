@@ -1,19 +1,6 @@
 <view class='container'>
 
   <scroll-view class='container' scroll-y="true" lower-threshold='30' bindscrolltolower='tolower'>
-    <!-- <view wx:for="{{newsList}}">
-       <view data-id="{{item.id}}" catchtap='touchArticle' >
-        <view class='tags'>
-          <view class="infos">
-            <view class="title">{{item.title}}</view>
-            <view class="date">{{item.cTime}}</view>
-          </view>
-          <view class="imgs">
-            <image src="{{item.img}}" class="in-img" mode="'scaleToFill'"></image>
-          </view>
-        </view>
-       </view>
-    </view> -->
     <view wx:for="{{newsList}}">
       <view data-id="{{item.id}}" catchtap='touchArticle'>
         <view class='tags'>
@@ -28,4 +15,5 @@
       </view>
     </view>
   </scroll-view>
+
 </view>

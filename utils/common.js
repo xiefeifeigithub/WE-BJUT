@@ -6,7 +6,7 @@ function loadInfo(id,obj,callback,cache){
   var info = wx.getStorageSync(key)
   if(info){
     obj.setData({ info: info })
-    console.log('data from localCache')
+    console.log('从缓存中获取文章内容')
     cache(info)
     
     return true
@@ -14,15 +14,13 @@ function loadInfo(id,obj,callback,cache){
 
   //发起网络请求
   wx.request({
-  //  url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getDetail', // 仅为示例，并非真实的接口地址
-    url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getDetail', // 真实的接口地址
+    url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getDetail',
     data: { id: id },
     header: {
       'content-type': 'application/json' // 默认值
     },
     success(res) {
-      console.log("success")
-      console.log(res.data)
+      console.log("请求文章成功")
 
       //利用setData设定数据
       obj.setData({ info: res.data })
@@ -36,7 +34,11 @@ function loadInfo(id,obj,callback,cache){
     //获取服务器数据失败
     fail: function (res) {
       console.log('server error')
-      obj.setData({ toastHidden: false, msg: '当前网络异常，请稍后再试' })
+      //别删此处代码
+      // wx.showToast({
+      //   title: '当前网络异常，请稍后再试...',
+      //   icon: 'none'
+      // })
     }
   })
 }
