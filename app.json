@@ -2,11 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/score/score-result/score-result",
+    "pages/lists/lists",
     "pages/score/score-query",
     "pages/rooms/rooms",
     "pages/strategy/strategy",
     "pages/account/account",
-    "pages/lists/lists",
     "pages/detail/detail",
     "pages/logs/logs",
     "pages/timetable/timetable",
@@ -18,8 +18,8 @@
     "pages/qa/qa"
   ],
   "window": {
-    "backgroundTextStyle": "light",   
-    "navigationBarBackgroundColor": "#0096C3",  
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0096C3",
     "navigationBarTitleText": "工大小美",
     "navigationBarTextStyle": "black"
   },

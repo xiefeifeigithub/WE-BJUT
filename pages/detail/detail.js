@@ -9,8 +9,10 @@ Page({
 
   onLoad: function(options) {
     //调用接口
+    console.log("跳转之后：")
+    console.log(options)
     var common = require('../../utils/common.js');
-    common.loadInfo(options.id, this, this.callback, this.cache);
+    common.loadInfo(parseInt(options.id), this, this.callback, this.cache);
   },
 
   //返回上一页

@@ -41,7 +41,7 @@
   </view>
 
   <view class='body'>
-    <text>修复bug：查空教室之前数据有误，目前已经修复</text>
+    <text>修复bug：查空教室之前数据有误，目前已经修复。</text> 
   </view>
 </view> 
 
