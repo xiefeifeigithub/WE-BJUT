@@ -140,6 +140,7 @@ Page({
         }); break;
     }
   },
+  
   onLoad: function () {
     var limit = 4 //加载4篇轮播图文章
     var lastid = 0

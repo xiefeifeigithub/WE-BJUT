@@ -17,12 +17,10 @@ Page({
     var limit = 4 //设置一次性文章加载数量
     var type = app.globalData.type //获取用户所选标签名
     console.log('获取用户所选标签名：' + type)
-    ///把this对象复制到临时变量that
     var that = this
 
-    //发起网络请求
     wx.request({
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getlist', // 真实接口地址
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getlist', 
       data: {lastid:lastid, limit:limit,type:type},
       header: {
         'content-type': 'application/json' // 默认值

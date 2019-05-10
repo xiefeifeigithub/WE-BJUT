@@ -1,17 +1,4 @@
 <!--pages/account/account.wxml-->
-
-<!-- <scroll-view class="container">
-  <view class="scrolltxt">
-    <view class="marquee_box">
-      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
-        <text>{{text}}</text>
-        <text style="margin-right:{{marquee_margin}}px;"></text>
-        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>        
-      </view>
-    </view>
-  </view>
-</scroll-view> -->
-
 <view class='notice'>公告:我们承诺绝对不会保存您的账号密码,请放心使用:)</view>
 
 <view class='content'>
