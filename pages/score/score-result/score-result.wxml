@@ -18,19 +18,8 @@
     <view>本学期平均分绩点(GPA)</view>
     <view class='item'>{{filters.toFix(result.average_GPA_term)}}</view>
   </view>
-  <view class='tip'> 课程详细</view>
-
-  <view class="no-score" wx:if="{{!result || result.number_of_lesson == 0}}">
-    暂无课程成绩...
-  </view>
-  <view class="info-row" wx:for="{{result.grade_term}}" wx:for-item="course" wx:if="{{course.minor_maker == 0}}">
-    <view>课程名称：{{course.name}}</view>
-    <view>
-      <text>分数|学分：{{course.score}} | {{filters.toFix(course.credit, 1)}}</text>
-    </view>
-  </view>
-
-  <view class="tip" wx:if="{{result.total_value_minor > 0}}">辅修/二专业</view>
+  <!--注释代码不要删除-->
+  <!-- <view class="tip" wx:if="{{result.total_value_minor > 0}}">辅修/二专业</view>
 
   <view class="zan-panel" wx:if="{{result.total_value_minor > 0}}">
     <view class="info-row" bindtap="toggleScoreDialog">
@@ -41,6 +30,73 @@
       <view>辅修/二专业课程的平均学分绩点</view>
       <view>{{filters.toFix(result.average_GPA_minor)}}</view>
     </view>
+  </view> -->
+  <view class="tip">辅修/二专业</view>
+
+  <view class="info-row" bindtap="toggleScoreDialog">
+    <view>辅修/二专业课程的加权平均分</view>
+    <view>80</view>
+  </view>
+  <view class="info-row" bindtap="toggleGpaDialog">
+    <view>辅修/二专业课程的平均学分绩点</view>
+    <view>3</view>
   </view>
 
+
+  <view class='tip'> 课程详细
+  </view>
+  <view class="no-score" wx:if="{{!result || result.number_of_lesson == 0}}">
+    暂无课程成绩...
+  </view>
+  <!--注释代码不能删除-->
+  <!-- <view class="info-row" wx:for="{{result.grade_term}}" wx:for-item="course" wx:if="{{course.minor_maker == 0}}">
+    <view>课程名称：{{course.name}}</view>
+    <view>
+      <text>分数|学分：{{course.score}} | {{filters.toFix(course.credit, 1)}}</text>
+    </view>
+  </view> -->
+
+  <view class="info-row">
+    <view>课程名称：高等数学</view>
+    <view>
+      <text>分数|学分：88 | 3</text>
+    </view>
+  </view>
+  <view class="info-row">
+    <view>课程名称：高等数学</view>
+    <view>
+      <text>分数|学分：88 | 3</text>
+    </view>
+  </view>
+
+
+
+  <!-- <view class="zan-panel-title" style="position: relative" wx:if="{{result.total_value_minor > 0}}">
+    辅修/二专业明细
+    <view style="position: absolute; font-size:10px; right:16px; top:22px;">分数 | 学分 </view>
+  </view>
+
+  <view class="zan-panel" wx:if="{{result.total_value_minor > 0}}">
+    <view class="zan-cell" 
+      wx:for="{{result.grade_term}}" 
+      wx:for-item="course" 
+      wx:if="{{course.minor_maker == 1 || course.minor_maker == 2}}">
+      <view class="zan-cell__bd">{{course.name}}</view>
+      <view class="zan-cell__ft">
+        <text>{{course.score}} | {{filters.toFix(course.credit, 1)}}</text>
+      </view>
+    </view>
+  </view> -->
+
+
+  <view class="tip">
+    辅修/二专业明细
+  </view>
+
+  <view class="info-row">
+    <view>课程名称：高等数学</view>
+    <view>
+      <text>分数|学分：88 | 3</text>
+    </view>
+  </view>
 </view>
