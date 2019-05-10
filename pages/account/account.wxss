@@ -15,7 +15,6 @@ page{
   justify-content: center;
 
 }
-
 .about-wei{ 
   padding-top: 5px;
   text-align: center;
