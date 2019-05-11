@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     padding: 20rpx;
+    overflow: hidden;
 }
 navigator { 
   overflow: hidden;
@@ -12,6 +13,7 @@ navigator {
   margin-bottom: 20rpx;
   height: 80rpx;
   position: relative;
+  overflow: hidden;
   }
 .imgs {
   float: left;
@@ -23,7 +25,6 @@ navigator {
 }
 
 .infos {
-
   margin: 10rpx;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
@@ -32,6 +33,7 @@ navigator {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 }
 .title {
   color: black;

@@ -1,4 +1,7 @@
-<view class='passage'>精选文章</view>
+<view class="passage">
+    <view class="line"></view>
+    <text>精选文章</text>
+  </view>
 
 <template name="items">
   <navigator url="../../pages/detail/detail?id={{id}}" hover-class="navigator-hover">
