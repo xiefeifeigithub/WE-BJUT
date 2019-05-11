@@ -9,9 +9,7 @@ Page({
     account:null,
     pwd:null
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad: function (options) {
     //如果本地有缓存直接使用本地的数据
     var localData = wx.getStorageSync(app.data.keyCet)
@@ -54,7 +52,6 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
-
         if (res.statusCode == 200) {
           console.log("考试信息返回成功")
           that.setData({
@@ -73,8 +70,6 @@ Page({
         console.log('登录失败');
       }
     });
-
     console.log('触发更新CET数据')
   },
-  
 })

@@ -1,91 +1,59 @@
 var app = getApp()
+var common = require('../../utils/common.js');
 Page({
 
   data:{  
-    organizationArray:[],  //组织机构
-    ilovelearnArray:[],   //我爱学习
-    student:
-      [
-        {
-          icon: '/images/kjs.png',
-          src: '../timetable/timetable',
-          title: '课表'
-        },
-        {
-          icon: '/images/ck.png',
-          src: '../rooms/rooms',
-          title: "空教室"
-        },
-        {
-          icon: '/images/tsg.png',
-          src: '/pages/score/score-query',
-          title: "成绩"
-        },
-        {
-          icon: '/images/cet.png',
-          src: '../cet/cet',
-          title: "等级考试"
-        },
-        {
-          icon: '/images/kc.png',
-          src: '/pages/exam/exam',
-          title: "考试信息"
-        },
-        {
-          icon: '/images/ditu.png',
-          src: '/pages/map/map',
-          title: "地点查询"
-        },
-        {
-          icon: '/images/dianhua.png',
-          src: '/pages/phone/phone',
-          title: '电话黄页'
-        },
-        {
-          icon: '/images/qa.png',
-          src: '/pages/qa/qa',
-          title: '一问一答'
-        }
-      ]
+    organizationArray:[],  //校内组织标签
+    ilovelearnArray:[],   //学生社区标签
+    newsList: [],  //精选文章
+    lastid: 0, // 数据id
+    first:0,
+    begin:0
   },
 
   onLoad: function (options) {
-    console.log('onLoad: 加载strategy页面')
+    console.log('onLoad: strategy页面')
 
     var that = this
     var lastid = 0
 
-    //动态渲染标签列表
+    console.log('1.动态加载校内组织标签')
     wx.request({
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Organization/Organization/getOrganization', // 真实接口地址
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Organization/Organization/getOrganization', 
       data: { lastid: lastid },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' 
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({ organizationArray: res.data })
       }
     })
 
-    //动态渲染标签列表
+    console.log('2.动态加载学生社区标签')
     wx.request({
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Learn/Learn/getLearn', // 真实接口地址
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Learn/Learn/getLearn', 
       data: { lastid: lastid },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' 
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({ ilovelearnArray: res.data })
       }
     })
-    
+
+    console.log('3.加载优质文章')
+    this.loadData(this.data.lastid)  //函数调用  
+ },
+
+ onShow: function(){
+   app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
+   clearInterval(app.globalData.interval); // 清除setInterval
+   app.globalData.time = 0;
+
  },
 
   //查找不同类型文章
   querySpecifiedArticles: function (e) {
-    //导航到文章lists界面
     wx.navigateTo({
       url: '../lists/lists'
     })
@@ -98,5 +66,79 @@ Page({
     wx.setNavigationBarTitle({
       title: 'BJUT-攻略'
     })
+  },
+
+  loadData: function (lastid) {
+    console.log('向服务器请求的初始元组id: ' + lastid)
+
+    var limit = 8 //设置一次性文章加载数量
+    var that = this
+
+    var first = this.data.first
+    var begin = this.data.begin
+
+    //发起网络请求
+    wx.request({
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getGoodList', // 真实接口地址
+      data: { lastid: lastid, limit: limit},
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log("success:文章列表数据")
+
+        //记录文章的最大id
+        if (first==0)
+        {
+          that.setData({ first: 1})
+          that.setData({ begin: res.data[res.data.length-1].id})
+        }
+
+        //更新lastid
+        console.log(lastid)
+        if(lastid <= 14)
+        {
+          that.setData({ lastid: that.data.begin})
+        }
+        else
+        {
+          var len = res.data.length
+          that.setData({ lastid: res.data[len - 1].id })
+        }        
+        console.log(lastid)
+
+        that.setData({ newsList: res.data })
+
+        wx.setStorage({
+          key: 'GoodCmsList',
+          data: res.data,
+        })
+      },
+      //获取服务器数据失败
+      fail: function (res) {
+        //获取缓存
+        var newData = wx.getStorageSync('GoodCmsList')
+        if (newData) {
+          that.setData({ newsList: newData })
+
+          var len = newData.length
+          that.setData({ lastid: newData[len - 1].id })
+        }
+        console.log('获取服务器数据失败，从缓存中拿数据')
+      }
+    })
+  },
+  
+  onHide:function(){
+    console.log("更新精选文章")
+    //加载新的文章
+    this.loadData(this.data.lastid)
+  },
+
+  touchStart:function(e){
+    common.touchStart(e)
+  },
+  touchEnd:function(e){
+    common.touchEndstrategy(e)
   }
 })

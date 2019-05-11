@@ -6,6 +6,7 @@ swiper{
   height: 350rpx;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
 }
 .slide-image{
   margin: 20rpx;
@@ -18,22 +19,143 @@ swiper{
   display: block;
 }
 .slide-text{
-  font-size: 28rpx;
   left: 0;
   right: 0;
   bottom: 0;
+  height: auto;
+  white-space: pre-wrap;
   margin-bottom: 20rpx;
   color: white;
-  font-weight: 580;
   position: absolute;
-  margin-left: 35rpx;
+  margin-left: 20rpx;
   margin-right: 20rpx;
   background: rgba(172, 170, 170, 0.5);
   border-radius: 15rpx;
-  display: block;
-  /*margin-bottom: 20rpx;*/
-
+  display: inline-block;
+  line-height: 40rpx;
+  padding-top: 7rpx;
+  padding-bottom: 7rpx;
 }
+.slide-text text{
+  font-size: 30rpx;
+  font-weight: 580;
+  margin-left: 40rpx;
+}
+
+
+.nav-list{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  padding-bottom: 0rpx;
+  justify-content: space-between;
+}
+
+.nav-li {
+  padding: 30rpx;
+  border-radius: 12rpx;
+  width: 35%;
+  height: auto;
+  margin: 0 2.5% 40rpx;
+  background: linear-gradient(to bottom right,#3FAED2, #79C6E0);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  white-space: nowrap;
+  align-items: center;
+  overflow: hidden;
+  box-shadow:0 8rpx 10rpx 2rpx #94cafc99;/*for Android*/
+  -webkit-box-shadow:0px 4px 5px 1px #94cafc99;/*for IOS*/
+}
+
+.nav-li::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-color: inherit;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: -10%;
+  border-radius: 10rpx;
+  opacity: 0.2;
+  transform: scale(0.9, 0.9);
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: 300;
+  color: white;
+}
+
+.nav-title::first-letter {
+  font-size: 40rpx;
+  margin-right: 4rpx;
+}
+
+.nav-name {
+  font-size: 28rpx;
+  text-transform: Capitalize;
+  margin-top: 20rpx;
+  position: relative;
+  color: white;
+}
+
+.nav-name::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40rpx;
+  height: 6rpx;
+  background: #fff;
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
+}
+
+.nav-name::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100rpx;
+  height: 1px;
+  background: #fff;
+  bottom: 0;
+  right: 40rpx;
+  opacity: 0.3;
+}
+
+.nav-name::first-letter {
+  font-weight: bold;
+  font-size: 36rpx;
+  margin-right: 1px;
+}
+
+.nav-li text {
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  font-size: 52rpx;
+  width: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+.border-line{
+  width: 100%;
+  height: 1rpx;
+  background: #eee;
+}
+
 .nav {
   display: flex;
   flex-flow: row wrap;
@@ -68,6 +190,55 @@ swiper{
   text-align: center;
 }
 
+
+
+
+
+
+.notice{
+  height: 230rpx;
+  width: auto;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 0rpx;
+  margin: 10rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: rgba(0, 150, 195, 0.03);
+  border-radius: 10rpx;
+  display: flex;
+  box-sizing: border-box;
+  flex-flow: column wrap;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+}
+.head{
+  width: 100%;
+  height: 80rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #999999;
+}
+.head image{
+  height: 50rpx;
+  width: 50rpx;
+  margin: 0rpx;
+}
+.head text{
+  font-size: 35rpx;
+  font-weight: 600;
+}
+.body{
+  width: 100%;
+  height: auto;
+  padding: 10rpx;
+}
+.body text{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
 
 
 /* 机器人 */

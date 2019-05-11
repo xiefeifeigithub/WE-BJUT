@@ -1,56 +1,56 @@
 //获取应用实例
 var app = getApp()
+var common = require('../../utils/common.js');
 Page({
   data: {
     //轮播图
     imgUrls: [],  //轮播图内容
     indicatorDots: false, //是否显示面板指示点
-
     autoplay: true, //是否自动切换
-    interval: 3000, //自动切换时间间隔
-    duration: 1000, //滑动动画时长
+    interval: 3500, //自动切换时间间隔
+    duration: 1200, //滑动动画时长
     inputShowed: false,
     inputVal: "",
     //导航数据
     student:
       [
         {
-          icon: '/images/kjs.png',
+          icon: '/images/kjs.png',   //0
           src: '../timetable/timetable',
           title: '课表'
         },
         {
-          icon: '/images/ck.png',
+          icon: '/images/ck.png',   // 1
           src: '../rooms/rooms',
           title: "空教室"
         },
         {
-          icon: '/images/tsg.png',
+          icon: '/images/tsg.png',  // 2
           src: '/pages/score/score-query',
           title: "成绩"
         },
         {
-          icon: '/images/cet.png',
+          icon: '/images/cet.png',   //4
           src: '../cet/cet',
           title: "等级考试"
         },
         {
-          icon: '/images/kc.png',
+          icon: '/images/kc.png',   //3
           src: '/pages/exam/exam',
           title: "考试信息"
         },
         {
-          icon: '/images/ditu.png',
+          icon: '/images/ditu.png',  //5 
           src: '/pages/map/map',
           title: "地点查询"
         },
         {
-          icon: '/images/dianhua.png',
+          icon: '/images/dianhua.png', //6
           src: '/pages/phone/phone',
           title: '电话黄页'
         },
         {
-          icon: '/images/qa.png',
+          icon: '/images/qa.png',  //7 
           src: '/pages/qa/qa',
           title: '一问一答'
         }
@@ -61,12 +61,14 @@ Page({
 
   //处理主页点击图标跳事件
   touchIcon: function (options) {
-    switch (options.target.id) {
+    console.log(options)
+    console.log(options.currentTarget.dataset.index)
+    switch (options.currentTarget.dataset.index) {
       case "0":
       //先判断用户是否登录过
         if (app.globalData.hasLocalData) {
           wx.navigateTo({
-            url: this.data.student[0].src,
+            url: '../timetable/timetable',
           })
         } else {
           wx.switchTab({
@@ -76,7 +78,7 @@ Page({
         break;
       case "1":
         wx.navigateTo({
-          url: this.data.student[1].src,
+          url: '../rooms/rooms',
         });
         break;
       case "2":
@@ -109,7 +111,7 @@ Page({
       //先判断用户是否登录过
         if (app.globalData.hasLocalData) {
           wx.navigateTo({
-            url: this.data.student[3].src,
+            url: '../cet/cet',
           });
         } else {
           wx.switchTab({
@@ -117,12 +119,12 @@ Page({
           })
         }
         break;
-      case "4":
+      case "3":
         //此处代码不可删除
         if (app.globalData.hasLocalData){
           if(app.globalData.hasExamInfo){
             wx.navigateTo({
-              url: this.data.student[4].src,
+              url: '/pages/exam/exam',
             });
           }else{
             wx.showToast({
@@ -138,18 +140,22 @@ Page({
         break;
       case "5":
         wx.navigateTo({
-          url: this.data.student[5].src,
-        }); break;
+          url: '/pages/map/map',
+        }); 
+        break;
       case "6":
         wx.navigateTo({
-          url: this.data.student[6].src,
-        }); break;
+          url: '/pages/phone/phone',
+        }); 
+        break;
       case "7":
         wx.navigateTo({
-          url: this.data.student[7].src,
-        }); break;
+          url: '/pages/qa/qa',
+        }); 
+        break;
     }
   },
+  
   onLoad: function () {
     var limit = 4 //加载4篇轮播图文章
     var lastid = 0
@@ -172,6 +178,7 @@ Page({
 
   },
 
+
   clickImage: function (e) {
     console.log("轮播图点击跳转")
     var id = e.currentTarget.dataset.id;
@@ -179,6 +186,18 @@ Page({
     wx.navigateTo({
       url: '../../pages/extension/extension?id=' + id
     })
+  },
+  onShow: function () {
+    app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
+    clearInterval(app.globalData.interval); // 清除setInterval
+    app.globalData.time = 0;
+
+  },
+  touchStart: function (e) {
+    common.touchStart(e)
+  },
+  touchEnd: function (e) {
+    common.touchEndindex(e)
   }
 
 })

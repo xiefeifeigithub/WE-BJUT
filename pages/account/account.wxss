@@ -1,35 +1,20 @@
 page{
   background: white;
 }
-.top{
-  width: 250rpx;
-  height: 250rpx;
-  margin: 0 auto;
-}
-.nickname{
-  margin-bottom: 10rpx;
-  text-align: center;
-}
-.item{
-  height: 70rpx;
-  background-color: #fff;
-  margin: 20rpx;
-  display: flex;
-  border-radius: 20rpx;
-}
-.left{
-  display: flex;
-  justify-content: flex-start;
-  flex-grow: 1;
-}
-.right{
-  display: flex;
-  justify-content: flex-end;
-  flex-grow: 1;
-  color: #ccc;
-  margin-right: 20rpx;
-}
 
+/*公告*/
+.notice{
+  height: 50rpx;
+  width: 100%;
+  background-color: rgb(252, 230, 204);
+  font-size: 28rpx;
+  font-weight: 580;
+  display: flex;
+  align-content: center;
+  line-height: 50rpx;
+  justify-content: center;
+
+}
 .about-wei{ 
   padding-top: 5px;
   text-align: center;

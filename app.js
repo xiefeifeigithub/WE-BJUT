@@ -10,7 +10,7 @@ App({
     keyInfo: 'stuInfoLocal',                           //用于存取学生基本信息的键
     keyCet: 'cetLocal',                          //用于存取四六级考试成绩的键
     keyPhoneList: 'phoneLocal',                 //用于存取电话号码的键
-    keyQaList: 'qaLocal',                        //用于存取
+    keyQaList: 'qaLocal',                        //用于存取知识库的键
     keyExamInfo: 'examInfoLocal',                //用于存取考试信息的键
     url: 'https://www.bjutxiaomei.cn/index.php?s=/'
   },
@@ -23,7 +23,12 @@ App({
     freeRooms: [],          //空教室
     currentWeek: null,        //当前是第几周
     hasLocalData: false,       //用于判断本地有没有缓存的课表、等级考试信息
-    hasExamInfo: false         //用于判断本地有没有缓存的考试信息
+    hasExamInfo: false,         //用于判断本地有没有缓存的考试信息
+    time : 0,
+    touchDot : 0,//触摸时的原点
+    touchDoty : 0,
+    interval : "",
+    flag_hd : true
   },
 
   onLaunch: function () {
