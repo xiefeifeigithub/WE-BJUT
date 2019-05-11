@@ -185,18 +185,6 @@ Page({
     wx.navigateTo({
       url: '../../pages/extension/extension?id=' + id
     })
-  },
-  onShow: function () {
-    app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
-    clearInterval(app.globalData.interval); // 清除setInterval
-    app.globalData.time = 0;
-
-  },
-  touchStart: function (e) {
-    common.touchStart(e)
-  },
-  touchEnd: function (e) {
-    common.touchEndindex(e)
   }
-
+  
 })

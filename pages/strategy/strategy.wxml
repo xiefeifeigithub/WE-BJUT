@@ -20,7 +20,7 @@
     </block>
   </view>
 </scroll-view>
-<view class="class_first" bindtouchstart="touchStart" bindtouchend="touchEnd" style="height:100vh">
+
 <view class='blank'></view>
 
 <view class='tags'>
@@ -47,5 +47,4 @@
     <text class='text-sm text-gray'>{{item.label}}</text>
   </view>
 
-</view>
 </view>
