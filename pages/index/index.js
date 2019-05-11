@@ -61,7 +61,6 @@ Page({
 
   //处理主页点击图标跳事件
   touchIcon: function (options) {
-    console.log(options)
     console.log(options.currentTarget.dataset.index)
     switch (options.currentTarget.dataset.index) {
       case "0":
@@ -107,7 +106,7 @@ Page({
           })
         }
         break;
-      case "3":
+      case "4":
       //先判断用户是否登录过
         if (app.globalData.hasLocalData) {
           wx.navigateTo({

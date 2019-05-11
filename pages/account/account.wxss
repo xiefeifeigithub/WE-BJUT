@@ -196,7 +196,7 @@ page{
 }
 .borderline{
   width: 650rpx;
-  position: absolute;
+  position: relative;
   left: 50%;
   margin-left: -325rpx;
   background-color: #e5e5e5;

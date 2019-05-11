@@ -71,7 +71,7 @@ Page({
   loadData: function (lastid) {
     console.log('向服务器请求的初始元组id: ' + lastid)
 
-    var limit = 8 //设置一次性文章加载数量
+    var limit = 5 //设置一次性文章加载数量
     var that = this
 
     var first = this.data.first
@@ -99,20 +99,30 @@ Page({
         if(lastid <= 14)
         {
           that.setData({ lastid: that.data.begin})
+          var newData = wx.getStorageSync('GoodCmsList')
+          that.setData({ newsList: newData })
         }
         else
         {
           var len = res.data.length
           that.setData({ lastid: res.data[len - 1].id })
+
+          that.setData({ newsList: res.data })
+
+          wx.setStorage({
+            key: 'GoodCmsList',
+            data: res.data,
+          })
         }        
+
         console.log(lastid)
 
-        that.setData({ newsList: res.data })
+        // that.setData({ newsList: res.data })
 
-        wx.setStorage({
-          key: 'GoodCmsList',
-          data: res.data,
-        })
+        // wx.setStorage({
+        //   key: 'GoodCmsList',
+        //   data: res.data,
+        // })
       },
       //获取服务器数据失败
       fail: function (res) {

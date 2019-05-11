@@ -1,4 +1,6 @@
 <!--index.wxml-->
+<view class='notice'>点击课程即可查看本节课的详细信息:)</view>
+
 <view class='container'>
 
   <view class='round-click'>
@@ -52,11 +54,3 @@
   <dialog id='dialog' lessonList="{{mutiLessons}}">
   </dialog>
 </view>
-
-
-<!-- 机器人 -->
-<button class='btn1'  
-session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
-    <text>向我吐槽</text>
- </button>

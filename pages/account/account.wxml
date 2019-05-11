@@ -67,6 +67,7 @@
       <view class='title'>姓名</view>
       <view class='text'>{{info.studentName}}</view>
     </view>
+    <view class='borderline'></view>
     </view>
     </view>
     <view class="submit">
