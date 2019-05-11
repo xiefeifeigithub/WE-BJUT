@@ -1,4 +1,5 @@
 var app = getApp()
+var common = require('../../utils/common.js');
 Page({
 
   data:{  
@@ -42,6 +43,13 @@ Page({
 
     console.log('3.加载优质文章')
     this.loadData(this.data.lastid)  //函数调用  
+ },
+
+ onShow: function(){
+   app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
+   clearInterval(app.globalData.interval); // 清除setInterval
+   app.globalData.time = 0;
+
  },
 
   //查找不同类型文章
@@ -125,5 +133,12 @@ Page({
     console.log("更新精选文章")
     //加载新的文章
     this.loadData(this.data.lastid)
+  },
+
+  touchStart:function(e){
+    common.touchStart(e)
+  },
+  touchEnd:function(e){
+    common.touchEndstrategy(e)
   }
 })
