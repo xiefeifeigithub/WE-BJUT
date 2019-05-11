@@ -4,23 +4,23 @@
         <scroll-view scroll-y="true" class='wx-dialog popup'>
           <view wx:for="{{lessonList}}" >
             <view class='content'>
-              <text style='color:#6699ff'>课程名称:</text>
+              <text style='color:#3683D6;font-weight:600'>课程名称:</text>
               <text style='color:#1a2a3a,font-weight:bold'>{{item.lessonName}}</text>
             </view>
             <view class='content'>
-              <text style='color:#6699ff'>授课教师:</text>
+              <text style='color:#3683D6;font-weight:600'>授课教师:</text>
               <text style='color:#1a2a3,font-weight:bold'>{{item.teacher}}</text>
             </view>
             <view class='content'>
-              <text style='color:#6699ff'>上课地点:</text>
+              <text style='color:#3683D6;font-weight:600'>上课地点:</text>
               <text style='color:#1a2a3a,font-weight:bold'>{{item.location}}</text>
             </view>
             <view class='content'>
-              <text style='color:#6699ff'>起周止周:</text>
+              <text style='color:#3683D6;font-weight:600'>起周止周:</text>
               <text style='color:#1a2a3a,font-weight:bold'>{{item.week}}</text>
             </view>
             <view class='content'>
-              <text style='color:#6699ff'>上课时间:</text>
+              <text style='color:#3683D6;font-weight:600'>上课时间:</text>
               <text style='color:#1a2a3a,font-weight:bold'>{{item.time}}</text>
             </view>
             <view class='content'>
@@ -28,10 +28,10 @@
             </view>
           </view>
           <view class='content'>
-            <text style='color:#6699ff'>*课程角标数字代表当前时段有重叠课程*</text>
+            <text style='color:#3683D6;font-weight:600'>*课程角标数字代表当前时段有重叠课程*</text>
           </view>  
           <view class='content'>
-            <text style='color:#6699ff'>*点击课程表右下角按钮可切换全部或本周课表*</text>
+            <text style='color:#3683D6;font-weight:600'>*点击课程表右下角按钮可切换全部或本周课表*</text>
           </view>  
           
         </scroll-view>

@@ -3,7 +3,8 @@
 const app = getApp()
 Page({
   data: {
-    colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
+    //colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
+    colorArrays:["#0081FF","#E03997","#F37B1D","#1CBBB4","#39B54A","#9C26B0","#A5673F","#8DC63F"],
     currList: [],               //当前显示的课表信息(不包含教师姓名，上课周)
     lessonName: '',             //课程名称
     teacher: '',                //授课教师
@@ -28,7 +29,6 @@ Page({
 
     wx.getSystemInfo({
       success(res) {
-
         console.log(res.windowHeight)
       }
     })

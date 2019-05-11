@@ -108,18 +108,22 @@ navigator {
   border: 0; 
 }
 
+
+
 .index {
-  background-color: #fbf9fe;
+  
   font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
   flex: 1;
   min-height: 100%;
   font-size: 32rpx;
+
 }
 
 .body {
   padding-left: 30rpx;
   padding-right: 30rpx;
   overflow: hidden;
+  
 }
 
 .title {
@@ -137,8 +141,9 @@ navigator {
   margin-bottom: 20rpx;
   background-color: #fff;
   overflow: hidden;
-  border-radius: 4rpx;
   cursor: pointer;
+    box-shadow: 0px 4rpx 16rpx 0px rgba(140, 160, 181, 0.2);
+  border-radius: 12rpx;
 }
 
 .widgets__info {
@@ -180,6 +185,10 @@ navigator {
 
 .widgets__list_show {
   display: block;
+  font-size: 35rpx;
+  white-space: pre-wrap;
+  position: relative;
+
 }
 
 .widget {
