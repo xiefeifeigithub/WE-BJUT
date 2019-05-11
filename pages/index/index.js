@@ -65,6 +65,7 @@ Page({
     console.log(options.currentTarget.dataset.index)
     switch (options.currentTarget.dataset.index) {
       case "0":
+      //先判断用户是否登录过
         if (app.globalData.hasLocalData) {
           wx.navigateTo({
             url: '../timetable/timetable',
@@ -81,19 +82,33 @@ Page({
         });
         break;
       case "2":
-        //此处代码不可删除
-        // if (app.globalData.hasLocalData){
-        //   wx.navigateTo({
-        //     url: this.data.student[2].src,
-        //   }); break;
-        // }
-        
-        wx.showToast({
-          title: '教务当前没有数据',
-          icon: 'none'
-        }); 
+        //先判断用户是否登录过
+        if (app.globalData.hasLocalData){
+          wx.request({
+            url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Score/Score/getCanuseScore',
+            success:function(res){
+              console.log(res)
+              if(res.data[0].canuse == "1"){
+                console.log("执行跳转逻辑")
+                wx.navigateTo({
+                  url: '../score/score-query',
+                })
+              } else if (res.data[0].canuse == "0"){
+                wx.showToast({
+                  title: '教务当前没有数据',
+                  icon: 'none'
+                }); 
+              }
+            }
+          })
+        } else {
+          wx.switchTab({
+            url: '../account/account',
+          })
+        }
         break;
-      case "4":
+      case "3":
+      //先判断用户是否登录过
         if (app.globalData.hasLocalData) {
           wx.navigateTo({
             url: '../cet/cet',
