@@ -102,7 +102,8 @@ Page({
   //确认绑定
   formSubmit: function(e) {
     var account = e.detail.value.userName;
-    var password = encodeURIComponent(e.detail.value.password); //对密码进行编码防止特殊符号存在
+    // var password = encodeURIComponent(e.detail.value.password); //对密码进行编码防止特殊符号存在 get请求
+    var password = e.detail.value.password;  //post请求时不需要编码
     var flag = false;
 
     wx.showLoading({

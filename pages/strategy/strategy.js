@@ -8,7 +8,7 @@ Page({
     newsList: [],  //精选文章
     lastid: 0, // 数据id
     first:0,
-    begin:0
+    begin:0  //文章最大id
   },
 
   onLoad: function (options) {
@@ -71,7 +71,7 @@ Page({
   loadData: function (lastid) {
     console.log('向服务器请求的初始元组id: ' + lastid)
 
-    var limit = 5 //设置一次性文章加载数量
+    var limit = 4 //设置一次性文章加载数量
     var that = this
 
     var first = this.data.first
