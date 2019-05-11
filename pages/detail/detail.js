@@ -1,5 +1,3 @@
-var WxParse = require('../../wxParse/wxParse.js');
-
 Page({
   data: {
     toastHidden: true,
@@ -10,52 +8,11 @@ Page({
   onLoad: function(options) {
     //调用接口
     console.log("跳转之后：")
-    console.log(options)
-    var common = require('../../utils/common.js');
-    common.loadInfo(parseInt(options.id), this, this.callback, this.cache);
+    var common = require('../../utils/common.js')
+    common.loadInfo(options.id, this)
   },
-
-  //返回上一页
-  callback: function(res) {
-    var article = res.data.content
-    var source = res.data.source
-    var iscondition = this.data.condition
-    console.log(source)
-    if (source != "" && source != null) {
-      this.setData({
-        condition: !iscondition
-      })
-    }
-    var that = this
-    WxParse.wxParse('article', 'html', article, that, 5)
-  }, //回调
-
-  cache: function(info) {
-    var article = info.content
-    var source = info.source
-    var that = this
-    var iscondition = this.data.condition
-    if (source != "" && source != null) {
-      this.setData({
-        condition: !iscondition
-      })
-    }
-
-    WxParse.wxParse('article', 'html', article, that, 5)
-  }, //缓存回调
-
-  closepage: function() {
-    //关闭当前页面，返回上一页面
-    wx.navigateBack()
-  },
-  //提示当前网络不能用并自动返回上一页面
-  totastChange: function() {
-    this.setData({
-      toastHidden: true
-    })
-    wx.navigateBack()
-  },
-
+ 
+  //分享此页
   onShareAppMessage: function(res) {
     let users = wx.getStorageSync('user');
     if (res.from === 'button') {}

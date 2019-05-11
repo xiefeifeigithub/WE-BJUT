@@ -1,15 +1,14 @@
 var app = getApp()
 
 //先从缓存中获取数据，若无，则从server获取
-function loadInfo(id,obj,callback,cache){
+function loadInfo(id,obj){
   var key = 'info_' + id
  // 获取缓存
   var info = wx.getStorageSync(key)
   if(info){
     obj.setData({ info: info })
     console.log('从缓存中获取文章内容')
-    cache(info)
-    
+
     return true
   }           
 
@@ -30,16 +29,10 @@ function loadInfo(id,obj,callback,cache){
       console.log(key)
       wx.setStorageSync(key, res.data)
       console.log('data from server')
-      callback(res)
     },
     //获取服务器数据失败
     fail: function (res) {
       console.log('server error')
-      //别删此处代码
-      // wx.showToast({
-      //   title: '当前网络异常，请稍后再试...',
-      //   icon: 'none'
-      // })
     }
   })
 }
