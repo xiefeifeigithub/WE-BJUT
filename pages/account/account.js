@@ -1,4 +1,6 @@
 const app = getApp()
+var common = require('../../utils/common.js');
+
 Page({
   data: {
     userName: '', //用户名
@@ -37,6 +39,18 @@ Page({
     }else{
       this.setData({ unload: true })
     }
+  },
+  onShow: function () {
+    app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
+    clearInterval(app.globalData.interval); // 清除setInterval
+    app.globalData.time = 0;
+
+  },
+  touchStart: function (e) {
+    common.touchStart(e)
+  },
+  touchEnd: function (e) {
+    common.touchEndaccount(e)
   },
 
   // onShow: function () {

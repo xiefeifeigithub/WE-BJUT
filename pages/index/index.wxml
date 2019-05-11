@@ -11,7 +11,7 @@
     </block>
   </swiper>
 </view>
-
+<view class="class_first" bindtouchstart="touchStart" bindtouchend="touchEnd" style="height:100vh">
 
 <view class='nav-list'>
   <view class='nav-li' catchtap='touchIcon' data-index='0'>
@@ -94,3 +94,4 @@ session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
     <text>向我吐槽</text>
  </button>
  
+</view>
