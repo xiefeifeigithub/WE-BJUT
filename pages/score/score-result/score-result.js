@@ -5,6 +5,7 @@ Page({
   },
 
   onLoad: function (options) {
+    wx.hideLoading()
     if (options.result) {
       let result_obj = JSON.parse(options.result);
       this.setData({
