@@ -1,3 +1,4 @@
+var app = getApp()
 
 //先从缓存中获取数据，若无，则从server获取
 function loadInfo(id,obj,callback,cache){
@@ -42,7 +43,101 @@ function loadInfo(id,obj,callback,cache){
     }
   })
 }
+
+//触摸开始
+function touchStart(e) {
+  app.globalData.touchDot = e.touches[0].pageX;
+  app.globalData.touchDoty = e.touches[0].pageY;// 获取触摸时的原点
+  // 使用js计时器记录时间    
+  app.globalData.interval = setInterval(function () {
+    app.globalData.time++;
+  }, 100);
+}
+
+// 触摸结束事件
+function touchEndstrategy(e) {
+  var touchMove = e.changedTouches[0].pageX;
+  var touchMovey = e.changedTouches[0].pageY;
+  var touchDoty = app.globalData.touchDoty;
+  var touchDot = app.globalData.touchDot;
+  // 向左滑动
+  if (touchMovey - touchDoty <= 10 && touchMovey - touchDoty >= -10 && app.globalData.time < 10 && app.globalData.flag_hd == true) {
+    if (touchMove - touchDot <= -60 && app.globalData.time < 10 && app.globalData.flag_hd == true) {
+      app.globalData.flag_hd = false;
+      //执行切换页面的方法
+      console.log(touchMovey - touchDoty);
+      console.log("向右滑动");
+      wx.switchTab({
+        url: '../account/account'
+      })
+    }
+    // 向右滑动   
+    if (touchMove - touchDot >= 60 && app.globalData.time < 10 && app.globalData.flag_hd == true) {
+      app.globalData.flag_hd = false;
+      //执行切换页面的方法
+      console.log(touchMovey - touchDoty);
+      console.log("向左滑动");
+      wx.switchTab({
+        url: '../index/index'
+      })
+    }
+  }
+  clearInterval(app.globalData.interval); // 清除setInterval
+  app.globalData.time = 0;
+}
+
+function touchEndindex(e) {
+  var touchMove = e.changedTouches[0].pageX;
+  var touchMovey = e.changedTouches[0].pageY;
+  var touchDoty = app.globalData.touchDoty;
+  var touchDot = app.globalData.touchDot;
+  // 向左滑动
+  if (touchMovey - touchDoty <= 10 && touchMovey - touchDoty >= -10 && app.globalData.time < 10 && app.globalData.flag_hd == true) {
+    if (touchMove - touchDot <= -60 && app.globalData.time < 10 && app.globalData.flag_hd == true) {
+      app.globalData.flag_hd = false;
+      //执行切换页面的方法
+      console.log(touchMovey - touchDoty);
+      console.log("向右滑动");
+      wx.switchTab({
+        url: '../strategy/strategy'
+      })
+    }
+  }
+  clearInterval(app.globalData.interval); // 清除setInterval
+  app.globalData.time = 0;
+}
+
+function touchEndaccount(e) {
+  var touchMove = e.changedTouches[0].pageX;
+  var touchMovey = e.changedTouches[0].pageY;
+  var touchDoty = app.globalData.touchDoty;
+  var touchDot = app.globalData.touchDot;
+  // 向左滑动
+  if (touchMovey - touchDoty <= 10 && touchMovey - touchDoty >= -10 && app.globalData.time < 10 && app.globalData.flag_hd == true) {
+    // 向右滑动   
+    if (touchMove - touchDot >= 60 && app.globalData.time < 10 && app.globalData.flag_hd == true) {
+      app.globalData.flag_hd = false;
+      //执行切换页面的方法
+      console.log(touchMovey - touchDoty);
+      console.log("向左滑动");
+      wx.switchTab({
+        url: '../strategy/strategy'
+      })
+    }
+  }
+  clearInterval(app.globalData.interval); // 清除setInterval
+  app.globalData.time = 0;
+}
+
+
+
+
+
 //暴露接口
 module.exports = {
-  loadInfo: loadInfo
+  loadInfo: loadInfo,
+  touchStart: touchStart,
+  touchEndstrategy: touchEndstrategy,
+  touchEndindex: touchEndindex,
+  touchEndaccount: touchEndaccount
 }

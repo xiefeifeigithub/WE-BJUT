@@ -41,10 +41,14 @@ Page({
     * 处理点击查询按钮事件
     */
   queryBtn: function () {
+    wx.showLoading({
+      title: '请稍等...',
+    })
     var account = wx.getStorageSync(app.data.keyUserName)
     var pwd = wx.getStorageSync(app.data.keyPwd)
     var year = this.globalData.pickedYear
     var semester = this.globalData.pickedSemester
+   
     //检测学号，密码，学年，学期是否正确
     if(year != '' && semester !=''){
       wx.request({
@@ -73,8 +77,6 @@ Page({
               url: './score-result/score-result?result=' + JSON.stringify(res.data),
             });
           }
-          
-
         },
         fail() {
           wx.showToast({
@@ -98,12 +100,7 @@ Page({
     })
   },
   onLoad:function(){
-    wx.showToast({
-      title: '教务系统目前不能查询学生考试成绩',
-      icon: 'none'
-    })
-
-    //判断用户是否登录过,如果没有登录则跳转登录页面。
+    //判断用户是否登录过,如果没有登录则跳转登录页面
     const user = wx.getStorageSync(app.data.keyUserName)
     if (user == '') {
       wx.switchTab({

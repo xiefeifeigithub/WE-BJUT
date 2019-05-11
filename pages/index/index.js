@@ -1,5 +1,6 @@
 //获取应用实例
 var app = getApp()
+var common = require('../../utils/common.js');
 Page({
   data: {
     //轮播图
@@ -64,6 +65,7 @@ Page({
     console.log(options.currentTarget.dataset.index)
     switch (options.currentTarget.dataset.index) {
       case "0":
+      //先判断用户是否登录过
         if (app.globalData.hasLocalData) {
           wx.navigateTo({
             url: '../timetable/timetable',
@@ -80,19 +82,33 @@ Page({
         });
         break;
       case "2":
-        //此处代码不可删除
-        // if (app.globalData.hasLocalData){
-        //   wx.navigateTo({
-        //     url: this.data.student[2].src,
-        //   }); break;
-        // }
-        
-        wx.showToast({
-          title: '教务当前没有数据',
-          icon: 'none'
-        }); 
+        //先判断用户是否登录过
+        if (app.globalData.hasLocalData){
+          wx.request({
+            url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Score/Score/getCanuseScore',
+            success:function(res){
+              console.log(res)
+              if(res.data[0].canuse == "1"){
+                console.log("执行跳转逻辑")
+                wx.navigateTo({
+                  url: '../score/score-query',
+                })
+              } else if (res.data[0].canuse == "0"){
+                wx.showToast({
+                  title: '教务当前没有数据',
+                  icon: 'none'
+                }); 
+              }
+            }
+          })
+        } else {
+          wx.switchTab({
+            url: '../account/account',
+          })
+        }
         break;
-      case "4":
+      case "3":
+      //先判断用户是否登录过
         if (app.globalData.hasLocalData) {
           wx.navigateTo({
             url: '../cet/cet',
@@ -170,6 +186,18 @@ Page({
     wx.navigateTo({
       url: '../../pages/extension/extension?id=' + id
     })
+  },
+  onShow: function () {
+    app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
+    clearInterval(app.globalData.interval); // 清除setInterval
+    app.globalData.time = 0;
+
+  },
+  touchStart: function (e) {
+    common.touchStart(e)
+  },
+  touchEnd: function (e) {
+    common.touchEndindex(e)
   }
 
 })
