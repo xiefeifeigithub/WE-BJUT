@@ -20,7 +20,7 @@ Page({
         console.log('data from url');
       },
       fail: function (res) {
-        console.log("获取CET数据失败")
+        console.log("获取Phone数据失败")
       }
     })
   },
@@ -62,10 +62,10 @@ Page({
           data: res.data,
         })
 
-        console.log('触发更新CET数据')
+        console.log('触发更新Phone数据')
       },
       fail: function (res) {
-        console.log("CET数据更新失败")
+        console.log("Phone数据更新失败")
       }
     })
   }
