@@ -1,23 +1,40 @@
 page{
-    background: rgba(237, 243, 252, 0.986);
+  /*background: rgba(237, 243, 252, 0.986);*/
+  background: white;
 }
 
-.passage{
+.line {
+  width: 10rpx;
+  height: 35rpx;
+  background: #3963BC;
+  border-radius: 0px 6rpx 6rpx 0px;
+  margin-right: 22rpx;
+}
+
+.passage {
   margin-top: 20rpx;
-  margin-left: 20rpx;
-  margin-bottom: 0rpx;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.passage text {
   font-size: 35rpx;
   font-weight: 600;
+  color: #3683d6;
 }
 
 .nav{
-  height:300rpx; 
-  width:100%; 
+  height:280rpx; 
+  width:95%; 
+  margin: 20rpx;
+  box-sizing: border-box;
+  position: relative;
   display: -webkit-box; 
   flex-direction: column;
-  
-  background-color: rgba(237, 243, 252, 0.986);
-  margin-bottom: 50rpx;
+  overflow-y: hidden;
+  background-color: white;
+
 } 
 ::-webkit-scrollbar
 {
@@ -29,7 +46,9 @@ color: transparent;
 navigator{
   height: auto;
   width: 40%;
-  margin: 20rpx;
+  margin-top: 20rpx;
+  margin-left: 0rpx;
+  margin-right: 40rpx;
   
 }
 .item{ 
@@ -37,7 +56,7 @@ navigator{
   height: auto;  
   flex: 1;
   display: inline-block;
-  margin: 20rpx;
+  
   
 }  
 
@@ -58,21 +77,27 @@ navigator{
   line-height: 40rpx;
   word-break: break-all;
   white-space: pre-wrap;
+  overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
 
 }
 
 .blank{
   width: 100%;
-  height: 60rpx;
+  height: 30rpx;
   
 }
 .tags{
-  margin: 18rpx;
+  margin: 25rpx;
   padding-top: 0px;
   padding-bottom: 10px;
   box-sizing: border-box;
-  border-radius: 15px;
-  background-color: rgba(253, 253, 253, 0.5);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4rpx 16rpx 0px rgba(140, 160, 181, 0.2);
+  border-radius: 12rpx;
 }
 .title{
   margin-top: 30rpx;
@@ -124,7 +149,7 @@ navigator{
 
 .background1{
   width: 100%;
-  height: 100%;
+  height: 50rpx;
   background-color: rgba(255, 255, 255, 0.5);
 }
 
