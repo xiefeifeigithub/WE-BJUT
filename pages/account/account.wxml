@@ -37,6 +37,13 @@
     <view class="submit">
       <button class="sub-button" form-type='submit'>确认登录</button>
     </view>
+  
+<!-- 机器人 -->
+    <button class='btn1'  
+    session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+        <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+        <text>向我吐槽</text>
+    </button>
   </form>
 
   <!-- 学生信息展示 -->
@@ -70,6 +77,13 @@
     <view class='borderline'></view>
     </view>
     </view>
+
+    <button class='btn1'  
+    session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
+        <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
+        <text>向我吐槽</text>
+    </button>
+    
     <view class="submit">
       <button class="sub-button" bindtap='logout'>退出登录</button>
     </view>

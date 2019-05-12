@@ -91,12 +91,12 @@ Page({
   onReady: function () {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
-      title: '文章列表'
+      title: app.globalData.type
     })
   },
 
   touchArticle:function(options){
-    console.log("文章在数据库中的id" + options.currentTarget.dataset.id)
+    console.log("文章在数据库中的id: " + options.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../../pages/detail/detail?id='+options.currentTarget.dataset.id,
     })

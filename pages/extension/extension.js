@@ -1,4 +1,3 @@
-// pages/extension/extension.js
 Page({
 
   /**
@@ -22,27 +21,18 @@ Page({
     var obj = this
     //发起网络请求
     wx.request({
-      //  url: 'http://localhost:8080/weicms/index.php?s=/addon/Cms/Cms/getDetail', // 仅为示例，并非真实的接口地址
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Extension/Extension/getExtension', // 真实的接口地址
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Extension/Extension/getExtension', 
       data: { id: options.id, difference: difference },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log("success")
-        console.log(res.data)
-        console.log(res.data[0])
-
-        //利用setData设定数据
         obj.setData({ info: res.data[0] })
-
-        console.log('data from server')
-
       },
-      //获取服务器数据失败
       fail: function (res) {
-        console.log('server error')
-        obj.setData({ toastHidden: false, msg: '当前网络异常，请稍后再试' })
+        wx.showToast({
+          title: '获取数据失败,请检查网络连接',
+        })
       }
     })
   },
@@ -50,6 +40,5 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
   }
 })
