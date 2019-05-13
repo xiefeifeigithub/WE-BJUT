@@ -11,7 +11,7 @@
     </block>
   </swiper>
 </view>
-<view class="class_first" bindtouchstart="touchStart" bindtouchend="touchEnd" style="height:100vh">
+
 
 <view class='nav-list'>
   <view class='nav-li' catchtap='touchIcon' data-index='0'>
@@ -74,24 +74,3 @@
 </view>-->
 
 
- <view class='notice'>
-  <view class='head'>
-    <image src='../../images/gg.png'></image>
-    <text>公告</text>
-  </view>
-
-  <view class='body'>
-    <text>修复bug：查空教室之前数据有误，目前已经修复。</text> 
-  </view>
-</view> 
-
-
-
-<!-- 机器人 -->
-<button class='btn1'  
-session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
-    <text>向我吐槽</text>
- </button>
- 
-</view>

@@ -34,18 +34,7 @@ Page({
       this.setData({ unload: true })
     }
   },
-  onShow: function () {
-    app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
-    clearInterval(app.globalData.interval); // 清除setInterval
-    app.globalData.time = 0;
 
-  },
-  touchStart: function (e) {
-    common.touchStart(e)
-  },
-  touchEnd: function (e) {
-    common.touchEndaccount(e)
-  },
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
@@ -102,7 +91,8 @@ Page({
   //确认绑定
   formSubmit: function(e) {
     var account = e.detail.value.userName;
-    var password = encodeURIComponent(e.detail.value.password); //对密码进行编码防止特殊符号存在
+    // var password = encodeURIComponent(e.detail.value.password); //对密码进行编码防止特殊符号存在 get请求
+    var password = e.detail.value.password;  //post请求时不需要编码
     var flag = false;
 
     wx.showLoading({
@@ -205,13 +195,14 @@ Page({
       },
       success: function (res) {
         if (res.statusCode == 200) {
+          console.log(res.data)
           console.log("考试信息返回成功")
-          that.setData({
-            examInfo: res.data
-          })
+          // that.setData({
+          //   examInfo: res.data
+          // })
           wx.setStorage({
             key: app.data.keyExamInfo,
-            data: examInfo,
+            data: res.data,
           })
           wx.hideLoading()
         } else {

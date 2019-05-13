@@ -8,7 +8,7 @@ Page({
     newsList: [],  //精选文章
     lastid: 0, // 数据id
     first:0,
-    begin:0
+    begin:0  //文章最大id
   },
 
   onLoad: function (options) {
@@ -45,12 +45,7 @@ Page({
     this.loadData(this.data.lastid)  //函数调用  
  },
 
- onShow: function(){
-   app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
-   clearInterval(app.globalData.interval); // 清除setInterval
-   app.globalData.time = 0;
 
- },
 
   //查找不同类型文章
   querySpecifiedArticles: function (e) {
@@ -71,7 +66,7 @@ Page({
   loadData: function (lastid) {
     console.log('向服务器请求的初始元组id: ' + lastid)
 
-    var limit = 5 //设置一次性文章加载数量
+    var limit = 4 //设置一次性文章加载数量
     var that = this
 
     var first = this.data.first
@@ -92,13 +87,30 @@ Page({
         {
           that.setData({ first: 1})
           that.setData({ begin: res.data[res.data.length-1].id})
+          console.log("第一次记录文章最大id: " + begin )
         }
 
         //更新lastid
-        console.log(lastid)
-        if(lastid <= 14)
+        if(lastid == 0)
         {
+          var len = res.data.length
+          that.setData({ lastid: res.data[len - 1].id })
+
+          that.setData({ newsList: res.data })
+
+          wx.setStorage({
+            key: 'GoodCmsList',
+            data: res.data,
+          })
+
+          return 
+        }
+        console.log(lastid)
+        if(lastid <= 17)
+        {
+          //新的循环
           that.setData({ lastid: that.data.begin})
+
           var newData = wx.getStorageSync('GoodCmsList')
           that.setData({ newsList: newData })
         }
@@ -114,15 +126,7 @@ Page({
             data: res.data,
           })
         }        
-
-        console.log(lastid)
-
-        // that.setData({ newsList: res.data })
-
-        // wx.setStorage({
-        //   key: 'GoodCmsList',
-        //   data: res.data,
-        // })
+        console.log("当前lastid：" + lastid)
       },
       //获取服务器数据失败
       fail: function (res) {
@@ -140,15 +144,39 @@ Page({
   },
   
   onHide:function(){
-    console.log("更新精选文章")
+    console.log("onHide ~ 更新精选文章")
+
+    //更新文章最大id
+    this.updataBegin()
+
     //加载新的文章
     this.loadData(this.data.lastid)
   },
+  
+  //更新文章最大id
+  updataBegin:function(){
+    var lastid = 0
+    var limit = 4 
+    var that = this
 
-  touchStart:function(e){
-    common.touchStart(e)
-  },
-  touchEnd:function(e){
-    common.touchEndstrategy(e)
+    var begin = this.data.begin
+
+    //发起网络请求
+    wx.request({
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Cms/Cms/getGoodList', 
+      data: { lastid: lastid, limit: limit },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        //记录文章的最大id
+          that.setData({ begin: res.data[res.data.length - 1].id })
+          console.log("更新文章最大id: " + begin)
+      },
+      //获取服务器数据失败
+      fail: function (res) {
+       console.log("获取文章最大id失败")
+      }
+    })
   }
 })
