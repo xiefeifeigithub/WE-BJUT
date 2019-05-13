@@ -102,7 +102,7 @@ Page({
   //确认绑定
   formSubmit: function(e) {
     var account = e.detail.value.userName;
-    var password = encodeURIComponent(e.detail.value.password); //对密码进行编码防止特殊符号存在
+    var password = e.detail.value.password;
     var flag = false;
 
     wx.showLoading({
@@ -174,9 +174,6 @@ Page({
 
         if (res.statusCode == 200) {
           console.log("考试信息返回成功")
-          that.setData({
-            cetInfo: res.data
-          })
           wx.setStorage({
             key: app.data.keyCet,
             data: res.data,
@@ -206,12 +203,9 @@ Page({
       success: function (res) {
         if (res.statusCode == 200) {
           console.log("考试信息返回成功")
-          that.setData({
-            examInfo: res.data
-          })
           wx.setStorage({
             key: app.data.keyExamInfo,
-            data: examInfo,
+            data: res.data,
           })
           wx.hideLoading()
         } else {
@@ -233,7 +227,8 @@ Page({
       wx.removeStorageSync(app.data.keyPwd);
       wx.removeStorageSync(app.data.keyInfo);
       wx.removeStorageSync(app.data.keyExerciseLesson);
-      wx.removeStorageSync(app.data.keyCet)
+      wx.removeStorageSync(app.data.keyCet);
+      wx.removeStorageSync(app.data.keyExamInfo);
       app.ensureHasData()
       this.setData({
         unload: true
