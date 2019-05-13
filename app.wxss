@@ -25,7 +25,6 @@
   content: "\e635";
 }
 
-@import "/wxParse/wxParse.wxss";
 
 
 

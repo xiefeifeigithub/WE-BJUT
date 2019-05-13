@@ -37,5 +37,5 @@
   font-size: 20px;
   color: #aaa
 }
-@import "/wxParse/wxParse.wxss";
+
 

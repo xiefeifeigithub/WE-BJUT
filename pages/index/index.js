@@ -156,6 +156,18 @@ Page({
   },
   
   onLoad: function () {
+    this.updataData()
+    console.log("onLoad ~ 请求轮播图数据")
+  },
+
+  //更新轮播图通告
+  onHide: function (){
+    this.updataData()
+    console.log("onHide ~ 更新轮播图数据")
+  },
+
+  //更新轮播图通告
+  updataData: function(){
     var limit = 4 //加载4篇轮播图文章
     var lastid = 0
 
@@ -174,10 +186,9 @@ Page({
         console.log("服务器开小差了...")
       }
     })
-
   },
 
-
+  //点击轮播图进入内容页
   clickImage: function (e) {
     console.log("轮播图点击跳转")
     var id = e.currentTarget.dataset.id;
@@ -185,18 +196,6 @@ Page({
     wx.navigateTo({
       url: '../../pages/extension/extension?id=' + id
     })
-  },
-  onShow: function () {
-    app.globalData.flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
-    clearInterval(app.globalData.interval); // 清除setInterval
-    app.globalData.time = 0;
-
-  },
-  touchStart: function (e) {
-    common.touchStart(e)
-  },
-  touchEnd: function (e) {
-    common.touchEndindex(e)
   }
-
+  
 })

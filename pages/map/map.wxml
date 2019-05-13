@@ -8,8 +8,8 @@
 
 <input placeholder='请输入终点' bindinput='getEnd'></input>
 
-<view class='text'>距离：</view>
-<view class='distance'>{{resultDistance}}</view>
+<!-- <view class='text'>距离：</view>
+<view class='distance'>{{resultDistance}}</view> -->
 
 </view>
 
@@ -17,10 +17,3 @@
 <view class="submit">
 <button class='sub-button' form-type='submit' bindtap="walking" >开始导航</button>
 </view>
-
-
-  <button class='btn1'  
-session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
-    <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
-    <text>向我吐槽</text>
- </button>

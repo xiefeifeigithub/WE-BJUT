@@ -34,6 +34,6 @@
             <button class='sub-button' bindtap='onTap'>点击查询</button>
         </view>
         <!-- 提示信息 -->
-        <text class='point_text'>注：可能因调课、开会和考试等原因空教室被占用</text>
+        <text class='point_text'>注：可能因调课、开会和考试等原因空教室被占用.只有校本部数据</text>
     </view>
 </view>
