@@ -1,8 +1,6 @@
 var app = getApp()
 Page({
   data: {
-    account: '', //用户名
-    password: '', //密码
     examInfo: []  //考试信息
   },
   globalData: {
@@ -10,6 +8,10 @@ Page({
     pwd: null
   },
 
+  globalData:{
+    account: '', //用户名
+    password: '', //密码
+  },
   onLoad: function (options) {
     console.log("onload:加载考试信息页面")
     var localData = wx.getStorageSync(app.data.keyExamInfo)
@@ -50,9 +52,6 @@ Page({
       success: function (res) {
         if (res.statusCode == 200) {
           console.log("考试信息返回成功")
-          // that.setData({
-          //   examInfo: res.data
-          // })
           wx.setStorage({
             key: app.data.keyExamInfo,
             data: res.data,
