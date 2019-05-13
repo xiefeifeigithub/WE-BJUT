@@ -12,15 +12,15 @@ Page({
     account: '', //用户名
     password: '', //密码
   },
+  
   onLoad: function (options) {
     console.log("onload:加载考试信息页面")
     var localData = wx.getStorageSync(app.data.keyExamInfo)
     this.setData({
       examInfo:localData
     })
- 
   },
-  //页面初次渲染完成时触发
+
   onReady: function () {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
@@ -32,6 +32,7 @@ Page({
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
     this.globalData.pwd = wx.getStorageSync(app.data.keyPwd)
   },
+
   onUnload: function () {
     var account = this.globalData.account
     var password = this.globalData.pwd

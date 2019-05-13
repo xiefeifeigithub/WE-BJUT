@@ -212,7 +212,7 @@ page{
 /* 机器人 */
 
 .btn1{
-  background-color: rgba(248, 246, 246, 0.5);
+  background-color: rgba(231, 230, 230, 0.9);
  /*border: 1px solid #7878EC;*/
  width: 140rpx;
  height: 140rpx;

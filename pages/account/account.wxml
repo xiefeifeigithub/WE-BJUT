@@ -1,5 +1,3 @@
-<!--pages/account/account.wxml-->
-
 <view class='notice'>公告:我们承诺绝对不会保存您的账号密码,请放心使用:)</view>
 
 <view class='content'>
