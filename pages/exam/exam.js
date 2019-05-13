@@ -5,6 +5,10 @@ Page({
     password: '', //密码
     examInfo: []  //考试信息
   },
+  globalData: {
+    account: null,
+    pwd: null
+  },
 
   onLoad: function (options) {
     console.log("onload:加载考试信息页面")
@@ -30,7 +34,7 @@ Page({
     var account = this.globalData.account
     var password = this.globalData.pwd
     var that = this
-    console.log("cet调用onUnload()");
+    console.log("exam调用onUnload()");
     //考试信息
     wx.request({
       // https://www.bjut1960.cn/examination?xh=学号&mm=密码
@@ -46,26 +50,22 @@ Page({
       success: function (res) {
         if (res.statusCode == 200) {
           console.log("考试信息返回成功")
-          that.setData({
-            examInfo: res.data
-          })
+          // that.setData({
+          //   examInfo: res.data
+          // })
           wx.setStorage({
             key: app.data.keyExamInfo,
-            data: examInfo,
+            data: res.data,
           })
           wx.hideLoading()
         } else {
           console.log("404")
-          // wx.showToast({
-          //   title: '请检查学号或密码是否正确',
-          //   icon: 'none'
-          // })
         }
       },
       fail: function (res) {
         console.log("请求考试信息出错:" + res)
       }
     });
-    console.log('触发更新考试信息数据')
+    console.log('触发更新考试信息exam数据')
   },
 })

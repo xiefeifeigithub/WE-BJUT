@@ -195,13 +195,14 @@ Page({
       },
       success: function (res) {
         if (res.statusCode == 200) {
+          console.log(res.data)
           console.log("考试信息返回成功")
-          that.setData({
-            examInfo: res.data
-          })
+          // that.setData({
+          //   examInfo: res.data
+          // })
           wx.setStorage({
             key: app.data.keyExamInfo,
-            data: examInfo,
+            data: res.data,
           })
           wx.hideLoading()
         } else {
