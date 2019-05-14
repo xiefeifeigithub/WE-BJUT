@@ -109,7 +109,8 @@ Page({
         if(lastid <= 17)
         {
           //新的循环
-          that.setData({ lastid: that.data.begin})
+     //     that.setData({ lastid: that.data.begin})
+          that.setData({ lastid: 0 })
 
           var newData = wx.getStorageSync('GoodCmsList')
           that.setData({ newsList: newData })

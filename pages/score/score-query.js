@@ -59,7 +59,8 @@ Page({
           current_year: year,
           current_term: semester,
           yearIndex:0,
-          semesterIndex:0
+          semesterIndex:0,
+          token: 'biaogexf'
         },
         header: {
           'content-type': 'application/json' // 默认值
