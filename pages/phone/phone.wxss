@@ -5,9 +5,6 @@
     padding: 20rpx;
     overflow: hidden;
 }
-navigator { 
-  overflow: hidden;
-}
 
 .list {
   margin-bottom: 20rpx;
@@ -15,14 +12,6 @@ navigator {
   position: relative;
   overflow: hidden;
   }
-.imgs {
-  float: left;
-  }
-.imgs image {
-  display: block; 
-  width: 200rpx;
-  height: 200rpx;
-}
 
 .infos {
   margin: 10rpx;
@@ -38,15 +27,17 @@ navigator {
 .title {
   color: black;
   font-size: 30rpx;
-   flex-wrap: wrap;
+  flex-wrap: wrap;
   }
-.date {
+.number {
    display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  margin-right: 50rpx;
+  margin-right: 30rpx;
   font-size: 30rpx;
+  color: #007AFF;
+  text-decoration:underline;
 }
 
 .borderline{
