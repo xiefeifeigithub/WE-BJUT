@@ -8,22 +8,73 @@
 }
 
 .tip{
-  padding: 10rpx;
-  color: grey;
-  font-size: 8pt
+  width: 95%;
+  margin: 20rpx;
+  height: auto;
+  font-size: 28rpx;
+    background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4rpx 16rpx 0px rgba(140, 160, 181, 0.2);
+  border-radius: 12rpx;
+  box-sizing: border-box;
+}
+.category{
+  margin: 10rpx;
+  color: gray;
 }
 
 .info-row{
-  padding: 10rpx;
+  padding: 20rpx;
   margin-top: 5rpx;
-  margin-left: 5rpx;
-  border: 2px solid #7878EC;
-  border-radius: 10rpx;
-  width: 95%;
-  height: 100rpx;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  align-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  width: 100%;
+  height: auto;
+}
+.title{
+  width: 65%;
+  white-space: pre-wrap;
+  font-size: 28rpx;
+}
+.item{
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-right: 10rpx;
+  font-size: 30rpx;
+}
+.info-row2{
+    padding-top: 20rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+  margin-top: 5rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: auto;
+}
+.hint1{
+    width: 60%;
+  white-space: pre-wrap;
+  font-size: 26rpx;
+  color: gainsboro;
+}
+.hint2{
+      display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-right: 10rpx;
+  font-size: 26rpx;
+  color: gainsboro
 }
 
 .no-score{

@@ -1,22 +1,26 @@
 <wxs module="filters" src="../../../utils/filters.wxs"></wxs>
 <view class="container">
-  <view class='tip'> 总平均分</view>
+  <view class='tip'> 
+  <view class='category'>总平均分</view>
   <view class='info-row'>
-    <view>大学期间总加权平均分</view>
+    <view class='title'>大学期间总加权平均分</view>
     <view class='item'>{{filters.toFix(result.average_score_all)}}</view>
   </view>
   <view class='info-row'>
-    <view>大学期间总平均分绩点(GPA)</view>
+    <view class='title'>大学期间总平均分绩点(GPA)</view>
     <view class='item'>{{filters.toFix(result.average_GPA_all)}}</view>
   </view>
-  <view class='tip'> 学期平均分</view>
+  </view>
+  <view class='tip'> 
+  <view class='category'>学期平均分</view>
   <view class='info-row'>
-    <view>本学期加权平均分</view>
+    <view class='title'>本学期加权平均分</view>
     <view class='item'>{{filters.toFix(result.average_score_term)}}</view>
   </view>
   <view class='info-row'>
-    <view>本学期平均分绩点(GPA)</view>
+    <view class='title'>本学期平均分绩点(GPA)</view>
     <view class='item'>{{filters.toFix(result.average_GPA_term)}}</view>
+  </view>
   </view>
   <!--注释代码不要删除-->
   <!-- <view class="tip" wx:if="{{result.total_value_minor > 0}}">辅修/二专业</view>
@@ -31,43 +35,39 @@
       <view>{{filters.toFix(result.average_GPA_minor)}}</view>
     </view>
   </view> -->
-  <view class="tip">辅修/二专业</view>
+  <view class="tip">
+  <view class='category'>辅修/二专业</view>
 
   <view class="info-row" bindtap="toggleScoreDialog">
-    <view>辅修/二专业课程的加权平均分</view>
-    <view>80</view>
+    <view class='title'>辅修/二专业课程的加权平均分</view>
+    <view class='item'>80</view>
   </view>
   <view class="info-row" bindtap="toggleGpaDialog">
-    <view>辅修/二专业课程的平均学分绩点</view>
-    <view>3</view>
+    <view class='title'>辅修/二专业课程的平均学分绩点</view>
+    <view class='item'>3</view>
+  </view>
   </view>
 
 
-  <view class='tip'> 课程详细
+  <view class='tip'> 
+  <view class='category'>课程详细</view>
+      <view class="info-row2">
+    <view class='hint1'>课程名称</view>
+    <view class='hint2'>分数 | 学分</view>
   </view>
-  <view class="no-score" wx:if="{{!result || result.number_of_lesson == 0}}">
+
+  <!--<view class="no-score" wx:if="{{!result || result.number_of_lesson == 0}}">
     暂无课程成绩...
-  </view>
+  </view>-->
+    </view>
   <!--注释代码不能删除-->
-  <!-- <view class="info-row" wx:for="{{result.grade_term}}" wx:for-item="course" wx:if="{{course.minor_maker == 0}}">
-    <view>课程名称：{{course.name}}</view>
+  <view class="info-row" wx:for="{{result.grade_term}}" wx:for-item="course" wx:if="{{course.minor_maker == 0}}">
+    <view class='title'>{{course.name}}</view>
     <view>
-      <text>分数|学分：{{course.score}} | {{filters.toFix(course.credit, 1)}}</text>
+      <text class='item'>{{course.score}} | {{filters.toFix(course.credit, 1)}}</text>
     </view>
-  </view> -->
+  </view> 
 
-  <view class="info-row">
-    <view>课程名称：高等数学</view>
-    <view>
-      <text>分数|学分：88 | 3</text>
-    </view>
-  </view>
-  <view class="info-row">
-    <view>课程名称：高等数学</view>
-    <view>
-      <text>分数|学分：88 | 3</text>
-    </view>
-  </view>
 
 
 
@@ -89,14 +89,5 @@
   </view> -->
 
 
-  <view class="tip">
-    辅修/二专业明细
-  </view>
-
-  <view class="info-row">
-    <view>课程名称：高等数学</view>
-    <view>
-      <text>分数|学分：88 | 3</text>
-    </view>
-  </view>
+  
 </view>
