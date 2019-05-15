@@ -1,1 +1,58 @@
-/* pages/phonedetail/phonedetail.wxss */
+.warp{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+    overflow: hidden;
+}
+
+.list {
+  margin-bottom: 20rpx;
+  height: 80rpx;
+  position: relative;
+  overflow: hidden;
+  }
+
+.infos {
+  margin: 10rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+.title {
+  color: black;
+  font-size: 30rpx;
+  flex-wrap: wrap;
+  }
+.number {
+   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-right: 30rpx;
+  font-size: 30rpx;
+  color: #007AFF;
+  text-decoration:underline;
+}
+
+.borderline{
+  width: 650rpx;
+  position: absolute;
+  left: 50%;
+  margin-left: -325rpx;
+  background-color: #e5e5e5;
+  height: 1rpx;
+}
+
+.loadMore {
+  text-align: center;
+  margin: 30px;
+  color: #aaa;
+  font-size: 16px;
+  }
+  

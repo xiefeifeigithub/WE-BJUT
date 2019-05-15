@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phoneList: [],
+    phoneList: [],  //指定标签的电话列表
     lastid: 0,  //数据id
     label: null  //分类标签
   },
