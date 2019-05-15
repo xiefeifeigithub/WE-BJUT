@@ -9,7 +9,8 @@ App({
     keyPwd: 'stuPwdLocal',                      //用于存取学生密码的键
     keyInfo: 'stuInfoLocal',                           //用于存取学生基本信息的键
     keyCet: 'cetLocal',                          //用于存取四六级考试成绩的键
-    keyPhoneList: 'phoneLocal',                 //用于存取电话号码的键
+    keyPhoneList: 'phoneLocal',                 //用于存取电话号码的键,
+    keyPhoneSort: 'phoneSortLocal',             //存取电话分类的键
     keyQaList: 'qaLocal',                        //用于存取知识库的键
     keyExamInfo: 'examInfoLocal',                //用于存取考试信息的键
     url: 'https://www.bjutxiaomei.cn/index.php?s=/'
@@ -17,6 +18,7 @@ App({
   globalData: {
     userInfo: null,
     type: null,             //文章类型
+    label: null,             //电话分类
     username: null,           //学号
     userpassword: null,       //教务密码
     classification: '',     //文章分类

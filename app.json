@@ -15,7 +15,8 @@
     "pages/map/map",
     "pages/phone/phone",
     "pages/extension/extension",
-    "pages/qa/qa"
+    "pages/qa/qa",
+    "pages/phonedetail/phonedetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
