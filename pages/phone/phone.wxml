@@ -2,11 +2,10 @@
 
   <!--循环输出列表 begin-->
   <view wx:for="{{phoneSortArray}}" class="list" wx:for-index='id' data-label="{{item.label}}" bindtap="queryPhoneDetail">
-    <view class="infos">
-      <!-- <view class="title">{{item.name}}</view> -->
-      <view  class="date" >{{item.label}}</view>
-    </view>
-    <view class='borderline'></view>
+  <view class='line'></view>
+  <view class="title" >{{item.label}}</view>
+  <image class="arrow" src="../../images/arrowright.png" mode="aspectFill" />
+    
   </view>
 
 </view>
