@@ -1,9 +1,10 @@
 {
   "pages": [
+  
     "pages/index/index",
+    "pages/score/score-query",
     "pages/score/score-result/score-result",
     "pages/lists/lists",
-    "pages/score/score-query",
     "pages/rooms/rooms",
     "pages/strategy/strategy",
     "pages/account/account",
@@ -15,7 +16,8 @@
     "pages/map/map",
     "pages/phone/phone",
     "pages/extension/extension",
-    "pages/qa/qa"
+    "pages/qa/qa",
+    "pages/phonedetail/phonedetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

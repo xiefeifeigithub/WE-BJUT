@@ -1,12 +1,9 @@
-.warp{
+/*.warp{
     height: 100%;
     display: flex;
     flex-direction: column;
     padding: 20rpx;
     overflow: hidden;
-}
-navigator { 
-  overflow: hidden;
 }
 
 .list {
@@ -15,14 +12,6 @@ navigator {
   position: relative;
   overflow: hidden;
   }
-.imgs {
-  float: left;
-  }
-.imgs image {
-  display: block; 
-  width: 200rpx;
-  height: 200rpx;
-}
 
 .infos {
   margin: 10rpx;
@@ -38,15 +27,17 @@ navigator {
 .title {
   color: black;
   font-size: 30rpx;
-   flex-wrap: wrap;
+  flex-wrap: wrap;
   }
-.date {
+.number {
    display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  margin-right: 50rpx;
+  margin-right: 30rpx;
   font-size: 30rpx;
+  color: #007AFF;
+  text-decoration:underline;
 }
 
 .borderline{
@@ -63,5 +54,42 @@ navigator {
   margin: 30px;
   color: #aaa;
   font-size: 16px;
-  }
+  }*/
+  .line {
+  width: 10rpx;
+  height: 35rpx;
+  background: #3963BC;
+  border-radius: 0px 6rpx 6rpx 0px;
+  margin-right: 22rpx;
+}
+
+.list {
+    width: 95%;
+  margin: 20rpx;
+  height: 150rpx;
+    background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4rpx 16rpx 0px rgba(140, 160, 181, 0.2);
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-direction: row;
+}
+
+.title {
+  font-size: 35rpx;
+  font-weight: 600;
+  color: #3683d6;
+
+}
+.arrow{
+    width: 32rpx;
+  height: 32rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-right: 50rpx;
+}
   

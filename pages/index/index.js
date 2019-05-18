@@ -92,7 +92,7 @@ Page({
                 })
               } else if (res.data[0].canuse == "0"){
                 wx.showToast({
-                  title: '教务当前没有数据',
+                  title: '教务当前没有成绩数据',
                   icon: 'none'
                 }); 
               }
@@ -132,7 +132,7 @@ Page({
             });
           }else{
             wx.showToast({
-              title: '教务当前没有数据',
+              title: '教务当前没有考试数据',
               icon: 'none'
             });
           }

@@ -1,0 +1,11 @@
+<view class="warp">
+  <!--循环输出列表 begin-->
+  <view wx:for="{{phoneList}}" wx:for-index='id'>
+    <view class="list">
+      <view class="title">{{item.department}}</view>
+      <view catchtap="callmeTap" class="number" data-phone="{{item.telephone}}">{{item.telephone}}</view>
+    </view>
+    <view class='borderline'></view>
+  </view>
+
+</view>
