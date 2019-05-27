@@ -83,24 +83,22 @@ Page({
     //检测学号，密码，学年，学期是否正确
     if(year != '' && semester !=''){
       wx.request({
-        url: 'https://bjut.bjutxiaomei.cn/API.php',
+        url: 'https://www.bjut1960.cn/score',
+        method:'POST',
         data: {
-          account: account,
-          password: pwd,
-          current_year: year,
-          current_term: semester,
-          yearIndex:0,
-          semesterIndex:0,
-          token: 'biaogexf'
+          xh: account,
+          mm: pwd,
+          xn: year,
+          xq: semester,
         },
         header: {
-          'content-type': 'application/json' // 默认值
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
         success(res) {
           console.log(res)
-          if (res.statusCode == 404){
+          if (res.statusCode == 500){
             wx.showToast({
-              title: '访问教务教务出错,请稍后重试',
+              title: '还没出分哦...',
               icon: 'none'
             })
           }

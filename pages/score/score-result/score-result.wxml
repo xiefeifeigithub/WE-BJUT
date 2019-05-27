@@ -1,7 +1,7 @@
 <wxs module="filters" src="../../../utils/filters.wxs"></wxs>
 <view class="container">
   <view class='tip'>
-    <view class='block'>
+    <!-- <view class='block'>
       <view class="line"></view>
       <view class='category'>总平均分</view>
     </view>
@@ -23,10 +23,10 @@
     <view class='info-row'>
       <view class='title'>本学期加权平均分</view>
       <view class='item'>{{filters.toFix(result.average_score_term)}}</view>
-    </view>
+    </view> -->
     <view class='info-row'>
-      <view class='title'>本学期平均分绩点(GPA)</view>
-      <view class='item'>{{filters.toFix(result.average_GPA_term)}}</view>
+      <view class='title'>本学期平均绩点(GPA)</view>
+      <view class='item'>{{filters.toFix(result.summery.GPA_term)}}</view>
     </view>
   </view>
 
@@ -41,10 +41,10 @@
     </view>
   </view>
   <!--注释代码不能删除-->
-  <view class="info-row" wx:for="{{result.grade_term}}" wx:for-item="course" wx:if="{{course.minor_maker == 0}}">
-    <view class='title'>{{course.name}}</view>
+  <view class="info-row" wx:for="{{result.score}}">
+    <view class='title'>{{item.courseName}}</view>
     <view>
-      <text class='item'>{{course.score}} | {{filters.toFix(course.credit, 1)}}</text>
+      <text class='item'>{{item.score}} | {{filters.toFix(item.credit, 1)}}</text>
     </view>
   </view>
 

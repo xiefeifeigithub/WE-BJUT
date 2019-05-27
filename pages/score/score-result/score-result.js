@@ -12,7 +12,7 @@ Page({
         result: result_obj,
       });
       if (!result_obj || !result_obj.number_of_lesson) {
-        this.showNoScoreToast();
+        //this.showNoScoreToast();
       }
       wx.nextTick(() => {
         this.updateShowScore();
