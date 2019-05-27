@@ -6,10 +6,7 @@ Page({
     yearPick:false,
     semesterPick:false,
     yearIndex:0,
-    semesterIndex:0
-  },
-
-  globalData:{
+    semesterIndex:0,
     pickedYear: '',
     pickedSemester: '',
   },
@@ -19,10 +16,26 @@ Page({
    */
   yearPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', this.data.yearArray[e.detail.value])
-    this.globalData.pickedYear = this.data.yearArray[e.detail.value]
+    this.data.pickedYear = this.data.yearArray[e.detail.value]
     this.setData({
       yearIndex: e.detail.value,
       yearPick: true,
+    })
+
+    wx.setStorage({
+      key: 'year',
+      data: this.data.yearArray[e.detail.value],
+    })
+
+    wx.setStorage({
+      key: 'yearIndex',
+      data: e.detail.value,
+    })
+
+
+    wx.setStorage({
+      key: 'yearPick',
+      data: this.data.yearPick,
     })
   },
   /**
@@ -30,10 +43,26 @@ Page({
    */
   semesterPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', this.data.semesterArray[e.detail.value])
-    this.globalData.pickedSemester = this.data.semesterArray[e.detail.value]
+    this.data.pickedSemester = this.data.semesterArray[e.detail.value]
     this.setData({
       semesterIndex: e.detail.value,
       semesterPick:true,
+    })
+
+    wx.setStorage({
+      key: 'semester',
+      data: this.data.semesterArray[e.detail.value],
+    })
+
+    wx.setStorage({
+      key: 'semesterIndex',
+      data: e.detail.value,
+    })
+
+
+    wx.setStorage({
+      key: 'semesterPick',
+      data: this.data.semesterPick,
     })
   },
 
@@ -42,12 +71,14 @@ Page({
     */
   queryBtn: function () {
     wx.showLoading({
-      title: '请稍等...',
+      title: '成绩查询中...',
     })
     var account = wx.getStorageSync(app.data.keyUserName)
     var pwd = wx.getStorageSync(app.data.keyPwd)
-    var year = this.globalData.pickedYear
-    var semester = this.globalData.pickedSemester
+    var year = this.data.pickedYear
+    var semester = this.data.pickedSemester
+
+    console.log('year: ' + year + "semester: " + semester)
    
     //检测学号，密码，学年，学期是否正确
     if(year != '' && semester !=''){
@@ -108,5 +139,33 @@ Page({
         url: '../account/account',
       })
     }
+
+    this.haveLocalPickerData()
+    
+  },
+
+  haveLocalPickerData: function(){
+    var yearLocal = wx.getStorageSync('year')
+    var semesterLocal = wx.getStorageSync('semester')
+    if (yearLocal && semesterLocal) {
+
+      var pickedYear = wx.getStorageSync('year')
+      var yearIndex = wx.getStorageSync('yearIndex')
+      var yearPick = wx.getStorageSync('yearPick')
+
+      var pickedSemester = wx.getStorageSync('semester')
+      var semesterIndex = wx.getStorageSync('semesterIndex')
+      var semesterPick = wx.getStorageSync('semesterPick')
+
+      this.setData({
+        yearIndex: yearIndex,
+        yearPick: yearPick,
+        semesterIndex: semesterIndex,
+        semesterPick: semesterPick,
+        pickedYear: pickedYear,
+        pickedSemester: pickedSemester
+      })
+    }
   }
+
 })
