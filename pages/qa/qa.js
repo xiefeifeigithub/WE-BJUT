@@ -62,6 +62,8 @@ Page({
         'Content-Type': 'application/json'
       },
       success: function (res) {
+        console.log("旧数量：" + that.data.qaList.length)
+        console.log("新数量：" + res.data.length)
         wx.setStorage({
           key: app.data.keyQaList,
           data: res.data,

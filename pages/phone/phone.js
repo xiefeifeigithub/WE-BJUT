@@ -4,8 +4,8 @@ Page({
     lastid: 0,  //数据id
     phoneSortArray:[]  //电话分类数组
   },
-  loadData: function (lastid) {
 
+  loadData: function (lastid) {
     var that = this
     console.log('动态加载电话分类标签')
 
@@ -22,8 +22,6 @@ Page({
       }
     })
   },
-
-  
 
   onLoad: function () {
     console.log('onLoad: phoneSort分类页面')

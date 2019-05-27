@@ -26,6 +26,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '考试信息查询'
     })
+    
   },
   //每次查看考试信息除了从缓存中读取第一次保存的信息之外，每次在退出页面之后进行最新的数据获取，并保存
   onShow: function () {
