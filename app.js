@@ -24,8 +24,9 @@ App({
     classification: '',     //文章分类
     freeRooms: [],          //空教室
     currentWeek: null,        //当前是第几周
-    hasLocalData: false,       //用于判断本地有没有缓存的课表、等级考试信息
+    hasTimetableAndInfo: false,       //用于判断本地有没有缓存的课表、等级考试信息
     hasExamInfo: false,         //用于判断本地有没有缓存的考试信息
+    hasCetInfo:false,
     time : 0,
     touchDot : 0,//触摸时的原点
     touchDoty : 0,
@@ -73,7 +74,7 @@ App({
     var username = wx.getStorageSync(this.data.keyUserName)
     //如果读到username，证明有本地数据，将hasLocalData置为true
     if (username) {
-      this.globalData.hasLocalData = true
+      this.globalData.hasTimetableAndInfo = true
     }
     var userpassword = wx.getStorageSync(this.data.keyPwd)
     //计算全局变量currentWeek
@@ -91,8 +92,7 @@ App({
       }
     })
 
-    this.ensureHasData()
-
+    this.ensureHasTimetableAndInfo();
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -153,14 +153,31 @@ App({
   /**
    * 检测本地是否存有课表数据、等级考试数据、考试信息数据(默认：登录成功就可以获取到课表和等级考试信息)
    */
-  ensureHasData: function () {
+  ensureHasTimetableAndInfo: function () {
     var username = wx.getStorageSync(this.data.keyUserName)
-    //如果读到username，证明有本地数据，将hasLocalData置为true
+    //如果读到username，证明有本地数据，将hasTimetableAndInfo置为true
     if (username) {
-      this.globalData.hasLocalData = true
+      this.globalData.hasTimetableAndInfo = true
     } else {
-      this.globalData.hasLocalData = false
+      this.globalData.hasTimetableAndInfo = false
     }
+   
+  },
+  /**
+   * 确保本地是否有四六级考试信息
+   */
+  ensureHasCetInfo:function(){
+    var cet = wx.getStorageSync(this.data.keyCet)
+    if(cet){
+      this.globalData.hasCetInfo = true;
+    }else{
+      this.globalData.hasCetInfo = false;
+    }
+  },
+  /**
+   *确保本地是否有考试信息
+   */
+  ensureHasExamInfo:function(){
     var exam = wx.getStorageSync(this.data.keyExamInfo);
     if (exam) {
       this.globalData.hasExamInfo = true;

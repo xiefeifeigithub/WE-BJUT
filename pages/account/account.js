@@ -99,6 +99,7 @@ Page({
     });
 
     var that = this
+    //请求课表信息和学生基本信息
     wx.request({
       // https://www.bjut1960.cn/schedule?xh=学号&mm=密码
       url: 'https://www.bjut1960.cn/schedule',
@@ -133,7 +134,7 @@ Page({
             unload: false
           })
           wx.hideLoading(); //隐藏身份验证对话框
-          app.ensureHasData()
+          app.ensureHasTimetableAndInfo()
         } else {
           wx.showToast({
             title: '请检查学号或密码是否正确',
@@ -168,6 +169,7 @@ Page({
             data: res.data,
           })
           wx.hideLoading()
+          app.ensureHasCetInfo()
         } else {
           console.log("404")
         }
@@ -197,6 +199,7 @@ Page({
             key: app.data.keyExamInfo,
             data: res.data,
           })
+          app.ensureHasExamInfo()
           wx.hideLoading()
         } else {
           console.log("404")
@@ -219,7 +222,9 @@ Page({
       wx.removeStorageSync(app.data.keyExerciseLesson);
       wx.removeStorageSync(app.data.keyCet);
       wx.removeStorageSync(app.data.keyExamInfo);
-      app.ensureHasData()
+      app.ensureHasExamInfo()
+      app.ensureHasCetInfo()
+      app.ensureHasTimetableAndInfo()
       this.setData({
         unload: true
       })
