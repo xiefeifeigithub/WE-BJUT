@@ -8,7 +8,7 @@
             <image class="widgets__info-img" src="../../images/arrowright.png" mode="aspectFill" />
           </view>
           <view class="widgets__list {{item.open ? 'widget__name' : 'widgets__list_show'}}">
-            <view style="float:left;margin-left:40rpx;margin-right:40rpx;">{{item.answer}}
+            <view style="font-size:30rpx;float:left;margin-left:40rpx;margin-right:40rpx;white-space:pre-wrap;">{{item.answer}}
             </view>
           </view>
         </view>

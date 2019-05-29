@@ -16,6 +16,16 @@
     </view>
   </picker>
   <view class="nav">
-            <button class='sub-button' catchtap='queryBtn'>点击查询</button>
-        </view>
+    <button class='sub-button' catchtap='queryBtn'>点击查询</button>
+  </view>
+
+ 
+
+  <view class='tip'>
+  <text class='notice'># 数据仅供参考\n</text>
+  <text class='notice'># 新生研讨课，第二课堂绩点和加权均不计入\n</text>
+  <text class='notice'># GPA算法：Σ(绩点*课程学分)/Σ课程总学分\n</text>
+  <text class='notice'># 加权算法：Σ(成绩*课程学分)/Σ课程总学分\n</text>
+  <text class='notice'># 涉及补考、重修、辅修的成绩未列入计算\n</text>
+  </view>
 </view>
