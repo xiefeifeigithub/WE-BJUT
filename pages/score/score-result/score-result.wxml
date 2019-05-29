@@ -44,7 +44,7 @@
       <view class='hint1'>课程名称</view>
       <view class='hint2'>分数 | 学分</view>
     </view>
-  </view>
+  
 
   <!--注释代码不能删除-->
   <view class="info-row" wx:for="{{result.score}}">
@@ -53,7 +53,7 @@
       <text class='item'>{{item.score}} | {{filters.toFix(item.credit, 1)}}</text>
     </view>
   </view>
-
+</view>
   <!--<view class="tip">
    <view class='block'>
    <view class="line"></view>

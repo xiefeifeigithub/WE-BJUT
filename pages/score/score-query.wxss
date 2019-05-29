@@ -32,7 +32,7 @@
 }
 .gap{
   width: 100%;
-  height: 300rpx;
+  height: 200rpx;
 }
 
 .nav {
@@ -49,4 +49,23 @@
   line-height:1.8;
   border-radius:30px;
   padding:5px 100px;
+}
+
+.tip{
+  width: 95%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  /*background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4rpx 16rpx 0px rgba(140, 160, 181, 0.2);
+  border-radius: 12rpx;*/
+  position: fixed;
+  bottom: 20rpx;
+}
+
+.notice{
+  display: flex;
+  justify-content: center;
+  font-size: 25rpx;
+  line-height: 2;
+  color: #a3a3a3;
 }
