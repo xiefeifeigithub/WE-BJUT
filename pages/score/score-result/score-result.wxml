@@ -4,26 +4,30 @@
     <!-- <view class='block'>
       <view class="line"></view>
       <view class='category'>总平均分</view>
-    </view>
+    </view> -->
+
     <view class='info-row'>
       <view class='title'>大学期间总加权平均分</view>
-      <view class='item'>{{filters.toFix(result.average_score_all)}}</view>
+      <view class='item'>{{filters.toFix(result.summery.SCORE_all)}}</view>
     </view>
+
     <view class='info-row'>
-      <view class='title'>大学期间总平均分绩点(GPA)</view>
-      <view class='item'>{{filters.toFix(result.average_GPA_all)}}</view>
+      <view class='title'>大学期间总平均绩点(GPA)</view>
+      <view class='item'>{{filters.toFix(result.summery.GPA_all)}}</view>
     </view>
   </view>
 
   <view class='tip'>
-    <view class='block'>
+    <!-- <view class='block'>
       <view class="line"></view>
       <view class='category'>学期平均分</view>
-    </view>
+    </view> -->
+
     <view class='info-row'>
       <view class='title'>本学期加权平均分</view>
-      <view class='item'>{{filters.toFix(result.average_score_term)}}</view>
-    </view> -->
+      <view class='item'>{{filters.toFix(result.summery.SCORE_term)}}</view>
+    </view> 
+
     <view class='info-row'>
       <view class='title'>本学期平均绩点(GPA)</view>
       <view class='item'>{{filters.toFix(result.summery.GPA_term)}}</view>
@@ -35,11 +39,13 @@
       <view class="line"></view>
       <view class='category'>课程详细</view>
     </view>
+
     <view class="info-row2">
       <view class='hint1'>课程名称</view>
       <view class='hint2'>分数 | 学分</view>
     </view>
   </view>
+
   <!--注释代码不能删除-->
   <view class="info-row" wx:for="{{result.score}}">
     <view class='title'>{{item.courseName}}</view>
