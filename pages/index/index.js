@@ -11,6 +11,7 @@ Page({
     duration: 1200, //滑动动画时长
     inputShowed: false,
     inputVal: "",
+
     //导航数据
     student:
       [
@@ -57,16 +58,69 @@ Page({
       ]
   },
 
+  globalData:{
+    account:"",
+    password:""
+  },
   //处理主页点击图标跳事件
   touchIcon: function (options) {
     console.log(options.currentTarget.dataset.index)
+    var that = this
     switch (options.currentTarget.dataset.index) {
       case "0":
       //先判断用户是否登录过
-        if (app.globalData.hasTimetableAndInfo) {
-          wx.navigateTo({
-            url: '../timetable/timetable',
-          })
+        if (app.globalData.hasBaseInfo) {
+          //有缓存的课表直接跳转课表显示,否则发起请求获取课表数据
+          if(app.globalData.hasTimetableInfo){
+            wx.navigateTo({
+              url: '../timetable/timetable',
+            })
+          }else{
+            wx.showLoading({
+              title: '查询中...',
+            })
+            wx.request({
+              url: 'https://www.bjut1960.cn/schedule',
+              method: 'POST',
+              data: {
+                xh: that.globalData.account,
+                mm: that.globalData.password
+              },
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              success: function (res) {
+                if (res.statusCode == 200) {
+                  //1解析课表数据
+                  //2存储课表、实践课
+                  wx.setStorage({
+                    key: app.data.keyExerciseLesson,
+                    data: res.data.exercise,
+                  })
+                  app.parseTimetableData(res.data.table);
+                  app.globalData.hasTimetableInfo = true;
+                  wx.hideLoading()
+                  wx.navigateTo({
+                    url: '../timetable/timetable',
+                  })
+                } else {
+                  wx.hideLoading()
+                  app.globalData.hasTimetableInfo = false;
+                  wx.showToast({
+                    title: '暂时没有相关信息',
+                    icon: 'none'
+                  })
+                }
+              },
+              fail: function (res) {
+                wx.hideLoading()
+                console.log('获取课表失败');
+                app.globalData.hasTimetableInfo = false;
+                console.log(res);
+              }
+            });
+          }
+          
         } else {
           wx.switchTab({
             url: '../account/account',
@@ -80,7 +134,7 @@ Page({
         break;
       case "2":
         //先判断用户是否登录过
-        if (app.globalData.hasTimetableAndInfo){
+        if (app.globalData.hasBaseInfo){
           wx.request({
             url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Score/Score/getCanuseScore',
             success:function(res){
@@ -106,16 +160,52 @@ Page({
         break;
       case "4":
       //先判断用户是否登录过
-        if (app.globalData.hasTimetableAndInfo) {
+        if (app.globalData.hasBaseInfo) {
           if(app.globalData.hasCetInfo){
             wx.navigateTo({
               url: '../cet/cet',
             });
           }else{
-            wx.showToast({
-              title: '教务当前没有数据',
-              icon: 'none'
-            }); 
+            wx.showLoading({
+              title: '查询中...',
+            })
+            wx.request({
+              url: 'https://www.bjut1960.cn/grade',
+              method: 'POST',
+              data: {
+                xh: that.globalData.account,
+                mm: that.globalData.password
+              },
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              success: function (res) {
+                if (res.statusCode == 200) {
+                  console.log("查询cet信息成功")
+                  wx.setStorage({
+                    key: app.data.keyCet,
+                    data: res.data,
+                  })
+                  wx.hideLoading()
+                  app.globalData.hasCetInfo = true;
+                  wx.navigateTo({
+                    url: '../cet/cet',
+                  });
+                } else {
+                  wx.hideLoading();
+                  app.globalData.hasCetInfo = false;
+                  wx.showToast({
+                    title: '查询失败...',
+                    icon: 'none'
+                  })
+                  console.log("查询cet信息失败")
+                }
+              },
+              fail: function (res) {
+                console.log('登录失败');
+                app.globalData.hasCetInfo = false;
+              }
+            });
           }
         } else {
           wx.switchTab({
@@ -124,16 +214,51 @@ Page({
         }
         break;
       case "3":
-        //此处代码不可删除
-        if (app.globalData.hasTimetableAndInfo){
+        if (app.globalData.hasBaseInfo){
           if(app.globalData.hasExamInfo){
             wx.navigateTo({
               url: '/pages/exam/exam',
             });
           }else{
-            wx.showToast({
-              title: '教务当前没有考试数据',
-              icon: 'none'
+            wx.showLoading({
+              title: '查询中...',
+            })
+            wx.request({
+              url: 'https://www.bjut1960.cn/examination',
+              method: 'POST',
+              data: {
+                xh: that.globalData.account,
+                mm: that.globalData.password
+              },
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              success: function (res) {
+                if (res.statusCode == 200) {
+                  console.log("考试信息返回成功")
+                  wx.setStorage({
+                    key: app.data.keyExamInfo,
+                    data: res.data,
+                  })
+                  app.globalData.hasExamInfo = true;
+                  wx.hideLoading()
+                  wx.navigateTo({
+                    url: '/pages/exam/exam',
+                  });
+                } else {
+                  wx.hideLoading()
+                  app.globalData.hasExamInfo = false;
+                  wx.showToast({
+                    title: '查询失败...',
+                    icon: 'none'
+                  })
+                  console.log("查询考试信息失败")
+                }
+              },
+              fail: function (res) {
+                console.log("请求考试信息出错:" + res)
+                app.globalData.hasExamInfo = false;
+              }
             });
           }
         }else {
@@ -203,44 +328,7 @@ Page({
   },
 
   onShow:function(){
-    if(app.globalData.hasExamInfo == false){
-      console.log("没有获取到考试信息，尝试获取，前提是当前在登录状态")
-      var account = wx.getStorageSync(app.data.keyUserName)
-      var password = wx.getStorageSync(app.data.keyPwd)
-      var that = this
-      //考试信息
-      wx.request({
-        // https://www.bjut1960.cn/examination?xh=学号&mm=密码
-        url: 'https://www.bjut1960.cn/examination',
-        method: 'POST',
-        data: {
-          xh: account,
-          mm: password
-        },
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        success: function (res) {
-          if (res.statusCode == 200) {
-            console.log("考试信息返回成功")
-            wx.setStorage({
-              key: app.data.keyExamInfo,
-              data: res.data,
-            })
-            console.log('从主页拿到考试信息数据')
-            app.globalData.hasExamInfo = true;
-          } else {
-            console.log("404")
-          }
-        },
-        fail: function (res) {
-          console.log("请求考试信息出错:" + res)
-        }
-      });
-      
-    }else{
-      console.log("取到考试信息，直接查看")
-    }
+    this.globalData.account = wx.getStorageSync(app.data.keyUserName)
+    this.globalData.password = wx.getStorageSync(app.data.keyPwd)
   }
-  
 })

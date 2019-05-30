@@ -97,12 +97,11 @@ Page({
     wx.showLoading({
       title: '身份验证中...',
     });
-
+    //点击登录按钮，获取学生基本信息，页面转换为已登录状态对应的页面
     var that = this
-    //请求课表信息和学生基本信息
+    //请求学生基本信息
     wx.request({
-      // https://www.bjut1960.cn/schedule?xh=学号&mm=密码
-      url: 'https://www.bjut1960.cn/schedule',
+      url: 'https://www.bjut1960.cn/baseinfo',
       method: 'POST',
       data:{
         xh:account,
@@ -112,29 +111,21 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
-
         if (res.statusCode == 200) {
           //登录成功：将登录的用户名和密码存储至本地
           that.setStorage()
           that.setData({
-            info: res.data[0]
+            info: res.data
           })
-          //1解析课表数据
-          //2存储课表、实践课、学生基本信息数据到本地
           wx.setStorage({
             key: app.data.keyInfo,
-            data: res.data[0],
+            data: res.data,
           })
-          wx.setStorage({
-            key: app.data.keyExerciseLesson,
-            data: res.data[1].exercise,
-          })
-          app.parseTimetableData(res.data[1].table);
           that.setData({
             unload: false
           })
           wx.hideLoading(); //隐藏身份验证对话框
-          app.ensureHasTimetableAndInfo()
+          app.globalData.hasBaseInfo = true;
         } else {
           wx.showToast({
             title: '请检查学号或密码是否正确',
@@ -145,68 +136,6 @@ Page({
       fail: function(res) {
         console.log('登录失败');
         console.log(res);
-      }
-    });
-
-    //四六级考试信息
-    wx.request({
-      // https://www.bjut1960.cn/grade?xh=学号&mm=密码
-      url: 'https://www.bjut1960.cn/grade',
-      method: 'POST',
-      data: {
-        xh: account,
-        mm: password
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function (res) {
-
-        if (res.statusCode == 200) {
-          console.log("考试信息返回成功")
-          wx.setStorage({
-            key: app.data.keyCet,
-            data: res.data,
-          })
-          wx.hideLoading()
-          app.ensureHasCetInfo()
-        } else {
-          console.log("404")
-        }
-      },
-      fail: function (res) {
-        console.log('登录失败');
-      }
-    });
-
-    //考试信息
-    wx.request({
-      // https://www.bjut1960.cn/examination?xh=学号&mm=密码
-      url: 'https://www.bjut1960.cn/examination',
-      method: 'POST',
-      data: {
-        xh: account,
-        mm: password
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function (res) {
-        if (res.statusCode == 200) {
-          console.log(res.data)
-          console.log("考试信息返回成功")
-          wx.setStorage({
-            key: app.data.keyExamInfo,
-            data: res.data,
-          })
-          app.ensureHasExamInfo()
-          wx.hideLoading()
-        } else {
-          console.log("404")
-        }
-      },
-      fail: function (res) {
-        console.log("请求考试信息出错:" + res)
       }
     });
   },
@@ -222,9 +151,7 @@ Page({
       wx.removeStorageSync(app.data.keyExerciseLesson);
       wx.removeStorageSync(app.data.keyCet);
       wx.removeStorageSync(app.data.keyExamInfo);
-      app.ensureHasExamInfo()
-      app.ensureHasCetInfo()
-      app.ensureHasTimetableAndInfo()
+      app.logout();
       this.setData({
         unload: true
       })

@@ -24,9 +24,10 @@ App({
     classification: '',     //文章分类
     freeRooms: [],          //空教室
     currentWeek: null,        //当前是第几周
-    hasTimetableAndInfo: false,       //用于判断本地有没有缓存的课表、等级考试信息
+    hasTimetableInfo: false,       //用于判断本地有没有缓存的课表信息
     hasExamInfo: false,         //用于判断本地有没有缓存的考试信息
     hasCetInfo:false,
+    hasBaseInfo:false,          //用于判断学生是否已经登录过
     time : 0,
     touchDot : 0,//触摸时的原点
     touchDoty : 0,
@@ -79,20 +80,16 @@ App({
     var userpassword = wx.getStorageSync(this.data.keyPwd)
     //计算全局变量currentWeek
     this.calculateCurrentWeek();
-
-
     this.globalData.username = username
     this.globalData.userpassword = userpassword
-    console.log(username, userpassword)
+    this.ensureLogined();
 
     wx.getSystemInfo({
       success(res) {
-
         console.log(res.windowHeight)
       }
     })
 
-    this.ensureHasTimetableAndInfo();
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -150,10 +147,17 @@ App({
     }
   },
 
+  ensureLogined:function(){
+    var temp = wx.getStorageSync(this.data.keyInfo);
+    if(temp){
+      this.globalData.hasBaseInfo = true;
+    }
+  },
+
   /**
    * 检测本地是否存有课表数据、等级考试数据、考试信息数据(默认：登录成功就可以获取到课表和等级考试信息)
    */
-  ensureHasTimetableAndInfo: function () {
+  ensureHasTimetableInfo: function () {
     var username = wx.getStorageSync(this.data.keyUserName)
     //如果读到username，证明有本地数据，将hasTimetableAndInfo置为true
     if (username) {
@@ -162,6 +166,15 @@ App({
       this.globalData.hasTimetableAndInfo = false
     }
    
+  },
+/**
+ * 退出登录后，将课表信息、考试信息、四六级考试的变量转为false
+ */
+  logout:function(){
+    this.globalData.hasCetInfo = false;
+    this.globalData.hasTimetableInfo = false;
+    this.globalData.hasBaseInfo = false;
+    this.globalData.hasExamInfo = false;
   },
   /**
    * 确保本地是否有四六级考试信息
@@ -257,8 +270,6 @@ App({
       }
       that.saveTimetableToLocal(list);
     }
-
-
   },
   numberChange: function (num) {
     var alb = 0
