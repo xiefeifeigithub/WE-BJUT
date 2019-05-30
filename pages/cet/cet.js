@@ -41,7 +41,6 @@ Page({
     console.log("cet调用onUnload()");
     //四六级考试信息
     wx.request({
-      // https://www.bjut1960.cn/grade?xh=学号&mm=密码
       url: 'https://www.bjut1960.cn/grade',
       method: 'POST',
       data: {
@@ -62,12 +61,15 @@ Page({
             data: res.data,
           })
           wx.hideLoading()
+          app.globalData.hasCetInfo = true;
         } else {
-          console.log("404")
+          console.log("获取CET数据失败")
+          app.globalData.hasCetInfo = false;
         }
       },
       fail: function (res) {
-        console.log('登录失败');
+        console.log('获取CET数据失败');
+        app.globalData.hasCetInfo = false;
       }
     });
     console.log('触发更新CET数据')

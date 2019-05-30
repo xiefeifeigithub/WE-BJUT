@@ -65,12 +65,12 @@
     <view class='borderline'></view>
     <view class='tags'>
       <view class='title'>学号</view>
-      <view class='text'>{{info.studentNumber}}</view>
+      <view class='text'>{{info.stuNum}}</view>
     </view>
     <view class='borderline'></view>
     <view class='tags'>
       <view class='title'>姓名</view>
-      <view class='text'>{{info.studentName}}</view>
+      <view class='text'>{{info.sutName}}</view>
     </view>
     <view class='borderline'></view>
     </view>

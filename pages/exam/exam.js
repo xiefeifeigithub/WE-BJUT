@@ -40,7 +40,6 @@ Page({
     console.log("exam调用onUnload()");
     //考试信息
     wx.request({
-      // https://www.bjut1960.cn/examination?xh=学号&mm=密码
       url: 'https://www.bjut1960.cn/examination',
       method: 'POST',
       data: {
@@ -57,13 +56,16 @@ Page({
             key: app.data.keyExamInfo,
             data: res.data,
           })
+          app.globalData.hasExamInfo = true;
           wx.hideLoading()
         } else {
-          console.log("404")
+          app.globalData.hasExamInfo = false;
+          console.log("请求考试信息出错")
         }
       },
       fail: function (res) {
         console.log("请求考试信息出错:" + res)
+        app.globalData.hasExamInfo = false;
       }
     });
     console.log('触发更新考试信息exam数据')
