@@ -1,10 +1,10 @@
 <wxs module="filters" src="../../../utils/filters.wxs"></wxs>
 <view class="container">
   <view class='tip'>
-    <!-- <view class='block'>
+    <view class='block'>
       <view class="line"></view>
       <view class='category'>总平均分</view>
-    </view> -->
+    </view>
 
     <view class='info-row'>
       <view class='title'>大学期间总加权平均分</view>
@@ -18,10 +18,10 @@
   </view>
 
   <view class='tip'>
-    <!-- <view class='block'>
+    <view class='block'>
       <view class="line"></view>
       <view class='category'>学期平均分</view>
-    </view> -->
+    </view>
 
     <view class='info-row'>
       <view class='title'>本学期加权平均分</view>

@@ -107,7 +107,7 @@ Page({
                   wx.hideLoading()
                   app.globalData.hasTimetableInfo = false;
                   wx.showToast({
-                    title: '暂时没有相关信息',
+                    title: '教务系统暂时无课表信息',
                     icon: 'none'
                   })
                 }
@@ -167,7 +167,7 @@ Page({
             });
           }else{
             wx.showLoading({
-              title: '查询中...',
+              title: 'CET成绩查询中...',
             })
             wx.request({
               url: 'https://www.bjut1960.cn/grade',
@@ -221,7 +221,7 @@ Page({
             });
           }else{
             wx.showLoading({
-              title: '查询中...',
+              title: '考试信息查询中...',
             })
             wx.request({
               url: 'https://www.bjut1960.cn/examination',

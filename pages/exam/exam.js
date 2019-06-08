@@ -51,6 +51,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
+        console.log(res)
         if (res.statusCode == 200) {
           console.log("考试信息返回成功")
           wx.setStorage({

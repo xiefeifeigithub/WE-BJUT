@@ -22,6 +22,7 @@ Page({
       yearPick: true,
     })
 
+    //设置用户选择学年，学期，下标的缓存
     wx.setStorage({
       key: 'year',
       data: this.data.yearArray[e.detail.value],
@@ -49,6 +50,7 @@ Page({
       semesterPick:true,
     })
 
+    //设置用户选择学年，学期，下标的缓存
     wx.setStorage({
       key: 'semester',
       data: this.data.semesterArray[e.detail.value],
@@ -122,14 +124,14 @@ Page({
       })
     }
   },
-  //页面初次渲染完成时触发
-  onReady: function () {
+ 
+  onLoad:function(){
+
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
       title: '考试成绩查询'
     })
-  },
-  onLoad:function(){
+
     //判断用户是否登录过,如果没有登录则跳转登录页面
     const user = wx.getStorageSync(app.data.keyUserName)
     if (user == '') {

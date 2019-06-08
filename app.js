@@ -26,7 +26,7 @@ App({
     currentWeek: null,        //当前是第几周
     hasTimetableInfo: false,       //用于判断本地有没有缓存的课表信息
     hasExamInfo: false,         //用于判断本地有没有缓存的考试信息
-    hasCetInfo:false,
+    hasCetInfo:false,        //用于判断本地有没有缓存的CET信息
     hasBaseInfo:false,          //用于判断学生是否已经登录过
     time : 0,
     touchDot : 0,//触摸时的原点
@@ -73,16 +73,19 @@ App({
     //从缓存中获取用户信息
     console.log("从缓存中获取用户信息")
     var username = wx.getStorageSync(this.data.keyUserName)
-    //如果读到username，证明有本地数据，将hasLocalData置为true
-    if (username) {
-      this.globalData.hasTimetableAndInfo = true
-    }
     var userpassword = wx.getStorageSync(this.data.keyPwd)
+
+    //判断是否有各种信息缓存
+    this.ensureLogined();
+    this.ensureHasCetInfo();
+    this.ensureHasExamInfo();
+    this.ensureHasTimetableInfo();
+
     //计算全局变量currentWeek
     this.calculateCurrentWeek();
     this.globalData.username = username
     this.globalData.userpassword = userpassword
-    this.ensureLogined();
+    
 
     wx.getSystemInfo({
       success(res) {
@@ -147,6 +150,7 @@ App({
     }
   },
 
+  //检测本地是否存有学生个人信息数据
   ensureLogined:function(){
     var temp = wx.getStorageSync(this.data.keyInfo);
     if(temp){
@@ -155,26 +159,16 @@ App({
   },
 
   /**
-   * 检测本地是否存有课表数据、等级考试数据、考试信息数据(默认：登录成功就可以获取到课表和等级考试信息)
+   * 检测本地是否存有课表数据、等级考试数据、考试信息数据
    */
   ensureHasTimetableInfo: function () {
-    var username = wx.getStorageSync(this.data.keyUserName)
+    var timeTable = wx.getStorageSync(this.data.keyTimetable)
     //如果读到username，证明有本地数据，将hasTimetableAndInfo置为true
-    if (username) {
+    if (timeTable) {
       this.globalData.hasTimetableAndInfo = true
     } else {
       this.globalData.hasTimetableAndInfo = false
     }
-   
-  },
-/**
- * 退出登录后，将课表信息、考试信息、四六级考试的变量转为false
- */
-  logout:function(){
-    this.globalData.hasCetInfo = false;
-    this.globalData.hasTimetableInfo = false;
-    this.globalData.hasBaseInfo = false;
-    this.globalData.hasExamInfo = false;
   },
   /**
    * 确保本地是否有四六级考试信息
@@ -198,6 +192,16 @@ App({
       this.globalData.hasExamInfo = false;
     }
   },
+  /**
+ * 退出登录后，将课表信息、考试信息、四六级考试的变量转为false
+ */
+  logout: function () {
+    this.globalData.hasCetInfo = false;
+    this.globalData.hasTimetableInfo = false;
+    this.globalData.hasBaseInfo = false;
+    this.globalData.hasExamInfo = false;
+  },
+
   /**解析课程表(不含实践课处理)
    * 将从教务获取的课程表数据解析成能够在课程表展示的数据
    * 每节课时长均按90分钟计算。如果某节课时长180分钟，拆成两节课。
