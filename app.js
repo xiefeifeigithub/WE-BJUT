@@ -79,7 +79,7 @@ App({
     this.ensureLogined();
     this.ensureHasCetInfo();
     this.ensureHasExamInfo();
-    this.ensureHasTimetableInfo();
+//    this.ensureHasTimetableInfo();  选课阶段，课表会变，暂时不用cache，而是每次都request
 
     //计算全局变量currentWeek
     this.calculateCurrentWeek();
@@ -163,11 +163,11 @@ App({
    */
   ensureHasTimetableInfo: function () {
     var timeTable = wx.getStorageSync(this.data.keyTimetable)
-    //如果读到username，证明有本地数据，将hasTimetableAndInfo置为true
+    //如果读到username，证明有本地数据，将hasTimetableInfo置为true
     if (timeTable) {
-      this.globalData.hasTimetableAndInfo = true
+      this.globalData.hasTimetableInfo = true
     } else {
-      this.globalData.hasTimetableAndInfo = false
+      this.globalData.hasTimetableInfo = false
     }
   },
   /**
@@ -213,7 +213,7 @@ App({
     var lessonWeekDay;
     var lessonStart;
     var lessonNum;
-    var lessonNameAndLocationAndTeacher;
+    var lessonNameAndLocationAndTeacher;  //课程名称、上课地点、老师
     var lessonTime;
     var list = [];
 
@@ -231,6 +231,10 @@ App({
       var temTime = tempArr[1].split('节')[0];
 
       lessonNum = temTime.split(',').length;
+
+      //处理location
+      var end = res[i].Location.indexOf("(");
+      res[i].Location = res[i].Location.slice(0,end);
       lessonNameAndLocationAndTeacher = res[i].Name + '\n' + res[i].Teacher + '\n' + '@' + res[i].Location + '@' + lessonTime + '';
       //对180分钟的大课进行分割，平分成两节课。
       if (lessonNum == 4) {

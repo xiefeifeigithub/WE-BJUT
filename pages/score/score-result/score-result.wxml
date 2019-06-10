@@ -46,7 +46,7 @@
     </view>
   
 
-  <!--注释代码不能删除-->
+  <!-- 注释代码不能删除  课程详细 -->
   <view class="info-row" wx:for="{{result.score}}">
     <view class='title'>{{item.courseName}}</view>
     <view>

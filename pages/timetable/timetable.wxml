@@ -4,7 +4,7 @@
 <view class='container'>
 
   <view class='round-click'>
-    <view class="round-click" catchtap="showAllOrPart" >
+    <view class="round-click" >  <!-- //catchtap="showAllOrPart" -->
     <text>{{text}}</text>
     </view>
   </view>
@@ -29,7 +29,8 @@
     <scroll-view scroll-y="true" scroll-x='true' class="scroll">
       <!--课表-->
       <view class='timetable-area'>
-        <view wx:for="{{currList}}">
+        <!-- <view wx:for="{{currList}}"> -->  <view wx:for="{{wholeLessonList}}">
+        
           <view class="flex-item kcb-item" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.week-1)*102}}rpx;margin-top:{{(item.start-1)*100+5}}rpx;height:{{item.lessonNum*100-5}}rpx;background-color:{{colorArrays[index%8]}}">
             <view class="smalltext" id="{{index}}" catchtap="showDialog">{{item.kcmc}}</view>
             <!--课程格子右下角的角标代表的含义是，当前时间段下，有多节课程 -->

@@ -90,6 +90,7 @@ Page({
                 "Content-Type": "application/x-www-form-urlencoded"
               },
               success: function (res) {
+                console.log("实践课：" + JSON.parse(JSON.stringify(res.data.exercise)))
                 if (res.statusCode == 200) {
                   //1解析课表数据
                   //2存储课表、实践课
@@ -97,7 +98,8 @@ Page({
                     key: app.data.keyExerciseLesson,
                     data: res.data.exercise,
                   })
-                  app.parseTimetableData(res.data.table);
+                  //console.log("课表数据\n" + JSON.parse(JSON.stringify(res.data.table)))
+                  app.parseTimetableData(JSON.parse(JSON.stringify(res.data.table)));
                   app.globalData.hasTimetableInfo = true;
                   wx.hideLoading()
                   wx.navigateTo({

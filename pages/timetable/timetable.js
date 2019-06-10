@@ -25,6 +25,11 @@ Page({
   onLoad: function() {
     //判断用户是否登录过,如果没有登录则跳转登录页面。
     //const user = wx.getStorageSync(app.data.keyUserName)
+   
+    wx.showToast({
+      title: '正在选课中',
+      duration: 3000
+    })
     console.log("数据从本地获取");
 
     wx.getSystemInfo({
@@ -36,6 +41,8 @@ Page({
     this.getTimetableFromLocal();
     this.getExerciseLessonFromLocal();
     this.dialog = this.selectComponent("#dialog");
+    //new add
+    this.showAllOrPart();
     console.log("timetable onload invoked")
   },
 
@@ -60,6 +67,7 @@ Page({
     try {
       console.log("从课表页读取课表数据");
       const value = wx.getStorageSync(app.data.keyTimetable);
+      console.log("timeValue: " + value)
       if (value) {
         localData = value;
         //将本地读取的数据保存到wholeLessonList

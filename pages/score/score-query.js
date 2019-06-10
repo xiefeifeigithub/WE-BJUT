@@ -97,10 +97,12 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
         success(res) {
-          console.log(res)
+          console.log("考试成绩：" + JSON.stringify(res.data))
+          let result_obj = JSON.parse(JSON.stringify(res.data));
+          console.log("成绩数据解析：" + result_obj)
           if (res.statusCode == 500){
             wx.showToast({
-              title: '还没出分哦...',
+              title: '教务系统出现问题...',
               icon: 'none'
             })
           }
