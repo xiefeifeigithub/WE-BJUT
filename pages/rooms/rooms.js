@@ -183,6 +183,9 @@ Page({
     //获取周的初始值、周几的初始值
     var currDate = new Date();
     var currWeek = app.globalData.currentWeek;
+    if(currWeek > 16){
+      currWeek = 16;
+    }
     var defaultWeek = this.data.weekArray[currWeek - 1];
     var tempWeekdayStr = this.data.dayArray[currDate.getDay()];
     var tempWeekday = tempWeekdayStr.charAt(2);
