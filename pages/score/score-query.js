@@ -2,7 +2,7 @@ const app = getApp()
 Page({
   data: {
     yearArray:['2018-2019','2017-2018','2016-2017','2015-2016','2014-2015'],
-    semesterArray:['1','2','3'],
+    semesterArray:['1','2'],
     yearPick:false,
     semesterPick:false,
     yearIndex:0,
@@ -97,16 +97,17 @@ Page({
           'content-type': 'application/x-www-form-urlencoded' // 默认值
         },
         success(res) {
-          console.log("考试成绩：" + JSON.stringify(res.data))
-          let result_obj = JSON.parse(JSON.stringify(res.data));
-          console.log("成绩数据解析：" + result_obj)
+          console.log(JSON.stringify(res.data))
+          var result_obj = JSON.parse(JSON.stringify(res.data));
+          console.log(result_obj)
           if (res.statusCode == 500){
             wx.showToast({
-              title: '教务系统出现问题...',
+              title: '教务出现问题...',
               icon: 'none'
             })
           }
           if (res.statusCode == 200){
+            
             wx.navigateTo({
               url: './score-result/score-result?result=' + JSON.stringify(res.data),
             });
@@ -143,9 +144,8 @@ Page({
     }
 
     this.haveLocalPickerData()
-    
   },
-
+  //记住用户上次所选year,semester
   haveLocalPickerData: function(){
     var yearLocal = wx.getStorageSync('year')
     var semesterLocal = wx.getStorageSync('semester')

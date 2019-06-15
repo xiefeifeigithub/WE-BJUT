@@ -34,8 +34,9 @@
             <button class='sub-button' bindtap='onTap'>点击查询</button>
         </view>
         <!-- 提示信息 -->
-        <text class='point_text'>注：可能因调课、开会和考试等原因空教室被占用</text>
-        <text class='point_text'>注：目前只有校本部空教室数据</text>
-        <text class='point_text'>注：第二、三个字段默认是当前周、当前星期。也可自行选择</text>
+        <text class='point_text'>注：目前只有校本部空教室数据                         </text>
+        <text class='point_text'>注：十六周之后为考试周和暑假，无空教室数据            </text>
+        <text class='point_text'>注：可能因调课、开会和考试等原因空教室被占用          </text>
+        <text class='point_text'>注：第二、三个字段默认是当前周、当前星期。也可自行选择 </text>
     </view>
 </view>
