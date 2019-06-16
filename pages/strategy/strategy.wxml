@@ -43,7 +43,7 @@
   <view>\n</view>
 
   <!--学生社区-->
-  <view wx:for="{{ilovelearnArray}}" class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
+  <view wx:for="{{studentCommunity}}" class='btn btn-xs btn-default round-btn tags-btn' data-text="{{item.label}}" bindtap="querySpecifiedArticles">
     <text class='text-sm text-gray'>{{item.label}}</text>
   </view>
 

@@ -58,7 +58,7 @@
   </view>
 
   <!-- 辅修/第二专业明细 -->
-  <view class='tip' wx:if="{{jsonDataLength==3}}">
+  <view class='tip' wx:if="{{jsonDataLength!=0}}">
     <view class='block'>
       <view class="line"></view>
       <view class='category'>辅修/二专业-课程详细（不计入加权和GPA）</view>

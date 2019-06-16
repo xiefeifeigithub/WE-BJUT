@@ -1,28 +1,44 @@
+var score = require('../../../utils/score.js');
 const app = getApp()
 Page({
   data: {
     result:null,
-    jsonDataLength:0 //jsonDataLength = 3（有辅修/双学位）
+    jsonDataLength:0, //jsonDataLength != 0（有辅修/双学位成绩）
+    year:'',  //学年
+    semester:'',  //学期
   },
 
+  //加载成绩数据到界面上
   onLoad: function (options) {
     wx.hideLoading()
+    console.log(options.year + " " + options.semester)
+    this.data.year = options.year
+    this.data.semester = options.semester
     if (options.result) {
       //将json字符串解析成json对象
-      let result_obj = JSON.parse(options.result);
-      //获取json对象长度
-      var length = this.getJsonLength(result_obj)
-      console.log(this.getJsonLength(result_obj))
+      var result_obj = JSON.parse(options.result)
+      console.log(result_obj)
+    
+      //获取json对象长中other数组的长度
+      var otherLength = result_obj.other.length
+      console.log(otherLength)
 
       this.setData({
         result: result_obj,
-        jsonDataLength: length
+        jsonDataLength: otherLength
       });
 
       if (!result_obj) {
         this.showNoScoreToast();
       }
     }
+  },
+
+  //页面卸载时，更新该页面成绩数据到缓存
+  onUnload: function(options)
+  { 
+    console.log("更新学期成绩")             
+    score.queryScoreBy_Year_Semester(this.data.year, this.data.semester)
   },
 
   //如果服务器返回的数据为null,则显示暂时没有出分消息框
@@ -32,14 +48,5 @@ Page({
       icon: 'none',
       duration: 2000
     })
-  },
-
-  //获取json对象长度
-  getJsonLength: function (jsonData) {
-    var jsonLength = 0;
-    for (var item in jsonData) {
-      jsonLength++;
-    }
-    return jsonLength;
   }
 })

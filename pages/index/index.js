@@ -1,6 +1,7 @@
 //获取应用实例
 var app = getApp()
 var common = require('../../utils/common.js');
+var score = require('../../utils/score.js');
 Page({
   data: {
     //轮播图
@@ -62,6 +63,7 @@ Page({
     account:"",
     password:""
   },
+
   //处理主页点击图标跳事件
   touchIcon: function (options) {
     console.log(options.currentTarget.dataset.index)
@@ -289,13 +291,17 @@ Page({
   
   onLoad: function () {
     this.updataData()
-    console.log("onLoad ~ 请求轮播图数据")
+    console.log("onLoad-请求轮播图数据")
+// yearArray: ['2018-2019', '2017-2018', '2016-2017', '2015-2016', '2014-2015'],
+    score.queryScoreBy_Year_Semester('2018-2019','2')  //获取2018~2019年第2学期JSON字符串缓存
+    //下一步将获取各个学期缓存分配到请求数少的页面，在具体查询某个时间段的结果后更新缓存、改写pages/score/score_result里的内容（xiefeifei)
+
   },
 
   //更新轮播图通告
   onHide: function (){
     this.updataData()
-    console.log("onHide ~ 更新轮播图数据")
+    console.log("onHide-更新轮播图数据")
   },
 
   //更新轮播图通告
@@ -329,8 +335,14 @@ Page({
     })
   },
 
+  //获取缓存中的用户账号和密码
   onShow:function(){
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
     this.globalData.password = wx.getStorageSync(app.data.keyPwd)
   }
+
+  // //用户点击右上角分享
+  // onShareAppMessage: function () {
+  // }
+
 })

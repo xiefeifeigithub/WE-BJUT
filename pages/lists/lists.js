@@ -2,11 +2,11 @@ var app = getApp()
 
 Page({
   data: {
-    newsList: [],
+    newsList: [],  //文章列表数组
     lastid: 0 // 数据id
   },
 
-  //接着当前文章加载新的文章
+  //根据用户所选标签加载相应标签的文章列表
   loadData: function (lastid) {
     console.log('当前文章的id: ' + lastid)
 
@@ -76,7 +76,7 @@ Page({
     })
   },
 
-  //监听页面加载 页面加载时触发
+  //向服务器请求文章列表数据
   onLoad: function (options) {
     console.log('onLoad: 加载lists页面')
     console.log(options)
@@ -95,6 +95,7 @@ Page({
     })
   },
 
+  //点击列表文章，跳转到文章内容页
   touchArticle:function(options){
     console.log("文章在数据库中的id: " + options.currentTarget.dataset.id)
     wx.navigateTo({
@@ -102,6 +103,7 @@ Page({
     })
   },
   
+  //触底后加载新文章
   tolower:function(){
     console.log("触发加载操作")
     //加载新的文章

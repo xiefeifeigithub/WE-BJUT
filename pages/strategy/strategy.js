@@ -3,51 +3,56 @@ var common = require('../../utils/common.js');
 Page({
 
   data:{  
-    organizationArray:[],  //校内组织标签
-    ilovelearnArray:[],   //学生社区标签
-    newsList: [],  //精选文章
+    organizationArray:[],  //校内组织标签数组
+    studentCommunity:[],   //学生社区标签数组
+    newsList: [],  //精选文章数组
     lastid: 0, // 数据id
-    first:0,
+    first: 0,  //第一篇文章的id
     begin:0  //文章最大id
   },
 
-  onLoad: function (options) {
-    console.log('onLoad: strategy页面')
+  onLoad: function () {
+    console.log('onLoad: pages/strategy')
+    this.loadOrganization()  //加载校内组织标签
 
-    var that = this
+    this.loadStudentCommunity()  //加载学生社区标签
+   
+    this.loadData(this.data.lastid)  //加载精选文章  
+ },
+
+  //动态加载校内组织标签
+  loadOrganization: function (){
     var lastid = 0
-
-    console.log('1.动态加载校内组织标签')
+    var that = this
     wx.request({
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Organization/Organization/getOrganization', 
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Organization/Organization/getOrganization',
       data: { lastid: lastid },
       header: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       },
       success: function (res) {
         that.setData({ organizationArray: res.data })
       }
     })
+  },
 
-    console.log('2.动态加载学生社区标签')
+  //动态加载学生社区标签
+  loadStudentCommunity: function(){
+    var lastid = 0
+    var that = this
     wx.request({
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Learn/Learn/getLearn', 
+      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Learn/Learn/getLearn',
       data: { lastid: lastid },
       header: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       },
       success: function (res) {
-        that.setData({ ilovelearnArray: res.data })
+        that.setData({ studentCommunity: res.data })
       }
     })
+  },
 
-    console.log('3.加载优质文章')
-    this.loadData(this.data.lastid)  //函数调用  
- },
-
-
-
-  //查找不同类型文章
+  //根据用户所点标签跳转到相应标签的文章列表
   querySpecifiedArticles: function (e) {
     wx.navigateTo({
       url: '../lists/lists'
@@ -63,6 +68,7 @@ Page({
     })
   },
 
+  //向服务器请求优质文章数据
   loadData: function (lastid) {
     console.log('向服务器请求的初始元组id: ' + lastid)
 
@@ -108,8 +114,6 @@ Page({
         console.log(lastid)
         if(lastid <= 17)
         {
-          //新的循环
-     //     that.setData({ lastid: that.data.begin})
           that.setData({ lastid: 0 })
 
           var newData = wx.getStorageSync('GoodCmsList')
@@ -131,7 +135,7 @@ Page({
       },
       //获取服务器数据失败
       fail: function (res) {
-        //获取缓存
+        //获取服务器数据失败，从缓存中拿数据
         var newData = wx.getStorageSync('GoodCmsList')
         if (newData) {
           that.setData({ newsList: newData })
@@ -139,13 +143,13 @@ Page({
           var len = newData.length
           that.setData({ lastid: newData[len - 1].id })
         }
-        console.log('获取服务器数据失败，从缓存中拿数据')
       }
     })
   },
   
+  //在tabbar页面隐藏时更新精选文章
   onHide:function(){
-    console.log("onHide ~ 更新精选文章")
+    console.log("onHide pages/strateg ~ 更新精选文章")
 
     //更新文章最大id
     this.updataBegin()
@@ -170,9 +174,8 @@ Page({
         'content-type': 'application/json'
       },
       success(res) {
-        //记录文章的最大id
+        //更新文章最大id
           that.setData({ begin: res.data[res.data.length - 1].id })
-          console.log("更新文章最大id: " + begin)
       },
       //获取服务器数据失败
       fail: function (res) {
