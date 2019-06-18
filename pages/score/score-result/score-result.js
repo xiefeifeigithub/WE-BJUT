@@ -37,7 +37,7 @@ Page({
   //页面卸载时，更新该页面成绩数据到缓存
   onUnload: function(options)
   { 
-    console.log("更新学期成绩")             
+    console.log("onUnload ~ pages/score/score-result 更新学期成绩")
     score.queryScoreBy_Year_Semester(this.data.year, this.data.semester)
   },
 
