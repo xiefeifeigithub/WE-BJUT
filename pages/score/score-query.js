@@ -1,5 +1,5 @@
 const app = getApp()
-var score = require('../../utils/score.js');
+// var score = require('../../utils/score.js');
 Page({
   data: {
     yearArray:['2018-2019','2017-2018','2016-2017','2015-2016','2014-2015'],
@@ -83,15 +83,15 @@ Page({
     if (year != '' && semester != '') {
 
       //判断本地是否有缓存，若有，直接带着缓存跳到成绩结果界面
-      var key = year + '_' + semester;
-      var localYearAndSemesterData = wx.getStorageSync(key)
-      if (localYearAndSemesterData) {
-        console.log("带着成绩缓存私奔了")
-        wx.navigateTo({
-          url: './score-result/score-result?result=' + localYearAndSemesterData + '&year=' + year +  '&semester=' + semester,
-        });
-      }
-      else {
+      // var key = year + '_' + semester;
+      // var localYearAndSemesterData = wx.getStorageSync(key)
+      // if (localYearAndSemesterData) {
+      //   console.log("带着成绩缓存私奔了")
+      //   wx.navigateTo({
+      //     url: './score-result/score-result?result=' + localYearAndSemesterData + '&year=' + year +  '&semester=' + semester,
+      //   });
+      // }
+      // else {
         wx.request({
           url: 'https://www.bjut1960.cn/score',
           method: 'POST',
@@ -125,7 +125,8 @@ Page({
           }
         })
       }
-    } else {
+    // }
+     else {
       wx.showToast({
         title: '输入无效,请检查...',
         icon: 'none'
@@ -153,11 +154,11 @@ Page({
     this.haveLocalPickerData()
   },
 
-  onHide:function(){
-    console.log("onHide ~ pages/score-query")
-    console.log("获取最新学年/学期成绩缓存")
-    score.queryScoreBy_Year_Semester('2018-2019', '2')  //获取2018~2019年第2学期JSON字符串缓存
-  },
+  // onHide:function(){
+  //   console.log("onHide ~ pages/score-query")
+  //   console.log("获取最新学年/学期成绩缓存")
+  //   score.queryScoreBy_Year_Semester('2018-2019', '2')  //获取2018~2019年第2学期JSON字符串缓存
+  // },
 
   //记住用户上次所选year,semester
   haveLocalPickerData: function(){

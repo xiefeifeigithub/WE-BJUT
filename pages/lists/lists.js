@@ -78,8 +78,13 @@ Page({
 
   //向服务器请求文章列表数据
   onLoad: function (options) {
+    // 获取了屏幕高度
+    let scrollHeight = wx.getSystemInfoSync().windowHeight;
+    this.setData({
+      scrollHeight: scrollHeight
+    });
+
     console.log('onLoad: 加载lists页面')
-    console.log(options)
     var that = this
 
     //请求数据
