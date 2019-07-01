@@ -2,6 +2,7 @@
 var app = getApp()
 var common = require('../../utils/common.js');
 // var score = require('../../utils/score.js');
+var timeTable = require('../../utils/timeTable.js');
 Page({
   data: {
     //轮播图
@@ -13,6 +14,10 @@ Page({
     inputShowed: false,
     inputVal: "",
 
+    currentDayTable:[],  //当天的课表
+    currentWeekTable:[], //当周的课表
+
+    todayTimeTable: [], //简化后的当天的课表
     //导航数据
     student:
       [
@@ -73,6 +78,7 @@ Page({
       //先判断用户是否登录过
         if (app.globalData.hasBaseInfo) {
           //有缓存的课表直接跳转课表显示,否则发起请求获取课表数据
+          var tableList = [];
           if(app.globalData.hasTimetableInfo){
             wx.navigateTo({
               url: '../timetable/timetable',
@@ -86,13 +92,17 @@ Page({
               method: 'POST',
               data: {
                 xh: that.globalData.account,
-                mm: that.globalData.password
+                mm: that.globalData.password,
+                xn: '2017-2018',
+                xq: '1'
               },
               header: {
                 "Content-Type": "application/x-www-form-urlencoded"
               },
               success: function (res) {
-                console.log("实践课：" + JSON.parse(JSON.stringify(res.data.exercise)))
+                console.log("课表数据")
+                console.log(res.data)
+                // console.log("实践课：" + JSON.parse(JSON.stringify(res.data.exercise)))
                 if (res.statusCode == 200) {
                   //1解析课表数据
                   //2存储课表、实践课
@@ -100,8 +110,9 @@ Page({
                     key: app.data.keyExerciseLesson,
                     data: res.data.exercise,
                   })
-                  //console.log("课表数据\n" + JSON.parse(JSON.stringify(res.data.table)))
-                  app.parseTimetableData(JSON.parse(JSON.stringify(res.data.table)));
+                  tableList = app.parseTimetableData(res.data.table)
+                  console.log("tableList")
+                  console.log(tableList)
                   app.globalData.hasTimetableInfo = true;
                   wx.hideLoading()
                   wx.navigateTo({
@@ -297,14 +308,66 @@ Page({
     // score.queryScoreBy_Year_Semester('2018-2019','2')  //获取2018~2019年第2学期JSON字符串缓存
     //下一步将获取各个学期缓存分配到请求数少的页面，在具体查询某个时间段的结果后更新缓存、改写pages/score/score_result里的内容（xiefeifei)
 
+    // //获取最新学期当天课表
+    // this.showTodayTimeTable()
+  },
+
+  //获取最新学期当天课表
+  showTodayTimeTable:function(){
+    timeTable.query_table('2017-2018', '1')
+    if (app.globalData.hasTimetableInfo) {
+      const localTimeTable = wx.getStorageSync(app.data.keyTimetable);
+      if (localTimeTable) {
+        this.data.currentWeekTable = timeTable.showTimetableByCurrentWeek(localTimeTable)
+        this.currentTimeTable()
+      }
+      else {
+        console.log("获取课表失败")
+      }
+
+    }
+  },
+
+  //统计当天的课表
+  currentTimeTable:function(){
+    var currentWeekTable = this.data.currentWeekTable
+    var currentDay = new Date().getDay();
+    console.log("今天是周" + currentDay)
+    for (var i = 0; i < currentWeekTable.length; i++){
+      if (currentWeekTable[i].week == currentDay){
+        this.data.currentDayTable.push(currentWeekTable[i])
+      }
+    }
+
+    //化简当天课表数据
+    var tempList = this.data.currentDayTable;
+    var lessonTime = '';   //上课时间
+    var lessonNum = 0; //课程节数
+    var lessonName = '';  //课程名
+    var lessonLocation = '';  //上课地点
+
+    for (var i = 0; i < tempList.length; i++) {
+      var tempStrArr1 = tempList[i].kcmc.split('\n');
+      lessonName = tempStrArr1[0];
+      var tempStrArr2 = tempStrArr1[2].split('@');
+      lessonLocation = tempStrArr2[1];
+      lessonTime = tempList[i].week + "~" + ++tempList[i].week + "节";
+      this.data.todayTimeTable.push({
+        "lessonName" : lessonName,
+        "location": lessonLocation,
+        "time":lessonTime
+      })
+    }
+
+    console.log("当天课表")
+    console.log(this.data.todayTimeTable)
+    
   },
 
   //更新轮播图通告
   onHide: function (){
     this.updataData()
     console.log("onHide ~ pages/index ~ 更新轮播图数据")
-    // console.log("获取最新学年/学期成绩缓存")
-    // score.queryScoreBy_Year_Semester('2018-2019', '2')  //获取2018~2019年第2学期JSON字符串缓存
   },
 
   //更新轮播图通告
@@ -342,10 +405,8 @@ Page({
   onShow:function(){
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
     this.globalData.password = wx.getStorageSync(app.data.keyPwd)
-  }
 
-  // //用户点击右上角分享
-  // onShareAppMessage: function () {
-  // }
-
+    //获取最新学期当天课表
+    this.showTodayTimeTable()
+  },
 })

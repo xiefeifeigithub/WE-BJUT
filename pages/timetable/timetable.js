@@ -26,10 +26,7 @@ Page({
     //判断用户是否登录过,如果没有登录则跳转登录页面。
     //const user = wx.getStorageSync(app.data.keyUserName)
    
-    wx.showToast({
-      title: '正在选课中',
-      duration: 3000
-    })
+  
     console.log("数据从本地获取");
 
     wx.getSystemInfo({
@@ -41,8 +38,8 @@ Page({
     this.getTimetableFromLocal();
     this.getExerciseLessonFromLocal();
     this.dialog = this.selectComponent("#dialog");
-    //new add
-    this.showAllOrPart();
+    // //new add
+    // this.showAllOrPart();
     console.log("timetable onload invoked")
   },
 
@@ -280,6 +277,7 @@ Page({
     return tempTimeStr;
   },
 
+  //显示当前周的课表
   showTimetableByCurrentWeek: function() {
 
     this.globalData.currentWeek = app.globalData.currentWeek

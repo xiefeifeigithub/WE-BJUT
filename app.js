@@ -35,6 +35,7 @@ App({
     flag_hd : true
   },
 
+  //版本更新检查
   updataVersion: function () {
     const updateManager = wx.getUpdateManager()
 
@@ -56,8 +57,8 @@ App({
       })
     })
 
+    // 新的版本下载失败
     updateManager.onUpdateFailed(function () {
-      // 新的版本下载失败
       wx.showModal({
         title: '已经有新版本了哟~',
         content: '新版本已经上线啦~，请您删除当前小程序，重新搜索工大小美后打开呦 ',
@@ -79,7 +80,7 @@ App({
     this.ensureLogined();
     this.ensureHasCetInfo();
     this.ensureHasExamInfo();
-//    this.ensureHasTimetableInfo();  选课阶段，课表会变，暂时不用cache，而是每次都request
+    this.ensureHasTimetableInfo();  
 
     //计算全局变量currentWeek
     this.calculateCurrentWeek();
@@ -210,13 +211,14 @@ App({
    */
   parseTimetableData: function (res) {
     var that = this;
-    var lessonWeekDay;
-    var lessonStart;
-    var lessonNum;
+    var lessonWeekDay;   //课程在一周中的周几
+    var lessonStart;   //课程开始的节数
+    var lessonNum;   //课程节数（课表最小单元格）
     var lessonNameAndLocationAndTeacher;  //课程名称、上课地点、老师
-    var lessonTime;
+    var lessonTime;  //课程起始周（例：1-16周）
     var list = [];
 
+    //遍历列表，处理数据：将原始课表信息处理为我们需要的格式list
     for (var i = 0; i < res.length; i++) {
       lessonWeekDay = that.numberChange(res[i].Time.charAt(1))
 
@@ -226,45 +228,28 @@ App({
         lessonStart = parseInt(res[i].Time.charAt(3) + res[i].Time.charAt(4));
       }
 
-      var tempArr = res[i].Time.split('第', 2);
-      lessonTime = res[i].Time.split('第')[2];
+      var tempArr = res[i].Time.split('第', 2);   
+      lessonTime = res[i].Time.split('第')[2];  
       var temTime = tempArr[1].split('节')[0];
-
       lessonNum = temTime.split(',').length;
 
       //处理location
       var end = res[i].Location.indexOf("(");
       res[i].Location = res[i].Location.slice(0,end);
       lessonNameAndLocationAndTeacher = res[i].Name + '\n' + res[i].Teacher + '\n' + '@' + res[i].Location + '@' + lessonTime + '';
-      //对180分钟的大课进行分割，平分成两节课。
-      if (lessonNum == 4) {
-        list.push({
-          "week": lessonWeekDay,
-          "start": lessonStart,
-          "lessonNum": lessonNum / 2,
-          "kcmc": lessonNameAndLocationAndTeacher,
-          "tag": 1
-        });
-        list.push({
-          "week": lessonWeekDay,
-          "start": lessonStart + 2,
-          "lessonNum": lessonNum / 2,
-          "kcmc": lessonNameAndLocationAndTeacher,
-          "tag": 1
-        });
+      
+      //将处理好的数据压入list
+      list.push({
+      "week": lessonWeekDay,  //周几
+      "start": lessonStart,   //课程开始节数
+      "lessonNum": lessonNum,  //课程节数
+      "kcmc": lessonNameAndLocationAndTeacher,  //课程详细信息
+      "tag": 1
+      })
 
-      } else {
-        list.push({
-          "week": lessonWeekDay,
-          "start": lessonStart,
-          "lessonNum": lessonNum,
-          "kcmc": lessonNameAndLocationAndTeacher,
-          "tag": 1
-        })
-      }
+    }  //for
 
-    }
-
+    //判断同一时段是否有重叠课程，若有，则tag++
     if (list.length != 0) {
       for (var i = 0; i < list.length; i++) {
         for (var j = 0; j < list.length; j++) {
@@ -276,9 +261,14 @@ App({
           }
         }
       }
-      that.saveTimetableToLocal(list);
+
+      that.saveTimetableToLocal(list)
+
+      return list
     }
   },
+
+  //将time字段的汉字数字变成数字   周一 => 周1
   numberChange: function (num) {
     var alb = 0
     switch (num) {
@@ -306,6 +296,7 @@ App({
       default:
         break;
     }
+
     return alb
   },
   /**
@@ -321,7 +312,8 @@ App({
    * 根据开学时间，计算当前时间属于第几周
    */
   calculateCurrentWeek: function () {
-    var semesterStartDate = new Date('2019/02/18 00:00:00');
+    // var semesterStartDate = new Date('2019/02/18 00:00:00');
+    var semesterStartDate = new Date('2019/07/01 00:00:00')
     var currentDate = new Date();
     var interval = parseFloat(currentDate - semesterStartDate);
     var weekNow = 0;
