@@ -18,17 +18,20 @@ function query_table(year, semester) {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     success: function (res) {
+      console.log("课表接口")
+      // console.log(JSON.parse(JSON.stringify(res.data.table)))
+      // console.log(res.data.table)
       if (res.statusCode == 200) {
         //1解析课表数据
         //2存储课表、实践课
         wx.setStorage({
           key: app.data.keyExerciseLesson,
-          data: res.data.exercise,
+          data: res.data.exercise
         })
-        tempList = app.parseTimetableData(res.data.table);
-        return tempList
-        app.globalData.hasTimetableInfo = true;
+        tempList = app.parseTimetableData(JSON.parse(JSON.stringify(res.data.table)))
+        app.globalData.hasTimetableInfo = true
         wx.hideLoading()
+        return tempList
       } else {
         wx.hideLoading()
         app.globalData.hasTimetableInfo = false;

@@ -93,7 +93,7 @@ Page({
               data: {
                 xh: that.globalData.account,
                 mm: that.globalData.password,
-                xn: '2017-2018',
+                xn: '2018-2019',
                 xq: '1'
               },
               header: {
@@ -110,9 +110,7 @@ Page({
                     key: app.data.keyExerciseLesson,
                     data: res.data.exercise,
                   })
-                  tableList = app.parseTimetableData(res.data.table)
-                  console.log("tableList")
-                  console.log(tableList)
+                  tableList = app.parseTimetableData(JSON.parse(JSON.stringify(res.data.table)));
                   app.globalData.hasTimetableInfo = true;
                   wx.hideLoading()
                   wx.navigateTo({
@@ -312,9 +310,16 @@ Page({
     // this.showTodayTimeTable()
   },
 
-  //获取最新学期当天课表
+  //获取最新学期当前周的课表
   showTodayTimeTable:function(){
-    timeTable.query_table('2017-2018', '1')
+
+    //将前一天的课程数据清除
+    this.data.todayTimeTable = []
+    this.data.currentWeekTable = []
+    this.data.currentDayTable = []
+
+    //获取当前周的数据
+    timeTable.query_table('2019-2020', '1')
     if (app.globalData.hasTimetableInfo) {
       const localTimeTable = wx.getStorageSync(app.data.keyTimetable);
       if (localTimeTable) {
@@ -324,11 +329,10 @@ Page({
       else {
         console.log("获取课表失败")
       }
-
     }
   },
 
-  //统计当天的课表
+  //统计最新学期当天的课表
   currentTimeTable:function(){
     var currentWeekTable = this.data.currentWeekTable
     var currentDay = new Date().getDay();
@@ -345,19 +349,45 @@ Page({
     var lessonNum = 0; //课程节数
     var lessonName = '';  //课程名
     var lessonLocation = '';  //上课地点
+    var lessonStartTime = 0;  //课程开始时间
+    var lessonEndTime = 0;  //课程结束时间
+
+    console.log("当天课表数据")
+    console.log(tempList)
 
     for (var i = 0; i < tempList.length; i++) {
       var tempStrArr1 = tempList[i].kcmc.split('\n');
       lessonName = tempStrArr1[0];
       var tempStrArr2 = tempStrArr1[2].split('@');
       lessonLocation = tempStrArr2[1];
-      lessonTime = tempList[i].week + "~" + ++tempList[i].week + "节";
+      lessonTime = tempList[i].start + "~" + (tempList[i].start+tempList[i].lessonNum-1) + "节";
+      lessonStartTime = tempList[i].start;
+      lessonEndTime = tempList[i].start + (tempList[i].lessonNum-1);
       this.data.todayTimeTable.push({
         "lessonName" : lessonName,
         "location": lessonLocation,
-        "time":lessonTime
+        "time":lessonTime,
+        "lessonStartTime": lessonStartTime,
+        "lessonEndTime": lessonEndTime
       })
     }
+
+    //处理当天课表中180分钟的大课
+    var todayTimeTable = this.data.todayTimeTable
+    for (var i = 0; i < todayTimeTable.length && todayTimeTable.length>=2; i++){
+      if (i + 1 < todayTimeTable.length){
+      if(todayTimeTable[i].lessonName==todayTimeTable[i+1].lessonName){
+        todayTimeTable[i].lessonEndTime = todayTimeTable[i+1].lessonEndTime
+        todayTimeTable.splice(i+1,1)
+        todayTimeTable[i].time = todayTimeTable[i].lessonStartTime + "~" + todayTimeTable[i].lessonEndTime + "节";
+      }
+      }
+    }
+
+    this.data.todayTimeTable = todayTimeTable
+
+    if(this.data.todayTimeTable.length==0)
+    this.data.todayTimeTable = '今天没有课哦'
 
     console.log("当天课表")
     console.log(this.data.todayTimeTable)
@@ -404,9 +434,8 @@ Page({
   //获取缓存中的用户账号和密码
   onShow:function(){
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
-    this.globalData.password = wx.getStorageSync(app.data.keyPwd)
+    this.globalData.password = wx.getStorageSync(app.data.keyPwd)   
 
-    //获取最新学期当天课表
     this.showTodayTimeTable()
   },
 })

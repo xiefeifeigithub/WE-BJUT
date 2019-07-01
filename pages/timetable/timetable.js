@@ -64,7 +64,7 @@ Page({
     try {
       console.log("从课表页读取课表数据");
       const value = wx.getStorageSync(app.data.keyTimetable);
-      console.log("timeValue: " + value)
+      // console.log(value)
       if (value) {
         localData = value;
         //将本地读取的数据保存到wholeLessonList

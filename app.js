@@ -210,6 +210,8 @@ App({
    * 例如：周三3、4节在一至八周是课程一，在九至十六周是课程二，则显示全部课表时，周三3、4节加角标'2'.
    */
   parseTimetableData: function (res) {
+    console.log("解析前课表数据")
+    // console.log(JSON.parse(JSON.stringify(res)))
     var that = this;
     var lessonWeekDay;   //课程在一周中的周几
     var lessonStart;   //课程开始的节数
@@ -234,8 +236,8 @@ App({
       lessonNum = temTime.split(',').length;
 
       //处理location
-      var end = res[i].Location.indexOf("(");
-      res[i].Location = res[i].Location.slice(0,end);
+      // var end = res[i].Location.indexOf("(");
+      // res[i].Location = res[i].Location.slice(0,end);
       lessonNameAndLocationAndTeacher = res[i].Name + '\n' + res[i].Teacher + '\n' + '@' + res[i].Location + '@' + lessonTime + '';
       
       //将处理好的数据压入list
@@ -263,7 +265,8 @@ App({
       }
 
       that.saveTimetableToLocal(list)
-
+      console.log("解析后课表数据")
+      // console.log(list)
       return list
     }
   },
