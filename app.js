@@ -317,6 +317,8 @@ App({
   calculateCurrentWeek: function () {
     // var semesterStartDate = new Date('2019/02/18 00:00:00');
     var semesterStartDate = new Date('2019/07/01 00:00:00')
+    console.log("开学时间")
+    console.log(semesterStartDate)
     var currentDate = new Date();
     var interval = parseFloat(currentDate - semesterStartDate);
     var weekNow = 0;

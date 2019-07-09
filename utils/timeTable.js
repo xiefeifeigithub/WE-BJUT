@@ -35,10 +35,11 @@ function query_table(year, semester) {
       } else {
         wx.hideLoading()
         app.globalData.hasTimetableInfo = false;
-        wx.showToast({
-          title: '服务器开小差啦',
-          icon: 'none'
-        })
+        // wx.showToast({
+        //   title: '服务器开小差啦',
+        //   icon: 'none'
+        // })
+        console.log("服务器开小差了，获取课表失败")
       }
     },
     fail: function (res) {

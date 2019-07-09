@@ -3,7 +3,7 @@ const app = getApp()
 Page({
   data: {
     yearArray:['2018-2019','2017-2018','2016-2017','2015-2016','2014-2015'],
-    semesterArray:['1','2'],
+    semesterArray:['1','2','3'],
     yearPick:false,
     semesterPick:false,
     yearIndex:0,

@@ -18,6 +18,7 @@ Page({
     currentWeekTable:[], //当周的课表
 
     todayTimeTable: [], //简化后的当天的课表
+    nearestTimeTable: [],   //距离当前最近的一节课
     //导航数据
     student:
       [
@@ -306,17 +307,17 @@ Page({
     // score.queryScoreBy_Year_Semester('2018-2019','2')  //获取2018~2019年第2学期JSON字符串缓存
     //下一步将获取各个学期缓存分配到请求数少的页面，在具体查询某个时间段的结果后更新缓存、改写pages/score/score_result里的内容（xiefeifei)
 
-    // //获取最新学期当天课表
-    // this.showTodayTimeTable()
   },
 
   //获取最新学期当前周的课表
   showTodayTimeTable:function(){
 
+    var that = this
+
     //将前一天的课程数据清除
-    this.data.todayTimeTable = []
-    this.data.currentWeekTable = []
-    this.data.currentDayTable = []
+    that.data.todayTimeTable = []
+    that.data.currentWeekTable = []
+    that.data.currentDayTable = []
 
     //获取当前周的数据
     timeTable.query_table('2019-2020', '1')
@@ -324,6 +325,7 @@ Page({
       const localTimeTable = wx.getStorageSync(app.data.keyTimetable);
       if (localTimeTable) {
         this.data.currentWeekTable = timeTable.showTimetableByCurrentWeek(localTimeTable)
+        //统计最新学期当天的课表
         this.currentTimeTable()
       }
       else {
@@ -336,6 +338,9 @@ Page({
   currentTimeTable:function(){
     var currentWeekTable = this.data.currentWeekTable
     var currentDay = new Date().getDay();
+    if(currentDay==0){
+      currentDay = 7;
+    }
     console.log("今天是周" + currentDay)
     for (var i = 0; i < currentWeekTable.length; i++){
       if (currentWeekTable[i].week == currentDay){
@@ -372,7 +377,7 @@ Page({
       })
     }
 
-    //处理当天课表中180分钟的大课
+    //处理当天课表中180分钟的大课，将其合并为节数为4的大课
     var todayTimeTable = this.data.todayTimeTable
     for (var i = 0; i < todayTimeTable.length && todayTimeTable.length>=2; i++){
       if (i + 1 < todayTimeTable.length){
@@ -386,12 +391,109 @@ Page({
 
     this.data.todayTimeTable = todayTimeTable
 
-    if(this.data.todayTimeTable.length==0)
-    this.data.todayTimeTable = '今天没有课哦'
+    if(this.data.todayTimeTable.length==0){
+      this.data.todayTimeTable = '今天没有课哦'
+      this.data.nearestTimeTable = '今天没有课哦'
+      console.log(this.data.nearestTimeTable)
+    }
+    else{
+      console.log("当天课表")
+      console.log(this.data.todayTimeTable)
+      //显示距离当前时间最近的一节课
+      this.showNearestTimeTable();
+    }
+  },
 
-    console.log("当天课表")
-    console.log(this.data.todayTimeTable)
-    
+  //显示距离当前时间最近的一节课
+  showNearestTimeTable:function(){
+    var that = this
+    var todayTimeTable = that.data.todayTimeTable;
+    //对获取到的当前时间对照上课时间进行判断,返回当前时间所对应的节数
+    var nodeNumber = that.returnCurrentTimeCorrespondingNod_number();
+    console.log("当前时间对应的节数")
+    console.log(nodeNumber)
+    //根据返回的节数，判断距离当前时间最近的一节课
+    var flag = -1;
+    for( var i=0; i<todayTimeTable.length; i++)
+    {
+      if(nodeNumber<todayTimeTable[i].lessonStartTime){
+        that.data.nearestTimeTable[0] = todayTimeTable[i];
+        flag = 1;
+        break;
+      }
+    }
+
+    if (flag == 1) {
+      console.log('距离当前时间最近的一节课')
+      console.log(that.data.nearestTimeTable)
+      var time = '';  //上课时间
+      //将节数转换为对应的时间
+      //4小节组成的一节课
+      if (that.data.nearestTimeTable[0].lessonEndTime - that.data.nearestTimeTable[0].lessonStartTime == 3)      {
+        switch (that.data.nearestTimeTable[0].lessonStartTime) {
+          case 1:
+            time = '8:00~11:30';
+            break;
+          case 5:
+            time = '13:00~17:00';
+            break;
+          case 9:
+            time = '18:00~21:30';
+            break;
+          default: break;
+        }
+      }
+
+      //2小节组成的一节课
+      if (that.data.nearestTimeTable[0].lessonEndTime - that.data.nearestTimeTable[0].lessonStartTime == 1)     {
+        switch (that.data.nearestTimeTable[0].lessonStartTime) {
+          case 1:
+            time = '8:00~9.35';
+            break;
+          case 3:
+            time = '9.55~11.30';
+            break;
+          case 5:
+            time = '13:00~15:05';
+            break;
+          case 7:
+            time = '15:25~17:00'
+          case 9:
+            time = '18:00~19:35';
+            break;
+          case 11:
+            time = '19:55~21:30';
+            break;
+          default: break;
+        }
+      }
+
+      if (time != '') {
+        that.data.nearestTimeTable[0].time = time;
+      }
+    }
+    else{
+      this.data.nearestTimeTable = "今天的课上完啦"
+    }
+
+    console.log("最终结果")
+    console.log(that.data.nearestTimeTable)
+  },
+
+  //对获取到的当前时间对照上课时间进行判断
+  //这个函数返回一个数字，（代表当前时间对应的课表节数）
+  returnCurrentTimeCorrespondingNod_number:function(){
+    var myDate = new Date();
+    var mytime = myDate.toLocaleTimeString();     //获取当前时间
+    console.log("当前时间")
+    console.log(mytime)
+
+    if(mytime < '上午8:00:00') return 0
+    else if( mytime < "上午9:55:00") return 2.5
+    else if( mytime < "下午1:30:00") return 4.5
+    else if( mytime < "下午3:25:00") return 6.5
+    else if( mytime < "下午6:00:00") return 8.5
+    else if( mytime < "下午7:55:00") return 10.5
   },
 
   //更新轮播图通告
@@ -435,7 +537,8 @@ Page({
   onShow:function(){
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
     this.globalData.password = wx.getStorageSync(app.data.keyPwd)   
-
+    
+    //显示当天课表（内含显示离当前时间最近的一节课）
     this.showTodayTimeTable()
   },
 })
