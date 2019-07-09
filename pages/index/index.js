@@ -408,28 +408,59 @@ Page({
   showNearestTimeTable:function(){
     var that = this
     var todayTimeTable = that.data.todayTimeTable;
+    //通州校区和本部校区的上课时间不一致，根据学号判断校区，然后分别处理
+    var account = that.globalData.account
+    console.log("账号为")
+    console.log(account)
+    var top2 = account.substr(0,2)
+    console.log("top2")
+    console.log(top2)
     //对获取到的当前时间对照上课时间进行判断,返回当前时间所对应的节数
-    var nodeNumber = that.returnCurrentTimeCorrespondingNod_number();
-    console.log("当前时间对应的节数")
-    console.log(nodeNumber)
-    //根据返回的节数，判断距离当前时间最近的一节课
+    //通州校区 ~ 暂时不处理部分大一就在本部上课的菜鸟
+    var nodeNumber
+    if(top2>='19'){
+      console.log("通州校区")
+      nodeNumber = that.returnCurrentTimeCorrespondingNodeNumber_tz();
+      console.log("当前时间对应的节数")
+      console.log(nodeNumber)
+      //根据返回的节数，判断距离当前时间最近的一节课
+      that.updateByNodeNumber_tz(nodeNumber)
+    }
+    else{  //本部
+      console.log("本部校区")
+      nodeNumber = that.returnCurrentTimeCorrespondingNodeNumber_cy();
+      console.log("当前时间对应的节数")
+      console.log(nodeNumber)
+      //根据返回的节数，判断距离当前时间最近的一节课
+      that.updateByNodeNumber_cy(nodeNumber)
+    }
+    
+    console.log("最终结果")
+    console.log(that.data.nearestTimeTable)
+  },
+
+  //根据返回的节数，判断距离当前时间最近的一节课 朝阳校区~cy
+  updateByNodeNumber_cy:function(nodeNumber){
+    var that = this
+    var todayTimeTable = that.data.todayTimeTable;
+
     var flag = -1;
-    for( var i=0; i<todayTimeTable.length; i++)
-    {
-      if(nodeNumber<todayTimeTable[i].lessonStartTime){
+    for (var i = 0; i < todayTimeTable.length; i++) {
+      if (nodeNumber < todayTimeTable[i].lessonStartTime) {
         that.data.nearestTimeTable[0] = todayTimeTable[i];
         flag = 1;
         break;
       }
     }
 
+    //如果当天课表中有距离目前时间最近的一节课
     if (flag == 1) {
       console.log('距离当前时间最近的一节课')
       console.log(that.data.nearestTimeTable)
       var time = '';  //上课时间
       //将节数转换为对应的时间
       //4小节组成的一节课
-      if (that.data.nearestTimeTable[0].lessonEndTime - that.data.nearestTimeTable[0].lessonStartTime == 3)      {
+      if (that.data.nearestTimeTable[0].lessonEndTime - that.data.nearestTimeTable[0].lessonStartTime == 3) {
         switch (that.data.nearestTimeTable[0].lessonStartTime) {
           case 1:
             time = '8:00~11:30';
@@ -445,7 +476,7 @@ Page({
       }
 
       //2小节组成的一节课
-      if (that.data.nearestTimeTable[0].lessonEndTime - that.data.nearestTimeTable[0].lessonStartTime == 1)     {
+      if (that.data.nearestTimeTable[0].lessonEndTime - that.data.nearestTimeTable[0].lessonStartTime == 1) {
         switch (that.data.nearestTimeTable[0].lessonStartTime) {
           case 1:
             time = '8:00~9.35';
@@ -457,7 +488,8 @@ Page({
             time = '13:00~15:05';
             break;
           case 7:
-            time = '15:25~17:00'
+            time = '15:25~17:00';
+            break;
           case 9:
             time = '18:00~19:35';
             break;
@@ -472,28 +504,111 @@ Page({
         that.data.nearestTimeTable[0].time = time;
       }
     }
-    else{
+    else {
       this.data.nearestTimeTable = "今天的课上完啦"
     }
-
-    console.log("最终结果")
-    console.log(that.data.nearestTimeTable)
   },
 
-  //对获取到的当前时间对照上课时间进行判断
+  //根据返回的节数，判断距离当前时间最近的一节课 通州校区~tz
+  updateByNodeNumber_tz: function (nodeNumber) {
+    var that = this
+    var todayTimeTable = that.data.todayTimeTable;
+
+    var flag = -1;
+    for (var i = 0; i < todayTimeTable.length; i++) {
+      if (nodeNumber < todayTimeTable[i].lessonStartTime) {
+        that.data.nearestTimeTable[0] = todayTimeTable[i];
+        flag = 1;
+        break;
+      }
+    }
+
+    //如果当天课表中有距离目前时间最近的一节课
+    if (flag == 1) {
+      console.log('距离当前时间最近的一节课')
+      console.log(that.data.nearestTimeTable)
+      var time = '';  //上课时间
+      //将节数转换为对应的时间
+      //4小节组成的一节课
+      if (that.data.nearestTimeTable[0].lessonEndTime - that.data.nearestTimeTable[0].lessonStartTime == 3) {
+        switch (that.data.nearestTimeTable[0].lessonStartTime) {
+          case 1:
+            time = '8:30~12:00';
+            break;
+          case 5:
+            time = '13:00~17:00';
+            break;
+          case 9:
+            time = '18:00~21:20';
+            break;
+          default: break;
+        }
+      }
+
+      //2小节组成的一节课
+      if (that.data.nearestTimeTable[0].lessonEndTime - that.data.nearestTimeTable[0].lessonStartTime == 1) {
+        switch (that.data.nearestTimeTable[0].lessonStartTime) {
+          case 1:
+            time = '8:30~10:05';
+            break;
+          case 3:
+            time = '10:25~12:00';
+            break;
+          case 5:
+            time = '13:00~15:05';
+            break;
+          case 7:
+            time = '15:25~17:00';
+            break;
+          case 9:
+            time = '18:00~19:35';
+            break;
+          case 11:
+            time = '19:45~21:20';
+            break;
+          default: break;
+        }
+      }
+
+      if (time != '') {
+        that.data.nearestTimeTable[0].time = time;
+      }
+    }
+    else {
+      this.data.nearestTimeTable = "今天的课上完啦"
+    }
+  },
+
+  //对获取到的当前时间对照上课时间进行判断 - 朝阳校区~cy
   //这个函数返回一个数字，（代表当前时间对应的课表节数）
-  returnCurrentTimeCorrespondingNod_number:function(){
+  returnCurrentTimeCorrespondingNodeNumber_cy:function(){
     var myDate = new Date();
     var mytime = myDate.toLocaleTimeString();     //获取当前时间
     console.log("当前时间")
     console.log(mytime)
 
-    if(mytime < '上午8:00:00') return 0
-    else if( mytime < "上午9:55:00") return 2.5
-    else if( mytime < "下午1:30:00") return 4.5
-    else if( mytime < "下午3:25:00") return 6.5
-    else if( mytime < "下午6:00:00") return 8.5
-    else if( mytime < "下午7:55:00") return 10.5
+    if(mytime < '上午08:00:00') return 0
+    else if( mytime < "上午09:55:00") return 2.5
+    else if( mytime < "下午01:30:00") return 4.5
+    else if( mytime < "下午03:25:00") return 6.5
+    else if( mytime < "下午06:00:00") return 8.5
+    else if( mytime < "下午07:55:00") return 10.5
+  },
+
+  //对获取到的当前时间对照上课时间进行判断 - 通州校区~tz
+  //这个函数返回一个数字，（代表当前时间对应的课表节数）
+  returnCurrentTimeCorrespondingNodeNumber_tz: function (){
+    var myDate = new Date();
+    var mytime = myDate.toLocaleTimeString();     //获取当前时间
+    console.log("当前时间")
+    console.log(mytime)
+
+    if (mytime < '上午08:30:00') return 0
+    else if (mytime < "上午10:25:00") return 2.5
+    else if (mytime < "下午01:30:00") return 4.5
+    else if (mytime < "下午03:25:00") return 6.5
+    else if (mytime < "下午06:00:00") return 8.5
+    else if (mytime < "下午07:45:00") return 10.5
   },
 
   //更新轮播图通告
@@ -540,5 +655,18 @@ Page({
     
     //显示当天课表（内含显示离当前时间最近的一节课）
     this.showTodayTimeTable()
+
+    //test
+    this.bidaxiao()
   },
+
+  //测试用函数
+  bidaxiao:function(){
+    if ("下午10:36:35" < "下午01:30:00"){
+      console.log("下午10:36:35 < 下午01:30:00")
+    }
+    else{
+      console.log("下午10:36:35 > 下午01:30:00")
+    }
+  }
 })
