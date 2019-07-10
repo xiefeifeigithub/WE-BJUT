@@ -3,6 +3,7 @@ var app = getApp()
 var common = require('../../utils/common.js');
 // var score = require('../../utils/score.js');
 var timeTable = require('../../utils/timeTable.js');
+var timeFormat = require('../../utils/util.js')
 Page({
   data: {
     //轮播图
@@ -94,7 +95,7 @@ Page({
               data: {
                 xh: that.globalData.account,
                 mm: that.globalData.password,
-                xn: '2018-2019',
+                xn: '2019-2020',
                 xq: '1'
               },
               header: {
@@ -582,33 +583,31 @@ Page({
   //对获取到的当前时间对照上课时间进行判断 - 朝阳校区~cy
   //这个函数返回一个数字，（代表当前时间对应的课表节数）
   returnCurrentTimeCorrespondingNodeNumber_cy:function(){
-    var myDate = new Date();
-    var mytime = myDate.toLocaleTimeString();     //获取当前时间
+    var mytime = timeFormat.formatTimeOfTimeTable(new Date());     //获取当前时间并格式化为24小时制
     console.log("当前时间")
     console.log(mytime)
 
-    if(mytime < '上午08:00:00') return 0
-    else if( mytime < "上午09:55:00") return 2.5
-    else if( mytime < "下午01:30:00") return 4.5
-    else if( mytime < "下午03:25:00") return 6.5
-    else if( mytime < "下午06:00:00") return 8.5
-    else if( mytime < "下午07:55:00") return 10.5
+    if(mytime < '08:00:00') return 0
+    else if( mytime < "09:55:00") return 2.5
+    else if( mytime < "13:30:00") return 4.5
+    else if( mytime < "15:25:00") return 6.5
+    else if( mytime < "18:00:00") return 8.5
+    else if( mytime < "19:55:00") return 10.5
   },
 
   //对获取到的当前时间对照上课时间进行判断 - 通州校区~tz
   //这个函数返回一个数字，（代表当前时间对应的课表节数）
   returnCurrentTimeCorrespondingNodeNumber_tz: function (){
-    var myDate = new Date();
-    var mytime = myDate.toLocaleTimeString();     //获取当前时间
+    var mytime = formatTimeOfTimeTable.formatTime(new Date());     //获取当前时间并格式化为24小时制
     console.log("当前时间")
     console.log(mytime)
 
-    if (mytime < '上午08:30:00') return 0
-    else if (mytime < "上午10:25:00") return 2.5
-    else if (mytime < "下午01:30:00") return 4.5
-    else if (mytime < "下午03:25:00") return 6.5
-    else if (mytime < "下午06:00:00") return 8.5
-    else if (mytime < "下午07:45:00") return 10.5
+    if (mytime < '08:30:00') return 0
+    else if (mytime < "10:25:00") return 2.5
+    else if (mytime < "13:30:00") return 4.5
+    else if (mytime < "15:25:00") return 6.5
+    else if (mytime < "18:00:00") return 8.5
+    else if (mytime < "19:45:00") return 10.5
   },
 
   //更新轮播图通告
@@ -655,18 +654,5 @@ Page({
     
     //显示当天课表（内含显示离当前时间最近的一节课）
     this.showTodayTimeTable()
-
-    //test
-    this.bidaxiao()
-  },
-
-  //测试用函数
-  bidaxiao:function(){
-    if ("下午10:36:35" < "下午01:30:00"){
-      console.log("下午10:36:35 < 下午01:30:00")
-    }
-    else{
-      console.log("下午10:36:35 > 下午01:30:00")
-    }
   }
 })
