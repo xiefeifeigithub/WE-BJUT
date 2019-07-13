@@ -25,6 +25,16 @@ const formatTime = date => {
 
 }
 
+//日志日期格式化：格式[year, month, day]
+const formatDate = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('/')
+
+}
+
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -32,7 +42,9 @@ const formatNumber = n => {
 
 module.exports = {
   formatTime: formatTime,
-  formatTimeOfTimeTable: formatTimeOfTimeTable
+  formatTimeOfTimeTable: formatTimeOfTimeTable,
+  formatDate: formatDate
+
 }
 
 

@@ -4,6 +4,7 @@ var common = require('../../utils/common.js');
 // var score = require('../../utils/score.js');
 var timeTable = require('../../utils/timeTable.js');
 var timeFormat = require('../../utils/util.js')
+var util = require('../../utils/util.js');
 Page({
   data: {
     //轮播图
@@ -308,6 +309,12 @@ Page({
     // score.queryScoreBy_Year_Semester('2018-2019','2')  //获取2018~2019年第2学期JSON字符串缓存
     //下一步将获取各个学期缓存分配到请求数少的页面，在具体查询某个时间段的结果后更新缓存、改写pages/score/score_result里的内容（xiefeifei)
 
+    var TIME = util.formatDate(new Date());
+    this.setData({
+      time: TIME,
+
+    });
+
   },
 
   //获取最新学期当前周的课表
@@ -347,6 +354,28 @@ Page({
       if (currentWeekTable[i].week == currentDay){
         this.data.currentDayTable.push(currentWeekTable[i])
       }
+
+    var currentWeekday = ''
+    if (currentDay == 1)
+      currentWeekday = '一'
+    if (currentDay == 2)
+      currentWeekday = '二'
+    if (currentDay == 3)
+      currentWeekday = '三'
+    if (currentDay == 4)
+      currentWeekday = '四'
+    if (currentDay == 5)
+      currentWeekday = '五'
+    if (currentDay == 6)
+      currentWeekday = '六'
+    if (currentDay == 7)
+      currentWeekday = '日'
+
+      this.setData({
+        currentDay: currentDay,
+        currentWeekday: currentWeekday
+
+      });
     }
 
     //化简当天课表数据
