@@ -44,7 +44,6 @@ module.exports = {
   formatTime: formatTime,
   formatTimeOfTimeTable: formatTimeOfTimeTable,
   formatDate: formatDate
-
 }
 
 

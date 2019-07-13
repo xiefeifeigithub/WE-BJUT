@@ -345,7 +345,8 @@ Page({
   //统计最新学期当天的课表
   currentTimeTable:function(){
     var currentWeekTable = this.data.currentWeekTable
-    var currentDay = new Date().getDay();
+    // var currentDay = new Date().getDay();
+    var currentDay = 2;
     if(currentDay==0){
       currentDay = 7;
     }
@@ -467,6 +468,9 @@ Page({
     
     console.log("最终结果")
     console.log(that.data.nearestTimeTable)
+    that.setData({
+      nearestTimeTable: that.data.nearestTimeTable
+    })
   },
 
   //根据返回的节数，判断距离当前时间最近的一节课 朝阳校区~cy

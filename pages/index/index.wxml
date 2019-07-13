@@ -19,7 +19,9 @@
     <text style='color: #adadad;'>{{time}} 周{{currentWeekday}}</text>
   </view>
   <view class='timetable-line'></view>
-  <view>{{nearestTimeTable[0]}}</view>
+  <view>{{nearestTimeTable[0].lessonName}}</view>
+  <view>{{nearestTimeTable[0].location}}</view>
+  <view>{{nearestTimeTable[0].time}}</view>
 </view>
 
 <view class='nav-list'>
