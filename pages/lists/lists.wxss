@@ -9,6 +9,12 @@
   display: flex;
   align-items: center;
 }
+.container2{
+  width: 100rpx;
+  height: 100rpx;
+  box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, 0.5);
+  border-radius: 4px;
+}
 
 
 .tags{
