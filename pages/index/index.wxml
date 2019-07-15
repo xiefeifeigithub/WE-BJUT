@@ -19,11 +19,15 @@
     <text style='color: #adadad;'>{{time}} 周{{currentWeekday}}</text>
   </view>
   <view class='timetable-line'></view>
-  <view>{{nearestTimeTable[0].lessonName}}</view>
-  <view>{{nearestTimeTable[0].location}}</view>
-  <view>{{nearestTimeTable[0].time}}</view>
+  <view class='timetable-content'>
+    <view class='timetable-time'>{{nearestTimeTable[0].time}}</view>
+    <view class='timetable-right'>
+      <text class='timetable-class'>{{nearestTimeTable[0].lessonName}}\n</text>
+      <text class='timetable-location'>{{nearestTimeTable[0].location}}</text>
+    </view>
+  </view>
 </view>
-
+<!--{{nearestTimeTable[0].lessonName}}-->
 <view class='nav-list'>
   <view class='nav-li' catchtap='touchIcon' data-index='0'>
     <view class='nav-title'>课表</view>
