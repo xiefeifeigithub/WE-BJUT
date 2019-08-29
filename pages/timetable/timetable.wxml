@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <!-- <view class='notice'>点击课程即可查看本节课的详细信息:)</view> -->
 
-<view class='container' wx:if="{{currList.length > 0}}">
+<view class='container' >
 <view class='notice'>点击课程即可查看本节课的详细信息:)</view>
   <view class='round-click'>
     <view class="round-click" catchtap="showAllOrPart">  <!-- //catchtap="showAllOrPart" -->
