@@ -21,6 +21,8 @@ Page({
 
     todayTimeTable: [], //简化后的当天的课表
     nearestTimeTable: [],   //距离当前最近的一节课
+
+    timeInterval:1,
     //导航数据
     student:
       [
@@ -285,7 +287,7 @@ Page({
         break;
       case "5":
         wx.navigateTo({
-          url: '/pages/navi/navi',
+          url: '/pages/map/map',
         }); 
         break;
       case "6":
@@ -345,8 +347,7 @@ Page({
   //统计最新学期当天的课表
   currentTimeTable:function(){
     var currentWeekTable = this.data.currentWeekTable
-    // var currentDay = new Date().getDay();
-    var currentDay = 2;
+    var currentDay = new Date().getDay();
     if(currentDay==0){
       currentDay = 7;
     }
@@ -468,6 +469,19 @@ Page({
     
     console.log("最终结果")
     console.log(that.data.nearestTimeTable)
+
+    var semesterStartDate = new Date('2019/09/02 00:00:00')
+    var currentDate = new Date();
+    var timeInterval = parseFloat(currentDate - semesterStartDate);
+    console.log('timeInterval')
+    console.log(timeInterval)
+
+    that.data.timeInterval = timeInterval
+
+    that.setData({
+      timeInterval: that.data.timeInterval
+    })
+
     that.setData({
       nearestTimeTable: that.data.nearestTimeTable
     })
