@@ -17,7 +17,9 @@
     "pages/phone/phone",
     "pages/extension/extension",
     "pages/qa/qa",
-    "pages/phonedetail/phonedetail"
+    "pages/phonedetail/phonedetail",
+    "pages/navi/navi",
+    "pages/navigatpage/navigatpage"
   ],
   "window": {
     "backgroundTextStyle": "light",

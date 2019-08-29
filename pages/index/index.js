@@ -21,8 +21,8 @@ Page({
 
     todayTimeTable: [], //简化后的当天的课表
     nearestTimeTable: [],   //距离当前最近的一节课
-
-    timeInterval:1,
+    
+    timeInterval:1,  //用来判断是否开学
     //导航数据
     student:
       [
@@ -287,7 +287,7 @@ Page({
         break;
       case "5":
         wx.navigateTo({
-          url: '/pages/map/map',
+          url: '/pages/navi/navi',
         }); 
         break;
       case "6":
@@ -469,19 +469,17 @@ Page({
     
     console.log("最终结果")
     console.log(that.data.nearestTimeTable)
-
+    
     var semesterStartDate = new Date('2019/09/02 00:00:00')
     var currentDate = new Date();
     var timeInterval = parseFloat(currentDate - semesterStartDate);
     console.log('timeInterval')
     console.log(timeInterval)
-
     that.data.timeInterval = timeInterval
-
     that.setData({
       timeInterval: that.data.timeInterval
     })
-
+    
     that.setData({
       nearestTimeTable: that.data.nearestTimeTable
     })

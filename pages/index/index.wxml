@@ -18,23 +18,19 @@
     <text style='color: #515151;font-weight:700;'>当前课程</text>
     <text style='color: #adadad;'>{{time}} 周{{currentWeekday}}</text>
   </view>
-
   <view class='timetable-line'></view>
-
-  <view class='timetable-content' wx:if="{{nearestTimeTable.length > 0 && timeInterval > 0}}">
+   <view class='timetable-content' wx:if="{{nearestTimeTable.length > 0 && timeInterval > 0}}">
     <view class='timetable-time'>{{nearestTimeTable[0].time}}</view>
     <view class='timetable-right'>
       <text class='timetable-class'>{{nearestTimeTable[0].lessonName}}\n</text>
       <text class='timetable-location'>{{nearestTimeTable[0].location}}</text>
     </view>
   </view>
-
-
-
-  <view class='timetable-content' wx:if="{{nearestTimeTable.length == 0 || timeInterval<0 }}">
+  
+   <view class='timetable-content' wx:if="{{nearestTimeTable.length == 0 || timeInterval<0 }}">
     <view class='timetable-no'>当前时间段没有课程</view>
   </view>
-
+  
 </view>
 <!--{{nearestTimeTable[0].lessonName}}-->
 <view class='nav-list'>
