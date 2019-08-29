@@ -316,11 +316,13 @@ App({
    */
   calculateCurrentWeek: function () {
     // var semesterStartDate = new Date('2019/02/18 00:00:00');
-    var semesterStartDate = new Date('2019/07/01 00:00:00')
+    var semesterStartDate = new Date('2019/09/02 00:00:00')
     console.log("开学时间")
     console.log(semesterStartDate)
     var currentDate = new Date();
     var interval = parseFloat(currentDate - semesterStartDate);
+    console.log('interval')
+    console.log(interval)
     var weekNow = 0;
     var days = interval / 1000 / 60 / 60 / 24;
     if ((days % 7) != 0) {
@@ -328,6 +330,10 @@ App({
     } else {
       weekNow = days / 7;
     }
+    console.log(weekNow)
+    if(interval < 0)
+    weekNow = 1
+    
     this.globalData.currentWeek = parseInt(weekNow)
   }
 })
