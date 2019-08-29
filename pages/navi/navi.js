@@ -17,7 +17,8 @@ Page({
       height: 50,
       callout: {
         content: '科学楼',
-        fontSize: "16",
+        fontSize: "18",
+        fontFamily : "SimSun",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -31,7 +32,7 @@ Page({
       height: 50,
       callout: {
         content: '西门',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -45,7 +46,7 @@ Page({
       height: 50,
       callout: {
         content: '南门',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -59,7 +60,7 @@ Page({
       height: 50,
       callout: {
         content: '北门',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -73,7 +74,7 @@ Page({
       height: 50,
       callout: {
         content: '东门',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -89,7 +90,7 @@ Page({
       height: 50,
       callout: {
         content: '第一教学楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -103,7 +104,7 @@ Page({
       height: 50,
       callout: {
         content: '第二教学楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -117,7 +118,7 @@ Page({
       height: 50,
       callout: {
         content: '第三教学楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -131,7 +132,7 @@ Page({
       height: 50,
       callout: {
         content: '第四教学楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -147,7 +148,7 @@ Page({
       height: 50,
       callout: {
         content: '机电楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -161,7 +162,7 @@ Page({
       height: 50,
       callout: {
         content: '基础楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -175,7 +176,7 @@ Page({
       height: 50,
       callout: {
         content: '环化楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -189,7 +190,7 @@ Page({
       height: 50,
       callout: {
         content: '建工楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -203,7 +204,7 @@ Page({
       height: 50,
       callout: {
         content: '材料楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -217,7 +218,7 @@ Page({
       height: 50,
       callout: {
         content: '数理楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -231,7 +232,7 @@ Page({
       height: 50,
       callout: {
         content: '能源楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -245,7 +246,7 @@ Page({
       height: 50,
       callout: {
         content: '信息楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -259,7 +260,7 @@ Page({
       height: 50,
       callout: {
         content: '艺术楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -273,7 +274,7 @@ Page({
       height: 50,
       callout: {
         content: '理科楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -287,7 +288,7 @@ Page({
       height: 50,
       callout: {
         content: '经管楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -301,7 +302,7 @@ Page({
       height: 50,
       callout: {
         content: '人文楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -315,7 +316,7 @@ Page({
       height: 50,
       callout: {
         content: '实训楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -329,7 +330,7 @@ Page({
       height: 50,
       callout: {
         content: '城建楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -343,7 +344,7 @@ Page({
       height: 50,
       callout: {
         content: '软件楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS",
@@ -360,7 +361,7 @@ Page({
       height: 50,
       callout: {
         content: '北田径场',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -374,7 +375,7 @@ Page({
       height: 50,
       callout: {
         content: '南田径场',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -388,7 +389,7 @@ Page({
       height: 50,
       callout: {
         content: '奥运场馆',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -402,7 +403,7 @@ Page({
       height: 50,
       callout: {
         content: '游泳馆',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -419,7 +420,7 @@ Page({
       height: 50,
       callout: {
         content: '天天餐厅第二餐厅',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -433,7 +434,7 @@ Page({
       height: 50,
       callout: {
         content: '美食园',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -447,7 +448,7 @@ Page({
       height: 50,
       callout: {
         content: '奥运餐厅',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -461,7 +462,7 @@ Page({
       height: 50,
       callout: {
         content: '天天餐厅&清真食堂',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -477,7 +478,7 @@ Page({
       height: 50,
       callout: {
         content: '学生宿舍1&2',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -491,7 +492,7 @@ Page({
       height: 50,
       callout: {
         content: '学生宿舍3&4',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -505,7 +506,7 @@ Page({
       height: 50,
       callout: {
         content: '学生宿舍10&11',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -519,7 +520,7 @@ Page({
       height: 50,
       callout: {
         content: '学生宿舍7&9&9&12',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -533,7 +534,7 @@ Page({
       height: 50,
       callout: {
         content: '学生宿舍5&6',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -547,7 +548,7 @@ Page({
       height: 50,
       callout: {
         content: '学生宿舍北研楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -563,7 +564,7 @@ Page({
       height: 50,
       callout: {
         content: '学生综合服务中心',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -577,7 +578,7 @@ Page({
       height: 50,
       callout: {
         content: '校医院',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -591,7 +592,7 @@ Page({
       height: 50,
       callout: {
         content: '北浴室',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -605,7 +606,7 @@ Page({
       height: 50,
       callout: {
         content: '南浴室',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -619,7 +620,7 @@ Page({
       height: 50,
       callout: {
         content: '金工楼',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -633,7 +634,7 @@ Page({
       height: 50,
       callout: {
         content: '礼堂',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -647,7 +648,7 @@ Page({
       height: 50,
       callout: {
         content: '学生活动中心',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -661,7 +662,7 @@ Page({
       height: 50,
       callout: {
         content: '保卫处',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -675,7 +676,7 @@ Page({
       height: 50,
       callout: {
         content: '月亮湖',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -689,7 +690,7 @@ Page({
       height: 50,
       callout: {
         content: '知新园',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -703,7 +704,7 @@ Page({
       height: 50,
       callout: {
         content: '逸夫图书馆',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -717,7 +718,7 @@ Page({
       height: 50,
       callout: {
         content: '工大建国饭店',
-        fontSize: "16",
+        fontSize: "18",
         borderRadius: "8",
         padding: "3",
         display: "ALWAYS", 
@@ -733,7 +734,7 @@ Page({
         height: 50,
         callout: {
           content: '汲学楼',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -747,7 +748,7 @@ Page({
         height: 50,
         callout: {
           content: '学生公寓',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -761,7 +762,7 @@ Page({
         height: 50,
         callout: {
           content: '第一教学楼',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -775,7 +776,7 @@ Page({
         height: 50,
         callout: {
           content: '第二教学楼',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -789,7 +790,7 @@ Page({
         height: 50,
         callout: {
           content: '第三教学楼',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -803,7 +804,7 @@ Page({
         height: 50,
         callout: {
           content: '第四教学楼',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -817,7 +818,7 @@ Page({
         height: 50,
         callout: {
           content: '图书馆',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -831,7 +832,7 @@ Page({
         height: 50,
         callout: {
           content: '明德楼&问渠楼',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -845,7 +846,7 @@ Page({
         height: 50,
         callout: {
           content: '田园餐厅',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -859,7 +860,7 @@ Page({
         height: 50,
         callout: {
           content: '体育馆',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -873,7 +874,7 @@ Page({
         height: 50,
         callout: {
           content: '游泳馆',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -887,7 +888,7 @@ Page({
         height: 50,
         callout: {
           content: '足球场',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -901,7 +902,7 @@ Page({
         height: 50,
         callout: {
           content: '篮球场',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -915,7 +916,7 @@ Page({
         height: 50,
         callout: {
           content: '网球场',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -929,7 +930,7 @@ Page({
         height: 50,
         callout: {
           content: '跆拳道馆',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -943,7 +944,7 @@ Page({
         height: 50,
         callout: {
           content: '南门',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -957,7 +958,7 @@ Page({
         height: 50,
         callout: {
           content: '东南门',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -971,7 +972,7 @@ Page({
         height: 50,
         callout: {
           content: '北门',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -985,7 +986,7 @@ Page({
         height: 50,
         callout: {
           content: '浴室',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",
@@ -999,7 +1000,7 @@ Page({
         height: 50,
         callout: {
           content: '第四报告厅',
-          fontSize: "16",
+          fontSize: "18",
           borderRadius: "8",
           padding: "3",
           display: "ALWAYS",

@@ -23,5 +23,5 @@ markers='{{mapmarkers}}'
 </map>
 
 <scroll-view scroll-y class="all_button">
-  <button class="btn" wx:for='{{mapmarkers}}' data-longitude='{{item.longitude}}' data-latitude='{{item.latitude}}' data-name='{{item.name}}' bindtap="jumpPage">{{item.name}}</button>
+  <button class="btn" wx:key='{{mapmarkers}}' data-longitude='{{item.longitude}}' data-latitude='{{item.latitude}}' data-name='{{item.name}}' bindtap="jumpPage">{{item.name}}</button>
 </scroll-view>

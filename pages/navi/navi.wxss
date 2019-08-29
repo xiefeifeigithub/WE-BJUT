@@ -3,6 +3,7 @@
   font-size: 11px;
   width: 100%;
   overflow-y: scroll;
+  font-family: 'iconfont'; 
   white-space: nowrap; 
 }
 
@@ -12,7 +13,9 @@
   padding: 5rpx;
   border: 3rpx solid black;
   border-radius:8rpx;
-  font-size:25rpx
+  font-size:25rpx;
+  font-family: 'SimSun'; 
+  font-weight:700;
 }
 
 .classify{
@@ -22,90 +25,9 @@
 }
 
 .all_button{
-  height: 800rpx
-}
-
-.building-item {
-  height: 50px;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 10px;
-}
-
-.top-swich {
-  /* background-color: #079df2; */
-  height: 6vh;
-  color: #303133;
-  display: flex;
-  justify-content: space-around;
-}
-
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
-
-.top-swich-btn {
-  background-color: none;
-  letter-spacing: 3rpx;
-  height: 65rpx;
-  color: #303133;
-  font-size: 30rpx;
-}
-
-.active {
-  border-bottom: 6rpx solid #16b990;
-  height: 50rpx;
-  display: inline-block;
-}
-
-button {
-  font-size: 26rpx;
-  height: 6vh;
-}
-
-.img-view {
-  height: 100%;
-  display: flex;
-}
-
-.img {
-  width: 18%;
-  height: 18%;
-  display: flex;
-}
-
-.img image {
-  width: 10px;
-  height: 90%;
-  margin: auto 7rpx;
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  margin: auto 0;
-}
-
-.itemName {
-  margin: 0 20rpx;
-  font-size: 32rpx;
-}
-
-.itemFloor {
-  margin: 0 20rpx;
-  font-size: 28rpx;
-  color: #555;
-}
-
-.text {
-  margin: auto 15px;
-  width: 13%;
-}
-
-.text image {
-  width: 70rpx;
-  height: 70rpx;
+  height: 800rpx;
+  font-family: 'SimSun'; 
+  font-weight:700;
 }
 
 .controls {
@@ -117,8 +39,17 @@ button {
 
 .controls .img {
   margin-top: 5px;
-  width: 90rpx;
-  height: 90rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.img1 {
+  position: relative;
+  top: 90%;
+  left: 85%;
+  margin-top: 5px;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .full {
@@ -128,4 +59,8 @@ button {
 .btn:after {
   border-radius: 0;
   border: none;  
+  font-family: 'SimSun'; 
+  font-weight:700;
+  
 }
+
