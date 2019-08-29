@@ -1,0 +1,9 @@
+<map
+id="myMap"
+class="bgMap"
+longitude="{{longitude}}" latitude="{{latitude}}"
+scale='16'
+polyline="{{polyline}}"
+show-location
+>
+</map>

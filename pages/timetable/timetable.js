@@ -41,7 +41,6 @@ Page({
     // //new add
     // this.showAllOrPart();
     console.log("timetable onload invoked")
-    
   },
 
   /**

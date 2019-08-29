@@ -87,14 +87,6 @@ swiper{
   justify-content: space-between;
   align-items: center;
 }
-
-.timetable-no{
-  color: #3683d6;
-  font-size: 32rpx;
-  font-weight: 600;
-  align-items: center;
-}
-
 .timetable-time{
   color: #3683d6;
   font-size: 32rpx;
