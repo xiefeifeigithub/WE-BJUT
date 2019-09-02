@@ -55,7 +55,28 @@ Page({
         })
       },
       fail: function (error) {
-        console.error(error);
+        wx.getSetting({
+          success: (res) => {
+            if (!res.authSetting['scope.userLocation']) {
+            //打开提示框，提示前往设置页面
+              that.setData({
+                showCon: true
+              })
+            }
+            else {
+              wx.showModal({
+                title: '定位失败',
+                content: '请在系统设置中打开定位服务',
+                confirmText: '确定',
+                success: function(res) {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }
+              })
+            }
+          }
+        })
       },
       complete: function (res) {
         console.log(res);
