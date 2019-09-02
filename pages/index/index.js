@@ -314,7 +314,6 @@ Page({
     var TIME = util.formatDate(new Date());
     this.setData({
       time: TIME,
-
     });
 
   },
@@ -351,7 +350,9 @@ Page({
     if(currentDay==0){
       currentDay = 7;
     }
+
     console.log("今天是周" + currentDay)
+    //将一周中属于今天的课表压入当天的课表数组currentDayTable
     for (var i = 0; i < currentWeekTable.length; i++){
       if (currentWeekTable[i].week == currentDay){
         this.data.currentDayTable.push(currentWeekTable[i])
@@ -409,19 +410,19 @@ Page({
       })
     }
 
-    //处理当天课表中180分钟的大课，将其合并为节数为4的大课
-    var todayTimeTable = this.data.todayTimeTable
-    for (var i = 0; i < todayTimeTable.length && todayTimeTable.length>=2; i++){
-      if (i + 1 < todayTimeTable.length){
-      if(todayTimeTable[i].lessonName==todayTimeTable[i+1].lessonName){
-        todayTimeTable[i].lessonEndTime = todayTimeTable[i+1].lessonEndTime
-        todayTimeTable.splice(i+1,1)
-        todayTimeTable[i].time = todayTimeTable[i].lessonStartTime + "~" + todayTimeTable[i].lessonEndTime + "节";
-      }
-      }
-    }
+    // //处理当天课表中180分钟的大课，将其合并为节数为4的大课
+    // var todayTimeTable = this.data.todayTimeTable
+    // for (var i = 0; i < todayTimeTable.length && todayTimeTable.length>=2; i++){
+    //   if (i + 1 < todayTimeTable.length){
+    //   if(todayTimeTable[i].lessonName==todayTimeTable[i+1].lessonName){
+    //     todayTimeTable[i].lessonEndTime = todayTimeTable[i+1].lessonEndTime
+    //     todayTimeTable.splice(i+1,1)
+    //     todayTimeTable[i].time = todayTimeTable[i].lessonStartTime + "~" + todayTimeTable[i].lessonEndTime + "节";
+    //   }
+    //   }
+    // }
 
-    this.data.todayTimeTable = todayTimeTable
+    // this.data.todayTimeTable = todayTimeTable
 
     if(this.data.todayTimeTable.length==0){
       this.data.todayTimeTable = '今天没有课哦'

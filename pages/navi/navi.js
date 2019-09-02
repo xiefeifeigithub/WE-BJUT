@@ -1018,6 +1018,7 @@ Page({
     qqmapsdk = new QQMapWX({
       key: 'JQKBZ-YTNWF-HMTJZ-NCVON-KCPXE-F3B3Z',
     });
+
     wx.startLocationUpdate({});
   },
 
@@ -1167,7 +1168,7 @@ Page({
   },
 
   //跳转并传递数值
-  jumpPage: function(events){
+  jumpPage: function(events){ 
     var longitudetonavigat=events.currentTarget.dataset.longitude;
     var latitudetonavigat = events.currentTarget.dataset.latitude;
     var nametonavigat = events.currentTarget.dataset.name;
