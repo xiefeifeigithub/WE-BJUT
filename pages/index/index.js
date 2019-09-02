@@ -23,6 +23,8 @@ Page({
     nearestTimeTable: [],   //距离当前最近的一节课
     
     timeInterval:1,  //用来判断是否开学
+    todayHaveClass: false,   //今天是否有课
+    todayFinishClass:false,   //今天的课是否上完了
     //导航数据
     student:
       [
@@ -424,16 +426,20 @@ Page({
 
     // this.data.todayTimeTable = todayTimeTable
 
-    if(this.data.todayTimeTable.length==0){
-      this.data.todayTimeTable = '今天没有课哦'
-      this.data.nearestTimeTable = '今天没有课哦'
-      console.log(this.data.nearestTimeTable)
-    }
-    else{
-      console.log("当天课表")
+    //今天有课
+    if(this.data.todayTimeTable.length!=0){
+      // this.data.todayTimeTable = '今天没有课哦'
+      // this.data.nearestTimeTable = '今天没有课哦'
+      this.setData({
+        todayHaveClass: true  //标记为有课
+      })
+      console.log("今天有课，展示如下")
       console.log(this.data.todayTimeTable)
       //显示距离当前时间最近的一节课
       this.showNearestTimeTable();
+    }
+    else{
+      console.log("今天没课")
     }
   },
 
@@ -471,15 +477,16 @@ Page({
     console.log("最终结果")
     console.log(that.data.nearestTimeTable)
     
-    var semesterStartDate = new Date('2019/09/02 00:00:00')
-    var currentDate = new Date();
-    var timeInterval = parseFloat(currentDate - semesterStartDate);
-    console.log('timeInterval')
-    console.log(timeInterval)
-    that.data.timeInterval = timeInterval
-    that.setData({
-      timeInterval: that.data.timeInterval
-    })
+    //判断是否开学
+    // var semesterStartDate = new Date('2019/09/02 00:00:00')
+    // var currentDate = new Date();
+    // var timeInterval = parseFloat(currentDate - semesterStartDate);
+    // console.log('timeInterval')
+    // console.log(timeInterval)
+    // that.data.timeInterval = timeInterval
+    // that.setData({
+    //   timeInterval: that.data.timeInterval
+    // })
     
     that.setData({
       nearestTimeTable: that.data.nearestTimeTable
@@ -513,7 +520,7 @@ Page({
             time = '8:00~11:30';
             break;
           case 5:
-            time = '13:00~17:00';
+            time = '13:30~17:00';
             break;
           case 9:
             time = '18:00~21:30';
@@ -529,10 +536,10 @@ Page({
             time = '8:00~9.35';
             break;
           case 3:
-            time = '9.55~11.30';
+            time = '9:55~11.30';
             break;
           case 5:
-            time = '13:00~15:05';
+            time = '13:30~15:05';
             break;
           case 7:
             time = '15:25~17:00';
@@ -552,7 +559,10 @@ Page({
       }
     }
     else {
-      this.data.nearestTimeTable = "今天的课上完啦"
+      // this.data.nearestTimeTable = "今天的课上完啦"
+      that.setData({
+        todayFinishClass: true   //标记今天的课上完了
+      })
     }
   },
 
@@ -583,7 +593,7 @@ Page({
             time = '8:30~12:00';
             break;
           case 5:
-            time = '13:00~17:00';
+            time = '13:30~17:00';
             break;
           case 9:
             time = '18:00~21:20';
@@ -602,7 +612,7 @@ Page({
             time = '10:25~12:00';
             break;
           case 5:
-            time = '13:00~15:05';
+            time = '13:30~15:05';
             break;
           case 7:
             time = '15:25~17:00';
@@ -622,7 +632,10 @@ Page({
       }
     }
     else {
-      this.data.nearestTimeTable = "今天的课上完啦"
+      // this.data.nearestTimeTable = "今天的课上完啦"
+      that.setData({
+        todayFinishClass: true   //标记今天的课上完了
+      })
     }
   },
 

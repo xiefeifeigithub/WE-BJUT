@@ -331,8 +331,10 @@ App({
       weekNow = days / 7;
     }
     console.log(weekNow)
-    if(interval < 0)
-    weekNow = 1
+
+    //判断是否开学
+    // if(interval < 0)
+    // weekNow = 1
     
     this.globalData.currentWeek = parseInt(weekNow)
   }
