@@ -7,3 +7,16 @@ polyline="{{polyline}}"
 show-location
 >
 </map>
+
+<view  wx:if="{{showCon}}" class="modal-mask" bindtap="changeModalCancel">
+    <view class="modal-dialog">
+      <view class="modal-title">温馨提示</view>
+      <view class="modal-content">
+        获取定位失败，请前往设置打开定位权限
+      </view>
+      <view class="modal-footer">
+        <view class="btn-cancel" catchtap="changeModalCancel">取消</view>
+        <button open-type="openSetting" class="btn-confirm button-on-view" style="padding:0rpx;" catchtap="changeModalCancel">设置</button>
+      </view>
+    </view>
+  </view>
