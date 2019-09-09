@@ -451,13 +451,17 @@ Page({
     var account = that.globalData.account
     console.log("账号为")
     console.log(account)
+   // account = '19041527'
     var top2 = account.substr(0,2)
-    console.log("top2")
+    console.log("学号前两位数字")
     console.log(top2)
+    var collegeCode = account.substr(2,2)  //学号中的第3、4位数字代表学院代码
+    console.log("学院代码|05~环能")  
+    console.log(collegeCode + "   环能学院大一在本部上课")
     //对获取到的当前时间对照上课时间进行判断,返回当前时间所对应的节数
     //通州校区 ~ 暂时不处理部分大一就在本部上课的菜鸟
     var nodeNumber
-    if(top2>='19'){
+    if(top2>='19' && collegeCode!='05'){
       console.log("通州校区")
       nodeNumber = that.returnCurrentTimeCorrespondingNodeNumber_tz();
       console.log("当前时间对应的节数")
@@ -657,7 +661,7 @@ Page({
   //对获取到的当前时间对照上课时间进行判断 - 通州校区~tz
   //这个函数返回一个数字，（代表当前时间对应的课表节数）
   returnCurrentTimeCorrespondingNodeNumber_tz: function (){
-    var mytime = formatTimeOfTimeTable.formatTime(new Date());     //获取当前时间并格式化为24小时制
+    var mytime = timeFormat.formatTimeOfTimeTable(new Date());     //获取当前时间并格式化为24小时制
     console.log("当前时间")
     console.log(mytime)
 
