@@ -308,15 +308,14 @@ Page({
   onLoad: function () {
     this.updataData()
     console.log("onLoad ~ pages/index ~ 请求轮播图数据")
-// yearArray: ['2018-2019', '2017-2018', '2016-2017', '2015-2016', '2014-2015'],
-    // console.log("获取最新学年/学期成绩缓存")
-    // score.queryScoreBy_Year_Semester('2018-2019','2')  //获取2018~2019年第2学期JSON字符串缓存
-    //下一步将获取各个学期缓存分配到请求数少的页面，在具体查询某个时间段的结果后更新缓存、改写pages/score/score_result里的内容（xiefeifei)
 
-    var TIME = util.formatDate(new Date());
+    //var TIME = util.formatDate(new Date());
+    var currentWeek = app.globalData.currentWeek;
     this.setData({
-      time: TIME,
+      currentweek: currentWeek
     });
+
+
 
   },
 
@@ -379,7 +378,6 @@ Page({
       this.setData({
         currentDay: currentDay,
         currentWeekday: currentWeekday
-
       });
     }
 
@@ -717,5 +715,26 @@ Page({
     
     //显示当天课表（内含显示离当前时间最近的一节课）
     this.showTodayTimeTable()
+
+    //考研倒计时
+    if(this.globalData.account == '16041527'){
+      this.countDown()
+    }
+  },
+
+
+  //显示考研倒计时
+  countDown:function() {
+    var postgraduateExamTime = new Date('2019/12/21 00:00:00')
+    var currentDate = new Date();
+    var interval = parseFloat(postgraduateExamTime-currentDate);
+    var days = (interval / 1000 / 60 / 60 / 24).toFixed(0);
+
+    wx.showModal({
+      title: '距离考研还有',
+      content: days + '天',
+      confirmText: '无所畏惧'
+    })
   }
+
 })

@@ -34,8 +34,8 @@
             <button class='sub-button' bindtap='onTap'>点击查询</button>
         </view>
         <!-- 提示信息 -->
-        <text class='point_text'>空教室数据开放时间：上学期间1~16周            </text>
+        <text class='point_text'>注：空教室数据开放时间：第4周~第16周            </text>
         <text class='point_text'>注：可能因调课、开会和考试等原因空教室被占用          </text>
-        <text class='point_text'>注：第二、三个字段默认是当前周、当前星期。也可自行选择 </text>
+        <text class='point_text'>注：仅支持查询校本部1教和3教的空教室 </text>
     </view>
 </view>
