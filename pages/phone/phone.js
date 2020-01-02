@@ -75,5 +75,5 @@ Page({
     wx.setNavigationBarTitle({
       title: '电话黄页'
     })
-  },
+  }
 })

@@ -113,6 +113,5 @@ Page({
     console.log("触发加载操作")
     //加载新的文章
     this.loadData(this.data.lastid)
-  },
-  
+  }
 })

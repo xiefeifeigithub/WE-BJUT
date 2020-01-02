@@ -1,3 +1,4 @@
+//课表查询接口
 var app = getApp()
 
 function query_table(year, semester) {
@@ -6,7 +7,7 @@ function query_table(year, semester) {
   var account = wx.getStorageSync(app.data.keyUserName)
   var pwd = wx.getStorageSync(app.data.keyPwd)
   wx.request({
-    url: 'https://www.bjut1960.cn/schedule',
+    url: app.data.url_crawler + 'schedule',
     method: 'POST',
     data: {
       xh: account,

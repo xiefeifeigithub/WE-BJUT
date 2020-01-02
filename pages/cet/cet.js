@@ -1,4 +1,5 @@
 var app = getApp()
+
 Page({
   data: {
     account: '',      //用户名
@@ -13,11 +14,12 @@ Page({
   onLoad: function (options) {
     //如果本地有缓存直接使用本地的数据
     var localData = wx.getStorageSync(app.data.keyCet)
-    console.log("从本地获取cet数据")
+    console.log("从本地缓存中获取cet数据")
     this.setData({
       cetInfo:localData
     })
   },
+
   //页面初次渲染完成时触发
   onReady: function () {
     //动态设置当前页面的标题
@@ -25,23 +27,20 @@ Page({
       title: '等级考试信息查询'
     })
   },
-  onHide:function(){
-    console.log("cet调用onHide()");
-  },
 
   //每次查看CET信息除了从缓存中读取第一次保存的信息之外，每次在退出页面之后进行最新的数据获取，并保存
   onShow:function(){
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
     this.globalData.pwd = wx.getStorageSync(app.data.keyPwd)
   },
+
   onUnload:function(){
     var account = this.globalData.account
     var password = this.globalData.pwd
     var that = this
-    console.log("cet调用onUnload()");
     //四六级考试信息
     wx.request({
-      url: 'https://www.bjut1960.cn/grade',
+      url: app.data.url_crawler + 'cet',
       method: 'POST',
       data: {
         xh: account,
@@ -52,7 +51,7 @@ Page({
       },
       success: function (res) {
         if (res.statusCode == 200) {
-          console.log("考试信息返回成功")
+          console.log("CET信息返回成功")
           that.setData({
             cetInfo: res.data
           })
@@ -62,7 +61,8 @@ Page({
           })
           wx.hideLoading()
           app.globalData.hasCetInfo = true;
-        } else {
+        } 
+        else {
           console.log("获取CET数据失败")
           app.globalData.hasCetInfo = false;
         }
@@ -72,6 +72,6 @@ Page({
         app.globalData.hasCetInfo = false;
       }
     });
-    console.log('触发更新CET数据')
-  },
+    console.log('触发更新CET数据函数onUnload()')
+  }
 })

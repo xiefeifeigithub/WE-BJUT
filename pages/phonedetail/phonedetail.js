@@ -1,18 +1,11 @@
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     phoneList: [],  //指定标签的电话列表
     lastid: 0,  //数据id
     label: null  //分类标签
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this.data.label = app.globalData.label
     var label = this.data.label
@@ -88,18 +81,12 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
     wx.setNavigationBarTitle({
       title: this.data.label
     })
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   }

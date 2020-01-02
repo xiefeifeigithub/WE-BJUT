@@ -1,5 +1,5 @@
 <view class="warp">
-  <!--循环输出列表 begin-->
+  <!--循环输出列表-->
   <view wx:for="{{phoneList}}" wx:for-index='id'>
     <view class="list">
       <view class="title">{{item.department}}</view>
@@ -7,5 +7,4 @@
     </view>
     <view class='borderline'></view>
   </view>
-
 </view>

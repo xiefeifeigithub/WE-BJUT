@@ -1,10 +1,11 @@
 //获取应用实例
 var app = getApp()
+
 var common = require('../../utils/common.js');
-// var score = require('../../utils/score.js');
-var timeTable = require('../../utils/timeTable.js');
+var timeTable = require('../../utils/timeTable.js')
 var timeFormat = require('../../utils/util.js')
-var util = require('../../utils/util.js');
+var util = require('../../utils/util.js')
+
 Page({
   data: {
     //轮播图
@@ -16,59 +17,13 @@ Page({
     inputShowed: false,
     inputVal: "",
 
+    //用来一步一步得到距离当前时间最近的一节课数据
     currentDayTable:[],  //当天的课表
     currentWeekTable:[], //当周的课表
-
     todayTimeTable: [], //简化后的当天的课表
     nearestTimeTable: [],   //距离当前最近的一节课
-    
-    timeInterval:1,  //用来判断是否开学
     todayHaveClass: false,   //今天是否有课
-    todayFinishClass:false,   //今天的课是否上完了
-    //导航数据
-    student:
-      [
-        {
-          icon: '/images/kjs.png',   //0
-          src: '../timetable/timetable',
-          title: '课表'
-        },
-        {
-          icon: '/images/ck.png',   // 1
-          src: '../rooms/rooms',
-          title: "空教室"
-        },
-        {
-          icon: '/images/tsg.png',  // 2
-          src: '/pages/score/score-query',
-          title: "成绩"
-        },
-        {
-          icon: '/images/cet.png',   //4
-          src: '../cet/cet',
-          title: "等级考试"
-        },
-        {
-          icon: '/images/kc.png',   //3
-          src: '/pages/exam/exam',
-          title: "考试信息"
-        },
-        {
-          icon: '/images/ditu.png',  //5 
-          src: '/pages/map/map',
-          title: "地点查询"
-        },
-        {
-          icon: '/images/dianhua.png', //6
-          src: '/pages/phone/phone',
-          title: '电话黄页'
-        },
-        {
-          icon: '/images/qa.png',  //7 
-          src: '/pages/qa/qa',
-          title: '一问一答'
-        }
-      ]
+    todayFinishClass:false  //今天的课是否上完了
   },
 
   globalData:{
@@ -76,252 +31,271 @@ Page({
     password:""
   },
 
-  //处理主页点击图标跳事件
-  touchIcon: function (options) {
-    console.log(options.currentTarget.dataset.index)
+  //事件：课表
+  touchTimetableIcon: function (options) {
+    console.log("Click Schedule")
+
     var that = this
-    switch (options.currentTarget.dataset.index) {
-      case "0":
-      //先判断用户是否登录过
-        if (app.globalData.hasBaseInfo) {
-          //有缓存的课表直接跳转课表显示,否则发起请求获取课表数据
-          var tableList = [];
-          if(app.globalData.hasTimetableInfo){
-            wx.navigateTo({
-              url: '../timetable/timetable',
-            })
-          }else{
-            wx.showLoading({
-              title: '查询中...',
-            })
-            wx.request({
-              url: 'https://www.bjut1960.cn/schedule',
-              method: 'POST',
-              data: {
-                xh: that.globalData.account,
-                mm: that.globalData.password,
-                xn: '2019-2020',
-                xq: '1'
-              },
-              header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              success: function (res) {
-                console.log("课表数据")
-                console.log(res.data)
-                // console.log("实践课：" + JSON.parse(JSON.stringify(res.data.exercise)))
-                if (res.statusCode == 200) {
-                  //1解析课表数据
-                  //2存储课表、实践课
-                  wx.setStorage({
-                    key: app.data.keyExerciseLesson,
-                    data: res.data.exercise,
-                  })
-                  tableList = app.parseTimetableData(JSON.parse(JSON.stringify(res.data.table)));
-                  app.globalData.hasTimetableInfo = true;
-                  wx.hideLoading()
-                  wx.navigateTo({
-                    url: '../timetable/timetable',
-                  })
-                } else {
-                  wx.hideLoading()
-                  app.globalData.hasTimetableInfo = false;
-                  wx.showToast({
-                    title: '教务系统暂时无课表信息',
-                    icon: 'none'
-                  })
-                }
-              },
-              fail: function (res) {
-                wx.hideLoading()
-                console.log('获取课表失败');
-                app.globalData.hasTimetableInfo = false;
-                console.log(res);
-              }
-            });
-          }
-          
-        } else {
-          wx.switchTab({
-            url: '../account/account',
-          })
-        }
-        break;
-      case "1":
+
+    //先判断用户是否登录
+    if(app.globalData.hasBaseInfo) {
+      //有缓存的课表直接跳转课表显示,否则发起请求获取课表数据
+      var tableList = []
+      if (app.globalData.hasTimetableInfo) {
         wx.navigateTo({
-          url: '../rooms/rooms',
-        });
-        break;
-      case "2":
-        //先判断用户是否登录过
-        if (app.globalData.hasBaseInfo){
-          wx.request({
-            url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Score/Score/getCanuseScore',
-            success:function(res){
-              console.log(res)
-              if(res.data[0].canuse == "1"){
-                console.log("执行跳转逻辑")
-                wx.navigateTo({
-                  url: '../score/score-query',
-                })
-              } else if (res.data[0].canuse == "0"){
-                wx.showToast({
-                  title: '教务当前没有成绩数据',
-                  icon: 'none'
-                }); 
-              }
+          url: '../timetable/timetable',
+        })
+      }
+      else{
+        wx.showLoading({
+          title: '查询中...',
+        })
+
+        wx.request({
+          url: app.data.url_crawler + 'schedule',
+          method: 'POST',
+          data: {
+            xh: that.globalData.account,
+            mm: that.globalData.password,
+            xn: '2019-2020',
+            xq: '1'
+          },
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          success: function (res) {
+            // console.log("课表数据")
+            // console.log(res.data)
+            // console.log("实践课：" + JSON.parse(JSON.stringify(res.data.exercise)))
+            if (res.statusCode == 200) {
+              //1解析课表数据
+              //2存储课表、实践课
+              wx.setStorage({
+                key: app.data.keyExerciseLesson,
+                data: res.data.exercise,
+              })
+              tableList = app.parseTimetableData(JSON.parse(JSON.stringify(res.data.table))); //解析并存储课表数据
+              app.globalData.hasTimetableInfo = true;
+              wx.hideLoading()
+              wx.navigateTo({
+                url: '../timetable/timetable',
+              })
+            } 
+            else {
+              wx.hideLoading()
+              app.globalData.hasTimetableInfo = false;
+              wx.showToast({
+                title: '没有课表数据',
+                icon: 'none'
+              })
             }
-          })
-        } else {
-          wx.switchTab({
-            url: '../account/account',
-          })
-        }
-        break;
-      case "4":
-      //先判断用户是否登录过
-        if (app.globalData.hasBaseInfo) {
-          if(app.globalData.hasCetInfo){
-            wx.navigateTo({
-              url: '../cet/cet',
-            });
-          }else{
-            wx.showLoading({
-              title: 'CET成绩查询中...',
-            })
-            wx.request({
-              url: 'https://www.bjut1960.cn/grade',
-              method: 'POST',
-              data: {
-                xh: that.globalData.account,
-                mm: that.globalData.password
-              },
-              header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              success: function (res) {
-                if (res.statusCode == 200) {
-                  console.log("查询cet信息成功")
-                  wx.setStorage({
-                    key: app.data.keyCet,
-                    data: res.data,
-                  })
-                  wx.hideLoading()
-                  app.globalData.hasCetInfo = true;
-                  wx.navigateTo({
-                    url: '../cet/cet',
-                  });
-                } else {
-                  wx.hideLoading();
-                  app.globalData.hasCetInfo = false;
-                  wx.showToast({
-                    title: '查询失败...',
-                    icon: 'none'
-                  })
-                  console.log("查询cet信息失败")
-                }
-              },
-              fail: function (res) {
-                console.log('登录失败');
-                app.globalData.hasCetInfo = false;
-              }
-            });
-          }
-        } else {
-          wx.switchTab({
-            url: '../account/account',
-          })
-        }
-        break;
-      case "3":
-        if (app.globalData.hasBaseInfo){
-          if(app.globalData.hasExamInfo){
-            wx.navigateTo({
-              url: '/pages/exam/exam',
-            });
-          }else{
-            wx.showLoading({
-              title: '考试信息查询中...',
-            })
-            wx.request({
-              url: 'https://www.bjut1960.cn/examination',
-              method: 'POST',
-              data: {
-                xh: that.globalData.account,
-                mm: that.globalData.password
-              },
-              header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              success: function (res) {
-                if (res.statusCode == 200) {
-                  console.log("考试信息返回成功")
-                  wx.setStorage({
-                    key: app.data.keyExamInfo,
-                    data: res.data,
-                  })
-                  app.globalData.hasExamInfo = true;
-                  wx.hideLoading()
-                  wx.navigateTo({
-                    url: '/pages/exam/exam',
-                  });
-                } else {
-                  wx.hideLoading()
-                  app.globalData.hasExamInfo = false;
-                  wx.showToast({
-                    title: '查询失败...',
-                    icon: 'none'
-                  })
-                  console.log("查询考试信息失败")
-                }
-              },
-              fail: function (res) {
-                console.log("请求考试信息出错:" + res)
-                app.globalData.hasExamInfo = false;
-              }
-            });
-          }
-        }else {
-          wx.switchTab({
-            url: '../account/account',
-          })
-        }
-        break;
-      case "5":
-        wx.navigateTo({
-          url: '/pages/navi/navi',
-        }); 
-        break;
-      case "6":
-        wx.navigateTo({
-          url: '/pages/phone/phone',
-        }); 
-        break;
-      case "7":
-        wx.navigateTo({
-          url: '/pages/qa/qa',
-        }); 
-        break;
+          }, //success
+          fail: function (res) {
+            wx.hideLoading()
+            console.log('获取课表失败');
+            app.globalData.hasTimetableInfo = false;
+            console.log(res);
+          } //fail
+        })
+      }
+    } //if
+    else {
+      wx.switchTab({
+        url: '../account/account',
+      })
+    } //else
+  },
+
+  //事件：空教室
+  touchRoomIcon: function (options) {
+    console.log('Click Room')
+    wx.navigateTo({
+      url: '../rooms/rooms',
+    })
+  },
+
+  //事件：成绩
+  touchScoreIcon: function (options) {
+    console.log("Click Score")
+
+    var that = this
+
+    //先判断用户是否登录过
+    if(app.globalData.hasBaseInfo){
+      wx.navigateTo({
+        url: '../score/score-query',
+      })
     }
+    else{
+      wx.switchTab({
+        url: '../account/account',
+      })
+    }
+  },
+
+  //事件：考试
+  touchExamIcon: function (options) {
+    console.log("Click Exam")
+
+    var that = this
+
+    if (app.globalData.hasBaseInfo) {
+      if (app.globalData.hasExamInfo) {
+        wx.navigateTo({
+          url: '/pages/exam/exam',
+        });
+      } 
+      else {
+        wx.showLoading({
+          title: '考试信息查询中...',
+        })
+        wx.request({
+          url: app.data.url_crawler + 'examination',
+          method: 'POST',
+          data: {
+            xh: that.globalData.account,
+            mm: that.globalData.password
+          },
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          success: function (res) {
+            if (res.statusCode == 200) {
+              wx.setStorage({
+                key: app.data.keyExamInfo,
+                data: res.data,
+              })
+              app.globalData.hasExamInfo = true;
+              wx.hideLoading()
+              wx.navigateTo({
+                url: '/pages/exam/exam',
+              });
+            } 
+            else {
+              wx.hideLoading()
+              app.globalData.hasExamInfo = false;
+              wx.showToast({
+                title: '查询失败...',
+                icon: 'none'
+              })
+            }
+          },
+          fail: function (res) {
+            console.log("请求考试信息出错:" + res)
+            app.globalData.hasExamInfo = false;
+          }
+        });
+      }
+    } 
+    else {
+      wx.switchTab({
+        url: '../account/account',
+      })
+    }
+  },
+
+  //事件：CET(等级考试)
+  touchCetIcon: function (options) {
+    console.log("Click CET")
+
+    var that = this
+
+    //先判断用户是否登录过
+    if (app.globalData.hasBaseInfo) {
+      if (app.globalData.hasCetInfo) {
+        wx.navigateTo({
+          url: '../cet/cet',
+        })
+      } 
+      else {
+        wx.showLoading({
+          title: 'CET成绩查询中...',
+        })
+        wx.request({
+          url: app.data.url_crawler + 'cet',
+          method: 'POST',
+          data: {
+            xh: that.globalData.account,
+            mm: that.globalData.password
+          },
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          success: function (res) {
+            if (res.statusCode == 200) {
+              console.log("查询cet信息成功")
+              wx.setStorage({
+                key: app.data.keyCet,
+                data: res.data,
+              })
+              wx.hideLoading()
+              app.globalData.hasCetInfo = true;
+              wx.navigateTo({
+                url: '../cet/cet',
+              })
+            } 
+            else {
+              wx.hideLoading()
+              app.globalData.hasCetInfo = false
+              wx.showToast({
+                title: '查询失败...',
+                icon: 'none'
+              })
+            }
+          },
+          fail: function (res) {
+            console.log('登录失败')
+            app.globalData.hasCetInfo = false
+          }
+        });
+      }
+    } //if
+    else {
+      wx.switchTab({
+        url: '../account/account',
+      })
+    } //else
+  },
+
+  //事件：地点查询
+  touchLocationIcon: function(options) {
+    console.log("Click Loaction query")
+
+    wx.navigateTo({
+      url: '/pages/navi/navi',
+    })
+  },
+
+  //事件：电话查询
+  touchTelephoneIcon: function(options) {
+    console.log("Click Telephone query")
+
+    wx.navigateTo({
+      url: '/pages/phone/phone',
+    })
+  },
+
+  //事件：同学须知
+  touchNoticeIcon: function(options) {
+    console.log("Click Notice")
+    
+    wx.navigateTo({
+      url: '/pages/qa/qa',
+    })
   },
   
   onLoad: function () {
     this.updataData()
     console.log("onLoad ~ pages/index ~ 请求轮播图数据")
 
-    //var TIME = util.formatDate(new Date());
     var currentWeek = app.globalData.currentWeek;
     this.setData({
       currentweek: currentWeek
     });
-
-
-
   },
 
-  //获取最新学期当前周的课表
+  //获取当前周的课表(最新学期)
   showTodayTimeTable:function(){
-
     var that = this
 
     //将前一天的课程数据清除
@@ -329,7 +303,7 @@ Page({
     that.data.currentWeekTable = []
     that.data.currentDayTable = []
 
-    //获取当前周的数据
+    //获取当前周的数据(最新学期)
     timeTable.query_table('2019-2020', '1')
     if (app.globalData.hasTimetableInfo) {
       const localTimeTable = wx.getStorageSync(app.data.keyTimetable);
@@ -339,12 +313,12 @@ Page({
         this.currentTimeTable()
       }
       else {
-        console.log("获取课表失败")
+        console.log("获取 xn=2019-2020&xq=1 课表失败")
       }
     }
   },
 
-  //统计最新学期当天的课表
+  //统计当天的课表(最新学期)
   currentTimeTable:function(){
     var currentWeekTable = this.data.currentWeekTable
     var currentDay = new Date().getDay();
@@ -359,27 +333,28 @@ Page({
         this.data.currentDayTable.push(currentWeekTable[i])
       }
 
-    var currentWeekday = ''
-    if (currentDay == 1)
-      currentWeekday = '一'
-    if (currentDay == 2)
-      currentWeekday = '二'
-    if (currentDay == 3)
-      currentWeekday = '三'
-    if (currentDay == 4)
-      currentWeekday = '四'
-    if (currentDay == 5)
-      currentWeekday = '五'
-    if (currentDay == 6)
-      currentWeekday = '六'
-    if (currentDay == 7)
-      currentWeekday = '日'
+      var currentWeekday = ''
+
+      if (currentDay == 1)
+        currentWeekday = '一'
+      if (currentDay == 2)
+        currentWeekday = '二'
+      if (currentDay == 3)
+        currentWeekday = '三'
+      if (currentDay == 4)
+        currentWeekday = '四'
+      if (currentDay == 5)
+        currentWeekday = '五'
+      if (currentDay == 6)
+        currentWeekday = '六'
+      if (currentDay == 7)
+        currentWeekday = '日'
 
       this.setData({
         currentDay: currentDay,
         currentWeekday: currentWeekday
-      });
-    }
+      })
+    } //for
 
     //化简当天课表数据
     var tempList = this.data.currentDayTable;
@@ -408,7 +383,7 @@ Page({
         "lessonStartTime": lessonStartTime,
         "lessonEndTime": lessonEndTime
       })
-    }
+    } //for
 
     // //处理当天课表中180分钟的大课，将其合并为节数为4的大课
     // var todayTimeTable = this.data.todayTimeTable
@@ -426,8 +401,6 @@ Page({
 
     //今天有课
     if(this.data.todayTimeTable.length!=0){
-      // this.data.todayTimeTable = '今天没有课哦'
-      // this.data.nearestTimeTable = '今天没有课哦'
       this.setData({
         todayHaveClass: true  //标记为有课
       })
@@ -435,60 +408,53 @@ Page({
       console.log(this.data.todayTimeTable)
       //显示距离当前时间最近的一节课
       this.showNearestTimeTable();
-    }
+    } //if
     else{
-      console.log("今天没课")
-    }
+      this.setData({
+        todayHaveClass: false  //标记为没有课
+      })
+    } //else
   },
 
   //显示距离当前时间最近的一节课
   showNearestTimeTable:function(){
     var that = this
     var todayTimeTable = that.data.todayTimeTable;
+
     //通州校区和本部校区的上课时间不一致，根据学号判断校区，然后分别处理
     var account = that.globalData.account
     console.log("账号为")
     console.log(account)
    // account = '19041527'
     var top2 = account.substr(0,2)
-    console.log("学号前两位数字")
-    console.log(top2)
+    // console.log("学号前两位数字")
+    // console.log(top2)
     var collegeCode = account.substr(2,2)  //学号中的第3、4位数字代表学院代码
-    console.log("学院代码|05~环能")  
-    console.log(collegeCode + "   环能学院大一在本部上课")
+    // console.log("学院代码|05~环能")  
+    // console.log(collegeCode + "   环能学院大一在本部上课")
+
     //对获取到的当前时间对照上课时间进行判断,返回当前时间所对应的节数
     //通州校区 ~ 暂时不处理部分大一就在本部上课的菜鸟
     var nodeNumber
     if(top2>='19' && collegeCode!='05'){
-      console.log("通州校区")
-      nodeNumber = that.returnCurrentTimeCorrespondingNodeNumber_tz();
-      console.log("当前时间对应的节数")
-      console.log(nodeNumber)
+      // console.log("通州校区")
+      nodeNumber = that.returnCurrentTimeCorrespondingNodeNumber_tz(); //通州校区
+      // console.log("当前时间对应的节数")
+      // console.log(nodeNumber)
       //根据返回的节数，判断距离当前时间最近的一节课
       that.updateByNodeNumber_tz(nodeNumber)
     }
     else{  //本部
-      console.log("本部校区")
-      nodeNumber = that.returnCurrentTimeCorrespondingNodeNumber_cy();
-      console.log("当前时间对应的节数")
-      console.log(nodeNumber)
+      // console.log("本部校区")
+      nodeNumber = that.returnCurrentTimeCorrespondingNodeNumber_cy(); //朝阳校区
+      // console.log("当前时间对应的节数")
+      // console.log(nodeNumber)
       //根据返回的节数，判断距离当前时间最近的一节课
       that.updateByNodeNumber_cy(nodeNumber)
     }
     
-    console.log("最终结果")
-    console.log(that.data.nearestTimeTable)
-    
-    //判断是否开学
-    // var semesterStartDate = new Date('2019/09/02 00:00:00')
-    // var currentDate = new Date();
-    // var timeInterval = parseFloat(currentDate - semesterStartDate);
-    // console.log('timeInterval')
-    // console.log(timeInterval)
-    // that.data.timeInterval = timeInterval
-    // that.setData({
-    //   timeInterval: that.data.timeInterval
-    // })
+    // console.log("最终结果")
+    // console.log(that.data.nearestTimeTable)
     
     that.setData({
       nearestTimeTable: that.data.nearestTimeTable
@@ -559,13 +525,13 @@ Page({
       if (time != '') {
         that.data.nearestTimeTable[0].time = time;
       }
-    }
+    } //if
     else {
       // this.data.nearestTimeTable = "今天的课上完啦"
       that.setData({
         todayFinishClass: true   //标记今天的课上完了
       })
-    }
+    } //else
   },
 
   //根据返回的节数，判断距离当前时间最近的一节课 通州校区~tz
@@ -715,26 +681,5 @@ Page({
     
     //显示当天课表（内含显示离当前时间最近的一节课）
     this.showTodayTimeTable()
-
-    //考研倒计时
-    if(this.globalData.account == '16041527'){
-      this.countDown()
-    }
-  },
-
-
-  //显示考研倒计时
-  countDown:function() {
-    var postgraduateExamTime = new Date('2019/12/21 00:00:00')
-    var currentDate = new Date();
-    var interval = parseFloat(postgraduateExamTime-currentDate);
-    var days = (interval / 1000 / 60 / 60 / 24).toFixed(0);
-
-    wx.showModal({
-      title: '距离考研还有',
-      content: days + '天',
-      confirmText: '无所畏惧'
-    })
   }
-
-})
+}) //Page

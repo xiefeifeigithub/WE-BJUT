@@ -1,15 +1,9 @@
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  //页面初始数据
   data: {
     info: {},
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     console.log("所选轮播图id：" + options.id)
     var difference = ''
@@ -34,7 +28,7 @@ Page({
           title: '获取数据失败,请检查网络连接',
         })
       }
-    })
+    }); //wx.request
   },
 
   //用户点击右上角分享

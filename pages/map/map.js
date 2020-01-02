@@ -39,7 +39,7 @@ Page({
           latitude: res.latitude,
           longitude: res.longitude,
           scale: 18
-        });
+        })
       }
     })
   },

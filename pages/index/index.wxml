@@ -18,8 +18,9 @@
     <text style='color: #515151;font-weight:700;'>距当前时间最近的课程</text>
     <text style='color: #adadad;'>第{{currentweek}}周 星期{{currentWeekday}}</text>
   </view>
+
   <view class='timetable-line'></view>
-  <!-- 今天有课并且课还没上完 -->
+   <!-- 今天有课并且课还没上完 -->
    <view class='timetable-content' wx:if="{{nearestTimeTable.length > 0 && todayHaveClass==true && todayFinishClass==false}}"> 
     <view class='timetable-time'>{{nearestTimeTable[0].time}}</view>
     <view class='timetable-right'>
@@ -27,36 +28,34 @@
       <text class='timetable-location'>{{nearestTimeTable[0].location}}</text>
     </view>
   </view>
+
   <!-- 今天没课 -->
-   <view class='timetable-content' wx:if="{{ todayHaveClass==false }}">
+  <view class='timetable-content' wx:if="{{ todayHaveClass==false }}">
     <view class='timetable-no'>今天没有课哦</view>
   </view>
-<!-- 今天的课上完了 -->
+  <!-- 今天的课上完了 -->
   <view class='timetable-content' wx:if="{{ todayHaveClass==true && todayFinishClass==true }}">
     <view class='timetable-no'>今天的课终于上完啦</view>
   </view>
-  
 </view>
-<!--{{nearestTimeTable[0].lessonName}}-->
+
 <view class='nav-list'>
-  <view class='nav-li' catchtap='touchIcon' data-index='0'>
+  <view class='nav-li' data-text="课表" catchtap="touchTimetableIcon">
     <view class='nav-title'>课表</view>
     <view class='nav-name'>Schedule</view>
   </view>
 
-
-  <view class='nav-li' catchtap='touchIcon' data-index='1'>
+  <view class='nav-li' data-text="空教室" catchtap="touchRoomIcon">
     <view class='nav-title'>空教室</view>
     <view class='nav-name'>Room</view>
   </view>
 
-  <view class='nav-li' catchtap='touchIcon' data-index='2'>
+  <view class='nav-li' data-text="成绩" catchtap="touchScoreIcon">
     <view class='nav-title'>成绩</view>
     <view class='nav-name'>Score</view>
   </view>
 
-
-  <view class='nav-li' catchtap='touchIcon' data-index='3'>
+  <view class='nav-li' data-text="考试" catchtap="touchExamIcon">
     <view class='nav-title'>考试</view>
     <view class='nav-name'>Exam</view>
   </view>
@@ -66,34 +65,23 @@
 <view class='border-line'></view>
 
 <view class='nav'>
-  <view class='item' catchtap='touchIcon' data-index='4'>
+  <view class='item'  data-text="等级考试" catchtap="touchCetIcon">
     <image src='../../images/cet.png'></image>
     <text>等级考试</text>
   </view>
 
-  <view class='item' catchtap='touchIcon' data-index='5'>
+  <view class='item' data-text="地点查询" catchtap="touchLocationIcon">
     <image src='../../images/ditu.png'></image>
     <text>地点查询</text>
   </view>
 
-  <view class='item' catchtap='touchIcon' data-index='6'>
+  <view class='item' data-text="电话查询" catchtap="touchTelephoneIcon">
     <image src='../../images/dianhua.png'></image>
-    <text>电话黄页</text>
+    <text>电话查询</text>
   </view>
 
-  <view class='item' catchtap='touchIcon' data-index='7'>
+  <view class='item' data-text="同学须知" catchtap="touchNoticeIcon">
     <image src='../../images/qa.png'></image>
     <text>同学须知</text>
   </view>
 </view>
-
-
-<!--gjy:不许删！！！<view class="nav">
-  <block wx:for="{{student}}">
-    <view class="item">
-      <image src="{{item.icon}}" id="{{index}}" catchtap='touchIcon'></image>
-      <view>\n</view>
-      <text>{{item.title}}</text>
-    </view>
-  </block>
-</view>-->

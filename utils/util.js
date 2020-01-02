@@ -7,8 +7,6 @@ const formatTimeOfTimeTable = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  // return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-
   return [hour, minute, second].map(formatNumber).join(':')  //返回格式h:m:s
 }
 
@@ -32,7 +30,6 @@ const formatDate = date => {
   const day = date.getDate()
 
   return [year, month, day].map(formatNumber).join('/')
-
 }
 
 const formatNumber = n => {

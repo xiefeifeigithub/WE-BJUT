@@ -1,9 +1,7 @@
-//index.js
 //获取应用实例
 const app = getApp()
 Page({
   data: {
-    //colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
     colorArrays:["#0081FF","#E03997","#F37B1D","#1CBBB4","#39B54A","#9C26B0","#A5673F","#8DC63F"],
     currList: [],               //当前显示的课表信息(不包含教师姓名，上课周)
     lessonName: '',             //课程名称
@@ -16,47 +14,21 @@ Page({
     wholeLessonList: [],        //完整的课程信息（含教师姓名，上课周）
     exerciseLesonList: [],      //实践课课程信息
     text: '本周',
-    
   },
   globalData:{
-    isShowAll: false,
+    isShowAll: false, //是否显示本学期所有课表
     currentWeek: 0
   },
   onLoad: function() {
-    //判断用户是否登录过,如果没有登录则跳转登录页面。
-    //const user = wx.getStorageSync(app.data.keyUserName)
-   
-  
-    console.log("数据从本地获取");
-
-    wx.getSystemInfo({
-      success(res) {
-        console.log(res.windowHeight)
-      }
-    })
+    console.log("从本地获取课表数据");
 
     this.getTimetableFromLocal();
     this.getExerciseLessonFromLocal();
     this.dialog = this.selectComponent("#dialog");
-    // //new add
-    // this.showAllOrPart();
     console.log("timetable onload invoked")
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-    console.log("timetable onready invoked")
-  },
-
-  onShow: function() {
-    console.log("timetable onshow invoked")
-  },
-  
-  /**
-   * 从本地获取课程表数据
-   */
+  //从本地获取课程表数据
   getTimetableFromLocal: function() {
     var localData = [];
     var that = this;
@@ -64,7 +36,6 @@ Page({
     try {
       console.log("从课表页读取课表数据");
       const value = wx.getStorageSync(app.data.keyTimetable);
-      // console.log(value)
       if (value) {
         localData = value;
         //将本地读取的数据保存到wholeLessonList
@@ -89,15 +60,14 @@ Page({
         localData = value;
         that.setData({
           exerciseLesonList: localData
-        });
+        })
       }
     } catch (e) {
       console.log("获取本地实践课出现异常")
     }
   },
-  /**
-   * 点击课程显示课表详情的对话框
-   */
+
+  //点击课程显示课表详情的对话框
   showDialog(options) {
     var that = this;
     var lessonStart = that.data.currList[options.currentTarget.id].start;
@@ -248,29 +218,35 @@ Page({
     var endTimeHour = ''
     if (startTime.getHours() < 10) {
       startTimeHour = '0' + startTime.getHours()
-    } else {
+    } 
+    else {
       startTimeHour = '' + startTime.getHours()
     }
 
     if (endTime.getHours() < 10) {
       endTimeHour = '0' + endTime.getHours()
-    } else {
+    } 
+    else {
       endTimeHour = '' + endTime.getHours()
     }
 
     if (startTime.getMinutes() == 0) {
       startTimeMinutes = "00"
-    } else if (startTime.getMinutes() > 0 && startTime.getMinutes() < 10) {
+    } 
+    else if (startTime.getMinutes() > 0 && startTime.getMinutes() < 10) {
       startTimeMinutes = '0' + startTime.getMinutes()
-    } else {
+    } 
+    else {
       startTimeMinutes = '' + startTime.getMinutes()
     }
 
     if (endTime.getMinutes() == 0) {
       endTimeMinutes = "00"
-    } else if (endTime.getMinutes() > 0 && endTime.getMinutes() < 10) {
+    } 
+    else if (endTime.getMinutes() > 0 && endTime.getMinutes() < 10) {
       endTimeMinutes = '0' + endTime.getMinutes()
-    } else {
+    } 
+    else {
       endTimeMinutes = '' + endTime.getMinutes()
     }
     var tempTimeStr = "" + startTimeHour + ":" + startTimeMinutes + "|" + endTimeHour + ":" + endTimeMinutes
@@ -279,7 +255,6 @@ Page({
 
   //显示当前周的课表
   showTimetableByCurrentWeek: function() {
-
     this.globalData.currentWeek = app.globalData.currentWeek
     
     var currWeekLessons = [];
@@ -293,25 +268,27 @@ Page({
       //如果起始周是两位数
       if (gap1 == 2) {
         weekStart = parseInt(strLesson[2].charAt(0)) * 10 + parseInt(strLesson[2].charAt(1));
-      } else {
+      } 
+      else {
         weekStart = parseInt(strLesson[2].charAt(0));
       }
       //如果结束周为两位数
       if ((gap2 - gap1) == 3) {
         weekEnd = parseInt(strLesson[2].charAt(gap2 - 2)) * 10 + parseInt(strLesson[2].charAt(gap2 - 1));
-      } else {
+      } 
+      else {
         weekEnd = parseInt(strLesson[2].charAt(gap2 - 1));
       }
       if (this.globalData.currentWeek >= weekStart && this.globalData.currentWeek <= weekEnd) {
         currWeekLessons.push(this.data.wholeLessonList[i]);
       }
     }
-    this.setLessonListSimple(currWeekLessons);
+    this.setLessonListSimple(currWeekLessons)
   },
 
   //处理点击显示本周课表按键
   currWeekLesson: function() {
-    console.log("激发currWeekLesson");
+    console.log("切换到本周课表数据")
     this.showTimetableByCurrentWeek();
   },
 
@@ -345,25 +322,23 @@ Page({
         allLessonsList: list
       })
       this.showTimetableByCurrentWeek()
-    }else{
+    }
+    else{
       this.setData({
         currList: list
       })
     }
-
   },
-  /**
-   * 显示所有课表，如果时间重叠，用角标标注
-   */
+
+  //显示所有课表，如果时间重叠，用角标标注
   showTimetableByAll: function() {
     var tempList = this.data.allLessonsList;
     this.setData({
       currList: tempList
-    });
+    })
   },
-  /**
-   * 点击悬浮按钮显示全部或者本周课表
-   */
+
+  //点击悬浮按钮显示全部或者本周课表
   showAllOrPart: function() {
     if (this.globalData.isShowAll == false) {
       this.globalData.isShowAll = true
@@ -371,14 +346,16 @@ Page({
         text: '全部'
       });
       this.showTimetableByAll();
-    } else {
+    } 
+    else {
       this.globalData.isShowAll = false
       this.setData({
         text: '本周'
-      });
+      })
       this.showTimetableByCurrentWeek();
     }
   },
+
   //页面初次渲染完成时触发
   onReady: function() {
     //动态设置当前页面的标题

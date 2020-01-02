@@ -1,7 +1,6 @@
 <view class='notice'>公告:我们承诺绝对不会保存您的账号密码,请放心使用:)</view>
 
 <view class='content'>
-  
     <view class="about-wei">
       <view>
         <open-data class="about-img" mode="scaleToFill" type="userAvatarUrl"></open-data>
@@ -12,7 +11,6 @@
     </view>
   </view>
   
-
   <form wx:if="{{unload}}" bindsubmit="formSubmit" class="form">
     <view class="main-card-item">
       <view class="card-item-hd">
@@ -36,7 +34,7 @@
       <button class="sub-button" form-type='submit'>确认登录</button>
     </view>
   
-<!-- 机器人 -->
+    <!-- 机器人 -->
     <button class='btn1'  
     session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
         <image src='../../images/jiqiren.png' mode="scaleToFill"></image>
@@ -46,35 +44,41 @@
 
   <!-- 学生信息展示 -->
   <view class="wrap" wx:if="{{!unload}}">
-  <view class='background'>
+   <view class='background'>
     <view class="info">
+
     <view class='tags'>
       <view class='title'>学院</view>
       <view class='text'>{{info.college}}</view>
     </view>
+
     <view class='borderline'></view>
     <view class='tags'>
       <view class='title'>专业</view>
       <view class='text'>{{info.major}}</view>
     </view>
+
     <view class='borderline'></view>
     <view class='tags'>
       <view class='title'>班级</view>
       <view class='text'>{{info.class}}</view>
     </view>
+
     <view class='borderline'></view>
     <view class='tags'>
       <view class='title'>学号</view>
       <view class='text'>{{info.stuNum}}</view>
     </view>
+
     <view class='borderline'></view>
     <view class='tags'>
       <view class='title'>姓名</view>
       <view class='text'>{{info.sutName}}</view>
     </view>
+
     <view class='borderline'></view>
-    </view>
-    </view>
+   </view>
+  </view>
 
     <button class='btn1'  
     session-from="bot | {{nickName}} | {{avatarUrl}}"  open-type='contact'>
@@ -85,4 +89,4 @@
     <view class="submit">
       <button class="sub-button" bindtap='logout'>退出登录</button>
     </view>
-  </view>
+</view>
