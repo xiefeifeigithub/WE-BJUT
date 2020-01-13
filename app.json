@@ -1,6 +1,6 @@
 {
   "pages": [
-  
+    "pages/newscontent/newscontent",
     "pages/index/index",
     "pages/score/score-query",
     "pages/score/score-result/score-result",
