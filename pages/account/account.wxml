@@ -30,6 +30,13 @@
         <input password='{{passwordStatus}}' name="password" value='{{userPwd}}' bindinput="passWdInput" class="item-pwd" placeholder="请输入教务密码" />
         <image class="item-icon" src="/images/appear.png" bindtouchstart='changeStatus'></image>
       </view>
+
+<view class="card-item-hd">
+        <image class="item-icon" src="/images/key.png"></image>
+        <input password='{{passwordStatus}}' name="password" value='{{userPwd}}' bindinput="passWdInput" class="item-pwd" placeholder="请输入my.bjut.edu.cn网密码" />
+        <image class="item-icon" src="/images/appear.png" bindtouchstart='changeStatus'></image>
+      </view>
+
     </view>
 
     <view class="submit">
