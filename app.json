@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/newscontent/newscontent",
     "pages/index/index",
     "pages/score/score-query",
     "pages/score/score-result/score-result",
@@ -19,7 +18,9 @@
     "pages/qa/qa",
     "pages/phonedetail/phonedetail",
     "pages/navi/navi",
-    "pages/navigatpage/navigatpage"
+    "pages/navigatpage/navigatpage",
+    "pages/news/news",
+    "pages/newscontent/newscontent"
   ],
   "window": {
     "backgroundTextStyle": "light",
