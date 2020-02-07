@@ -1,13 +1,10 @@
 var app = getApp()
+
 Page({
   data: {
     examInfo: []  //考试信息
   },
-  globalData: {
-    account: null,
-    pwd: null
-  },
-
+  
   globalData:{
     account: '', //用户名
     password: '', //密码
@@ -26,8 +23,8 @@ Page({
     wx.setNavigationBarTitle({
       title: '考试信息查询'
     })
-    
   },
+
   //每次查看考试信息除了从缓存中读取第一次保存的信息之外，每次在退出页面之后进行最新的数据获取，并保存
   onShow: function () {
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
@@ -37,11 +34,12 @@ Page({
   onUnload: function () {
     var account = this.globalData.account
     var password = this.globalData.pwd
+
     var that = this
-    console.log("exam调用onUnload()");
+
     //考试信息
     wx.request({
-      url: 'https://www.bjut1960.cn/examination',
+      url:app.data.url_crawler + 'examination',
       method: 'POST',
       data: {
         xh: account,
@@ -51,7 +49,6 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
-        console.log(res)
         if (res.statusCode == 200) {
           console.log("考试信息返回成功")
           wx.setStorage({
@@ -60,7 +57,8 @@ Page({
           })
           app.globalData.hasExamInfo = true;
           wx.hideLoading()
-        } else {
+        } 
+        else {
           app.globalData.hasExamInfo = false;
           console.log("请求考试信息出错")
         }
@@ -69,7 +67,8 @@ Page({
         console.log("请求考试信息出错:" + res)
         app.globalData.hasExamInfo = false;
       }
-    });
-    console.log('触发更新考试信息exam数据')
-  },
+    }); //wx.request
+
+    console.log('触发更新考试信息exam数据函数onUnload()')
+  }
 })

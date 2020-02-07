@@ -1,8 +1,13 @@
 //app.js
 
+const Towxml = require('/towxml/main');     // 引入towxml库
+
 App({
+
+  towxml:new Towxml(),                     // 创建towxml对象，供小程序页面使用
+
   data: {
-    //课表
+    //用来设置各种数据缓存的键码
     keyTimetable: 'timetableLcocal',            //用于存取本地存储的课程信息的键
     keyExerciseLesson: 'exerciseLessonLocal',        //用于存取实践课的键
     keyUserName: 'studentNumLocal',              //用于存取学生学号的键
@@ -13,7 +18,10 @@ App({
     keyPhoneSort: 'phoneSortLocal',             //存取电话分类的键
     keyQaList: 'qaLocal',                        //用于存取知识库的键
     keyExamInfo: 'examInfoLocal',                //用于存取考试信息的键
-    url: 'https://www.bjutxiaomei.cn/index.php?s=/'
+    
+    //后端服务请求地址
+    url: 'https://www.bjutxiaomei.cn/index.php?s=/', //攻略文章网站地址
+    url_crawler: 'http://127.0.0.1:5000/', //爬虫网站地址
   },
   globalData: {
     userInfo: null,
@@ -24,18 +32,14 @@ App({
     classification: '',     //文章分类
     freeRooms: [],          //空教室
     currentWeek: null,        //当前是第几周
+    
     hasTimetableInfo: false,       //用于判断本地有没有缓存的课表信息
     hasExamInfo: false,         //用于判断本地有没有缓存的考试信息
     hasCetInfo:false,        //用于判断本地有没有缓存的CET信息
     hasBaseInfo:false,          //用于判断学生是否已经登录过
-    time : 0,
-    touchDot : 0,//触摸时的原点
-    touchDoty : 0,
-    interval : "",
-    flag_hd : true
   },
 
-  //版本更新检查
+  //检查版本更新函数
   updataVersion: function () {
     const updateManager = wx.getUpdateManager()
 
@@ -66,8 +70,8 @@ App({
     })
   },
 
+  //全局入口函数
   onLaunch: function () {
-    
     //尝试获取新版本
     this.updataVersion()
 
@@ -77,22 +81,16 @@ App({
     var userpassword = wx.getStorageSync(this.data.keyPwd)
 
     //判断是否有各种信息缓存
-    this.ensureLogined();
-    this.ensureHasCetInfo();
-    this.ensureHasExamInfo();
-    this.ensureHasTimetableInfo();  
+    this.ensureLogined();  //检测本地是否存有学生个人信息数据
+    this.ensureHasCetInfo();  //检测本地是否有四六级考试信息
+    this.ensureHasExamInfo();  //检测本地是否有考试信息
+    this.ensureHasTimetableInfo();  //检测本地是否有课表信息
 
-    //计算全局变量currentWeek
+    //计算全局变量currentWeek(当前周)
     this.calculateCurrentWeek();
+
     this.globalData.username = username
     this.globalData.userpassword = userpassword
-    
-
-    wx.getSystemInfo({
-      success(res) {
-        console.log(res.windowHeight)
-      }
-    })
 
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -100,80 +98,29 @@ App({
     wx.setStorageSync('logs', logs)
   },
 
-  getUserInfo: function (cb) {
-    var that = this
-    if (this.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口
-      wx.login({
-        success: function (res) {
-          console.log("app.js:" + res.code)
-          if (res.code) {
-            wx.request({
-              url: that.data.url + 'addon/Cms/Cms/sendCode',
-              data: {
-                code: res.code,
-                PHPSESSID: wx.getStorageSync('PHPSESSID')
-              },
-              success: function (res) {
-                //缓存session_id
-                wx.setStorageSync('PHPSESSID', res.data.PHPSESSID)
-                wx.setStorageSync('openid', res.data.openid)
-
-                //获取用户信息
-                wx.getUserInfo({
-                  success: function (res) {
-                    that.globalData.userInfo = res.userInfo
-                    typeof cb == "function" && cb(that.globalData.userInfo)
-
-                    //console.log(res);
-                    wx.request({
-                      url: that.data.url + 'addon/Cms/Cms/saveUserInfo',
-                      data: {
-                        encryptedData: res.encryptedData,
-                        PHPSESSID: wx.getStorageSync('PHPSESSID'),
-                        iv: res.iv
-                      },
-                      success: function (res) {
-                        //console.log(res)
-                      }
-                    })
-
-                  }
-                })
-              }
-            })
-          }
-        }
-      })
-
-    }
-  },
-
-  //检测本地是否存有学生个人信息数据
-  ensureLogined:function(){
+  //检测本地是否存有学生个人信息数据缓存
+  ensureLogined: function() {
     var temp = wx.getStorageSync(this.data.keyInfo);
     if(temp){
       this.globalData.hasBaseInfo = true;
     }
+    else{
+      this.globalData.hasBaseInfo = false;
+    }
   },
 
-  /**
-   * 检测本地是否存有课表数据、等级考试数据、考试信息数据
-   */
+  //检测本地是否有课表信息缓存
   ensureHasTimetableInfo: function () {
     var timeTable = wx.getStorageSync(this.data.keyTimetable)
-    //如果读到username，证明有本地数据，将hasTimetableInfo置为true
+    //如果读到本地有课表数据,则将hasTimetableInfo置为true
     if (timeTable) {
       this.globalData.hasTimetableInfo = true
     } else {
       this.globalData.hasTimetableInfo = false
     }
   },
-  /**
-   * 确保本地是否有四六级考试信息
-   */
+
+  //检测本地是否有CET考试信息缓存
   ensureHasCetInfo:function(){
     var cet = wx.getStorageSync(this.data.keyCet)
     if(cet){
@@ -182,9 +129,8 @@ App({
       this.globalData.hasCetInfo = false;
     }
   },
-  /**
-   *确保本地是否有考试信息
-   */
+
+  //检测本地是否有专业考试信息缓存
   ensureHasExamInfo:function(){
     var exam = wx.getStorageSync(this.data.keyExamInfo);
     if (exam) {
@@ -193,9 +139,8 @@ App({
       this.globalData.hasExamInfo = false;
     }
   },
-  /**
- * 退出登录后，将课表信息、考试信息、四六级考试的变量转为false
- */
+
+  //用户退出登录后，将标记是否有CET信息、课表信息、学生个人基本信息和专业考试信息缓存的变量置为false
   logout: function () {
     this.globalData.hasCetInfo = false;
     this.globalData.hasTimetableInfo = false;
@@ -206,11 +151,11 @@ App({
   /**解析课程表(不含实践课处理)
    * 将从教务获取的课程表数据解析成能够在课程表展示的数据
    * 每节课时长均按90分钟计算。如果某节课时长180分钟，拆成两节课。
-   * 同一个时间段如果存在多节课，则将课程数量以角标形式置于右下角。
+   * 同一个时间段如果存在多节课，则将课程数量以角标形式置于右下角。(tag)
    * 例如：周三3、4节在一至八周是课程一，在九至十六周是课程二，则显示全部课表时，周三3、4节加角标'2'.
    */
   parseTimetableData: function (res) {
-    console.log("解析前课表数据")
+    // console.log("解析前课表数据")
     // console.log(JSON.parse(JSON.stringify(res)))
     var that = this;
     var lessonWeekDay;   //课程在一周中的周几
@@ -218,9 +163,11 @@ App({
     var lessonNum;   //课程节数（课表最小单元格）
     var lessonNameAndLocationAndTeacher;  //课程名称、上课地点、老师
     var lessonTime;  //课程起始周（例：1-16周）
+
+    //处理后课程数据存放列表
     var list = [];
 
-    //遍历列表，处理数据：将原始课表信息处理为我们需要的格式list
+    //遍历列表，处理数据：将原始课表信息处理为我们需要的格式list(根据接口返回数据格式灵活处理数据)
     for (var i = 0; i < res.length; i++) {
       lessonWeekDay = that.numberChange(res[i].Time.charAt(1))
 
@@ -246,7 +193,7 @@ App({
       "start": lessonStart,   //课程开始节数
       "lessonNum": lessonNum,  //课程节数
       "kcmc": lessonNameAndLocationAndTeacher,  //课程详细信息
-      "tag": 1
+      "tag": 1  //标记当前时间段课程数
       })
 
     }  //for
@@ -265,7 +212,7 @@ App({
       }
 
       that.saveTimetableToLocal(list)
-      console.log("解析后课表数据")
+      // console.log("解析后课表数据")
       // console.log(list)
       return list
     }
@@ -302,40 +249,38 @@ App({
 
     return alb
   },
-  /**
-  * 将课程表数据存储到本地
-  */
+
+  //将课表数据存储到本地
   saveTimetableToLocal: function (data) {
     if (data.length != 0) {
       wx.setStorageSync(this.data.keyTimetable, data);
     }
   },
-
-  /**
-   * 根据开学时间，计算当前时间属于第几周
-   */
+  
+  //根据开学时间，计算当前时间属于第几周
   calculateCurrentWeek: function () {
-    // var semesterStartDate = new Date('2019/02/18 00:00:00');
-    var semesterStartDate = new Date('2019/09/02 00:00:00')
-    console.log("开学时间")
-    console.log(semesterStartDate)
-    var currentDate = new Date();
+    var semesterStartDate = new Date('2019/09/02 00:00:00') //每学期开学日期
+    // console.log("开学时间")
+    // console.log(semesterStartDate)
+    var currentDate = new Date(); //当前时间
     var interval = parseFloat(currentDate - semesterStartDate);
-    console.log('interval')
-    console.log(interval)
-    var weekNow = 0;
+    // console.log('The interval between the current date and start date')
+    // console.log(interval)
+    var weekNow = 0;  //当前周
     var days = interval / 1000 / 60 / 60 / 24;
     if ((days % 7) != 0) {
       weekNow = days / 7 + 1;
     } else {
       weekNow = days / 7;
     }
-    console.log(weekNow)
 
-    //判断是否开学
-    // if(interval < 0)
-    // weekNow = 1
+    //若还没有开学，则默认当前周为第一周
+    if(interval < 0)
+    weekNow = 1
     
     this.globalData.currentWeek = parseInt(weekNow)
+    console.log('当前是第')
+    console.log(this.globalData.currentWeek)
+    console.log('周')
   }
 })

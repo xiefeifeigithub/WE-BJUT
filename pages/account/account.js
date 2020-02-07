@@ -13,9 +13,6 @@ Page({
     timer:null
   },
 
-  /**
- * 生命周期函数--监听页面加载
- */
   onLoad: function (options) {
     // 从缓存中获取用户信息
     var that = this
@@ -30,24 +27,21 @@ Page({
         userPwd: userpassword,
         info:infoList
       })
-    }else{
+    }
+    else{
       this.setData({ unload: true })
     }
   },
 
-
-  // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
       title: '个人中心'
     })
-
   },
 
   //密码短暂显示功能
-  changeStatus:function(e)
-  {
+  changeStatus:function(e){
     //passwordStatus - 变可见
     this.setData({
       passwordStatus: !this.data.passwordStatus
@@ -63,12 +57,14 @@ Page({
       console.log('隐藏密码：' + this.data.passwordStatus)
     }.bind(this), 1000);
   },
+
   //获取用户输入的用户名
   userNameInput: function(e) {
     this.setData({
       userName: e.detail.value
     })
   },
+
   // 获取用户输入的密码
   passWdInput: function(e) {
     this.setData({
@@ -96,12 +92,13 @@ Page({
 
     wx.showLoading({
       title: '身份验证中...',
-    });
+    })
+
     //点击登录按钮，获取学生基本信息，页面转换为已登录状态对应的页面
     var that = this
     //请求学生基本信息
     wx.request({
-      url: 'https://www.bjut1960.cn/baseinfo',
+      url: app.data.url_crawler + 'baseinfo',
       method: 'POST',
       data:{
         xh:account,
@@ -126,7 +123,8 @@ Page({
           })
           wx.hideLoading(); //隐藏身份验证对话框
           app.globalData.hasBaseInfo = true;
-        } else {
+        } 
+        else {
           wx.showToast({
             title: '请检查学号或密码是否正确',
             icon: 'none'
@@ -139,6 +137,8 @@ Page({
       }
     });
   },
+
+  //退出登录
   logout: function(e) {
     console.log('退出登录')
     //1清除本地缓存数据
@@ -155,7 +155,8 @@ Page({
       this.setData({
         unload: true
       })
-    } catch (e) {
+    } 
+    catch (e) {
       // Do something when catch error
       console.log(e);
       wx.showToast({
@@ -165,6 +166,7 @@ Page({
       })
     }
   },
+
   //隐藏时，关掉定时器
   onHide:function(){
     clearTimeout(this.globalData.timer)
@@ -174,4 +176,5 @@ Page({
   clearUsername:function(){
     this.setData({userName:''})
   }
+  
 })

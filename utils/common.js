@@ -8,7 +8,6 @@ function loadInfo(id,obj){
   if(info){
     obj.setData({ info: info })
     console.log('从缓存中获取文章内容')
-
     return true
   }           
 
@@ -36,7 +35,6 @@ function loadInfo(id,obj){
     }
   })
 }
-
 
 //暴露接口
 module.exports = {

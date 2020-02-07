@@ -35,10 +35,12 @@ Page({
     if (e.detail.value == 0) {
       that.globalData.techBuilding = 1
       that.globalData.buildingName = '一教'
-    } else if (e.detail.value == 1) {
+    } 
+    else if (e.detail.value == 1) {
       that.globalData.techBuilding = 3
       that.globalData.buildingName = '三教'
-    } else if (e.detail.value == 2) {
+    } 
+    else if (e.detail.value == 2) {
       that.globalData.techBuilding = 4
       that.globalData.buildingName = '四教'
     }
@@ -119,7 +121,7 @@ Page({
   },
 
   onTap: function(event) {
-    //url请求示例：www.bjut1960.cn/freeroom?building=4&week=一&currentweek=8&time1=3&time2=4
+    //url请求示例：app.data.url_crawler + freeroom?building=4&week=一&currentweek=8&time1=3&time2=4
     //含义：查询四教周一第八周第3、4节空闲的教室
     wx.showLoading({
       title: '查询中',
@@ -133,7 +135,7 @@ Page({
     var requestUrl = buildingUrl + weekdayUrl + weekUrl + classTimeUrl;
     console.log('查询的URL:'+requestUrl)
     wx.request({
-      url: 'https://www.bjut1960.cn/freeroom?' + requestUrl,
+      url: app.data.url_crawler + 'freeroom?' + requestUrl,
       method: 'GET',
       header: {
         "Content-Type": "application/json"

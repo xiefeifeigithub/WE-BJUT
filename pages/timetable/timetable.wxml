@@ -1,6 +1,3 @@
-<!--index.wxml-->
-<!-- <view class='notice'>点击课程即可查看本节课的详细信息:)</view> -->
-
 <view class='container' >
 <view class='notice'>点击课程即可查看本节课的详细信息:)</view>
   <view class='round-click'>
@@ -41,19 +38,6 @@
     </scroll-view>
 
   </view>
-  <!-- 实践课
-  <view wx:for="{{exerciseLesonList}}">
-    <view class="exercise-lesson-container">
-      <view class='item'>
-        <text style='font-size:11pt'>实践课：{{item.Name}}\n</text>
-        <text style='font-size:11pt'>教师：{{item.Teacher}}\n</text>
-        <text style='font-size:11pt'>上课时间：{{item.Time}}周\n</text>
-        <text style='font-size:11pt'>学分：{{item.credit}}</text>
-      </view>
-    </view>
-  </view>
-  <dialog id='dialog' lessonList="{{mutiLessons}}">
-  </dialog> -->
 </view>
 
 <!-- 实践课 -->

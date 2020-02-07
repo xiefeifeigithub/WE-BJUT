@@ -3,7 +3,7 @@
         <text>考试学年：{{item.schoolYear}}</text>       <text>\n</text>
         <text>学期：{{item.schoolWeek}}</text>           <text>\n</text>
         <text>考试名称：{{item.gradeExamName}}</text>    <text>\n</text>
-        <text>考试日期：{{item.examDate}}</text>         <text>\n</text>
+        <!-- <text>考试日期：{{item.examDate}}</text>         <text>\n</text> -->
         <text>成绩总分：{{item.score}}</text>            <text>\n</text>
         <text>听力成绩：{{item.listening}}</text>        <text>\n</text>
         <text>阅读成绩：{{item.reading}}</text>          <text>\n</text>
