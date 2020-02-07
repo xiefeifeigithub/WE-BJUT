@@ -1,6 +1,11 @@
 //app.js
 
+const Towxml = require('/towxml/main');     // 引入towxml库
+
 App({
+
+  towxml:new Towxml(),                     // 创建towxml对象，供小程序页面使用
+
   data: {
     //用来设置各种数据缓存的键码
     keyTimetable: 'timetableLcocal',            //用于存取本地存储的课程信息的键
