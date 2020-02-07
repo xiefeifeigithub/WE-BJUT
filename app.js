@@ -11,7 +11,7 @@ App({
     keyTimetable: 'timetableLcocal',            //用于存取本地存储的课程信息的键
     keyExerciseLesson: 'exerciseLessonLocal',        //用于存取实践课的键
     keyUserName: 'studentNumLocal',              //用于存取学生学号的键
-    keyPwd: 'stuPwdLocal',                      //用于存取学生密码的键
+    keyPwd: 'stuPwdLocal',                      //用于存取学生密码的键 
     keyInfo: 'stuInfoLocal',                           //用于存取学生基本信息的键
     keyCet: 'cetLocal',                          //用于存取四六级考试成绩的键
     keyPhoneList: 'phoneLocal',                 //用于存取电话号码的键,

@@ -42,7 +42,6 @@
   <view class='timetable-content' wx:if="{{ todayHaveClass==true && todayFinishClass==true }}">
     <view class='timetable-no'>今天的课终于上完啦</view>
   </view>
->>>>>>> b10db1aac79dbe169e72a3daa349a38264177993
 </view>
 
 <view class='nav-list'>
