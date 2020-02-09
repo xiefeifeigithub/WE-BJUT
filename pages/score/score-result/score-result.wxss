@@ -38,6 +38,12 @@
   color: #3683d6;
 }
 
+.categoryThick{
+  margin: 10rpx;
+  color: #0398e7;
+  font-weight: 800;
+}
+
 .info-row{
   padding: 20rpx;
   margin-top: 5rpx;
@@ -55,13 +61,24 @@
   font-size: 28rpx;
 }
 .item{
-    display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   margin-right: 10rpx;
   font-size: 30rpx;
 }
+
+.itemThick{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-right: 10rpx;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
 .info-row2{
     padding-top: 5rpx;
     padding-left: 20rpx;

@@ -67,8 +67,11 @@ Page({
     wx.showLoading({
       title: '成绩查询中...',
     })
+
     var account = wx.getStorageSync(app.data.keyUserName)
     var pwd = wx.getStorageSync(app.data.keyPwd)
+    var pwdVpn = wx.getStorageSync(app.data.keyPwdVpn)
+
     var year = this.data.pickedYear
     var semester = this.data.pickedSemester
 
@@ -84,6 +87,7 @@ Page({
           data: {
             xh: account,
             mm: pwd,
+            vpn_pwd: pwdVpn,
             xn: year,
             xq: semester,
           },
