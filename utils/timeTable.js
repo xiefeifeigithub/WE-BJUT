@@ -4,14 +4,18 @@ var app = getApp()
 function query_table(year, semester) {
   var tempList = [];
   console.log("向服务器获取" + year + "年第" + semester + "学期的课表")
+
   var account = wx.getStorageSync(app.data.keyUserName)
   var pwd = wx.getStorageSync(app.data.keyPwd)
+  var pwdVpn = wx.getStorageSync(app.data.keyPwdVpn)
+  
   wx.request({
     url: app.data.url_crawler + 'schedule',
     method: 'POST',
     data: {
       xh: account,
       mm: pwd,
+      vpn_pwd: pwdVpn,
       xn: year,
       xq: semester
     },

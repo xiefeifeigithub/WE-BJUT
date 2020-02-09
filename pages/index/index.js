@@ -28,7 +28,8 @@ Page({
 
   globalData:{
     account:"",
-    password:""
+    password:"",
+    passwordVpn:""
   },
 
   //事件：课表
@@ -57,8 +58,9 @@ Page({
           data: {
             xh: that.globalData.account,
             mm: that.globalData.password,
+            vpn_pwd: that.globalData.passwordVpn,
             xn: '2019-2020',
-            xq: '1'
+            xq: '2'
           },
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -154,7 +156,8 @@ Page({
           method: 'POST',
           data: {
             xh: that.globalData.account,
-            mm: that.globalData.password
+            mm: that.globalData.password,
+            vpn_pwd: that.globalData.passwordVpn
           },
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -216,7 +219,8 @@ Page({
           method: 'POST',
           data: {
             xh: that.globalData.account,
-            mm: that.globalData.password
+            mm: that.globalData.password,
+            vpn_pwd: that.globalData.passwordVpn
           },
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -304,7 +308,7 @@ Page({
     that.data.currentDayTable = []
 
     //获取当前周的数据(最新学期)
-    timeTable.query_table('2019-2020', '1')
+    timeTable.query_table('2019-2020', '2')
     if (app.globalData.hasTimetableInfo) {
       const localTimeTable = wx.getStorageSync(app.data.keyTimetable);
       if (localTimeTable) {
@@ -313,7 +317,7 @@ Page({
         this.currentTimeTable()
       }
       else {
-        console.log("获取 xn=2019-2020&xq=1 课表失败")
+        console.log("获取 xn=2019-2020&xq=2 课表失败")
       }
     }
   },
@@ -678,6 +682,7 @@ Page({
   onShow:function(){
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
     this.globalData.password = wx.getStorageSync(app.data.keyPwd)   
+    this.globalData.passwordVpn = wx.getStorageSync(app.data.keyPwdVpn)
     
     //显示当天课表（内含显示离当前时间最近的一节课）
     this.showTodayTimeTable()

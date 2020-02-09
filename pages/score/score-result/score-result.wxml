@@ -1,21 +1,22 @@
 <wxs module="filters" src="../../../utils/filters.wxs"></wxs>
 
 <view class="container">
+  <!-- 本专业 -->
   <!-- 总平均分 -->
   <view class='tip'>
     <view class='block'>
       <view class="line"></view>
-      <view class='category'>总平均分</view>
+      <view class='categoryThick'>总平均分-本专业</view>
     </view>
 
     <view class='info-row'>
       <view class='title'>大学期间总加权平均分</view>
-      <view class='item'>{{filters.toFix(result.summery.SCORE_all)}}</view>
+      <view class='itemThick'>{{filters.toFix(result.summery.SCORE_all)}}</view>
     </view>
 
     <view class='info-row'>
       <view class='title'>大学期间总平均绩点(GPA)</view>
-      <view class='item'>{{filters.toFix(result.summery.GPA_all)}}</view>
+      <view class='itemThick'>{{filters.toFix(result.summery.GPA_all)}}</view>
     </view>
   </view>
 
@@ -23,7 +24,7 @@
   <view class='tip'>
     <view class='block'>
       <view class="line"></view>
-      <view class='category'>学期平均分</view>
+      <view class='category'>学期平均分-本专业</view>
     </view>
 
     <view class='info-row'>
@@ -41,7 +42,7 @@
   <view class='tip'>
     <view class='block'>
       <view class="line"></view>
-      <view class='category'>课程详细</view>
+      <view class='category'>课程详细-本专业</view>
     </view>
 
     <view class="info-row2">
@@ -58,10 +59,10 @@
   </view>
 
   <!-- 辅修/第二专业明细 -->
-  <view class='tip' wx:if="{{jsonDataLength!=0}}">
+  <view class='tip' wx:if="{{otherLength!=0}}">
     <view class='block'>
       <view class="line"></view>
-      <view class='category'>辅修/二专业等课程（不计入加权和GPA）</view>
+      <view class='category'>不计入加权和GPA的课程-本专业</view>
     </view>
 
     <view class="info-row2">
@@ -76,5 +77,65 @@
       </view>
     </view>
   </view>
+
+
+  <!-- 辅修专业 -->
+
+  <!-- 总平均分 -->
+  <view class='tip' wx:if="{{minorLength!=0}}">
+    <view class='block'>
+      <view class="line"></view>
+      <view class='categoryThick'>总平均分-辅修专业</view>
+    </view>
+
+    <view class='info-row'>
+      <view class='title'>大学期间总加权平均分</view>
+      <view class='itemThick'>{{filters.toFix(result.summery.SCORE_all_minor)}}</view>
+    </view>
+
+    <view class='info-row'>
+      <view class='title'>大学期间总平均绩点(GPA)</view>
+      <view class='itemThick'>{{filters.toFix(result.summery.GPA_all_minor)}}</view>
+    </view>
+  </view>
+
+  <!-- 学期平均分 -->
+  <view class='tip' wx:if="{{minorLength!=0}}">
+    <view class='block'>
+      <view class="line"></view>
+      <view class='category'>学期平均分-辅修专业</view>
+    </view>
+
+    <view class='info-row'>
+      <view class='title'>本学期加权平均分</view>
+      <view class='item'>{{filters.toFix(result.summery.SCORE_term_minor)}}</view>
+    </view>
+
+    <view class='info-row'>
+      <view class='title'>本学期平均绩点(GPA)</view>
+      <view class='item'>{{filters.toFix(result.summery.GPA_term_minor)}}</view>
+    </view>
+  </view>
+
+  <!-- 课程明细 -->
+  <view class='tip' wx:if="{{minorLength!=0}}">
+    <view class='block'>
+      <view class="line"></view>
+      <view class='category'>课程详细-辅修专业</view>
+    </view>
+
+    <view class="info-row2">
+      <view class='hint1'>课程名称</view>
+      <view class='hint2'>分数 | 学分</view>
+    </view>
+
+    <view class="info-row" wx:for="{{result.minor}}">
+      <view class='title'>{{item.courseName}}</view>
+      <view>
+        <text class='item'>{{item.score}} | {{filters.toFix(item.credit, 1)}}</text>
+      </view>
+    </view>
+  </view>
+
 
 </view>

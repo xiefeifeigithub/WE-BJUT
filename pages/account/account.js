@@ -5,7 +5,10 @@ Page({
   data: {
     userName: '', //用户名
     userPwd: '', //密码
+    userPwdVpn: '', //vpn密码
+
     info: {} ,//学生基本信息
+
     passwordStatus: true, //密码状态
     unload:true,  //是否加载学生个人信息
   },
@@ -20,11 +23,16 @@ Page({
 
     if(username){
       this.setData({unload:false})
+
       var userpassword = app.globalData.userpassword
+      var userpasswordVpn = app.globalData.userpasswordVpn
+
       var infoList = wx.getStorageSync(app.data.keyInfo)
       that.setData({
         userName: username, 
         userPwd: userpassword,
+        userPwdVpn: userpasswordVpn,
+
         info:infoList
       })
     }
@@ -65,22 +73,36 @@ Page({
     })
   },
 
-  // 获取用户输入的密码
+  // 获取用户输入的密码 password
   passWdInput: function(e) {
     this.setData({
       userPwd: e.detail.value
     })
   },
 
+  // 获取用户输入的密码 password_vpn
+  passWdVpnInput: function(e) {
+    this.setData({
+      userPwdVpn: e.detail.value
+    })
+  },
+
   //设置用户名和密码的缓存
   setStorage: function() {
+    // 用户名
     wx.setStorage({
       key: app.data.keyUserName,
       data: this.data.userName,
     })
+    // password
     wx.setStorage({
       key: app.data.keyPwd,
       data: this.data.userPwd,
+    })
+    // passwordVpn
+    wx.setStorage({
+      key: app.data.keyPwdVpn,
+      data: this.data.userPwdVpn,
     })
   },
 
@@ -88,8 +110,9 @@ Page({
   formSubmit: function(e) {
     var account = e.detail.value.userName;
     var password = e.detail.value.password;
+    var passwordVpn = e.detail.value.passwordVpn;
+    
     var flag = false;
-
     wx.showLoading({
       title: '身份验证中...',
     })
@@ -102,7 +125,8 @@ Page({
       method: 'POST',
       data:{
         xh:account,
-        mm:password
+        mm:password,
+        vpn_pwd:passwordVpn
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -111,6 +135,7 @@ Page({
         if (res.statusCode == 200) {
           //登录成功：将登录的用户名和密码存储至本地
           that.setStorage()
+
           that.setData({
             info: res.data
           })
@@ -145,13 +170,32 @@ Page({
     //2跳转登录页面
     try {
       wx.removeStorageSync(app.data.keyTimetable);
+
       wx.removeStorageSync(app.data.keyUserName);
       wx.removeStorageSync(app.data.keyPwd);
+      wx.removeStorageSync(app.data.keyPwdVpn)
+
       wx.removeStorageSync(app.data.keyInfo);
       wx.removeStorageSync(app.data.keyExerciseLesson);
       wx.removeStorageSync(app.data.keyCet);
       wx.removeStorageSync(app.data.keyExamInfo);
-      app.logout();
+
+      // app.logout();
+      //用户退出登录后，将标记是否有CET信息、课表信息、学生个人基本信息和专业考试信息缓存的变量置为false
+      app.globalData.hasBaseInfo = false
+      app.globalData.hasTimetableInfo = false
+      app.globalData.hasCetInfo = false
+      app.globalData.hasExamInfo = false
+
+  //       //用户退出登录后，将标记是否有CET信息、课表信息、学生个人基本信息和专业考试信息缓存的变量置为false
+  // logout: function () {
+  //   this.globalData.hasCetInfo = false;
+  //   this.globalData.hasTimetableInfo = false;
+  //   this.globalData.hasBaseInfo = false;
+  //   this.globalData.hasExamInfo = false;
+  // },
+
+      
       this.setData({
         unload: true
       })

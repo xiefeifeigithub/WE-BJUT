@@ -10,8 +10,11 @@ App({
     //用来设置各种数据缓存的键码
     keyTimetable: 'timetableLcocal',            //用于存取本地存储的课程信息的键
     keyExerciseLesson: 'exerciseLessonLocal',        //用于存取实践课的键
+
     keyUserName: 'studentNumLocal',              //用于存取学生学号的键
     keyPwd: 'stuPwdLocal',                      //用于存取学生密码的键 
+    keyPwdVpn: 'stuPwdVpnLocal',                //用于存取my.bjut.edu.cn的密码的键
+
     keyInfo: 'stuInfoLocal',                           //用于存取学生基本信息的键
     keyCet: 'cetLocal',                          //用于存取四六级考试成绩的键
     keyPhoneList: 'phoneLocal',                 //用于存取电话号码的键,
@@ -21,14 +24,17 @@ App({
     
     //后端服务请求地址
     url: 'https://www.bjutxiaomei.cn/index.php?s=/', //攻略文章网站地址
-    url_crawler: 'http://127.0.0.1:5000/', //爬虫网站地址
+    url_crawler: 'https://www.bjut1960.cn/', //爬虫网站地址 https://bjut1960.cn/
   },
   globalData: {
     userInfo: null,
     type: null,             //文章类型
     label: null,             //电话分类
+
     username: null,           //学号
     userpassword: null,       //教务密码
+    userpasswordVpn : null,   //my.bjut.edu.cn密码
+
     classification: '',     //文章分类
     freeRooms: [],          //空教室
     currentWeek: null,        //当前是第几周
@@ -79,6 +85,7 @@ App({
     console.log("从缓存中获取用户信息")
     var username = wx.getStorageSync(this.data.keyUserName)
     var userpassword = wx.getStorageSync(this.data.keyPwd)
+    var userpasswordVpn = wx.getStorageSync(this.data.keyPwdVpn)
 
     //判断是否有各种信息缓存
     this.ensureLogined();  //检测本地是否存有学生个人信息数据
@@ -91,6 +98,7 @@ App({
 
     this.globalData.username = username
     this.globalData.userpassword = userpassword
+    this.globalData.userpasswordVpn = userpasswordVpn
 
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -138,14 +146,6 @@ App({
     } else {
       this.globalData.hasExamInfo = false;
     }
-  },
-
-  //用户退出登录后，将标记是否有CET信息、课表信息、学生个人基本信息和专业考试信息缓存的变量置为false
-  logout: function () {
-    this.globalData.hasCetInfo = false;
-    this.globalData.hasTimetableInfo = false;
-    this.globalData.hasBaseInfo = false;
-    this.globalData.hasExamInfo = false;
   },
 
   /**解析课程表(不含实践课处理)
@@ -282,5 +282,7 @@ App({
     console.log('当前是第')
     console.log(this.globalData.currentWeek)
     console.log('周')
+
+    this.globalData.currentWeek = 1
   }
 })

@@ -4,11 +4,13 @@ Page({
   data: {
     account: '',      //用户名
     password: '',     //密码
+    passwordVpn: '',   //vpn密码
     cetInfo: []       //四六级考试成绩
   },
   globalData:{
     account:null,
-    pwd:null
+    pwd:null,
+    pwdVpn: null,   
   },
   
   onLoad: function (options) {
@@ -24,7 +26,7 @@ Page({
   onReady: function () {
     //动态设置当前页面的标题
     wx.setNavigationBarTitle({
-      title: '等级考试信息查询'
+      title: '四六级考试信息查询'
     })
   },
 
@@ -32,11 +34,14 @@ Page({
   onShow:function(){
     this.globalData.account = wx.getStorageSync(app.data.keyUserName)
     this.globalData.pwd = wx.getStorageSync(app.data.keyPwd)
+    this.globalData.pwdVpn = wx.getStorageSync(app.data.keyPwdVpn)
   },
 
   onUnload:function(){
     var account = this.globalData.account
     var password = this.globalData.pwd
+    var passwordVpn = this.globalData.pwdVpn
+
     var that = this
     //四六级考试信息
     wx.request({
@@ -44,7 +49,8 @@ Page({
       method: 'POST',
       data: {
         xh: account,
-        mm: password
+        mm: password,
+        vpn_pwd: passwordVpn
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -55,6 +61,7 @@ Page({
           that.setData({
             cetInfo: res.data
           })
+          // 设置CET成绩缓存
           wx.setStorage({
             key: app.data.keyCet,
             data: res.data,
