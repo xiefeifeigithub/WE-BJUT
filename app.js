@@ -259,13 +259,9 @@ App({
   
   //根据开学时间，计算当前时间属于第几周
   calculateCurrentWeek: function () {
-    var semesterStartDate = new Date('2019/09/02 00:00:00') //每学期开学日期
-    // console.log("开学时间")
-    // console.log(semesterStartDate)
+    var semesterStartDate = new Date('2020/02/24 00:00:00') //每学期开学日期
     var currentDate = new Date(); //当前时间
     var interval = parseFloat(currentDate - semesterStartDate);
-    // console.log('The interval between the current date and start date')
-    // console.log(interval)
     var weekNow = 0;  //当前周
     var days = interval / 1000 / 60 / 60 / 24;
     if ((days % 7) != 0) {
@@ -276,13 +272,11 @@ App({
 
     //若还没有开学，则默认当前周为第一周
     if(interval < 0)
-    weekNow = 1
+    weekNow = 0
     
     this.globalData.currentWeek = parseInt(weekNow)
     console.log('当前是第')
     console.log(this.globalData.currentWeek)
     console.log('周')
-
-    this.globalData.currentWeek = 1
   }
 })

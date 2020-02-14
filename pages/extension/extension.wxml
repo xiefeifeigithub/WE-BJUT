@@ -1,3 +1,7 @@
-<view>
+<!-- <view>
   <web-view src="{{info.source}}"></web-view>
+</view> -->
+
+<view>
+  <web-view src="{{source}}"></web-view>
 </view>

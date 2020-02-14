@@ -9,7 +9,11 @@ var util = require('../../utils/util.js')
 Page({
   data: {
     //轮播图
-    imgUrls: [],  //轮播图内容
+    imgUrls: [
+        {img:'../../images/tu0.jpg'} ,  
+        {img:'../../images/tu1.jpg'} ,  
+        {img:'../../images/tu2.jpg'} ,  
+        {img:'../../images/tu3.jpg'}   ],  //轮播图内容
     indicatorDots: false, //是否显示面板指示点
     autoplay: true, //是否自动切换
     interval: 3500, //自动切换时间间隔
@@ -289,10 +293,11 @@ Page({
   },
   
   onLoad: function () {
-    this.updataData()
-    console.log("onLoad ~ pages/index ~ 请求轮播图数据")
+    // this.updataData()
+    // console.log("onLoad ~ pages/index ~ 请求轮播图数据")
 
     var currentWeek = app.globalData.currentWeek;
+
     this.setData({
       currentweek: currentWeek
     });
@@ -641,32 +646,35 @@ Page({
     else if (mytime < "19:45:00") return 10.5
   },
 
-  //更新轮播图通告
-  onHide: function (){
-    this.updataData()
-    console.log("onHide ~ pages/index ~ 更新轮播图数据")
-  },
+  // //更新轮播图通告
+  // onHide: function (){
+  //   this.updataData()
+  //   console.log("onHide ~ pages/index ~ 更新轮播图数据")
+  // },
 
-  //更新轮播图通告
-  updataData: function(){
-    var limit = 4 //加载4篇轮播图文章
-    var lastid = 0
-    var that = this
+  // //更新轮播图通告
+  // updataData: function(){
+  //   var limit = 4 //加载4篇轮播图文章
+  //   var lastid = 0
+  //   var that = this
 
-    wx.request({
-      url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Imagetitle/Imagetitle/getImagetitle',
-      data: { lastid: lastid, limit: limit },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        that.setData({ imgUrls: res.data })
-      },
-      fail: function (res) {
-        console.log("服务器开小差了...")
-      }
-    })
-  },
+  //   wx.request({
+  //     url: 'https://www.bjutxiaomei.cn/index.php?s=/addon/Imagetitle/Imagetitle/getImagetitle',
+  //     data: { lastid: lastid, limit: limit },
+  //     header: {
+  //       'content-type': 'application/json' // 默认值
+  //     },
+  //     success(res) {
+  //       that.setData({ imgUrls: res.data })
+  //     },
+  //     fail: function (res) {
+  //       console.log("服务器开小差了...")
+  //     }
+  //   })
+  // },
+
+
+
 
   //点击轮播图进入内容页
   clickImage: function (e) {
