@@ -24,7 +24,8 @@ App({
     
     //后端服务请求地址
     url: 'https://www.bjutxiaomei.cn/index.php?s=/', //攻略文章网站地址
-    url_crawler: 'https://www.bjut1960.cn/', //爬虫网站地址 https://bjut1960.cn/
+    // url_crawler: 'https://www.bjut1960.cn/', //爬虫网站地址 https://bjut1960.cn/  http://127.0.0.1:5000/
+    url_crawler: 'http://127.0.0.1:5000/'
   },
   globalData: {
     userInfo: null,
