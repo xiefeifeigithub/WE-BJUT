@@ -157,6 +157,11 @@ Page({
         }
       },
       fail: function(res) {
+        wx.showToast({
+          title: '教务出现问题-登录失败',
+          icon: 'none'
+        })
+        wx.hideLoading(); //隐藏身份验证对话框
         console.log('登录失败');
         console.log(res);
       }
